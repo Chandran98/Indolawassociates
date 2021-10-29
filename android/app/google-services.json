@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "467295268428",
+    "project_id": "indolawassociates-571ca",
+    "storage_bucket": "indolawassociates-571ca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467295268428:android:492997872f66cdb60d0ee9",
+        "android_client_info": {
+          "package_name": "com.indolawassociates.Indolaw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "467295268428-vmtmu4jgt76r0tn7fqbkqolq141lqt1q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.indolawassociates.Indolaw",
+            "certificate_hash": "c2341347d94bb2d6b1502d093130b38377f4c43b"
+          }
+        },
+        {
+          "client_id": "467295268428-oujrbpls599c6gru4cqjac2g6j5j8is3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvVSpUPKV_3uVQzvm5YsBKaxu7pY17i5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "467295268428-oujrbpls599c6gru4cqjac2g6j5j8is3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
