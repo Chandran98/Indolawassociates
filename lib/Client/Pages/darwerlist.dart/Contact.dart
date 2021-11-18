@@ -101,7 +101,7 @@ class _ContactState extends State<Contact> {
                               padding: const EdgeInsets.all(15.0),
                               child: InkWell(
                                 onTap: () {
-                                  launcher("tel: 7092053592");
+                                  launcher("tel: 8940383000");
                                 },
                                 child: Card(
                                   elevation: 4,
@@ -152,7 +152,7 @@ class _ContactState extends State<Contact> {
                             ),
                             InkWell(
                               onTap: () {
-                                launcher("mailto: Chandranjc3@gmail.com");
+                                launcher("mailto: indolawassociates@gmail.com");
                               },
                               child: Card(
                                 elevation: 4,

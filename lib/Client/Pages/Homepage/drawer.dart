@@ -1,16 +1,20 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/Pages/Register_Login_screen/Login.dart/LOGINpage.dart';
-import 'package:indolawassociates/Client/Pages/Register_Login_screen/Login.dart/Login.dart';
-import 'package:indolawassociates/Client/Pages/darwerlist.dart/Careers.dart';
 import 'package:indolawassociates/Client/Pages/darwerlist.dart/Contact.dart';
 import 'package:indolawassociates/Client/Pages/darwerlist.dart/Offers.dart';
 import 'package:indolawassociates/Client/Pages/darwerlist.dart/Otherservices.dart';
 import 'package:indolawassociates/Client/Pages/darwerlist.dart/profile.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
+import 'package:indolawassociates/Client/Pages/Register_Login_screen/Login.dart/log.dart';
 
 import '../../../main.dart';
+
+final FirebaseAuth _auth = FirebaseAuth.instance;
+final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+var username = '';
 
 class Maindrawer extends StatefulWidget {
   @override
@@ -32,8 +36,12 @@ class _MaindrawerState extends State<Maindrawer> {
               actions: [
                 // ignore: deprecated_member_use
                 FlatButton(
-                    onPressed: () => Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => LPage())),
+                    onPressed: () {
+                      _auth.signOut().then((value) => Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => Loginpage())));
+                    },
                     child: Text(
                       "Yes",
                       style: hStyle,
@@ -58,7 +66,15 @@ class _MaindrawerState extends State<Maindrawer> {
   }
 
   @override
+  void initState() {
+    getuser();
+
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    
     return WillPopScope(
       onWillPop: () {
         onback();
@@ -89,8 +105,8 @@ class _MaindrawerState extends State<Maindrawer> {
 
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
-                                    image:
-                                        AssetImage("assets/images/drawerimg.jpg"),
+                                    image: AssetImage(
+                                        "assets/images/drawerimg.jpg"),
                                     fit: BoxFit.cover,
                                   ),
                                   color: white),
@@ -136,7 +152,7 @@ class _MaindrawerState extends State<Maindrawer> {
                         // Container(
                         //   child: FittedBox(
                         //     child: Text(
-                        //       "Richard Lee",
+                        //       "Hi" + username,
                         //       textScaleFactor: 1,
                         //       style: (GoogleFonts.mulish(
                         //         fontSize: 19.sp,
@@ -146,19 +162,18 @@ class _MaindrawerState extends State<Maindrawer> {
                         //     ),
                         //   ),
                         // ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.01.h,
-                        ),
+                        // SizedBox(
+                        //   height: MediaQuery.of(context).size.height * 0.01.h,
+                        // ),
                         // Container(
                         //   child: FittedBox(
                         //     child: Text(
-                        //       "9875461232",
-                        //       style: (GoogleFonts.mulish(
-                        //         fontSize: 16,
-                        //         fontWeight: FontWeight.bold,
-                        //         color: pColor,
-                        //       )),
-                        //     ),
+                        //         //  '(cellnumber: ' +(_auth.currentUser!.phoneNumber != null? _auth.currentUser!.phoneNumber: '') +
+                        //         ' uid:' +
+                        //             (_auth.currentUser!.uid != null
+                        //                 ? _auth.currentUser!.uid
+                        //                 : '') +
+                        //             ')'),
                         //   ),
                         // ),
                       ],
@@ -249,5 +264,26 @@ class _MaindrawerState extends State<Maindrawer> {
         ),
       ),
     );
+  }
+
+  Future getuser() async {
+    if (_auth.currentUser != null) {
+      var cellNumber = _auth.currentUser!.phoneNumber;
+      cellNumber = '0' +
+          _auth.currentUser!.phoneNumber!.substring(3, cellNumber!.length);
+      debugPrint(cellNumber);
+      await _firestore
+          .collection("ILA")
+          .where("cellnumber", isEqualTo: cellNumber)
+          .get()
+          .then((result) {
+        if (result.docs.length > 0) {
+          if (mounted)
+            setState(() {
+              username = result.docs[0].data()['name'];
+            });
+        }
+      });
+    }
   }
 }

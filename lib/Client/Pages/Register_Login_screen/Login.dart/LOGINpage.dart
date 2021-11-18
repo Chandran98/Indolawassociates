@@ -7,6 +7,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/Pages/Register_Login_screen/Sign_Up/Sign_Up.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
+import 'package:indolawassociates/Client/Pages/Register_Login_screen/Login.dart/log.dart';
 import 'package:indolawassociates/main.dart';
 
 enum MobileVerificationState {
@@ -150,12 +151,13 @@ class _LPageState extends State<LPage> {
                 ),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.05.h),
+              TextButton(onPressed: (){Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>Mainhome()));}, child: Text("data")),
               Container(
                 width: MediaQuery.of(context).size.width * .6.w,
                 height: MediaQuery.of(context).size.height * .06.h,
                 child: Material(
                   borderRadius: BorderRadius.circular(20.0),
-                  color: gold,
+                  color: gold,                                                        
                   elevation: 7.0,
                   child: TextButton(
                     onPressed: () async {
@@ -196,7 +198,7 @@ class _LPageState extends State<LPage> {
                         child: Text('Submit',
                             style: GoogleFonts.mulish(
                                 fontWeight: FontWeight.bold,
-                                color: white,
+                                 color: white,
                                 fontSize: 20.sp))),
                   ),
                 ),

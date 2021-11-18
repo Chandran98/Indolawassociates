@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/Client/model/form_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../main.dart';
 
@@ -41,11 +42,28 @@ class _CatepageState extends State<Catepage> {
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => Mainhome()));
   }
+ launcher(command) async {
+    if (await canLaunch(command)) {
+      await launch(command);
+    } else {
+      print("");
+    }
+  }
 
   var gendertry;
-  List genderlist = ["Male", "Female","Others"];
-    var category;
-  List categorylist = ["Property", "Family","Criminal","Corporate"," Cyber Crime","Civil"," Taxation","Labour","Consumer"];
+  List genderlist = ["Male", "Female", "Others"];
+  var category;
+  List categorylist = [
+    "Property",
+    "Family",
+    "Criminal",
+    "Corporate",
+    " Cyber Crime",
+    "Civil",
+    " Taxation",
+    "Labour",
+    "Consumer"
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -69,27 +87,28 @@ class _CatepageState extends State<Catepage> {
                 color: navy,
               )),
         ),
-        floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: gold,
-          onPressed: () => showModalBottomSheet(
-              shape: RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(25))),
-              enableDrag: false,
-              isScrollControlled: true,
-              context: context,
-              builder: (context) => SingleChildScrollView(
-                    child: Container(
-                      padding: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: buildformsheet(),
-                    ),
-                  )),
-          label: Text(
-            "Apply for issues",
-          ),
-          icon: Icon(Icons.arrow_back_ios_new_rounded),
-        ),
+        // floatingActionButton: FloatingActionButton.extended(
+        //   backgroundColor: gold,
+        //   onPressed: () => showModalBottomSheet(
+        //       shape: RoundedRectangleBorder(
+        //           borderRadius:
+        //               BorderRadius.vertical(top: Radius.circular(25))),
+        //       enableDrag: false,
+        //       isScrollControlled: true,
+        //       context: context,
+        //       builder: (context) => SingleChildScrollView(
+        //             child: Container(
+        //               padding: EdgeInsets.only(
+        //                   bottom: MediaQuery.of(context).viewInsets.bottom),
+        //               child: buildformsheet(),
+        //             ),
+        //           )),
+        //   label: Text(
+        //     "Apply for issues",
+        //   ),
+        //   icon: Icon(Icons.arrow_back_ios_new_rounded),
+        // ),
+   
         body: SingleChildScrollView(
             child: Stack(
           children: [
@@ -118,119 +137,243 @@ class _CatepageState extends State<Catepage> {
                   padding: const EdgeInsets.all(8.0),
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 130.0),
-                          child: Text(
-                            widget.categorytitle,
-                            style: bStyle,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                widget.categorytitle,
+                                style: bStyle,
+                                textScaleFactor: 1,
+                              ),
+                              InkWell(onTap: ()=> showModalBottomSheet(
+              shape: RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.vertical(top: Radius.circular(25))),
+              enableDrag: false,
+              isScrollControlled: true,
+              context: context,
+              builder: (context) => SingleChildScrollView(
+                    child: Container(
+                      padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).viewInsets.bottom),
+                      child: buildformsheet(),
+                    ),
+                  )),
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.045.h,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.36.w,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(18),
+                                    color: gold,
+                                  ),
+                                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Icon(Icons.arrow_back_ios_new_rounded,color: white,size: 22,),
+                                      Text(
+                                        "Apply for issues",style:  TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 13.sp,
+                                  color: white),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+
+                          // Text("Experience ${toplawyerlist.Experience}",style: hStyle,),
+                          // Text(
+                          //   "toplawyerlist.type",
+                          //     style: GoogleFonts.mulish(
+                          //         fontWeight: FontWeight.w600,
+                          //         fontSize: 16,
+                          //         color: navy)),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.01.h,
+                          ),
+                          Text(
+                            widget.categorysubtitle,
+                            style: GoogleFonts.mulish(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14.sp,
+                                color: navy),
+                            textAlign: TextAlign.justify,
                             textScaleFactor: 1,
                           ),
-                        ),
-                        // Text("Experience ${toplawyerlist.Experience}",style: hStyle,),
-                        // Text(
-                        //   "toplawyerlist.type",
-                        //     style: GoogleFonts.mulish(
-                        //         fontWeight: FontWeight.w600,
-                        //         fontSize: 16,
-                        //         color: navy)),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02.h,
-                        ),
-                        Text(
-                          widget.categorysubtitle,
-                          style: GoogleFonts.mulish(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 15.sp,
-                              color: navy),
-                          textAlign: TextAlign.justify,
-                          textScaleFactor: 1,
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02.h,
-                        ),
+                          // SizedBox(
+                          //   height: MediaQuery.of(context).size.height * 0.01.h,
+                          // ),
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.15.h,
+                            width: double.infinity,
+                            child: Row(
+                              children: [
+                                Container(
+                                  color: white,
+                                  height: MediaQuery.of(context).size.height *
+                                      0.2.h,
+                                  width: MediaQuery.of(context).size.height *
+                                      0.179.h,
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Text(
+                                        widget.categorytitle,
+                                        style: GoogleFonts.mulish(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 13.sp,
+                                            color: navy),
+                                      ),
+                                      Text(
+                                        widget.categorytitle,
+                                        style: GoogleFonts.mulish(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 13.sp,
+                                            color: navy),
+                                      ),
+                                      Text(
+                                        widget.categorytitle,
+                                        style: GoogleFonts.mulish(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 13.sp,
+                                            color: navy),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  color: white,
+                                  width: MediaQuery.of(context).size.height *
+                                      0.179.h,
+                                  height: MediaQuery.of(context).size.height *
+                                      0.2.h,
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Text(
+                                        widget.categorytitle,
+                                        style: GoogleFonts.mulish(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 13.sp,
+                                            color: navy),
+                                      ),
+                                      Text(
+                                        widget.categorytitle,
+                                        style: GoogleFonts.mulish(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 13.sp,
+                                            color: navy),
+                                      ),
+                                      Text(
+                                        widget.categorytitle,
+                                        style: GoogleFonts.mulish(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 13.sp,
+                                            color: navy),
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
 
-                        Text(
-                          "Contact info",
-                          style: GoogleFonts.mulish(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 17.sp,
-                              color: gold),
-                          textAlign: TextAlign.justify,
-                          textScaleFactor: 1,
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.015.h,
-                        ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.mail,
-                              color: navy,
+                          Text(
+                            "Contact info",
+                            style: GoogleFonts.mulish(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16.sp,
+                                color: gold),
+                            textAlign: TextAlign.justify,
+                            textScaleFactor: 1,
+                          ),
+                          SizedBox(
+                            height:
+                                MediaQuery.of(context).size.height * 0.01.h,
+                          ),
+                          InkWell(onTap: (){                                launcher("mailto: indolawassociates@gmail.com");
+},
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.mail,
+                                  color: navy,
+                                ),
+                                SizedBox(
+                                  width: 10.w,
+                                ),
+                                Text(
+                                  "info@indolawassociates.com",
+                                  style: GoogleFonts.mulish(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 14.sp,
+                                      color: navy),
+                                  textAlign: TextAlign.justify,
+                                  textScaleFactor: 1,
+                                ),
+                              ],
                             ),
-                            SizedBox(
-                              width: 10,
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.01.h,
+                          ),
+                          InkWell(onTap: (){                                  launcher("tel: 8940383000");
+},
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.call_sharp,
+                                  color: navy,
+                                ),
+                                SizedBox(
+                                  width: 10.w,
+                                ),
+                                Text(
+                                  "8940383000",
+                                  style: GoogleFonts.mulish(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 14.sp,
+                                      color: navy),
+                                  textAlign: TextAlign.justify,
+                                  textScaleFactor: 1,
+                                ),
+                              ],
                             ),
-                            Text(
-                              "info@indolawassociates.com",
-                              style: GoogleFonts.mulish(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 15.sp,
-                                  color: navy),
-                              textAlign: TextAlign.justify,
-                              textScaleFactor: 1,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.01.h,
-                        ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.call_sharp,
-                              color: navy,
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              "+ 044-516-7439",
-                              style: GoogleFonts.mulish(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 15.sp,
-                                  color: navy),
-                              textAlign: TextAlign.justify,
-                              textScaleFactor: 1,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.01.h,
-                        ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.timer_rounded,
-                              color: navy,
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              "Monday To Saturday: 8am-6pm",
-                              style: GoogleFonts.mulish(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 15.sp,
-                                  color: navy),
-                              textAlign: TextAlign.justify,
-                              textScaleFactor: 1,
-                            ),
-                          ],
-                        ),
-                      ],
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.01.h,
+                          ),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.timer_rounded,
+                                color: navy,
+                              ),
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              Text(
+                                "Monday To Saturday: 8am-6pm",
+                                style: GoogleFonts.mulish(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14.sp,
+                                    color: navy),
+                                textAlign: TextAlign.justify,
+                                textScaleFactor: 1,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -303,31 +446,37 @@ class _CatepageState extends State<Catepage> {
                             labelStyle: TextStyle(
                                 color: navy, fontWeight: FontWeight.bold))),
                     SizedBox(height: 20),
-                     Container(decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey,width: 1),
-                    borderRadius: BorderRadius.circular(20)),
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey, width: 1),
+                          borderRadius: BorderRadius.circular(20)),
                       padding: EdgeInsets.all(5),
-                      child:  DropdownButton(underline: SizedBox(),
-                          iconSize: 35,iconEnabledColor: navy,
-                          isExpanded: true,
-                          dropdownColor: Colors.white,
-                          hint: Text("Gender",style:  TextStyle(fontSize: 15.sp,
-                                color: navy, fontWeight: FontWeight.bold),), 
-                          
-                          items: genderlist.map((valueitem) {
-                            return DropdownMenuItem(
-                              value: valueitem,
-                              child: Text(valueitem),
-                            );
-                          }).toList(),
-                          onChanged: (selected) {
-                            setState(() {
-                              gendertry = selected;
-                            });
-                          },
-                          value: gendertry,
+                      child: DropdownButton(
+                        underline: SizedBox(),
+                        iconSize: 35,
+                        iconEnabledColor: navy,
+                        isExpanded: true,
+                        dropdownColor: Colors.white,
+                        hint: Text(
+                          "Gender",
+                          style: TextStyle(
+                              fontSize: 15.sp,
+                              color: navy,
+                              fontWeight: FontWeight.bold),
                         ),
-                      
+                        items: genderlist.map((valueitem) {
+                          return DropdownMenuItem(
+                            value: valueitem,
+                            child: Text(valueitem),
+                          );
+                        }).toList(),
+                        onChanged: (selected) {
+                          setState(() {
+                            gendertry = selected;
+                          });
+                        },
+                        value: gendertry,
+                      ),
                     ),
                     SizedBox(height: 20),
                     TextFormField(
@@ -441,9 +590,9 @@ class _CatepageState extends State<Catepage> {
                                   String name = _namecontroller.text;
                                   String email = _emailcontroller.text;
                                   String address = _addresscontroller.text;
-                                  String gender =gendertry;
+                                  String gender = gendertry;
                                   String mobile = _mobilecontroller.text;
-                                  String service =category;
+                                  String service = category;
 
                                   FormModel? forms = await submitdata(name,
                                       gender, email, address, mobile, service);

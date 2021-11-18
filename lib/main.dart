@@ -12,6 +12,7 @@ import 'Client/Pages/Register_Login_screen/Login.dart/LOGINpage.dart';
 import 'Client/Pages/bottomnavybar/Legalforms.dart';
 import 'Client/Pages/bottomnavybar/Para_legal_services/para_legal_services.dart';
 import 'Client/constants/constant.dart';
+import 'Client/Pages/Register_Login_screen/Login.dart/log.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (ScreenUtilInit(designSize: Size(360, 690),
+    return (ScreenUtilInit(designSize: Size(390, 690),
       builder:()=> MaterialApp(
         debugShowCheckedModeBanner: false,
         home: SplashScreen(),
@@ -63,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen> {
         splashTransition: SplashTransition.fadeTransition,
         splashIconSize: MediaQuery.of(context).size.width * 0.8.h,
         splash: Image.asset("assets/images/ILAlogopvt.png",fit: BoxFit.contain,),
-        nextScreen: LPage());
+        nextScreen: Loginpage());
     // return Container(color: white,
     //   child: Center(
     //     child: Image.asset("assets/images/ILALOGO.png",height: MediaQuery.of(context).size.height*0.32,),

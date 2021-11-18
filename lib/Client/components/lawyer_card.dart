@@ -55,7 +55,7 @@ class Lawyercard extends StatelessWidget {
                           shape: BoxShape.circle,
                           image: DecorationImage(
                             image: AssetImage(toplawyerlist.Image),
-                            fit: BoxFit.cover,
+                            fit: BoxFit.contain,
                           ),
                           color: Colors.grey.shade100,
                         ),
@@ -168,7 +168,7 @@ class Lawyercard extends StatelessWidget {
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage(toplawyerlist.Image),
-                          fit: BoxFit.cover)),),
+                          fit: BoxFit.contain)),),
           ),
                         Container(
                   height: MediaQuery.of(context).size.height * 0.56.h,

@@ -9,6 +9,7 @@ import 'package:indolawassociates/Client/Pages/darwerlist.dart/Offers.dart';
 import 'package:indolawassociates/Client/components/Card_details.dart';
 import 'package:indolawassociates/Client/components/lawyer_card.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
+import 'package:indolawassociates/Client/Pages/Register_Login_screen/Login.dart/log.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'Notification.dart';
@@ -31,36 +32,46 @@ class _HomeScreenState extends State<HomeScreen> {
   }
   final List<Toplawyerlist> topcom = [
     Toplawyerlist(
-        name: "Jason",
-        type: 'Divorce Lawyer',
-        Image: 'assets/images/Lawyer1.jpg',
+        name: "Amos Athisayaraj",
+        type: 'ILA Lawyer',
+        Image: 'assets/images/malelaw.png',
         Experience: " 2 yrs"),
     Toplawyerlist(
-        name: "Revel",
-        type: 'Civil Lawyer',
-        Image: 'assets/images/Lawyer2.jpg',
+        name: "Illanovan",
+        type: 'ILA Lawyer',
+        Image: 'assets/images/malelaw.png',
         Experience: " 5yrs"),
     Toplawyerlist(
-        name: "Eren",
-        type: 'Divorce Lawyer',
-        Image: 'assets/images/Lawyer3.jpg',
+        name: "Lawrence",
+        type: 'ILA Lawyer',
+        Image: 'assets/images/malelaw.png',
         Experience: "8 yrs"),
     Toplawyerlist(
-        name: "Rayon",
-        type: 'Divorce Lawyer',
-        Image: 'assets/images/Lawyer4.jfif',
+        name: "Valenteena Jafflet",
+        type: 'ILA Lawyer',
+        Image: 'assets/images/flaw.png',
         Experience: "3 yrs"),
     Toplawyerlist(
-        name: "kevin",
-        type: 'Tax Lawyer',
-        Image: 'assets/images/Lawyer5.jfif',
+        name: "Kalavathy",
+        type: 'ILA Lawyer',
+        Image: 'assets/images/flaw.png',
         Experience: "1yrs"),
     Toplawyerlist(
-        name: "Eren",
-        type: 'Tax Lawyer',
-        Image: 'assets/images/Lawyer3.jpg',
+        name: "Yamuna",
+        type: 'ILA Lawyer',
+        Image: 'assets/images/flaw.png',
         Experience: "1yrs"),
-  ];
+  
+    Toplawyerlist(
+        name: "Vivek",
+        type: 'ILA Lawyer',
+        Image: 'assets/images/malelaw.png',
+        Experience: "1yrs"),
+    Toplawyerlist(
+        name: "Rajkumar",
+        type: 'ILA Lawyer',
+        Image: 'assets/images/malelaw.png',
+        Experience: "1yrs"),];
   final List<String> slider = [
     "assets/images/01.jpg",
     "assets/images/02.jpg",
@@ -90,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton.extended(label:Text("Quick call",) ,icon: Icon(Icons.call,size: 20.r,),
           backgroundColor: navy,
         
-          onPressed: () {launcher("tel: 04443511235");}),
+          onPressed: () {launcher("tel: 8940383000");}),
       body: DoubleBackToCloseApp(
         snackBar: const SnackBar(
           backgroundColor: navy,
