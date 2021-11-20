@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/Client/model/form_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../../main.dart';
 /////////////////////////////////////        Legal forms Data Model          /////////////////////////////////
 
@@ -39,6 +40,7 @@ class _ParalegalState extends State<Paralegal> {
         context, MaterialPageRoute(builder: (context) => Mainhome()));
   }
 
+  
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -132,7 +134,13 @@ class _ParalegalPageState extends State<ParalegalPage> {
     " Education Issues",
     "Affidavits"
   ];
-
+launcher(command) async {
+    if (await canLaunch(command)) {
+      await launch(command);
+    } else {
+      print("");
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -251,49 +259,57 @@ class _ParalegalPageState extends State<ParalegalPage> {
                               height:
                                   MediaQuery.of(context).size.height * 0.015.h,
                             ),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.mail,
-                                  color: navy,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  "info@indolawassociates.com",
-                                  style: GoogleFonts.mulish(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 15.sp,
-                                      color: navy),
-                                  textAlign: TextAlign.justify,
-                                  textScaleFactor: 1,
-                                ),
-                              ],
+                            InkWell(  onTap: () {
+                              launcher("mailto: indolawassociates@gmail.com");
+                            },
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.mail,
+                                    color: navy,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    "info@indolawassociates.com",
+                                    style: GoogleFonts.mulish(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 15.sp,
+                                        color: navy),
+                                    textAlign: TextAlign.justify,
+                                    textScaleFactor: 1,
+                                  ),
+                                ],
+                              ),
                             ),
                             SizedBox(
                               height:
                                   MediaQuery.of(context).size.height * 0.01.h,
                             ),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.call_sharp,
-                                  color: navy,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  "+ 044-516-7439",
-                                  style: GoogleFonts.mulish(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 15.sp,
-                                      color: navy),
-                                  textAlign: TextAlign.justify,
-                                  textScaleFactor: 1,
-                                ),
-                              ],
+                            InkWell(  onTap: () {
+                              launcher("tel: 8940383000");
+                            },
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.call_sharp,
+                                    color: navy,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    "8940383000",
+                                    style: GoogleFonts.mulish(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 15.sp,
+                                        color: navy),
+                                    textAlign: TextAlign.justify,
+                                    textScaleFactor: 1,
+                                  ),
+                                ],
+                              ),
                             ),
                             SizedBox(
                               height:

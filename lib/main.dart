@@ -4,26 +4,30 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:indolawassociates/Client/l10n/l10n.dart';
+import 'package:indolawassociates/Client/provider/languageprovider.dart';
+import 'package:provider/provider.dart';
 import 'Client/Pages/Homepage/drawer.dart';
 import 'Client/Pages/Homepage/home.dart';
-import 'Client/Pages/Register_Login_screen/Login.dart/LOGINpage.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'Client/Pages/bottomnavybar/Legalforms.dart';
 import 'Client/Pages/bottomnavybar/Para_legal_services/para_legal_services.dart';
 import 'Client/constants/constant.dart';
 import 'Client/Pages/Register_Login_screen/Login.dart/log.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
- await Firebase.initializeApp();
+  await Firebase.initializeApp();
   runApp(
     MyApp(),
     // DevicePreview(
     //   enabled: !kReleaseMode,
     //   builder: (context) =>MyApp()
     // )
-          );
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -31,12 +35,32 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (ScreenUtilInit(designSize: Size(390, 690),
-      builder:()=> MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
-      ),)
-    );
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => Languagenotifier())
+        ],
+        child:
+        //  Consumer(
+        //   builder: (_, provider, snapshot) {
+        //     return 
+            Builder(builder: (context)=>ScreenUtilInit(
+              designSize: Size(390, 690),
+              builder: () => MaterialApp(
+                locale: Provider.of<Languagenotifier>(context, listen: true)
+                    .currentlocale,
+                    localizationsDelegates: const[
+                      GlobalCupertinoLocalizations.delegate,
+                      GlobalMaterialLocalizations.delegate,
+                      GlobalWidgetsLocalizations.delegate,
+                      AppLocalizations.delegate,
+                    ],
+                    supportedLocales: L10n.all,
+                debugShowCheckedModeBanner: false,
+                home: SplashScreen(),
+              ),
+            ))
+          // },
+        );
   }
 }
 
@@ -60,10 +84,14 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedSplashScreen(duration: 3000,
+    return AnimatedSplashScreen(
+        duration: 3000,
         splashTransition: SplashTransition.fadeTransition,
         splashIconSize: MediaQuery.of(context).size.width * 0.8.h,
-        splash: Image.asset("assets/images/ILAlogopvt.png",fit: BoxFit.contain,),
+        splash: Image.asset(
+          "assets/images/ILAlogopvt.png",
+          fit: BoxFit.contain,
+        ),
         nextScreen: Loginpage());
     // return Container(color: white,
     //   child: Center(

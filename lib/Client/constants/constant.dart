@@ -1,6 +1,9 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 const secondary = Color(0xFFFFECDF);
@@ -48,4 +51,5 @@ const String experiencenull = "Check your field";
 const String DOB = "Require Date of Birth";
 const String otpnull = "Enter OTP";
 const String otpnlength = "Enter six digit OTP";
+
 

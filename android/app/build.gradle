@@ -47,7 +47,7 @@ android {
         applicationId "com.indolawassociates.Indolaw"
         minSdkVersion 24
         targetSdkVersion 30
-        versionCode 2
+        versionCode 3
         versionName flutterVersionName
         multiDexEnabled true
     }

@@ -42,7 +42,8 @@ class _CatepageState extends State<Catepage> {
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => Mainhome()));
   }
- launcher(command) async {
+
+  launcher(command) async {
     if (await canLaunch(command)) {
       await launch(command);
     } else {
@@ -108,7 +109,7 @@ class _CatepageState extends State<Catepage> {
         //   ),
         //   icon: Icon(Icons.arrow_back_ios_new_rounded),
         // ),
-   
+
         body: SingleChildScrollView(
             child: Stack(
           children: [
@@ -149,37 +150,47 @@ class _CatepageState extends State<Catepage> {
                                 style: bStyle,
                                 textScaleFactor: 1,
                               ),
-                              InkWell(onTap: ()=> showModalBottomSheet(
-              shape: RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(25))),
-              enableDrag: false,
-              isScrollControlled: true,
-              context: context,
-              builder: (context) => SingleChildScrollView(
-                    child: Container(
-                      padding: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: buildformsheet(),
-                    ),
-                  )),
+                              InkWell(
+                                onTap: () => showModalBottomSheet(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.vertical(
+                                            top: Radius.circular(25))),
+                                    enableDrag: false,
+                                    isScrollControlled: true,
+                                    context: context,
+                                    builder: (context) => SingleChildScrollView(
+                                          child: Container(
+                                            padding: EdgeInsets.only(
+                                                bottom: MediaQuery.of(context)
+                                                    .viewInsets
+                                                    .bottom),
+                                            child: buildformsheet(),
+                                          ),
+                                        )),
                                 child: Container(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.045.h,
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.36.w,
+                                  height: MediaQuery.of(context).size.height *
+                                      0.045.h,
+                                  width: MediaQuery.of(context).size.width *
+                                      0.36.w,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(18),
                                     color: gold,
                                   ),
-                                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Icon(Icons.arrow_back_ios_new_rounded,color: white,size: 22,),
+                                      Icon(
+                                        Icons.arrow_back_ios_new_rounded,
+                                        color: white,
+                                        size: 22,
+                                      ),
                                       Text(
-                                        "Apply for issues",style:  TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 13.sp,
-                                  color: white),
+                                        "Apply for issues",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 13.sp,
+                                            color: white),
                                       ),
                                     ],
                                   ),
@@ -196,7 +207,8 @@ class _CatepageState extends State<Catepage> {
                           //         fontSize: 16,
                           //         color: navy)),
                           SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.01.h,
+                            height:
+                                MediaQuery.of(context).size.height * 0.025.h,
                           ),
                           Text(
                             widget.categorysubtitle,
@@ -207,85 +219,85 @@ class _CatepageState extends State<Catepage> {
                             textAlign: TextAlign.justify,
                             textScaleFactor: 1,
                           ),
-                          // SizedBox(
-                          //   height: MediaQuery.of(context).size.height * 0.01.h,
-                          // ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.15.h,
-                            width: double.infinity,
-                            child: Row(
-                              children: [
-                                Container(
-                                  color: white,
-                                  height: MediaQuery.of(context).size.height *
-                                      0.2.h,
-                                  width: MediaQuery.of(context).size.height *
-                                      0.179.h,
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Text(
-                                        widget.categorytitle,
-                                        style: GoogleFonts.mulish(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 13.sp,
-                                            color: navy),
-                                      ),
-                                      Text(
-                                        widget.categorytitle,
-                                        style: GoogleFonts.mulish(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 13.sp,
-                                            color: navy),
-                                      ),
-                                      Text(
-                                        widget.categorytitle,
-                                        style: GoogleFonts.mulish(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 13.sp,
-                                            color: navy),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  color: white,
-                                  width: MediaQuery.of(context).size.height *
-                                      0.179.h,
-                                  height: MediaQuery.of(context).size.height *
-                                      0.2.h,
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Text(
-                                        widget.categorytitle,
-                                        style: GoogleFonts.mulish(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 13.sp,
-                                            color: navy),
-                                      ),
-                                      Text(
-                                        widget.categorytitle,
-                                        style: GoogleFonts.mulish(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 13.sp,
-                                            color: navy),
-                                      ),
-                                      Text(
-                                        widget.categorytitle,
-                                        style: GoogleFonts.mulish(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 13.sp,
-                                            color: navy),
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.03.h,
                           ),
+                          // Container(
+                          //   height: MediaQuery.of(context).size.height * 0.15.h,
+                          //   width: double.infinity,
+                          //   child: Row(
+                          //     children: [
+                          //       Container(
+                          //         color: white,
+                          //         height: MediaQuery.of(context).size.height *
+                          //             0.2.h,
+                          //         width: MediaQuery.of(context).size.height *
+                          //             0.179.h,
+                          //         child: Column(
+                          //           mainAxisAlignment:
+                          //               MainAxisAlignment.spaceEvenly,
+                          //           children: [
+                          //             Text(
+                          //               widget.categorytitle,
+                          //               style: GoogleFonts.mulish(
+                          //                   fontWeight: FontWeight.w600,
+                          //                   fontSize: 13.sp,
+                          //                   color: navy),
+                          //             ),
+                          //             Text(
+                          //               widget.categorytitle,
+                          //               style: GoogleFonts.mulish(
+                          //                   fontWeight: FontWeight.w600,
+                          //                   fontSize: 13.sp,
+                          //                   color: navy),
+                          //             ),
+                          //             Text(
+                          //               widget.categorytitle,
+                          //               style: GoogleFonts.mulish(
+                          //                   fontWeight: FontWeight.w600,
+                          //                   fontSize: 13.sp,
+                          //                   color: navy),
+                          //             )
+                          //           ],
+                          //         ),
+                          //       ),
+                          //       Container(
+                          //         color: white,
+                          //         width: MediaQuery.of(context).size.height *
+                          //             0.179.h,
+                          //         height: MediaQuery.of(context).size.height *
+                          //             0.2.h,
+                          //         child: Column(
+                          //           mainAxisAlignment:
+                          //               MainAxisAlignment.spaceEvenly,
+                          //           children: [
+                          //             Text(
+                          //               widget.categorytitle,
+                          //               style: GoogleFonts.mulish(
+                          //                   fontWeight: FontWeight.w600,
+                          //                   fontSize: 13.sp,
+                          //                   color: navy),
+                          //             ),
+                          //             Text(
+                          //               widget.categorytitle,
+                          //               style: GoogleFonts.mulish(
+                          //                   fontWeight: FontWeight.w600,
+                          //                   fontSize: 13.sp,
+                          //                   color: navy),
+                          //             ),
+                          //             Text(
+                          //               widget.categorytitle,
+                          //               style: GoogleFonts.mulish(
+                          //                   fontWeight: FontWeight.w600,
+                          //                   fontSize: 13.sp,
+                          //                   color: navy),
+                          //             )
+                          //           ],
+                          //         ),
+                          //       )
+                          //     ],
+                          //   ),
+                          // ),
 
                           Text(
                             "Contact info",
@@ -297,11 +309,12 @@ class _CatepageState extends State<Catepage> {
                             textScaleFactor: 1,
                           ),
                           SizedBox(
-                            height:
-                                MediaQuery.of(context).size.height * 0.01.h,
+                            height: MediaQuery.of(context).size.height * 0.01.h,
                           ),
-                          InkWell(onTap: (){                                launcher("mailto: indolawassociates@gmail.com");
-},
+                          InkWell(
+                            onTap: () {
+                              launcher("mailto: indolawassociates@gmail.com");
+                            },
                             child: Row(
                               children: [
                                 Icon(
@@ -326,8 +339,10 @@ class _CatepageState extends State<Catepage> {
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.01.h,
                           ),
-                          InkWell(onTap: (){                                  launcher("tel: 8940383000");
-},
+                          InkWell(
+                            onTap: () {
+                              launcher("tel: 8940383000");
+                            },
                             child: Row(
                               children: [
                                 Icon(
