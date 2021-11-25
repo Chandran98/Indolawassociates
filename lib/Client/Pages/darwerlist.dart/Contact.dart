@@ -4,7 +4,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/Pages/Homepage/drawer.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class Contact extends StatefulWidget {
   const Contact({Key? key}) : super(key: key);
 
@@ -27,7 +28,8 @@ class _ContactState extends State<Contact> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {    final translate = AppLocalizations.of(context);
+
     return WillPopScope(
       onWillPop: () {
         onback();
@@ -76,7 +78,7 @@ class _ContactState extends State<Contact> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Contact Us",
+                        translate!.drawerkey5,
                         style: GoogleFonts.mulish(
                             fontSize: 24.sp,
                             color: navy,

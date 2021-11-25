@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/Pages/Categories.dart/cate.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
-import 'model/categories_data_model.dart';
+import '../../model/categories_data_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 //////////////////////////   Categorycardlist   /////////////////////////////////////////
 
@@ -13,80 +14,135 @@ class Categorycardlist extends StatefulWidget {
 }
 
 class _CategorycardlistState extends State<Categorycardlist> {
-  final List<Categorylist> categorylist = [
-    Categorylist(
-        categorytitle: "Property",
-        categorypic: "assets/icons/property.png",
-        categorysubtitle:
-            "     Recovery of possession of Immovable property.It is a principle of law that a person, who has been in a long continuous possession of the immovable property, can protect the same by seeking an injunction against any person in the world other than the true owner. It is also a settled principle of law that owner of the property can get back his possession only by resorting to due process of law. It states that a suit for possession must be filed having regard to the provision of the Code of Civil Procedure.",
-        categorypageimages: 'assets/images/property_cate.jpg'),
-    Categorylist(
-        categorytitle: "Family",
-        categorypic: "assets/icons/family.png",
-        categorysubtitle:
-            "     When a couple seeks divorce for various reasons, if the child or children are minors, the legal right to keep and look after the child/ children is called Child Custody. Generally, it pertains to the right given to a child's mother or father but under  special circumstances like death of the parent/s it maybe even be granted to the grandparents or a third party relative to become the legal guardian of the child till the child attains majority",
-        categorypageimages: 'assets/images/div_cate.jpg'),
-    Categorylist(
-        categorytitle: "Criminal",
-        categorypic: "assets/icons/criminal.png",
-        categorysubtitle:
-            '     Crimes against property typically involve interference with the property of another party. Although they may involve physical or mental harm to another, they primarily result in the deprivation of the use or enjoyment of property. Many property crimes are theft crimes, including burglary, larceny, robbery, auto theft, and shoplifting.',
-        categorypageimages: 'assets/images/cir_cate.jpg'),
-    Categorylist(
-        categorytitle: "Corporate",
-        categorypic: "assets/icons/coporate.png",
-        categorysubtitle:
-            '     Corporations provide limited personal liability for debts and obligations of the business, which provides protection for shareholder assets. Exceptions include cases of fraud and unpaid business taxes. Corporations also have the advantage of a lower tax rate than the individual tax rate. Trade mark protects item that identify a particular business from another where as copy right protects original work. Corporate finance is a catch-all designation for any business division that handles financial activities for a firm. ',
-        categorypageimages: 'assets/images/cor_cate.jpg'),
-    Categorylist(
-        categorytitle: "Cyber",
-        categorypic: "assets/icons/cyber.png",
-        categorysubtitle:
-            '     Cybercrime law provides rules of conduct and standards of behaviour for the use of the Internet, computers, and related digital technologies, and the actions of the public, government, and private organizations; rules of evidence and criminal procedure, and other criminal justice matters in cyberspace; and regulation to reduce risk and/or mitigate the harm done to individuals, organizations, and infrastructure should a cybercrime occur.',
-        categorypageimages: 'assets/images/cyber_cate.jpg'),
-    Categorylist(
-        categorytitle: "Civil",
-        categorypic: "assets/icons/civilrights.png",
-        categorysubtitle:
-            '     Disputes between people or business over money or some injury to personal rights are called civil cases. If you decide to sue another person, an organization or a business, your case is a civil case. Private individuals, businesses or the government can sue other people and organizations. The person who is suing is called the plaintiff and the person who is being sued is called the defendant. A judge’s responsibility is to ensure that cases are resolved efficiently and effectively.  ',
-        categorypageimages: 'assets/images/civil_cate.jpg'),
-    Categorylist(
-        categorytitle: "Taxation",
-        categorypic: "assets/icons/tax.png",
-        categorysubtitle:
-            '     Taxes are mandatory contributions levied on individuals or corporations by a government entity—whether local, regional or national. Tax revenues finance government activities, including public works and services such as roads and schools, or programs such as Social Security and Medicare. In economics, taxes fall on whoever pays the burden of the tax, whether this is the entity being taxed, such as a business, or the end consumers of the business’s goods.',
-        categorypageimages: 'assets/images/Tax_cate.jpg'),
-    Categorylist(
-        categorytitle: "Labour",
-        categorypic: "assets/icons/labour.png",
-        categorysubtitle:
-            '     Labour law which is also known as employment law and its services. The new labour laws limit the maximum basic pay to 50 per cent of CTC, thus effectively increasing the Gratuity bonus to be paid to the employee. Under the new wages code, the gratuity amount will be calculated on a larger salary base, which will include basic pay plus allowances such as a special allowance on wages. Provident fund (PF) contribution is calculated as a percentage of basic wage, which includes basic pay and dearness allowance',
-        categorypageimages: 'assets/images/cor_cate.jpg'),
-    Categorylist(
-        categorytitle: "Consumer",
-        categorypic: "assets/icons/consumer.png",
-        categorysubtitle:
-            '     Consumer court is a special purpose court in India, It primarily deals with consumer related disputes maintaining fair practices in contracts of sellers and protect consumer rights. Once the grounds are established, the next step is to estimate the pecuniary limit for the complaint. Under the Consumer Protection Act there exists a three-tier redressal forum. complaints are filed in these forums in accordance with the pecuniary limit as fixed by the law.',
-        categorypageimages: 'assets/images/con_cate.jpg'),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.085.h,
-      child: ListView.builder(
-          physics: BouncingScrollPhysics(),
-          scrollDirection: Axis.horizontal,
-          itemCount: categorylist.length,
-          itemBuilder: (context, index) {
-            return Categorycard(
-              categorysubtitle: categorylist[index].categorysubtitle,
-              categorypageimages: categorylist[index].categorypageimages,
-              categorytitle: categorylist[index].categorytitle,
-              categorypic: categorylist[index].categorypic,
-            );
-          }),
-    );
+        height: MediaQuery.of(context).size.height * 0.085.h,
+        child: categories(context));
+  }
+
+  Widget categories(context) {
+    final translate = AppLocalizations.of(context);
+    final List<Categorylist> categorylist = [
+      Categorylist(
+          categorytitle: translate!.categorytitle1,
+          categorypic: "assets/icons/property.png",
+          categorysubtitle:
+           translate.categorysubtitle1,          categorypageimages: 'assets/images/property_cate.jpg',
+          r1: "Landlord",
+          r2: "Property",
+          r3: "Registration",
+          r4: "Damaged Property",
+          r5: "Legal notice",
+          r6: ''),
+      Categorylist(
+          categorytitle: translate.categorytitle2,
+          categorypic: "assets/icons/family.png",
+          categorysubtitle:
+            translate.categorysubtitle2,   categorypageimages: 'assets/images/div_cate.jpg',
+          r1: "Cheating",
+          r2: "Addiction",
+          r3: "Divorce",
+          r4: "Money problem",
+          r5: "Non-Tolerable",
+          r6: ''),
+      Categorylist(
+          categorytitle: translate.categorytitle3,
+          categorypic: "assets/icons/criminal.png",
+          categorysubtitle:
+              translate.categorysubtitle3,categorypageimages: 'assets/images/cir_cate.jpg',
+          r1: "Assault",
+          r2: "Arson",
+          r3: "Child Abuse",
+          r4: "Rape",
+          r5: "Robbery",
+          r6: 'Kidnapping'),
+      Categorylist(
+          categorytitle: translate.categorytitle4,
+          categorypic: "assets/icons/coporate.png",
+          categorysubtitle:
+           translate.categorysubtitle4,categorypageimages: 'assets/images/cor_cate.jpg',
+          r1: "Trademark",
+          r2: "Cheque Bounce",
+          r3: "Arbitration",
+          r4: "Copyrights",
+          r5: "Start-up",
+          r6: 'GST'),
+      Categorylist(
+          categorytitle: translate.categorytitle5,
+          categorypic: "assets/icons/cyber.png",
+          categorysubtitle:
+         translate.categorysubtitle5,          categorypageimages: 'assets/images/cyber_cate.jpg',
+          r1: "Fraud",
+          r2: "Harassment",
+          r3: "Defamation",
+          r4: "Stalking",
+          r5: "Freedom of  speech",
+          r6: 'Data Breach'),
+      Categorylist(
+          categorytitle: translate.categorytitle6,
+          categorypic: "assets/icons/civilrights.png",
+          categorysubtitle:
+         translate.categorysubtitle6,    categorypageimages: 'assets/images/civil_cate.jpg',
+          r1: "Contracts",
+          r2: "Property",
+          r3: "Family relations",
+          r4: "Trot",
+          r5: "Legal remedy",
+          r6: ''),
+      Categorylist(
+          categorytitle: translate.categorytitle7,
+          categorypic: "assets/icons/tax.png",
+          categorysubtitle:
+      translate.categorysubtitle7,    categorypageimages: 'assets/images/Tax_cate.jpg',
+          r1: "Firms",
+          r2: "Companies",
+          r3: "Associations",
+          r4: "Tax Individuals",
+          r5: "Asset Management",
+          r6: ''),
+      Categorylist(
+          categorytitle: translate.categorytitle8,
+          categorypic: "assets/icons/labour.png",
+          categorysubtitle:
+              translate.categorysubtitle8,categorypageimages: 'assets/images/cor_cate.jpg',
+          r1: "Legal guidance",
+          r2: "Trade unions",
+          r3: "Negotiations",
+          r4: "Employee entities",
+          r5: "Industrial relation",
+          r6: 'Element of labour'),
+      Categorylist(
+          categorytitle: translate.categorytitle9,
+          categorypic: "assets/icons/consumer.png",
+          categorysubtitle:
+         translate.categorysubtitle9, categorypageimages: 'assets/images/con_cate.jpg',
+          r1: "Marketing goods",
+          r2: "Unfair trade",
+          r3: "Consumer education",
+          r4: "Defective",
+          r5: "Over-Margin",
+          r6: 'Hazardous to life'),
+    ];
+
+    return ListView.builder(
+        physics: BouncingScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        itemCount: categorylist.length,
+        itemBuilder: (context, index) {
+          return Categorycard(
+            r1: categorylist[index].r1,
+            r2: categorylist[index].r2,
+            r3: categorylist[index].r3,
+            r4: categorylist[index].r4,
+            r5: categorylist[index].r5,
+            r6: categorylist[index].r6,
+            categorysubtitle: categorylist[index].categorysubtitle,
+            categorypageimages: categorylist[index].categorypageimages,
+            categorytitle: categorylist[index].categorytitle,
+            categorypic: categorylist[index].categorypic,
+          );
+        });
   }
 }
 
@@ -94,26 +150,42 @@ class _CategorycardlistState extends State<Categorycardlist> {
 class Categorycard extends StatelessWidget {
   const Categorycard(
       {Key? key,
-      required this.categorytitle,required this.categorypageimages,
+      required this.categorytitle,
+      required this.categorypageimages,
       required this.categorypic,
-      required this.categorysubtitle})
+      required this.categorysubtitle,
+      required this.r1,
+      required this.r2,
+      required this.r3,
+      required this.r4,
+      required this.r5,
+      required this.r6})
       : super(key: key);
 
-  final String categorytitle;  final String categorypageimages;
-
+  final String categorytitle;
+  final String categorypageimages;
+  final String r1, r2, r3, r4, r5, r6;
   final String categorypic;
   final String categorysubtitle;
 
   @override
   Widget build(BuildContext context) {
+    final translate = AppLocalizations.of(context);
+
     return InkWell(
       onTap: () => Navigator.pushReplacement(
           context,
           MaterialPageRoute(
               builder: (context) => Catepage(
+                    r1: r1,
+                    r6: r6,
                     categorytitle: categorytitle,
                     categorypageimages: categorypageimages,
                     categorysubtitle: categorysubtitle,
+                    r2: r2,
+                    r3: r3,
+                    r4: r4,
+                    r5: r5,
                   )
               // Categorypagedetails(categorytitle: categorytitle)
               )),
@@ -145,12 +217,14 @@ class Categorycard extends StatelessWidget {
                           fit: BoxFit.contain)),
                 ),
               ),
-              FittedBox(
-                  child: Text(categorytitle,
-                      style: GoogleFonts.mulish(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w600,
-                          color: navy)))
+              Container(margin: EdgeInsets.all(5),
+                  child: FittedBox(
+                    child: Text(categorytitle,
+                        style: GoogleFonts.mulish(
+                            fontSize:13 .sp,
+                            fontWeight: FontWeight.w600,
+                            color: navy)),
+                  ))
             ],
           ),
         ),

@@ -1,19 +1,20 @@
+import 'dart:ffi';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:indolawassociates/Client/Pages/darwerlist.dart/Careers.dart';
 import 'package:indolawassociates/Client/Pages/darwerlist.dart/Contact.dart';
 import 'package:indolawassociates/Client/Pages/darwerlist.dart/Offers.dart';
 import 'package:indolawassociates/Client/Pages/darwerlist.dart/Otherservices.dart';
-import 'package:indolawassociates/Client/Pages/darwerlist.dart/profile.dart';
+import 'package:indolawassociates/Client/Pages/darwerlist.dart/ProfilePage.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/Client/Pages/Register_Login_screen/Login.dart/log.dart';
 import 'package:indolawassociates/Client/provider/languageprovider.dart';
 import 'package:provider/provider.dart';
-
 import '../../../main.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -71,13 +72,16 @@ class _MaindrawerState extends State<Maindrawer> {
 
   @override
   void initState() {
-    getuser();
+    getdata();
 
     super.initState();
   }
 
+  String _username = "";
+  String _phone = "";
   @override
   Widget build(BuildContext context) {
+    final translate = AppLocalizations.of(context);
     return WillPopScope(onWillPop: () {
       onback();
       return Future.value(false);
@@ -116,7 +120,7 @@ class _MaindrawerState extends State<Maindrawer> {
                                     color: white),
                                 // child: FittedBox(
                                 //   child: Text(
-                                //     "Richard Lee",
+                                //     _username,
                                 //     textScaleFactor: 1,
                                 //     style: (GoogleFonts.mulish(
                                 //       fontSize: 19.sp,
@@ -151,35 +155,31 @@ class _MaindrawerState extends State<Maindrawer> {
                             ],
                           ),
                           SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.01.h,
+                            height: MediaQuery.of(context).size.height * 0.015.h,
                           ),
-                          // Container(
-                          //   child: FittedBox(
-                          //     child: Text(
-                          //       "Hi" + username,
-                          //       textScaleFactor: 1,
-                          //       style: (GoogleFonts.mulish(
-                          //         fontSize: 19.sp,
-                          //         fontWeight: FontWeight.bold,
-                          //         color: white,
-                          //       )),
-                          //     ),
-                          //   ),
-                          // ),
-                          // SizedBox(
-                          //   height: MediaQuery.of(context).size.height * 0.01.h,
-                          // ),
-                          // Container(
-                          //   child: FittedBox(
-                          //     child: Text(
-                          //         //  '(cellnumber: ' +(_auth.currentUser!.phoneNumber != null? _auth.currentUser!.phoneNumber: '') +
-                          //         ' uid:' +
-                          //             (_auth.currentUser!.uid != null
-                          //                 ? _auth.currentUser!.uid
-                          //                 : '') +
-                          //             ')'),
-                          //   ),
-                          // ),
+                          Container(
+                              child: Text(
+                                "Hi  $_username ",
+                                textScaleFactor: 1,
+                                style: (GoogleFonts.mulish(
+                                  fontSize: 19.sp,
+                                  fontWeight: FontWeight.bold,
+                                  color: white,
+                                )),
+                              
+                            ),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.005.h,
+                          ),
+                          Container(
+                              child: Text("$_phone",style: GoogleFonts.mulish(
+                                  fontSize: 17.sp,
+                                  // fontWeight: FontWeight.bold,
+                                  color: white,
+                                ),),
+                            
+                          ),
                         ],
                       )),
                   SingleChildScrollView(
@@ -194,14 +194,14 @@ class _MaindrawerState extends State<Maindrawer> {
                             color: navy,
                           ),
                           title: Text(
-                            "My Profile",
+                            translate!.drawerkey1,
                             style: hStyle,
                             textScaleFactor: 1,
                           ),
                           onTap: () => Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ProfilePage())),
+                                  builder: (context) => Profile())),
                         ),
                         Divider(),
                         // ListTile(
@@ -213,7 +213,7 @@ class _MaindrawerState extends State<Maindrawer> {
                         // Divider(),
                         ListTile(
                           leading: Icon(Icons.subscriptions_sharp, color: navy),
-                          title: Text("Offers & Subscriptions ",
+                          title: Text(translate.drawerkey2,
                               textScaleFactor: 1, style: hStyle),
                           onTap: () => Navigator.pushReplacement(
                               context,
@@ -224,7 +224,7 @@ class _MaindrawerState extends State<Maindrawer> {
                         ListTile(
                           leading:
                               Icon(Icons.supervised_user_circle, color: navy),
-                          title: Text("ILA Services",
+                          title: Text(translate.drawerkey3,
                               textScaleFactor: 1, style: hStyle),
                           onTap: () => Navigator.pushReplacement(
                               context,
@@ -232,23 +232,28 @@ class _MaindrawerState extends State<Maindrawer> {
                                   builder: (context) => OtherServicesform())),
                         ),
                         Divider(),
-                        // ListTile(
-                        //   leading: Icon(Icons.cases_rounded, color: navy),
-                        //   title:
-                        //       Text("Careers", textScaleFactor: 1, style: hStyle),
-                        //   onTap: () => Navigator.pushReplacement(context,
-                        //       MaterialPageRoute(builder: (context) => Careers())),
-                        // ),
-                        // Divider(),
+                        ListTile(
+                          leading: Icon(Icons.cases_rounded, color: navy),
+                          title: Text(translate.drawerkey7,
+                              textScaleFactor: 1, style: hStyle),
+                          onTap: () => Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Careers())),
+                        ),
+                        Divider(),
                         ListTile(
                           leading: Icon(Icons.language_rounded, color: navy),
-                          title: Text("Language",
+                          title: Text(translate.drawerkey4,
                               textScaleFactor: 1, style: hStyle),
                           onTap: () {
                             showDialog(
                                 context: context,
                                 builder: (context) => AlertDialog(
-                                      title: Text(AppLocalizations.of(context)!.languagekey),
+                                      title: Text(
+                                        translate.languagekey,
+                                        style: hStyle,
+                                      ),
                                       actionsPadding: EdgeInsets.symmetric(
                                           horizontal: 30.w),
                                       actions: [
@@ -257,16 +262,23 @@ class _MaindrawerState extends State<Maindrawer> {
                                               context
                                                   .read<Languagenotifier>()
                                                   .changelanguage("en");
+                                              Navigator.pop(context);
                                             },
                                             child: Text(
-                                                AppLocalizations.of(context)!.primarylanguage)),
+                                              translate.primarylanguage,
+                                              style: hStyle,
+                                            )),
                                         FlatButton(
                                             onPressed: () {
                                               context
                                                   .read<Languagenotifier>()
                                                   .changelanguage("ta");
+                                              Navigator.pop(context);
                                             },
-                                            child: Text(AppLocalizations.of(context)!.language1))
+                                            child: Text(
+                                              translate.language1,
+                                              style: hStyle,
+                                            ))
                                       ],
                                     ));
                           },
@@ -274,7 +286,7 @@ class _MaindrawerState extends State<Maindrawer> {
                         Divider(),
                         ListTile(
                           leading: Icon(Icons.contact_page, color: navy),
-                          title: Text("Contact Us",
+                          title: Text(translate.drawerkey5,
                               textScaleFactor: 1, style: hStyle),
                           onTap: () => Navigator.pushReplacement(
                               context,
@@ -285,7 +297,7 @@ class _MaindrawerState extends State<Maindrawer> {
                         ListTile(
                             leading: Icon(Icons.logout, color: navy),
                             title: Text(
-                              "Log out",
+                              translate.drawerkey6,
                               textScaleFactor: 1,
                               style: GoogleFonts.mulish(
                                   color: navy,
@@ -307,24 +319,36 @@ class _MaindrawerState extends State<Maindrawer> {
     ));
   }
 
-  Future getuser() async {
-    if (_auth.currentUser != null) {
-      var cellNumber = _auth.currentUser!.phoneNumber;
-      cellNumber = '0' +
-          _auth.currentUser!.phoneNumber!.substring(3, cellNumber!.length);
-      debugPrint(cellNumber);
-      await _firestore
-          .collection("ILA")
-          .where("cellnumber", isEqualTo: cellNumber)
-          .get()
-          .then((result) {
-        if (result.docs.length > 0) {
-          if (mounted)
-            setState(() {
-              username = result.docs[0].data()['name'];
-            });
-        }
+  Future<void> getdata() async {
+    FirebaseFirestore.instance
+        .collection("ILA")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get()
+        .then((value) {
+      if(mounted)setState(() {
+        _username = value.data()!["name"].toString();
+        _phone = value.data()!["cellnumber"].toString();
       });
-    }
+    });
   }
+  // Future getuser() async {
+  //   if (_auth.currentUser != null) {
+  //     var cellNumber = _auth.currentUser!.phoneNumber;
+  //     cellNumber = '0' +
+  //         _auth.currentUser!.phoneNumber!.substring(3, cellNumber!.length);
+  //     debugPrint(cellNumber);
+  //     await _firestore
+  //         .collection("ILA")
+  //         .where("cellnumber", isEqualTo: cellNumber)
+  //         .get()
+  //         .then((result) {
+  //       if (result.docs.length > 0) {
+  //         if (mounted)
+  //           setState(() {
+  //             username = result.docs[0].data()['name'];
+  //           });
+  //       }
+  //     });
+  //   }
+  // }
 }

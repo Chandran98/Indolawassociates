@@ -6,7 +6,8 @@ import 'package:http/http.dart' as http;
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/Client/model/form_model.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../../main.dart';
+import '../../../main.dart';import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 /////////////////////////////////////        Legal forms Data Model          /////////////////////////////////
 
 class OtherservicesModel {
@@ -176,7 +177,8 @@ class _OtherServicesformState extends State<OtherServicesform> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {    final translate = AppLocalizations.of(context);
+
     return WillPopScope(
       onWillPop: () {
         onback();
@@ -186,7 +188,7 @@ class _OtherServicesformState extends State<OtherServicesform> {
         appBar: AppBar(
           backgroundColor: navy,
           title: Text(
-            "ILA Services",
+            translate!.drawerkey3,
             style: GoogleFonts.mulish(
                 color: white, fontWeight: FontWeight.w500, fontSize: 20.sp),
           ),

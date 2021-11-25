@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:indolawassociates/Client/Pages/Legal%20forms.dart/model/Legalforms_data_models.dart';
+import 'package:indolawassociates/Client/model/Legalforms_data_models.dart';
 import 'package:indolawassociates/Client/Pages/bottomnavybar/Legalforms.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Willlegalforms extends StatefulWidget {
   Willlegalforms({Key? key}) : super(key: key);
@@ -14,21 +14,30 @@ class Willlegalforms extends StatefulWidget {
 
 class _WilllegalformsState extends State<Willlegalforms> {
   List<Legalformsdatamodel> will_legalforms = [
+    Legalformsdatamodel(title: "Codicil substituting a trustee ", Url: ""),
     Legalformsdatamodel(
-        title: "Codicil substituting a trustee ", Url: ""),Legalformsdatamodel(
-        title: "Codicil substituting a trustee appointed under Will ", Url: ""),Legalformsdatamodel(
-        title: "Form of a complicated Will ", Url: ""),Legalformsdatamodel(
-        title: "Revocation of will ", Url: ""),Legalformsdatamodel(
-        title: "Short form of will ", Url: ""),Legalformsdatamodel(
-        title: "Simple will ", Url: ""),Legalformsdatamodel(
-        title: "Simple will giving all property to wife ", Url: ""),Legalformsdatamodel(
-        title: "Will by a disabled person in favor of wife and daughter ", Url: ""),Legalformsdatamodel(
-        title: "Will by a Hindu in favor of family ", Url: ""),Legalformsdatamodel(
-        title: "Will in favor of minor son ", Url: ""),Legalformsdatamodel(
-        title: "Will in favor of relations ", Url: ""),Legalformsdatamodel(
-        title: "Will with several legacies and religious and charitable bequest and residue to vest in trustees for benefit of wife and children ", Url: ""),Legalformsdatamodel(
-        title: "Will with trust for wife and children’s pecuniary legacies and annuities ", Url: ""),
-       ];
+        title: "Codicil substituting a trustee appointed under Will ", Url: ""),
+    Legalformsdatamodel(title: "Form of a complicated Will ", Url: ""),
+    Legalformsdatamodel(title: "Revocation of will ", Url: ""),
+    Legalformsdatamodel(title: "Short form of will ", Url: ""),
+    Legalformsdatamodel(title: "Simple will ", Url: ""),
+    Legalformsdatamodel(
+        title: "Simple will giving all property to wife ", Url: ""),
+    Legalformsdatamodel(
+        title: "Will by a disabled person in favor of wife and daughter ",
+        Url: ""),
+    Legalformsdatamodel(title: "Will by a Hindu in favor of family ", Url: ""),
+    Legalformsdatamodel(title: "Will in favor of minor son ", Url: ""),
+    Legalformsdatamodel(title: "Will in favor of relations ", Url: ""),
+    Legalformsdatamodel(
+        title:
+            "Will with several legacies and religious and charitable bequest and residue to vest in trustees for benefit of wife and children ",
+        Url: ""),
+    Legalformsdatamodel(
+        title:
+            "Will with trust for wife and children’s pecuniary legacies and annuities ",
+        Url: ""),
+  ];
 
   void onback() {
     Navigator.pushReplacement(
@@ -45,6 +54,8 @@ class _WilllegalformsState extends State<Willlegalforms> {
 
   @override
   Widget build(BuildContext context) {
+    final translate = AppLocalizations.of(context);
+
     return WillPopScope(
       onWillPop: () {
         onback();
@@ -61,7 +72,7 @@ class _WilllegalformsState extends State<Willlegalforms> {
               icon: Icon(Icons.arrow_back)),
         ),
         body: Padding(
-          padding: const EdgeInsets.only(top:12.0,bottom: 12),
+          padding: const EdgeInsets.only(top: 12.0, bottom: 12),
           child: ListView.separated(
             physics: BouncingScrollPhysics(),
             separatorBuilder: (context, index) {
@@ -76,12 +87,13 @@ class _WilllegalformsState extends State<Willlegalforms> {
                     style: hStyle,
                   ),
                   // onTap: ()=>{launch(legalforms[index].Url)});
-                  onTap: () {       showDialog(
+                  onTap: () {
+                    showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
                               elevation: 10,
                               content: Text(
-                                "Contact Support team for the forms realated to your issues",
+                                translate!.helptitle,
                                 style: hStyle,
                               ),
                               contentPadding: EdgeInsets.only(
@@ -110,7 +122,7 @@ class _WilllegalformsState extends State<Willlegalforms> {
                                 )
                               ],
                             ));
-             });
+                  });
             },
           ),
         ),
@@ -118,21 +130,3 @@ class _WilllegalformsState extends State<Willlegalforms> {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

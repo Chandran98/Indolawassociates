@@ -5,13 +5,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/Pages/Categories.dart/Categories_Pages.dart';
+import 'package:indolawassociates/Client/Pages/Homepage/Maps.dart';
+import 'package:indolawassociates/Client/Pages/Register_Login_screen/Sign_Up/dummy.dart';
 import 'package:indolawassociates/Client/Pages/darwerlist.dart/Offers.dart';
 import 'package:indolawassociates/Client/components/Card_details.dart';
 import 'package:indolawassociates/Client/components/lawyer_card.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
-import 'package:indolawassociates/Client/Pages/Register_Login_screen/Login.dart/log.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'Notification.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -96,9 +97,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+        final translate = AppLocalizations.of(context);
+
     return Scaffold(
       backgroundColor: white,
-      floatingActionButton: FloatingActionButton.extended(label:Text("Quick call",) ,icon: Icon(Icons.call,size: 20.r,),
+      floatingActionButton: FloatingActionButton.extended(label:Text(translate!.quickcall) ,icon: Icon(Icons.call,size: 20.r,),
           backgroundColor: navy,
         
           onPressed: () {launcher("tel: 8940383000");}),
@@ -154,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   onPressed: () => Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Notific())),
+                                          builder: (context) => Maped())),
                                 ),
                               ),
                             ],
@@ -166,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 30),
                           child: Text(
-                            "India's finest Advocate\nPlatform",textScaleFactor: 1,
+                            translate.hometitle,textScaleFactor: 1,
                             style: GoogleFonts.mulish(
                               fontWeight: FontWeight.bold,
                               fontSize: 22.sp,
@@ -200,7 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 30),
                           child: Text(
-                            'Categories',
+                            translate.hometitle2,
                             style: GoogleFonts.mulish(
                               fontWeight: FontWeight.bold,
                               fontSize: 17.sp,
@@ -218,7 +221,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         //////////////////// Top Lawyer list /////////////////////
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 30),
-                          child: Text('Top Lawyers',
+                          child: Text(translate.hometitle3,
                               style: GoogleFonts.mulish(
                                   fontSize: 17.sp,
                                   color: navy,

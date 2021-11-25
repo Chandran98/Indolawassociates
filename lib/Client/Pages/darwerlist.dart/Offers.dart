@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/Pages/Homepage/drawer.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Offers extends StatefulWidget {
   const Offers({Key? key}) : super(key: key);
@@ -17,7 +18,8 @@ class _OffersState extends State<Offers> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {    final translate = AppLocalizations.of(context);
+
     return WillPopScope(
       onWillPop: () {
         onback();
@@ -27,7 +29,7 @@ class _OffersState extends State<Offers> {
           elevation: 0,
           backgroundColor: navy,
           title: Text(
-            "Offers & Subscription",
+            translate!.drawerkey2,
             style: GoogleFonts.mulish(
                 color: white, fontWeight: FontWeight.w500, fontSize: 20),
           ),

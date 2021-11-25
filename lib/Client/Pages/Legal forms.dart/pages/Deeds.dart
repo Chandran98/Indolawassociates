@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:indolawassociates/Client/Pages/Legal%20forms.dart/model/Legalforms_data_models.dart';
+import 'package:indolawassociates/Client/model/Legalforms_data_models.dart';
 import 'package:indolawassociates/Client/Pages/bottomnavybar/Legalforms.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class Deedslegalforms extends StatefulWidget {
@@ -50,7 +51,8 @@ class _DeedslegalformsState extends State<Deedslegalforms> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {        final translate = AppLocalizations.of(context);
+
     return WillPopScope(
       onWillPop: () {
         onback();
@@ -87,8 +89,7 @@ class _DeedslegalformsState extends State<Deedslegalforms> {
                         builder: (context) => AlertDialog(
                               elevation: 10,
                               content: Text(
-                                "Contact Support team for the forms realated to your issues",
-                                style: hStyle,
+translate!.helptitle,                                style: hStyle,
                               ),
                               contentPadding: EdgeInsets.only(
                                   top: 20, left: 20, right: 20, bottom: 10),

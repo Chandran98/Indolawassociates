@@ -15,10 +15,24 @@ class Catepage extends StatefulWidget {
     required this.categorytitle,
     required this.categorysubtitle,
     required this.categorypageimages,
+    required this.r1,
+    required this.r2,
+    required this.r3,
+    required this.r4,
+    required this.r5,
+    required this.r6,
   }) : super(key: key);
 
   // final String Paralegaltitle;
-  final String categorytitle, categorysubtitle, categorypageimages;
+  final String categorytitle,
+      categorysubtitle,
+      categorypageimages,
+      r1,
+      r2,
+      r3,
+      r4,
+      r5,
+      r6;
 
   @override
   _CatepageState createState() => _CatepageState();
@@ -214,90 +228,155 @@ class _CatepageState extends State<Catepage> {
                             widget.categorysubtitle,
                             style: GoogleFonts.mulish(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 14.sp,
+                                fontSize: 13.sp,
                                 color: navy),
                             textAlign: TextAlign.justify,
-                            textScaleFactor: 1,
+                            // textScaleFactor: 1,
                           ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.03.h,
-                          ),
-                          // Container(
-                          //   height: MediaQuery.of(context).size.height * 0.15.h,
-                          //   width: double.infinity,
-                          //   child: Row(
-                          //     children: [
-                          //       Container(
-                          //         color: white,
-                          //         height: MediaQuery.of(context).size.height *
-                          //             0.2.h,
-                          //         width: MediaQuery.of(context).size.height *
-                          //             0.179.h,
-                          //         child: Column(
-                          //           mainAxisAlignment:
-                          //               MainAxisAlignment.spaceEvenly,
-                          //           children: [
-                          //             Text(
-                          //               widget.categorytitle,
-                          //               style: GoogleFonts.mulish(
-                          //                   fontWeight: FontWeight.w600,
-                          //                   fontSize: 13.sp,
-                          //                   color: navy),
-                          //             ),
-                          //             Text(
-                          //               widget.categorytitle,
-                          //               style: GoogleFonts.mulish(
-                          //                   fontWeight: FontWeight.w600,
-                          //                   fontSize: 13.sp,
-                          //                   color: navy),
-                          //             ),
-                          //             Text(
-                          //               widget.categorytitle,
-                          //               style: GoogleFonts.mulish(
-                          //                   fontWeight: FontWeight.w600,
-                          //                   fontSize: 13.sp,
-                          //                   color: navy),
-                          //             )
-                          //           ],
-                          //         ),
-                          //       ),
-                          //       Container(
-                          //         color: white,
-                          //         width: MediaQuery.of(context).size.height *
-                          //             0.179.h,
-                          //         height: MediaQuery.of(context).size.height *
-                          //             0.2.h,
-                          //         child: Column(
-                          //           mainAxisAlignment:
-                          //               MainAxisAlignment.spaceEvenly,
-                          //           children: [
-                          //             Text(
-                          //               widget.categorytitle,
-                          //               style: GoogleFonts.mulish(
-                          //                   fontWeight: FontWeight.w600,
-                          //                   fontSize: 13.sp,
-                          //                   color: navy),
-                          //             ),
-                          //             Text(
-                          //               widget.categorytitle,
-                          //               style: GoogleFonts.mulish(
-                          //                   fontWeight: FontWeight.w600,
-                          //                   fontSize: 13.sp,
-                          //                   color: navy),
-                          //             ),
-                          //             Text(
-                          //               widget.categorytitle,
-                          //               style: GoogleFonts.mulish(
-                          //                   fontWeight: FontWeight.w600,
-                          //                   fontSize: 13.sp,
-                          //                   color: navy),
-                          //             )
-                          //           ],
-                          //         ),
-                          //       )
-                          //     ],
-                          //   ),
+                          // SizedBox(
+                          //   height: MediaQuery.of(context).size.height * 0.03.h,
                           // ),
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.15.h,
+                            width: double.infinity,
+                            child: Row(
+                              children: [
+                                Container(
+                                  color: white,
+                                  height: MediaQuery.of(context).size.height *
+                                      0.2.h,
+                                  width: MediaQuery.of(context).size.height *
+                                      0.18.h,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Icon(Icons.check,color: gold),
+                                          SizedBox(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.03.w,
+                                          ),
+                                          Text(
+                                            widget.r1,
+                                            style: GoogleFonts.mulish(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 13.sp,
+                                                color: navy),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Icon(Icons.check,color: gold),SizedBox(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.03.w,
+                                          ),
+                                          Text(
+                                            widget.r3,
+                                            style: GoogleFonts.mulish(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 13.sp,
+                                                color: navy),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Icon(Icons.check,color: gold),SizedBox(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.03.w,
+                                          ),
+                                          Text(
+                                            widget.r5,
+                                            style: GoogleFonts.mulish(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 13.sp,
+                                                color: navy),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  color: white,
+                                  width: MediaQuery.of(context).size.height *
+                                      0.179.h,
+                                  height: MediaQuery.of(context).size.height *
+                                      0.2.h,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Icon(Icons.check,color: gold),SizedBox(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.03.w,
+                                          ),
+                                          Text(
+                                            widget.r2,
+                                            style: GoogleFonts.mulish(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 13.sp,
+                                                color: navy),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Icon(Icons.check,color: gold),SizedBox(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.03.w,
+                                          ),
+                                          Text(
+                                            widget.r4,
+                                            style: GoogleFonts.mulish(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 13.sp,
+                                                color: navy),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Icon(Icons.check,color: gold,),SizedBox(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.03.w,
+                                          ),
+                                          Text(
+                                            widget.r6,
+                                            style: GoogleFonts.mulish(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 13.sp,
+                                                color: navy),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
 
                           Text(
                             "Contact info",

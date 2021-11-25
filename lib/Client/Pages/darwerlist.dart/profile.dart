@@ -5,6 +5,7 @@ import 'package:indolawassociates/Client/APi/sharedpreferences.dart';
 import 'package:indolawassociates/Client/Pages/Homepage/drawer.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/Client/model/Profile_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -67,7 +68,8 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {    final translate = AppLocalizations.of(context);
+
     return WillPopScope(
       onWillPop: () {
         onback();
@@ -76,7 +78,7 @@ class _ProfilePageState extends State<ProfilePage> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            "Profile",
+            translate!.drawerkey1,
             style: GoogleFonts.mulish(
               fontSize: 21.sp,
               letterSpacing: 1.5,

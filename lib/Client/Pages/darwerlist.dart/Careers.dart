@@ -1,14 +1,14 @@
 import 'dart:convert';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/Pages/Homepage/drawer.dart';
-import 'package:indolawassociates/Client/Pages/darwerlist.dart/careers/careersmodel.dart';
+import 'package:indolawassociates/Client/model/careersmodel.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
-import 'package:indolawassociates/Client/model/form_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Careers extends StatefulWidget {
   const Careers({Key? key}) : super(key: key);
@@ -58,6 +58,8 @@ class _CareersState extends State<Careers> {
 
   @override
   Widget build(BuildContext context) {
+    final translate = AppLocalizations.of(context);
+
     return WillPopScope(
       onWillPop: () {
         onback();
@@ -89,7 +91,7 @@ class _CareersState extends State<Careers> {
           elevation: 0,
           backgroundColor: white,
           title: Text(
-            "Careers",
+            translate!.drawerkey7,
             style: GoogleFonts.mulish(
                 color: navy, fontWeight: FontWeight.w500, fontSize: 20),
           ),

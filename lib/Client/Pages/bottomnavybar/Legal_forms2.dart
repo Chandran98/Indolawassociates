@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
-
+import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../main.dart';
 
 /////////////////////////////////////        Legal forms Data Model          /////////////////////////////////
@@ -38,43 +39,47 @@ class _LegalformsState extends State<Legalforms> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: navy,
-        title: Text(
-          "Legal Forms",
-          style: GoogleFonts.mulish(
-              color: white, fontWeight: FontWeight.w500, fontSize: 20),
+    final translate = AppLocalizations.of(context);
+    return Consumer(builder: (context, provider, snapshot) {
+      return Scaffold(
+        appBar: AppBar(
+          backgroundColor: navy,
+          title: Text(
+            "Legal Forms",
+            style: GoogleFonts.mulish(
+                color: white, fontWeight: FontWeight.w500, fontSize: 20),
+          ),
+          leading: IconButton(
+              onPressed: () => Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => Mainhome())),
+              icon: Icon(
+                Icons.arrow_back,
+                color: white,
+              )),
         ),
-        leading: IconButton(
-            onPressed: () => Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => Mainhome())),
-            icon: Icon(
-              Icons.arrow_back,
-              color: white,
-            )),
-      ),
-      body: ListView.separated(
-        physics: BouncingScrollPhysics(),
-        separatorBuilder: (context, index) {
-          return Divider();
-        },
-        itemCount: legalformlist.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-              leading: Icon(Icons.logout, color: navy),
-              title: Text(
-                legalformlist[index].legalformname,
-                style: hStyle,
-              ),
-              onTap: () => Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => LegalservicesPage(
-                          legalformname: legalformlist[index].legalformname))));
-        },
-      ),
-    );
+        body: ListView.separated(
+          physics: BouncingScrollPhysics(),
+          separatorBuilder: (context, index) {
+            return Divider();
+          },
+          itemCount: legalformlist.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+                leading: Icon(Icons.logout, color: navy),
+                title: Text(
+                  legalformlist[index].legalformname,
+                  style: hStyle,
+                ),
+                onTap: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => LegalservicesPage(
+                            legalformname:
+                                legalformlist[index].legalformname))));
+          },
+        ),
+      );
+    });
   }
 }
 

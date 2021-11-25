@@ -1,18 +1,15 @@
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/Client/Pages/Register_Login_screen/Sign_Up/sign.dart';
 import 'package:indolawassociates/main.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-
-import '../../../dummy/main.dart';
+import 'package:sms_autofill/sms_autofill.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -38,8 +35,11 @@ class _LoginpageState extends State<Loginpage> {
   var isOTPScreen = false;
   var verificationCode = '';
   late String phone;
+  late String otpcoder;
 
   void initState() {
+    _listenotp();
+
     Timer.run(() {
       if (_auth.currentUser != null) {
         Navigator.pushAndRemoveUntil(
@@ -51,7 +51,12 @@ class _LoginpageState extends State<Loginpage> {
         );
       }
     });
+    _listenotp();
     super.initState();
+  }
+
+  void _listenotp() {
+    SmsAutoFill().listenForCode();
   }
 
   @override
@@ -74,181 +79,204 @@ class _LoginpageState extends State<Loginpage> {
             backgroundColor: navy,
             content: Text(
               'Tap back again to exit app.',
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize:18),
             ),
           ),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.27.h,
+            child:  Stack(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 0.27.h,
+              width: MediaQuery.of(context).size.width * 1.w,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("assets/images/Login_image.jpg"),
+                      fit: BoxFit.cover)),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 200.h),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: white,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(22),
+                        topRight: Radius.circular(22))),
+                height: MediaQuery.of(context).size.height * .7.h,
+                width: MediaQuery.of(context).size.width * 1.w,
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.75.h,
                   width: MediaQuery.of(context).size.width * 1.w,
                   decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/Login_image.jpg"),
-                          fit: BoxFit.cover)),
-                ),
-                Form(
-                    key: _formKey,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.01.h,
-                            ),
-                            Text(
-                              "Welcome Back!",
-                              style: GoogleFonts.mulish(
-                                  fontSize: 20.sp,
-                                  fontWeight: FontWeight.w700,
-                                  color: navy),
-                              textAlign: TextAlign.left,
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.01,
-                            ),
-                            Container(
-                                child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 10.0, horizontal: 10.0),
-                              child: IntlPhoneField(
-                                enabled: !isLoading,
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return 'Please enter your mobile no.';
-                                  }
-                                },
-                                keyboardType: TextInputType.phone,
-                                textInputAction: TextInputAction.done,
-                                decoration: InputDecoration(
-                                  // labelText: 'Phone Number',
-                                  //  prefixIcon: Icon(
-                                  //   Icons.phone,
-                                  //   color: navy,
-                                  // ),
-                                  labelText: "Mobile no.",
-                                  hintText: "Mobile ",
-                                  labelStyle: hStyle,
-                                  // border: OutlineInputBorder(
-                                  //     borderSide: BorderSide())
+                      color: white,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(22),
+                          topRight: Radius.circular(22))),
+                  padding: EdgeInsets.symmetric(vertical: 30.h,horizontal: 20.w),
+                  child:Form(
+                        key: _formKey,
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.01.h,
                                 ),
-                                initialCountryCode: 'IN',
-                                controller: numberController,
-                                onChanged: (phoneNumber) {
-                                  setState(() {
-                                    phone = phoneNumber.completeNumber;
-                                    print(phone);
-                                  });
-                                },
-                              ),
-
-                              // TextFormField(
-                              //   enabled: !isLoading,
-                              //   controller: numberController,
-                              //   keyboardType: TextInputType.phone,
-                              //   decoration: InputDecoration(
-                              //       border: OutlineInputBorder(),
-                              //       hintText: "Enter Your mobile no.",
-                              //       labelText: "Mobile no.",
-                              //       labelStyle: hStyle),
-                              //   validator: MultiValidator([
-                              //     RequiredValidator(errorText: phonenull),
-                              //     MaxLengthValidator(10, errorText: loginphonenum),
-                              //     MinLengthValidator(10, errorText: loginphonenum)
-                              //   ]),
-                              // ),
-                            )),
-                            Container(
-                                margin: EdgeInsets.only(top: 40, bottom: 5),
-                                child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10.0),
-                                    child: !isLoading
-                                        ? new TextButton(
-                                            onPressed: () async {
-                                              if (!isLoading) {
-                                                if (_formKey.currentState!
-                                                    .validate()) {
-                                                  displaySnackBar(
-                                                      'Please wait...');
-                                                  await login();
-                                                }
-                                              }
-                                            },
-                                            child: Container(
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                  color: gold,
-                                                ),
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height *
-                                                    0.07.h,
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.5.h,
-                                                // padding: const EdgeInsets.symmetric(
-                                                //   vertical: 15.0,
-                                                //   horizontal: 15.0,
-                                                // ),
-                                                child: Center(
-                                                  child: Text(
-                                                    "Log In",
-                                                    style: GoogleFonts.mulish(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        color: white,
-                                                        fontSize: 20.sp),
-                                                    textAlign: TextAlign.center,
-                                                  ),
-                                                )),
-                                          )
-                                        : CircularProgressIndicator(
-                                            backgroundColor: Colors.red,
-                                          ))),
-                            SizedBox(
-                                height: MediaQuery.of(context).size.height *
-                                    0.05.h),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
+                                Text(
+                                  "Welcome Back!",
+                                  style: GoogleFonts.mulish(
+                                      fontSize: 20.sp,
+                                      fontWeight: FontWeight.w700,
+                                      color: navy),
+                                  textAlign: TextAlign.left,
+                                ),
+                                SizedBox(
+                                  height: MediaQuery.of(context).size.height * 0.01,
+                                ),
                                 Container(
-                                  child: Text("Don't have a account ?",
-                                      style: GoogleFonts.mulish(
-                                          fontSize: 15.sp, color: navy)),
-                                ),
-                                InkWell(
-                                  onTap: () => Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => SignUp())),
-                                  child: Text(
-                                    "Sign Up",
-                                    style: GoogleFonts.mulish(
-                                        fontSize: 15.sp,
-                                        color: navy,
-                                        fontWeight: FontWeight.bold,
-                                        decorationThickness: 2,
-                                        decorationColor: navy),
+                                    child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 10.0, horizontal: 10.0),
+                                  child: IntlPhoneField(
+                                    enabled: !isLoading,
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        return 'Please enter your mobile no.';
+                                      }
+                                    },
+                                    keyboardType: TextInputType.phone,
+                                    textInputAction: TextInputAction.done,
+                                    decoration: InputDecoration(
+                                      // labelText: 'Phone Number',
+                                      //  prefixIcon: Icon(
+                                      //   Icons.phone,
+                                      //   color: navy,
+                                      // ),
+                                      labelText: "Mobile no.",
+                                      hintText: "Mobile ",
+                                      labelStyle: hStyle,
+                                      // border: OutlineInputBorder(
+                                      //     borderSide: BorderSide())
+                                    ),
+                                    initialCountryCode: 'IN',
+                                    controller: numberController,
+                                    onChanged: (phoneNumber) {
+                                      setState(() {
+                                        phone = phoneNumber.completeNumber;
+                                        print(phone);
+                                      });
+                                    },
                                   ),
-                                )
+
+                                  // TextFormField(
+                                  //   enabled: !isLoading,
+                                  //   controller: numberController,
+                                  //   keyboardType: TextInputType.phone,
+                                  //   decoration: InputDecoration(
+                                  //       border: OutlineInputBorder(),
+                                  //       hintText: "Enter Your mobile no.",
+                                  //       labelText: "Mobile no.",
+                                  //       labelStyle: hStyle),
+                                  //   validator: MultiValidator([
+                                  //     RequiredValidator(errorText: phonenull),
+                                  //     MaxLengthValidator(10, errorText: loginphonenum),
+                                  //     MinLengthValidator(10, errorText: loginphonenum)
+                                  //   ]),
+                                  // ),
+                                )),
+                                Container(
+                                    margin: EdgeInsets.only(top: 40, bottom: 5),
+                                    child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 10.0),
+                                        child: !isLoading
+                                            ? new TextButton(
+                                                onPressed: () async {
+                                                  final otpcode =
+                                                      SmsAutoFill().getAppSignature;
+                                                  if (!isLoading) {
+                                                    if (_formKey.currentState!
+                                                        .validate()) {
+                                                      displaySnackBar(
+                                                          'Please wait...');
+                                                      await login();
+                                                    }
+                                                  }
+                                                },
+                                                child: Container(
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(20),
+                                                      color: gold,
+                                                    ),
+                                                    height: MediaQuery.of(context)
+                                                            .size
+                                                            .height *
+                                                        0.07.h,
+                                                    width: MediaQuery.of(context)
+                                                            .size
+                                                            .width *
+                                                        0.5.h,
+                                                    // padding: const EdgeInsets.symmetric(
+                                                    //   vertical: 15.0,
+                                                    //   horizontal: 15.0,
+                                                    // ),
+                                                    child: Center(
+                                                      child: Text(
+                                                        "Log In",
+                                                        style: GoogleFonts.mulish(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color: white,
+                                                            fontSize: 20.sp),
+                                                        textAlign: TextAlign.center,
+                                                      ),
+                                                    )),
+                                              )
+                                            : CircularProgressIndicator(
+                                                backgroundColor: Colors.red,
+                                              ))),
+                                SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.05.h),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Container(
+                                      child: Text("Don't have a account ?",
+                                          style: GoogleFonts.mulish(
+                                              fontSize: 15.sp, color: navy)),
+                                    ),
+                                    InkWell(
+                                      onTap: () => Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => SignUp())),
+                                      child: Text(
+                                        "Sign Up",
+                                        style: GoogleFonts.mulish(
+                                            fontSize: 15.sp,
+                                            color: navy,
+                                            fontWeight: FontWeight.bold,
+                                            decorationThickness: 2,
+                                            decorationColor: navy),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.02.h),
                               ],
                             ),
-                            SizedBox(
-                                height: MediaQuery.of(context).size.height *
-                                    0.02.h),
-                          ],
-                        ),
-                      ),
-                    ))
-              ],
-            ),
-          ),
+                          ),
+                        )),
+
+                ),
+              ),
+            )
+          ],
+        ),
         ),
       ),
     );
@@ -285,37 +313,46 @@ class _LoginpageState extends State<Loginpage> {
                                       : "Sending OTP code via SMS",
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.mulish(
-                                      fontSize: 20,
+                                      fontSize: 20.sp,
                                       color: navy,
                                       fontWeight: FontWeight.bold),
                                 ))),
                         !isLoading
                             ? Container(
                                 child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 10.0, horizontal: 10.0),
-                                child: TextFormField(
-                                  enabled: !isLoading,
-                                  controller: otpController,
-                                  keyboardType: TextInputType.number,
-                                  // inputFormatters: <TextInputFormatter>[
-                                  //   FilteringTextInputFormatter.digitsOnly
-                                  // ],
-                                  initialValue: null,
-                                  autofocus: true,
-                                  decoration: InputDecoration(
-                                      labelText: 'OTP',
-                                      labelStyle: GoogleFonts.mulish(
-                                          fontSize: 18,
-                                          color: navy,
-                                          fontWeight: FontWeight.bold)),
-                                  validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return 'Please enter OTP';
-                                    }
-                                  },
-                                ),
-                              ))
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 10.0, horizontal: 10.0),
+                                    child: PinFieldAutoFill(
+                                      codeLength: 6,
+                                      onCodeChanged: (val) {
+                                        otpcoder = val!;
+                                      },
+                                      keyboardType: TextInputType.number,
+                                      autoFocus: true,
+                                    )
+
+                                    //  TextFormField(
+                                    //   enabled: !isLoading,
+                                    //   controller: otpController,
+                                    //   keyboardType: TextInputType.number,
+                                    //   // inputFormatters: <TextInputFormatter>[
+                                    //   //   FilteringTextInputFormatter.digitsOnly
+                                    //   // ],
+                                    //   initialValue: null,
+                                    //   autofocus: true,
+                                    //   decoration: InputDecoration(
+                                    //       labelText: 'OTP',
+                                    //       labelStyle: GoogleFonts.mulish(
+                                    //           fontSize: 18,
+                                    //           color: navy,
+                                    //           fontWeight: FontWeight.bold)),
+                                    //   validator: (value) {
+                                    //     if (value!.isEmpty) {
+                                    //       return 'Please enter OTP';
+                                    //     }
+                                    //   },
+                                    // ),
+                                    ))
                             : Container(),
                         !isLoading
                             ? Container(
@@ -338,8 +375,7 @@ class _LoginpageState extends State<Loginpage> {
                                                     PhoneAuthProvider.credential(
                                                         verificationId:
                                                             verificationCode,
-                                                        smsCode: otpController
-                                                            .text
+                                                        smsCode: otpcoder
                                                             .toString()))
                                                 .then((user) async => {
                                                       if (user != null)
@@ -383,10 +419,10 @@ class _LoginpageState extends State<Loginpage> {
                                       child: new Container(
                                         width:
                                             MediaQuery.of(context).size.width *
-                                                .6,
+                                                .6.w,
                                         height:
                                             MediaQuery.of(context).size.height *
-                                                .07,
+                                                .07.h,
                                         child: Material(
                                           borderRadius:
                                               BorderRadius.circular(20),
@@ -412,8 +448,8 @@ class _LoginpageState extends State<Loginpage> {
                                           CrossAxisAlignment.center,
                                       children: <Widget>[
                                         CircularProgressIndicator(
-                                          backgroundColor:
-                                              Theme.of(context).primaryColor,
+                                          
+                                            backgroundColor: Colors.red,
                                         )
                                       ].where((c) => c != null).toList(),
                                     )
@@ -436,10 +472,10 @@ class _LoginpageState extends State<Loginpage> {
                                       child: new Container(
                                         width:
                                             MediaQuery.of(context).size.width *
-                                                .6,
+                                                .6.w,
                                         height:
                                             MediaQuery.of(context).size.height *
-                                                .07,
+                                                .07.h,
                                         child: Material(
                                           borderRadius:
                                               BorderRadius.circular(20),

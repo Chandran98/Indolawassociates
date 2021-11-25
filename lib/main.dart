@@ -14,6 +14,7 @@ import 'Client/Pages/Homepage/drawer.dart';
 import 'Client/Pages/Homepage/home.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'Client/Pages/bottomnavybar/Legalforms.dart';
+import 'Client/Pages/bottomnavybar/NRI.dart';
 import 'Client/Pages/bottomnavybar/Para_legal_services/para_legal_services.dart';
 import 'Client/constants/constant.dart';
 import 'Client/Pages/Register_Login_screen/Login.dart/log.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
+          // ChangeNotifier()
           ChangeNotifierProvider(create: (context) => Languagenotifier())
         ],
         child:
@@ -137,6 +139,8 @@ class _MainhomeState extends State<Mainhome> {
 
   @override
   Widget build(BuildContext context) {
+        final translate = AppLocalizations.of(context);
+
     return Scaffold(
         drawer: Maindrawer(),
         bottomNavigationBar: BottomNavyBar(
@@ -146,21 +150,28 @@ class _MainhomeState extends State<Mainhome> {
                   inactiveColor: Color(0xFFFDD8B5),
                   activeColor: Colors.lightBlue,
                   icon: Icon(Icons.home, color: navy),
-                  title: Text("Home",
+                  title: Text(translate!.navkey1,
                       style: GoogleFonts.mulish(color: navy, fontSize: 18.sp))),
               BottomNavyBarItem(
                 inactiveColor: Color(0xffB4B4E4),
                 activeColor: Colors.lightBlue,
                 icon: Icon(Icons.book_online_outlined, color: navy),
                 title: Text(
-                  "Services",
+                  translate.navkey2,
                   style: hStyle,
                 ),
               ),
               BottomNavyBarItem(
                 icon: Icon(Icons.library_books, color: navy),
+                title: Text(translate.navkey3,
+                  style: hStyle,
+                ),
+                inactiveColor: Color(0xffB4B4E4),
+                activeColor: Colors.lightBlue,
+              ), BottomNavyBarItem(
+                icon: Icon(Icons.groups_rounded, color: navy),
                 title: Text(
-                  "Legal forms",
+                  translate.navkey4,
                   style: hStyle,
                 ),
                 inactiveColor: Color(0xffB4B4E4),
@@ -188,6 +199,9 @@ class _MainhomeState extends State<Mainhome> {
       //   return Paymentbar();
       case 2:
         return Legal();
+      case 3:
+        return NRI();
+      
       case 0:
       default:
         return HomeScreen();

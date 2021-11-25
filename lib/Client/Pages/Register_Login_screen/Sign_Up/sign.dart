@@ -37,7 +37,7 @@ class _SignUpState extends State<SignUp> {
   var isRegister = true;
   var isOTPScreen = false;
   var verificationCode = '';
-  late String  phone;
+  late String phone;
 
   @override
   void initState() {
@@ -65,7 +65,7 @@ class _SignUpState extends State<SignUp> {
     return SafeArea(
       child: Scaffold(
         key: _scaffoldKey,
-        body:  DoubleBackToCloseApp(
+        body: DoubleBackToCloseApp(
           snackBar: const SnackBar(
             backgroundColor: navy,
             content: Text(
@@ -137,17 +137,17 @@ class _SignUpState extends State<SignUp> {
                               keyboardType: TextInputType.phone,
                               textInputAction: TextInputAction.done,
                               decoration: InputDecoration(
-                                  // labelText: 'Phone Number',
-                                  //  prefixIcon: Icon(
-                                  //   Icons.phone,
-                                  //   color: navy,
-                                  // ),
-                                  labelText: "Mobile no.",
-                                  hintText: "Mobile ",
-                                  labelStyle: hStyle,
-                                  // border: OutlineInputBorder(
-                                  //     borderSide: BorderSide())
-                                      ),
+                                // labelText: 'Phone Number',
+                                //  prefixIcon: Icon(
+                                //   Icons.phone,
+                                //   color: navy,
+                                // ),
+                                labelText: "Mobile no.",
+                                hintText: "Mobile ",
+                                labelStyle: hStyle,
+                                // border: OutlineInputBorder(
+                                //     borderSide: BorderSide())
+                              ),
                               initialCountryCode: 'IN',
                               // controller: cellnumberController,
                               onChanged: (phoneNumber) {
@@ -157,7 +157,7 @@ class _SignUpState extends State<SignUp> {
                                 });
                               },
                             ),
-        
+
                             //  TextFormField(
                             //   enabled: !isLoading,
                             //   keyboardType: TextInputType.phone,
@@ -248,7 +248,8 @@ class _SignUpState extends State<SignUp> {
                                     child: new TextButton(
                                       onPressed: () {
                                         if (!isLoading) {
-                                          if (_formKey.currentState!.validate()) {
+                                          if (_formKey.currentState!
+                                              .validate()) {
                                             if (mounted) {
                                               setState(() {
                                                 signUp();
@@ -275,7 +276,8 @@ class _SignUpState extends State<SignUp> {
                             height: MediaQuery.of(context).size.height * 0.02.h,
                           ),
                           Container(
-                              height: MediaQuery.of(context).size.height * .06.h,
+                              height:
+                                  MediaQuery.of(context).size.height * .06.h,
                               width: MediaQuery.of(context).size.width * .6.w,
                               child: Material(
                                 borderRadius: BorderRadius.circular(20.0),
@@ -307,8 +309,8 @@ class _SignUpState extends State<SignUp> {
                           Text(
                             'By continuing your confirm that you agree \nwith our Term and Condition',
                             textAlign: TextAlign.center,
-                            style:
-                                GoogleFonts.mulish(color: navy, fontSize: 15.sp),
+                            style: GoogleFonts.mulish(
+                                color: navy, fontSize: 15.sp),
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.02.h,
@@ -328,7 +330,7 @@ class _SignUpState extends State<SignUp> {
     return SafeArea(
       child: Scaffold(
         key: _scaffoldKey,
-        body:  DoubleBackToCloseApp(
+        body: DoubleBackToCloseApp(
           snackBar: const SnackBar(
             backgroundColor: navy,
             content: Text(
@@ -478,6 +480,7 @@ class _SignUpState extends State<SignUp> {
                                                                   SetOptions(
                                                                       merge:
                                                                           true)).then(
+                                                                            
                                                                   (value) => {
                                                                         //then move to authorised area
                                                                         setState(
@@ -491,8 +494,10 @@ class _SignUpState extends State<SignUp> {
                                                           if (mounted)
                                                             {
                                                               setState(() {
-                                                                isLoading = false;
-                                                                isResend = false;
+                                                                isLoading =
+                                                                    false;
+                                                                isResend =
+                                                                    false;
                                                               })
                                                             },
                                                           Navigator
@@ -531,19 +536,22 @@ class _SignUpState extends State<SignUp> {
                                         }
                                       },
                                       child: new Container(
-                                        width: MediaQuery.of(context).size.width *
-                                            .6,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                .6,
                                         height:
                                             MediaQuery.of(context).size.height *
                                                 .07,
                                         child: Material(
-                                          borderRadius: BorderRadius.circular(20),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
                                           elevation: 4,
                                           color: gold,
                                           child: Center(
                                               child: Text('Submit',
                                                   style: GoogleFonts.mulish(
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       color: white,
                                                       fontSize: 20))),
                                         ),
@@ -553,13 +561,13 @@ class _SignUpState extends State<SignUp> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: <Widget>[
                                         CircularProgressIndicator(
-                                          backgroundColor:
-                                              Theme.of(context).primaryColor,
+                                          backgroundColor: Colors.red,
                                         )
                                       ].where((c) => c != null).toList(),
                                     )
@@ -581,19 +589,22 @@ class _SignUpState extends State<SignUp> {
                                         await signUp();
                                       },
                                       child: new Container(
-                                        width: MediaQuery.of(context).size.width *
-                                            .6,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                .6.w,
                                         height:
                                             MediaQuery.of(context).size.height *
-                                                .07,
+                                                .07.h,
                                         child: Material(
-                                          borderRadius: BorderRadius.circular(20),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
                                           elevation: 4,
                                           color: white,
                                           child: Center(
                                               child: Text('Resend Code',
                                                   style: GoogleFonts.mulish(
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       color: navy,
                                                       fontSize: 20))),
                                         ),
@@ -619,7 +630,7 @@ class _SignUpState extends State<SignUp> {
       });
     }
 
-    var phonenumber =phone;
+    var phonenumber = phone;
     var verifyphone = _auth.verifyPhoneNumber(
         phoneNumber: phonenumber,
         verificationCompleted: (phoneauthcredential) {
