@@ -170,7 +170,7 @@ class Categorycard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final translate = AppLocalizations.of(context);
+    // final translate = AppLocalizations.of(context);
 
     return InkWell(
       onTap: () => Navigator.pushReplacement(

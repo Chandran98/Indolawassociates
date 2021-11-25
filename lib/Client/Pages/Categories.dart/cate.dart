@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/Client/model/form_model.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../main.dart';
 
 class Catepage extends StatefulWidget {
@@ -81,7 +81,8 @@ class _CatepageState extends State<Catepage> {
   ];
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {    final translate = AppLocalizations.of(context);
+
     return WillPopScope(
       onWillPop: () {
         onback();
@@ -199,8 +200,8 @@ class _CatepageState extends State<Catepage> {
                                         color: white,
                                         size: 22,
                                       ),
-                                      Text(
-                                        "Apply for issues",
+                                      Text(translate!.apply
+                                        ,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 13.sp,
@@ -379,7 +380,7 @@ class _CatepageState extends State<Catepage> {
                           ),
 
                           Text(
-                            "Contact info",
+                            translate.drawerkey5,
                             style: GoogleFonts.mulish(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16.sp,
@@ -456,7 +457,7 @@ class _CatepageState extends State<Catepage> {
                                 width: 10.w,
                               ),
                               Text(
-                                "Monday To Saturday: 8am-6pm",
+                                "${translate.workingshift}: 8am-6pm",
                                 style: GoogleFonts.mulish(
                                     fontWeight: FontWeight.w600,
                                     fontSize: 14.sp,

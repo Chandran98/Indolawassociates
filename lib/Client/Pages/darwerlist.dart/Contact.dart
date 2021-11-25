@@ -88,7 +88,11 @@ class _ContactState extends State<Contact> {
                         height: MediaQuery.of(context).size.height * 0.01,
                       ),
                       Text(
-                        "Need help with your booking ?\nGet instant help from our customer support team",
+                        translate.helpline1,
+                        style: hStyle,
+                        textAlign: TextAlign.left,
+                      ), Text(
+                        translate.helpline2,
                         style: hStyle,
                         textAlign: TextAlign.left,
                       ),
@@ -137,7 +141,7 @@ class _ContactState extends State<Contact> {
                                           padding: const EdgeInsets.all(10),
                                           child: FittedBox(
                                             child: Text(
-                                              "Contact Us",
+                                              translate.phone,
                                               style: hStyle,textScaleFactor: 1,
                                             ),
                                           ),
@@ -188,7 +192,7 @@ class _ContactState extends State<Contact> {
                                         padding: const EdgeInsets.all(10),
                                         child: FittedBox(
                                           child: Text(
-                                            "Mail it",
+                                            translate.mail,
                                             style: hStyle,
                                           ),
                                         ),
@@ -206,7 +210,7 @@ class _ContactState extends State<Contact> {
                         ),
                       ),
                       Text(
-                        "Send Feedback",
+                        translate.feedback,
                         style: GoogleFonts.mulish(
                             fontSize: 20.sp,
                             color: navy,
@@ -242,12 +246,16 @@ class _ContactState extends State<Contact> {
                             onPressed: () {
 
                                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Submitted"),));},
-                            child: Center(
-                                child: Text('Submit',
-                                    style: GoogleFonts.mulish(
-                                        fontWeight: FontWeight.bold,
-                                        color: white,
-                                        fontSize: 20.sp))),
+                            child: Container(margin: EdgeInsets.all(5),
+                              child: Center(
+                                  child: FittedBox(
+                                    child: Text(translate.submit,
+                                        style: GoogleFonts.mulish(
+                                            fontWeight: FontWeight.bold,
+                                            color: white,
+                                            fontSize: 20.sp)),
+                                  )),
+                            ),
                           ),
                         ),
                       ),

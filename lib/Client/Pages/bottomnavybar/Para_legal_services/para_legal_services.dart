@@ -6,12 +6,13 @@ import 'package:http/http.dart' as http;
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/Client/model/form_model.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../../../main.dart';
+import '../../../../main.dart';import "package:flutter_gen/gen_l10n/app_localizations.dart";
+
 /////////////////////////////////////        Legal forms Data Model          /////////////////////////////////
 
 class Paramodel {
-  String Paralegaltitle,paralegalcontent;
-  Paramodel({required this.Paralegaltitle,required this.paralegalcontent});
+  String Paralegaltitle, paralegalcontent;
+  Paramodel({required this.Paralegaltitle, required this.paralegalcontent});
 }
 
 ///////////////////////////////////////////    Legal forms   //////////////////////////////////////////
@@ -24,25 +25,15 @@ class Paralegal extends StatefulWidget {
 }
 
 class _ParalegalState extends State<Paralegal> {
-  final List<Paramodel> paralegallist = [
-    Paramodel(Paralegaltitle: "Adhar card", paralegalcontent: "Aadhaar number is verifiable in an online, cost-effective way. It is unique and robust enough to eliminate duplicates and fake identities and may be used as a basis/primary identifier to roll out several Government welfare schemes and programmes for effective service delivery thereby promoting transparency and good governance. "),
-    Paramodel(Paralegaltitle: "Pan card", paralegalcontent: "PAN system of identification is a computer-based system that assigns unique identification number to every Indian tax paying entity. Through this method, all tax-related information for a person is recorded against a single PAN number which acts as the primary key for storage of information."),
-    Paramodel(Paralegaltitle: "Birth and Death Certificate", paralegalcontent: "Birth certificates are often needed for obtaining licenses, getting government benefits and registering for school. While many people turn to the Internet to order additional or replacement birth certificates."),
-    Paramodel(Paralegaltitle: "Will and Gift writing", paralegalcontent: " A Will, as defined under the Indian Succession Act, 1925, is the legal declaration of the intention of a testator with respect to his property which he desires to be carried into effect after his death."),
-    // Paramodel(Paralegaltitle: " Legal Notice", paralegalcontent: ''),
-    Paramodel(Paralegaltitle: "EC,Patta, Land Verification", paralegalcontent: " Patta is a legal document to prove the lawful ownership of a person on land, it becomes a crucial document in case of any dispute between the landholder and the government or any third-party landowner. One becomes eligible to get compensation in case the government decides to acquire the land."),
-    Paramodel(Paralegaltitle: " Education Issues", paralegalcontent: 'Education is the most imperative segment out of different segments of a social foundation. The accomplished and appropriately prepared manpower can quicken the pace of monetary development. Despite our earnest attempts, our instructive improvement still stays at a low dimension.'),
-    Paramodel(Paralegaltitle: "Affidavits", paralegalcontent: "An Affidavit is simply a written, notarized sworn statement. An Affidavit can be used for nearly any reason such as to attest to someone's death or birth, to state a place of residence, or to be entered as evidence in a court trial. When you sign an affidavit, you are simply attesting, under law, that you swear a statement written in the affidavit is true."),
-  ];
-
+ 
   void onback() {
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => Mainhome()));
   }
 
-  
   @override
   Widget build(BuildContext context) {
+    final translate = AppLocalizations.of(context);
     return WillPopScope(
       onWillPop: () {
         onback();
@@ -52,7 +43,7 @@ class _ParalegalState extends State<Paralegal> {
         appBar: AppBar(
           backgroundColor: navy,
           title: Text(
-            "Para Legal Services",
+            translate!.paralegalservices,
             style: GoogleFonts.mulish(
                 color: white, fontWeight: FontWeight.w500, fontSize: 20.sp),
           ),
@@ -64,7 +55,40 @@ class _ParalegalState extends State<Paralegal> {
                 color: white,
               )),
         ),
-        body: ListView.separated(
+        body:  paralegallist(context)),
+    );
+
+    // Widget op()
+  }
+
+  Widget paralegallist(context){ 
+        final translate = AppLocalizations.of(context);
+
+    final List<Paramodel> paralegallist = [
+    Paramodel(
+        Paralegaltitle: translate!.paralegal1,
+        paralegalcontent:
+        translate.paralegalsub1),
+    Paramodel(
+        Paralegaltitle: translate.paralegal2,
+        paralegalcontent:translate.paralegalsub2),
+    Paramodel(
+        Paralegaltitle: translate.paralegal3,
+        paralegalcontent:translate.paralegalsub3),
+    Paramodel(
+        Paralegaltitle: translate.paralegal4,
+        paralegalcontent:translate.paralegalsub4),
+    // Paramodel(Paralegaltitle: " Legal Notice", paralegalcontent: ''),
+    Paramodel(
+        Paralegaltitle: translate.paralegal5,
+        paralegalcontent:translate.paralegalsub5),
+    Paramodel(
+        Paralegaltitle: translate.paralegal6,
+        paralegalcontent:translate.paralegalsub6),
+    Paramodel(
+        Paralegaltitle: translate.paralegal7,
+        paralegalcontent:translate.paralegalsub7),
+  ];return  ListView.separated(
           physics: BouncingScrollPhysics(),
           separatorBuilder: (context, index) {
             return Divider();
@@ -80,23 +104,25 @@ class _ParalegalState extends State<Paralegal> {
                 onTap: () => Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => ParalegalPage(paralegalcontent: paralegallist[index].paralegalcontent,
+                        builder: (context) => ParalegalPage(
+                            paralegalcontent:
+                                paralegallist[index].paralegalcontent,
                             Paralegaltitle:
                                 paralegallist[index].Paralegaltitle))));
           },
-        ),
-      ),
-    );
-  }
+        );
+    
+}
 }
 
 ////////////////////////////////    Legal forms Page      ////////////////////////////////
 
 class ParalegalPage extends StatefulWidget {
-  const ParalegalPage({Key? key, required this.Paralegaltitle,required this.paralegalcontent})
+  const ParalegalPage(
+      {Key? key, required this.Paralegaltitle, required this.paralegalcontent})
       : super(key: key);
 
-  final String Paralegaltitle,paralegalcontent;
+  final String Paralegaltitle, paralegalcontent;
 
   @override
   _ParalegalPageState createState() => _ParalegalPageState();
@@ -121,7 +147,7 @@ class _ParalegalPageState extends State<ParalegalPage> {
   }
 
   var gendertry;
-  List genderlist = ["Male", "Female","Others"];
+  List genderlist = ["Male", "Female", "Others"];
 
   var paralegal;
   List paralegallist = [
@@ -134,15 +160,17 @@ class _ParalegalPageState extends State<ParalegalPage> {
     " Education Issues",
     "Affidavits"
   ];
-launcher(command) async {
+  launcher(command) async {
     if (await canLaunch(command)) {
       await launch(command);
     } else {
       print("");
     }
   }
+
   @override
   Widget build(BuildContext context) {
+    final translate = AppLocalizations.of(context);
     return WillPopScope(
       onWillPop: () {
         onback();
@@ -180,7 +208,7 @@ launcher(command) async {
                     ),
                   )),
           label: Text(
-            "Apply for issues",
+            translate!.apply,
           ),
           icon: Icon(Icons.arrow_back_ios_new_rounded),
         ),
@@ -231,10 +259,10 @@ launcher(command) async {
                           height: MediaQuery.of(context).size.height * 0.03.h,
                         ),
                         Text(
-                         widget.paralegalcontent,
+                          widget.paralegalcontent,
                           style: GoogleFonts.mulish(
                               fontWeight: FontWeight.w600,
-                              fontSize: 15.sp,
+                              fontSize: 13.sp,
                               color: navy),
                           textAlign: TextAlign.justify,
                           textScaleFactor: 1,
@@ -247,7 +275,7 @@ launcher(command) async {
                                   MediaQuery.of(context).size.height * 0.02.h,
                             ),
                             Text(
-                              "Contact info",
+                              translate.drawerkey5,
                               style: GoogleFonts.mulish(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 17.sp,
@@ -259,9 +287,10 @@ launcher(command) async {
                               height:
                                   MediaQuery.of(context).size.height * 0.015.h,
                             ),
-                            InkWell(  onTap: () {
-                              launcher("mailto: indolawassociates@gmail.com");
-                            },
+                            InkWell(
+                              onTap: () {
+                                launcher("mailto: indolawassociates@gmail.com");
+                              },
                               child: Row(
                                 children: [
                                   Icon(
@@ -287,9 +316,10 @@ launcher(command) async {
                               height:
                                   MediaQuery.of(context).size.height * 0.01.h,
                             ),
-                            InkWell(  onTap: () {
-                              launcher("tel: 8940383000");
-                            },
+                            InkWell(
+                              onTap: () {
+                                launcher("tel: 8940383000");
+                              },
                               child: Row(
                                 children: [
                                   Icon(
@@ -324,14 +354,16 @@ launcher(command) async {
                                 SizedBox(
                                   width: 10,
                                 ),
-                                Text(
-                                  "Monday To Saturday: 8am-6pm",
-                                  style: GoogleFonts.mulish(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 15.sp,
-                                      color: navy),
-                                  textAlign: TextAlign.justify,
-                                  textScaleFactor: 1,
+                                FittedBox(
+                                  child: Text(
+                                    "${translate.workingshift}: 8am-6pm",
+                                    style: GoogleFonts.mulish(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 15.sp,
+                                        color: navy),
+                                    textAlign: TextAlign.justify,
+                                    textScaleFactor: 1,
+                                  ),
                                 ),
                               ],
                             ),

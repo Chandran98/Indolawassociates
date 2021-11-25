@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../main.dart';
+import "package:flutter_gen/gen_l10n/app_localizations.dart";
 
 /////////////////////////////////////        Legal forms Data Model          /////////////////////////////////
 
@@ -22,20 +22,6 @@ class Legalforms extends StatefulWidget {
 }
 
 class _LegalformsState extends State<Legalforms> {
-  final List<legalformsmodel> legalformlist = [
-    legalformsmodel(legalformname: "Forms Related to Trust Agreements"),
-    legalformsmodel(legalformname: "Forms Related to Will"),
-    legalformsmodel(legalformname: "Forms Related to Company Laws"),
-    legalformsmodel(legalformname: "Forms Related to Business"),
-    legalformsmodel(legalformname: "Forms Related to Criminal Laws"),
-    legalformsmodel(legalformname: "Forms Related to Deeds"),
-    legalformsmodel(legalformname: "Forms Related to Family Laws"),
-    legalformsmodel(legalformname: "Forms Related to Gifts"),
-    legalformsmodel(legalformname: "Forms Related to Mortgage"),
-    legalformsmodel(legalformname: "Forms Related to Partition"),
-    legalformsmodel(legalformname: "Forms Related to Partnership"),
-    legalformsmodel(legalformname: "Forms Related to Sales"),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +43,27 @@ class _LegalformsState extends State<Legalforms> {
                 color: white,
               )),
         ),
-        body: ListView.separated(
+        body:legalforms(context)
+      );
+    });
+  }
+  Widget legalforms(context){ 
+    final translate = AppLocalizations.of(context);
+      List<legalformsmodel> legalformlist = [
+    legalformsmodel(legalformname: translate!.forms1),
+    legalformsmodel(legalformname:  translate.forms2),
+    legalformsmodel(legalformname: translate.forms3),
+    legalformsmodel(legalformname: translate.forms4),
+    legalformsmodel(legalformname: translate.forms5),
+    legalformsmodel(legalformname: translate.forms6),
+    legalformsmodel(legalformname: translate.forms7),
+    legalformsmodel(legalformname: translate.forms8),
+    legalformsmodel(legalformname: translate.forms9),
+    legalformsmodel(legalformname: translate.forms10),
+    legalformsmodel(legalformname: translate.forms11),
+    legalformsmodel(legalformname: translate.forms12),
+  ];
+  return ListView.separated(
           physics: BouncingScrollPhysics(),
           separatorBuilder: (context, index) {
             return Divider();
@@ -77,10 +83,8 @@ class _LegalformsState extends State<Legalforms> {
                             legalformname:
                                 legalformlist[index].legalformname))));
           },
-        ),
-      );
-    });
-  }
+        );
+}
 }
 
 ////////////////////////////////    Legal forms Page      ////////////////////////////////

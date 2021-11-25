@@ -14,8 +14,9 @@ import 'package:indolawassociates/Client/Pages/Legal%20forms.dart/pages/Sales.da
 import 'package:indolawassociates/Client/Pages/Legal%20forms.dart/pages/Trust_Agreement.dart';
 import 'package:indolawassociates/Client/Pages/Legal%20forms.dart/pages/Will.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../main.dart';
+import "package:flutter_gen/gen_l10n/app_localizations.dart";
 
 class Legal extends StatefulWidget {
   const Legal({Key? key}) : super(key: key);
@@ -32,6 +33,8 @@ class _LegalState extends State<Legal> {
 
   @override
   Widget build(BuildContext context) {
+    final translate = AppLocalizations.of(context);
+
     return WillPopScope(
       onWillPop: () {
         onback();
@@ -42,7 +45,7 @@ class _LegalState extends State<Legal> {
           appBar: AppBar(
             backgroundColor: navy,
             title: Text(
-              "Legal Forms",
+              translate!.legalforms,
               style: GoogleFonts.mulish(
                   color: white, fontWeight: FontWeight.w500, fontSize: 21),
             ),
@@ -63,7 +66,7 @@ class _LegalState extends State<Legal> {
                   ListTile(
                     leading: Icon(Icons.logout, color: navy),
                     title: Text(
-                      "Forms Related to Trust Agreements",
+                      translate!.forms1,
                       style: hStyle,
                     ),
                     onTap: () => Navigator.pushReplacement(
@@ -75,7 +78,7 @@ class _LegalState extends State<Legal> {
                   ListTile(
                     leading: Icon(Icons.logout, color: navy),
                     title: Text(
-                      "Forms Related to Will",
+                      translate.forms2,
                       style: hStyle,
                     ),
                     onTap: () => Navigator.pushReplacement(
@@ -87,7 +90,7 @@ class _LegalState extends State<Legal> {
                   ListTile(
                     leading: Icon(Icons.logout, color: navy),
                     title: Text(
-                      "Forms Related to Business",
+                      translate.forms3,
                       style: hStyle,
                     ),
                     onTap: () => Navigator.pushReplacement(
@@ -99,7 +102,7 @@ class _LegalState extends State<Legal> {
                   ListTile(
                     leading: Icon(Icons.logout, color: navy),
                     title: Text(
-                      "Forms Related to Company Laws",
+                      translate.forms4,
                       style: hStyle,
                     ),
                     onTap: () => Navigator.pushReplacement(
@@ -111,7 +114,7 @@ class _LegalState extends State<Legal> {
                   ListTile(
                     leading: Icon(Icons.logout, color: navy),
                     title: Text(
-                      "Forms Related to Consumer Laws",
+                      translate.forms5,
                       style: hStyle,
                     ),
                     onTap: () => Navigator.pushReplacement(
@@ -123,7 +126,7 @@ class _LegalState extends State<Legal> {
                   ListTile(
                     leading: Icon(Icons.logout, color: navy),
                     title: Text(
-                      "Forms Related to Criminal Laws",
+                      translate.forms6,
                       style: hStyle,
                     ),
                     onTap: () => Navigator.pushReplacement(
@@ -135,19 +138,7 @@ class _LegalState extends State<Legal> {
                   ListTile(
                     leading: Icon(Icons.logout, color: navy),
                     title: Text(
-                      "Forms Related to Family Laws",
-                      style: hStyle,
-                    ),
-                    onTap: () => Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Familylegalforms())),
-                  ),
-                  Divider(),
-                  ListTile(
-                    leading: Icon(Icons.logout, color: navy),
-                    title: Text(
-                      "Forms Related to Deeds",
+                      translate.forms7,
                       style: hStyle,
                     ),
                     onTap: () => Navigator.pushReplacement(
@@ -159,7 +150,19 @@ class _LegalState extends State<Legal> {
                   ListTile(
                     leading: Icon(Icons.logout, color: navy),
                     title: Text(
-                      "Forms Related to Gifts",
+                      translate.forms8,
+                      style: hStyle,
+                    ),
+                    onTap: () => Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Familylegalforms())),
+                  ),
+                  Divider(),
+                  ListTile(
+                    leading: Icon(Icons.logout, color: navy),
+                    title: Text(
+                      translate.forms9,
                       style: hStyle,
                     ),
                     onTap: () => Navigator.pushReplacement(
@@ -171,7 +174,7 @@ class _LegalState extends State<Legal> {
                   ListTile(
                     leading: Icon(Icons.logout, color: navy),
                     title: Text(
-                      "Forms Related to Mortgage",
+                      translate.forms10,
                       style: hStyle,
                     ),
                     onTap: () => Navigator.pushReplacement(
@@ -186,7 +189,7 @@ class _LegalState extends State<Legal> {
                       color: navy,
                     ),
                     title: Text(
-                      "Forms Related to Partition",
+                      translate.forms11,
                       style: hStyle,
                     ),
                     onTap: () => Navigator.pushReplacement(
@@ -198,7 +201,7 @@ class _LegalState extends State<Legal> {
                   ListTile(
                     leading: Icon(Icons.logout, color: navy),
                     title: Text(
-                      "Forms Related to Partnership",
+                      translate.forms12,
                       style: hStyle,
                     ),
                     onTap: () => Navigator.pushReplacement(
@@ -210,7 +213,7 @@ class _LegalState extends State<Legal> {
                   ListTile(
                     leading: Icon(Icons.logout, color: navy),
                     title: Text(
-                      "Forms Related to Sales",
+                      translate.forms13,
                       style: hStyle,
                     ),
                     onTap: () => Navigator.pushReplacement(
