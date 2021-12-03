@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/model/Legalforms_data_models.dart';
 import 'package:indolawassociates/Client/Pages/bottomnavybar/Legalforms.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
@@ -13,14 +15,7 @@ class Companylegalforms extends StatefulWidget {
 }
 
 class _CompanylegalformsState extends State<Companylegalforms> {
-  List<Legalformsdatamodel> company_legalforms = [
-    Legalformsdatamodel(
-        title: "Agreement between a Company and its Branch Manager", Url: ""),
-    Legalformsdatamodel(
-        title: "Assignment of Policy of Life Insurance", Url: ""),
-    Legalformsdatamodel(
-        title: "BSE Listing Agreement", Url: ""),
-  ];
+
 
   void onback() {
     Navigator.pushReplacement(
@@ -48,13 +43,30 @@ class _CompanylegalformsState extends State<Companylegalforms> {
         appBar: AppBar(
           toolbarHeight: 60,
           backgroundColor: navy,
-          title: Text("Legal Forms-Company Laws"),
+          title: Text(translate!.forms4,
+              style: GoogleFonts.mulish(
+                  color: white, fontWeight: FontWeight.w500, fontSize: 18.sp),),
           leading: IconButton(
               onPressed: () => Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (context) => Legal())),
               icon: Icon(Icons.arrow_back)),
         ),
-        body: Padding(
+        body: company(context)
+      ),
+    );
+  }
+  company (context){    final translate = AppLocalizations.of(context);
+
+      List<Legalformsdatamodel> company_legalforms = [
+    Legalformsdatamodel(
+        title: translate!.companyform1, Url: ""),
+    Legalformsdatamodel(
+        title: translate.companyform2, Url: ""),
+    Legalformsdatamodel(
+        title: translate.companyform3, Url: ""),
+  ];
+  return
+  Padding(
           padding: const EdgeInsets.only(top:12.0,bottom: 12),
           child: ListView.separated(
             physics: BouncingScrollPhysics(),
@@ -75,7 +87,7 @@ class _CompanylegalformsState extends State<Companylegalforms> {
                         builder: (context) => AlertDialog(
                               elevation: 10,
                               content: Text(
-                               translate!.helptitle, 
+                               translate.helptitle, 
                                 style: hStyle,
                               ),
                               contentPadding: EdgeInsets.only(
@@ -107,8 +119,6 @@ class _CompanylegalformsState extends State<Companylegalforms> {
              });
             },
           ),
-        ),
-      ),
-    );
+        );
   }
 }

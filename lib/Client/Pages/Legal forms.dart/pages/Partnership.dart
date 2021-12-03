@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/model/Legalforms_data_models.dart';
 import 'package:indolawassociates/Client/Pages/bottomnavybar/Legalforms.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
@@ -15,60 +17,7 @@ class Partnershiplegalforms extends StatefulWidget {
 }
 
 class _PartnershiplegalformsState extends State<Partnershiplegalforms> {
-  List<Legalformsdatamodel> partnership_legalforms = [
-    Legalformsdatamodel(
-        title: "Agreement admitting a minor to the benefit of partnership ",
-        Url: ""),
-    Legalformsdatamodel(title: "Agreement admitting a new partner ", Url: ""),
-    Legalformsdatamodel(
-        title: "Agreement modifying the partnership deed ", Url: ""),
-    Legalformsdatamodel(title: "Another partnership deeds ", Url: ""),
-    Legalformsdatamodel(
-        title:
-            "Deed of dissolution where one partner takes over assets and liabilities of the business ",
-        Url: ""),
-    Legalformsdatamodel(
-        title:
-            "Deed of dissolution where the business is continued by some partners ",
-        Url: ""),
-    Legalformsdatamodel(title: "Deed of partnership ", Url: ""),
-    Legalformsdatamodel(title: "Deed of retirement ", Url: ""),
-    Legalformsdatamodel(
-        title:
-            "Form of furnishing statement specifying alteration in the firm name or in the location of the principal place of business of the firm ",
-        Url: ""),
-    Legalformsdatamodel(
-        title: "Form of giving notice of change of constitutional of the firm ",
-        Url: ""),
-    Legalformsdatamodel(
-        title: "Notice of retirement by one partner to other partners ",
-        Url: ""),
-    Legalformsdatamodel(
-        title:
-            "Partnership agreement between a partnership firm and a Hindu joint family ",
-        Url: ""),
-    Legalformsdatamodel(
-        title: "Partnership agreement between advocates ", Url: ""),
-    Legalformsdatamodel(
-        title:
-            "Partnership agreement between an individual a partnership firm and a company                    ",
-        Url: ""),
-    Legalformsdatamodel(
-        title: "Partnership agreement between two partnership firms ", Url: ""),
-    Legalformsdatamodel(
-        title: "Partnership agreement between two Limited Companies ", Url: ""),
-    Legalformsdatamodel(
-        title:
-            "Partnership agreement between a partnership firm and a Hindu joint family",
-        Url: ""),
-    Legalformsdatamodel(
-        title: "Partnership agreement for a single venture ", Url: ""),
-    Legalformsdatamodel(
-        title:
-            "Preliminary notice to a partner to show an opportunity why he should not be expelled from partnership. ",
-        Url: ""),
-  ];
-
+ 
   void onback() {
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => Legal()));
@@ -96,13 +45,66 @@ class _PartnershiplegalformsState extends State<Partnershiplegalforms> {
         appBar: AppBar(
           toolbarHeight: 60,
           backgroundColor: navy,
-          title: Text("Legal Forms-Partnership Laws"),
+          title: FittedBox(
+            child: Text(translate!.forms12,
+                style: GoogleFonts.mulish(
+                    color: white, fontWeight: FontWeight.w500, fontSize: 18.sp),),
+          ),
           leading: IconButton(
               onPressed: () => Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (context) => Legal())),
               icon: Icon(Icons.arrow_back)),
         ),
-        body: Padding(
+        body: partnership(context) );
+    
+      },));
+  }partnership(context){    final translate = AppLocalizations.of(context);
+List<Legalformsdatamodel> partnership_legalforms = [
+    Legalformsdatamodel(
+        title: translate!.partnershipform1,
+        Url: ""),
+    Legalformsdatamodel(title: translate.partnershipform2, Url: ""),
+    Legalformsdatamodel(
+        title: translate.partnershipform3, Url: ""),
+    Legalformsdatamodel(title:translate.partnershipform4, Url: ""),
+    Legalformsdatamodel(
+        title:translate.partnershipform4,
+        Url: ""),
+    Legalformsdatamodel(
+        title:translate.partnershipform5,
+        Url: ""),
+    Legalformsdatamodel(title: translate.partnershipform6, Url: ""),
+    Legalformsdatamodel(title: translate.partnershipform7, Url: ""),
+    Legalformsdatamodel(
+        title:
+           translate.partnershipform8,Url: ""),
+    Legalformsdatamodel(
+        title:translate.partnershipform9,
+        Url: ""),
+    Legalformsdatamodel(
+        title:translate.partnershipform10,
+        Url: ""),
+    Legalformsdatamodel(
+        title:translate.partnershipform11,
+        Url: ""),
+    Legalformsdatamodel(
+        title:translate.partnershipform12, Url: ""),
+    Legalformsdatamodel(
+        title:translate.partnershipform13,
+        Url: ""),
+    Legalformsdatamodel(
+        title:translate.partnershipform14, Url: ""),
+    Legalformsdatamodel(
+        title:translate.partnershipform15, Url: ""),
+    Legalformsdatamodel(
+        title:translate.partnershipform16,
+        Url: ""),
+    Legalformsdatamodel(
+        title:translate.partnershipform17, Url: ""),
+    Legalformsdatamodel(
+        title:translate.partnershipform18,
+        Url: ""),
+  ];return  Padding(
           padding: const EdgeInsets.only(top:12.0,bottom: 12),
           child: ListView.separated(
             physics: BouncingScrollPhysics(),
@@ -125,7 +127,7 @@ class _PartnershiplegalformsState extends State<Partnershiplegalforms> {
                         builder: (context) => AlertDialog(
                               elevation: 10,
                               content: Text(
-                                translate!.helptitle,
+                                translate.helptitle,
                                 style: hStyle,
                               ),
                               contentPadding: EdgeInsets.only(
@@ -158,9 +160,7 @@ class _PartnershiplegalformsState extends State<Partnershiplegalforms> {
                   });
             },
           ),
-        ),
-      );
+        );
     
-      },));
-  }
+}
 }

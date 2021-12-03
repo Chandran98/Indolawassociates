@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/model/Legalforms_data_models.dart';
 import 'package:indolawassociates/Client/Pages/bottomnavybar/Legalforms.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
@@ -15,21 +17,7 @@ class Partitionlegalforms extends StatefulWidget {
 }
 
 class _PartitionlegalformsState extends State<Partitionlegalforms> {
-  List<Legalformsdatamodel> partition_legalforms = [
-    Legalformsdatamodel(
-        title: "Confirmation of partition already made by the members of joint Hindu family ", Url: ""),  Legalformsdatamodel(
-        title: "Deed evidencing oral partition ", Url: ""),  Legalformsdatamodel(
-        title: "Deed of partial Partition dividing the joint family business only while other properties remaining joint ", Url: ""),  Legalformsdatamodel(
-        title: "Deed of partial partition by one member from the other members of joint Hindu family ", Url: ""),  Legalformsdatamodel(
-        title: "Deed of partition ", Url: ""),  Legalformsdatamodel(
-        title: "Deed of partition between co-owners ", Url: ""),  Legalformsdatamodel(
-        title: "Deed of partition between members of a joint Hindu family ", Url: ""),  Legalformsdatamodel(
-        title: "Deed of partition between two tenants in common ", Url: ""),  Legalformsdatamodel(
-        title: "Deed of partition with a cash payment for equalization ", Url: ""),  Legalformsdatamodel(
-        title: "Family Arrangement ", Url: ""),  Legalformsdatamodel(
-        title: "Partition deed ", Url: ""),
-       ];
-
+ 
   void onback() {
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => Legal()));
@@ -56,13 +44,32 @@ class _PartitionlegalformsState extends State<Partitionlegalforms> {
         appBar: AppBar(
           toolbarHeight: 60,
           backgroundColor: navy,
-          title: Text("Legal Forms-Partition Laws"),
+          title: FittedBox(child: Text(translate!.forms11,
+              style: GoogleFonts.mulish(
+                  color: white, fontWeight: FontWeight.w500, fontSize: 18.sp),)),
           leading: IconButton(
               onPressed: () => Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (context) => Legal())),
               icon: Icon(Icons.arrow_back)),
         ),
-        body: Padding(
+        body: partition(context)    ),
+    );
+  }
+  partition(context){    final translate = AppLocalizations.of(context);
+ List<Legalformsdatamodel> partition_legalforms = [
+    Legalformsdatamodel(
+        title: translate!.partitionform1, Url: ""),  Legalformsdatamodel(
+        title: translate.partitionform2, Url: ""),  Legalformsdatamodel(
+        title: translate.partitionform3, Url: ""),  Legalformsdatamodel(
+        title: translate.partitionform4, Url: ""),  Legalformsdatamodel(
+        title: translate.partitionform5, Url: ""),  Legalformsdatamodel(
+        title:translate.partitionform6, Url: ""),  Legalformsdatamodel(
+        title: translate.partitionform7, Url: ""),  Legalformsdatamodel(
+        title:translate.partitionform8, Url: ""),  Legalformsdatamodel(
+        title: translate.partitionform9, Url: ""),  Legalformsdatamodel(
+        title: translate.partitionform10, Url: ""),  Legalformsdatamodel(
+        title: translate.partitionform11, Url: ""),
+       ];return Padding(
           padding: const EdgeInsets.only(top:12.0,bottom: 12),
           child: ListView.separated(
             physics: BouncingScrollPhysics(),
@@ -83,7 +90,7 @@ class _PartitionlegalformsState extends State<Partitionlegalforms> {
                         builder: (context) => AlertDialog(
                               elevation: 10,
                               content: Text(
-translate!.helptitle,                                style: hStyle,
+translate.helptitle,                                style: hStyle,
                               ),
                               contentPadding: EdgeInsets.only(
                                   top: 20, left: 20, right: 20, bottom: 10),
@@ -114,10 +121,9 @@ translate!.helptitle,                                style: hStyle,
              });
             },
           ),
-        ),
-      ),
-    );
-  }
+        );
+  
+}
 }
 
 

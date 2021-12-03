@@ -66,7 +66,7 @@ class _LegalState extends State<Legal> {
                   ListTile(
                     leading: Icon(Icons.logout, color: navy),
                     title: Text(
-                      translate!.forms1,
+                      translate.forms1,
                       style: hStyle,
                     ),
                     onTap: () => Navigator.pushReplacement(
@@ -75,18 +75,18 @@ class _LegalState extends State<Legal> {
                             builder: (context) => Trustlegalforms())),
                   ),
                   Divider(),
-                  ListTile(
-                    leading: Icon(Icons.logout, color: navy),
-                    title: Text(
-                      translate.forms2,
-                      style: hStyle,
-                    ),
-                    onTap: () => Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Willlegalforms())),
-                  ),
-                  Divider(),
+                  // ListTile(
+                  //   leading: Icon(Icons.logout, color: navy),
+                  //   title: Text(
+                  //     translate.forms2,
+                  //     style: hStyle,
+                  //   ),
+                  //   onTap: () => Navigator.pushReplacement(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //           builder: (context) => Willlegalforms())),
+                  // ),
+                  // Divider(),
                   ListTile(
                     leading: Icon(Icons.logout, color: navy),
                     title: Text(

@@ -8,10 +8,20 @@ class NRI extends StatelessWidget {
   const NRI({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {    final translate = AppLocalizations.of(context);
+  Widget build(BuildContext context) {
+    final translate = AppLocalizations.of(context);
+ void onback() {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => Mainhome()));
+  }
 
-    return SafeArea(
-      child: Scaffold(  appBar: AppBar(
+    return WillPopScope(  onWillPop: () {
+        onback();
+        return Future.value(false);
+      },
+      child:SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
             backgroundColor: navy,
             title: Text(
               translate!.navkey4,
@@ -25,7 +35,9 @@ class NRI extends StatelessWidget {
                   Icons.arrow_back,
                   color: white,
                 )),
-          ),),
+          ),
+        ),
+      ),
     );
   }
 }

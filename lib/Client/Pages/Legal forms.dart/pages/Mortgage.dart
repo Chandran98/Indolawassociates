@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/model/Legalforms_data_models.dart';
 import 'package:indolawassociates/Client/Pages/bottomnavybar/Legalforms.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
@@ -13,30 +15,7 @@ class Mortgagelegalforms extends StatefulWidget {
 }
 
 class _MortgagelegalformsState extends State<Mortgagelegalforms> {
-  List<Legalformsdatamodel> mortgage_legalforms = [
-    Legalformsdatamodel(
-        title: "Agreement reducing the rate of interest in mortgage deed ",
-        Url: ""),
-    Legalformsdatamodel(
-        title:
-            "Another deed of reconveyance for reconvening mortgaged property ",
-        Url: ""),
-    Legalformsdatamodel(
-        title: "Deed creating charge on the property ", Url: ""),
-    Legalformsdatamodel(title: "Mortgage by conditional sale ", Url: ""),
-    Legalformsdatamodel(title: "Reconveyance deed ", Url: ""),
-    Legalformsdatamodel(
-        title: "Record or mortgage by deposit of title deeds ", Url: ""),
-    Legalformsdatamodel(title: "Second Mortgage ", Url: ""),
-    Legalformsdatamodel(
-        title:
-            "Simple mortgage by manager of joint Hindu family for legal necessity ",
-        Url: ""),
-    Legalformsdatamodel(title: "Simple mortgage deed ", Url: ""),
-    Legalformsdatamodel(
-        title: "Simple mortgage deed in the form of a deed ", Url: ""),
-  ];
-
+ 
   void onback() {
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => Legal()));
@@ -60,13 +39,42 @@ class _MortgagelegalformsState extends State<Mortgagelegalforms> {
         appBar: AppBar(
           toolbarHeight: 60,
           backgroundColor: navy,
-          title: Text("Legal Forms-Mortgage Laws"),
+          title: FittedBox(child: Text(translate!.forms10,
+              style: GoogleFonts.mulish(
+                  color: white, fontWeight: FontWeight.w500, fontSize: 18.sp),)),
           leading: IconButton(
               onPressed: () => Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (context) => Legal())),
               icon: Icon(Icons.arrow_back)),
         ),
-        body: Padding(
+        body: mortgage(context)),
+    );
+  }
+  mortgage(context){    final translate = AppLocalizations.of(context);
+
+     List<Legalformsdatamodel> mortgage_legalforms = [
+    Legalformsdatamodel(
+        title: translate!.mortgageform1,
+        Url: ""),
+    Legalformsdatamodel(
+        title:
+             translate.mortgageform2,
+        Url: ""),
+    Legalformsdatamodel(
+        title: translate.mortgageform3, Url: ""),
+    Legalformsdatamodel(title: translate.mortgageform4, Url: ""),
+    Legalformsdatamodel(title: translate.mortgageform5, Url: ""),
+    Legalformsdatamodel(
+        title: translate.mortgageform6, Url: ""),
+    Legalformsdatamodel(title: translate.mortgageform7, Url: ""),
+    Legalformsdatamodel(
+        title:translate.mortgageform8,
+        Url: ""),
+    Legalformsdatamodel(title: translate.mortgageform9, Url: ""),
+    Legalformsdatamodel(
+        title: translate.mortgageform10, Url: ""),
+  ];
+return Padding(
           padding: const EdgeInsets.only(top: 12.0, bottom: 12),
           child: ListView.separated(
             physics: BouncingScrollPhysics(),
@@ -88,7 +96,7 @@ class _MortgagelegalformsState extends State<Mortgagelegalforms> {
                         builder: (context) => AlertDialog(
                               elevation: 10,
                               content: Text(
-translate!.helptitle,                                style: hStyle,
+translate.helptitle,                                style: hStyle,
                               ),
                               contentPadding: EdgeInsets.only(
                                   top: 20, left: 20, right: 20, bottom: 10),
@@ -119,8 +127,7 @@ translate!.helptitle,                                style: hStyle,
                   });
             },
           ),
-        ),
-      ),
-    );
+        );
+      
   }
 }

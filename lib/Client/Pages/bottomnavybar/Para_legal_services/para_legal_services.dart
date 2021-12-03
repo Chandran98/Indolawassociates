@@ -176,207 +176,209 @@ class _ParalegalPageState extends State<ParalegalPage> {
         onback();
         return Future.value(false);
       },
-      child: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: MediaQuery.of(context).size.height * 0.065.h,
-          backgroundColor: white,
-          title: Text(widget.Paralegaltitle,
-              style: GoogleFonts.mulish(
-                  fontSize: 18.5.sp, fontWeight: FontWeight.w500, color: navy)),
-          leading: IconButton(
-              onPressed: () => Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => Paralegal())),
-              icon: Icon(
-                Icons.arrow_back,
-                color: navy,
-              )),
-        ),
-        floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: gold,
-          onPressed: () => showModalBottomSheet(
-              shape: RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(25))),
-              enableDrag: false,
-              isScrollControlled: true,
-              context: context,
-              builder: (context) => SingleChildScrollView(
-                    child: Container(
-                      padding: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: buildformsheet(),
-                    ),
-                  )),
-          label: Text(
-            translate!.apply,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            toolbarHeight: MediaQuery.of(context).size.height * 0.065.h,
+            backgroundColor: white,
+            title: Text(widget.Paralegaltitle,
+                style: GoogleFonts.mulish(
+                    fontSize: 18.5.sp, fontWeight: FontWeight.w500, color: navy)),
+            leading: IconButton(
+                onPressed: () => Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => Paralegal())),
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: navy,
+                )),
           ),
-          icon: Icon(Icons.arrow_back_ios_new_rounded),
-        ),
-        body: SingleChildScrollView(
-            child: Stack(
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.25.h,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/intro_screen3.jpg"),
-                      fit: BoxFit.cover)),
-            ),
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(vertical:500.0),
-            //   child:
-            // )
-            Padding(
-              padding: const EdgeInsets.only(top: 170.0),
-              child: Container(
-                height: MediaQuery.of(context).size.height * 0.58.h,
-                decoration: BoxDecoration(
-                    color: white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(22),
-                      topRight: Radius.circular(22),
+          floatingActionButton: FloatingActionButton.extended(
+            backgroundColor: gold,
+            onPressed: () => showModalBottomSheet(
+                shape: RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(25))),
+                enableDrag: false,
+                isScrollControlled: true,
+                context: context,
+                builder: (context) => SingleChildScrollView(
+                      child: Container(
+                        padding: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).viewInsets.bottom),
+                        child: buildformsheet(),
+                      ),
                     )),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+            label: Text(
+              translate!.apply,
+            ),
+            icon: Icon(Icons.arrow_back_ios_new_rounded),
+          ),
+          body: SingleChildScrollView(
+              child: Stack(
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height * 0.25.h,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/intro_screen3.jpg"),
+                        fit: BoxFit.cover)),
+              ),
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(vertical:500.0),
+              //   child:
+              // )
+              Padding(
+                padding: const EdgeInsets.only(top: 170.0),
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.58.h,
+                  decoration: BoxDecoration(
+                      color: white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(22),
+                        topRight: Radius.circular(22),
+                      )),
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 30, 20, 20),
-                    child: Column(
-                      children: [
-                        Text(
-                          widget.Paralegaltitle,
-                          style: bStyle,
-                          textScaleFactor: 1,
-                        ),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 30, 20, 20),
+                      child: Column(
+                        children: [
+                          Text(
+                            widget.Paralegaltitle,
+                            style: bStyle,
+                            textScaleFactor: 1,
+                          ),
 
-                        // Text("Experience ${toplawyerlist.Experience}",style: hStyle,),
-                        // Text(
-                        //   "toplawyerlist.type",
-                        //     style: GoogleFonts.mulish(
-                        //         fontWeight: FontWeight.w600,
-                        //         fontSize: 16,
-                        //         color: navy)),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.03.h,
-                        ),
-                        Text(
-                          widget.paralegalcontent,
-                          style: GoogleFonts.mulish(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13.sp,
-                              color: navy),
-                          textAlign: TextAlign.justify,
-                          textScaleFactor: 1,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.02.h,
-                            ),
-                            Text(
-                              translate.drawerkey5,
-                              style: GoogleFonts.mulish(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 17.sp,
-                                  color: gold),
-                              textAlign: TextAlign.justify,
-                              textScaleFactor: 1,
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.015.h,
-                            ),
-                            InkWell(
-                              onTap: () {
-                                launcher("mailto: indolawassociates@gmail.com");
-                              },
-                              child: Row(
+                          // Text("Experience ${toplawyerlist.Experience}",style: hStyle,),
+                          // Text(
+                          //   "toplawyerlist.type",
+                          //     style: GoogleFonts.mulish(
+                          //         fontWeight: FontWeight.w600,
+                          //         fontSize: 16,
+                          //         color: navy)),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.03.h,
+                          ),
+                          Text(
+                            widget.paralegalcontent,
+                            style: GoogleFonts.mulish(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13.sp,
+                                color: navy),
+                            textAlign: TextAlign.justify,
+                            textScaleFactor: 1,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.02.h,
+                              ),
+                              Text(
+                                translate.drawerkey5,
+                                style: GoogleFonts.mulish(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17.sp,
+                                    color: gold),
+                                textAlign: TextAlign.justify,
+                                textScaleFactor: 1,
+                              ),
+                              SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.015.h,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  launcher("mailto: indolawassociates@gmail.com");
+                                },
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.mail,
+                                      color: navy,
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      "info@indolawassociates.com",
+                                      style: GoogleFonts.mulish(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 15.sp,
+                                          color: navy),
+                                      textAlign: TextAlign.justify,
+                                      textScaleFactor: 1,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.01.h,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  launcher("tel: 8940383000");
+                                },
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.call_sharp,
+                                      color: navy,
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      "8940383000",
+                                      style: GoogleFonts.mulish(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 15.sp,
+                                          color: navy),
+                                      textAlign: TextAlign.justify,
+                                      textScaleFactor: 1,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.01.h,
+                              ),
+                              Row(
                                 children: [
                                   Icon(
-                                    Icons.mail,
+                                    Icons.timer_rounded,
                                     color: navy,
                                   ),
                                   SizedBox(
                                     width: 10,
                                   ),
-                                  Text(
-                                    "info@indolawassociates.com",
-                                    style: GoogleFonts.mulish(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 15.sp,
-                                        color: navy),
-                                    textAlign: TextAlign.justify,
-                                    textScaleFactor: 1,
+                                  FittedBox(
+                                    child: Text(
+                                      "${translate.workingshift}: 8am-6pm",
+                                      style: GoogleFonts.mulish(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 15.sp,
+                                          color: navy),
+                                      textAlign: TextAlign.justify,
+                                      textScaleFactor: 1,
+                                    ),
                                   ),
                                 ],
                               ),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.01.h,
-                            ),
-                            InkWell(
-                              onTap: () {
-                                launcher("tel: 8940383000");
-                              },
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.call_sharp,
-                                    color: navy,
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    "8940383000",
-                                    style: GoogleFonts.mulish(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 15.sp,
-                                        color: navy),
-                                    textAlign: TextAlign.justify,
-                                    textScaleFactor: 1,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.01.h,
-                            ),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.timer_rounded,
-                                  color: navy,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                FittedBox(
-                                  child: Text(
-                                    "${translate.workingshift}: 8am-6pm",
-                                    style: GoogleFonts.mulish(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 15.sp,
-                                        color: navy),
-                                    textAlign: TextAlign.justify,
-                                    textScaleFactor: 1,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        )
-                      ],
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
-        )),
+            ],
+          )),
+        ),
       ),
     );
   }

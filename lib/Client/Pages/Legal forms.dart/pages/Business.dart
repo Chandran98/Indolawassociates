@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/model/Legalforms_data_models.dart';
 import 'package:indolawassociates/Client/Pages/bottomnavybar/Legalforms.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
@@ -38,7 +40,11 @@ class _BusinesslegalformsState extends State<Businesslegalforms> {
           appBar: AppBar(
             toolbarHeight: 60,
             backgroundColor: navy,
-            title: Text("Legal Forms-Business"),
+            title: FittedBox(
+              child: Text(translate!.forms3,
+                style: GoogleFonts.mulish(
+                    color: white, fontWeight: FontWeight.w500, fontSize: 18.sp),),
+            ),
             leading: IconButton(
                 onPressed: () => Navigator.pushReplacement(
                     context, MaterialPageRoute(builder: (context) => Legal())),
@@ -108,42 +114,40 @@ class _BusinesslegalformsState extends State<Businesslegalforms> {
     final translate = AppLocalizations.of(context);
 
     List<Legalformsdatamodel> businesslegalforms = [
+      Legalformsdatamodel(title: translate!.businessform1, Url: ""),
+      Legalformsdatamodel(title: translate.businessform2, Url: ""),
       Legalformsdatamodel(
-          title:
-              "Administration by Creditor on Behalf of Himself and All other Creditors",Url: ""),
-      Legalformsdatamodel(title: "Administration by Specific Legatee", Url: ""),
-      Legalformsdatamodel(
-          title: "Affidavit for Condo Nation of Delay in filling an appeal",
+          title: translate.businessform3,
           Url: ""),
-      Legalformsdatamodel(title: "Against Surety for payment of Rent", Url: ""),
+      Legalformsdatamodel(title: translate.businessform4, Url: ""),
       Legalformsdatamodel(
-          title: "Against a Builder for Defective Workmanship", Url: ""),
+          title: translate.businessform5, Url: ""),
       Legalformsdatamodel(
-          title: "Against a Fraudulent Purchaser and his Trans fee with Notice",
+          title: translate.businessform6,
           Url: ""),
-      Legalformsdatamodel(title: "An Injunction restricting Waste", Url: ""),
+      Legalformsdatamodel(title: translate.businessform7, Url: ""),
       Legalformsdatamodel(
-          title: "Breach of Agreements to Purchase land", Url: ""),
-      Legalformsdatamodel(title: "Carrying on Noxious Manufacture", Url: ""),
+          title: translate.businessform8, Url: ""),
+      Legalformsdatamodel(title: translate.businessform9, Url: ""),
       Legalformsdatamodel(
-          title: "Against a Fraudulent Purchaser and his Trans fee with Notice",
+          title:translate.businessform9,
           Url: ""),
-      Legalformsdatamodel(title: "An Injunction restricting Waste", Url: ""),
+      Legalformsdatamodel(title: translate.businessform10, Url: ""),
       Legalformsdatamodel(
-          title: "Breach of Agreements to Purchase land", Url: ""),
-      Legalformsdatamodel(title: "Carrying on noxious Manufacture", Url: ""),
-      Legalformsdatamodel(title: "Defence In Any Suit for debt", Url: ""),
+          title: translate.businessform11, Url: ""),
+      Legalformsdatamodel(title: translate.businessform12, Url: ""),
+      Legalformsdatamodel(title: translate.businessform13, Url: ""),
       Legalformsdatamodel(
-          title: "Defence in administration suit by Pecuniary Legatee",
+          title: translate.businessform14,
           Url: ""),
-      Legalformsdatamodel(title: "Defence in All Suits for Wrongs", Url: ""),
+      Legalformsdatamodel(title: translate.businessform15, Url: ""),
       Legalformsdatamodel(
-          title: "Defence in Suits for Detention of Goods", Url: ""),
+          title: translate.businessform16, Url: ""),
       Legalformsdatamodel(
-          title: "Defence in Suits for Goods Sold and Delivered", Url: ""),
+          title:translate.businessform17, Url: ""),
       Legalformsdatamodel(
-          title: "Defence in Suits for Infringement of Copyright", Url: ""),
-      Legalformsdatamodel(title: "Defence in Suits on Bonds", Url: ""),
+          title: translate.businessform18, Url: ""),
+      Legalformsdatamodel(title: translate.businessform19, Url: ""),
     ];
     return Padding(
       padding: const EdgeInsets.only(top: 12.0, bottom: 12),
@@ -167,7 +171,7 @@ class _BusinesslegalformsState extends State<Businesslegalforms> {
                     builder: (context) => AlertDialog(
                           elevation: 10,
                           content: Text(
-                            translate!.helptitle,
+                            translate.helptitle,
                             style: hStyle,
                           ),
                           contentPadding: EdgeInsets.only(

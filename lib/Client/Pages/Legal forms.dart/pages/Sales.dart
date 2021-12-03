@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/model/Legalforms_data_models.dart';
 import 'package:indolawassociates/Client/Pages/bottomnavybar/Legalforms.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
-import 'package:url_launcher/url_launcher.dart';import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class saleslegalforms extends StatefulWidget {
   saleslegalforms({Key? key}) : super(key: key);
@@ -12,116 +15,11 @@ class saleslegalforms extends StatefulWidget {
 }
 
 class _saleslegalformsState extends State<saleslegalforms> {
-  List<Legalformsdatamodel> sales_legalforms = [
-    Legalformsdatamodel(
-        title:
-            "Agreement for sale for purchase of a plot for constructing flats ",
-        Url: ""),
-    Legalformsdatamodel(title: "Agreements for sale of a home ", Url: ""),
-    Legalformsdatamodel(
-        title:
-            "Agreement for sale of a house when purchase money is to be paid in installments                  ",
-        Url: ""),
-    Legalformsdatamodel(title: "Agreement for sale of an apartment ", Url: ""),
-    Legalformsdatamodel(
-        title:
-            "Agreement for sale of flat by a flat purchase, when co-operative society has not been formed and flat is not ready ",
-        Url: ""),
-    Legalformsdatamodel(
-        title: "Agreement for sale of free hold property ", Url: ""),
-    Legalformsdatamodel(title: "Agreement for sale of future goods ", Url: ""),
-    Legalformsdatamodel(title: "Agreement for sale of goods ", Url: ""),
-    Legalformsdatamodel(
-        title: "Agreement for sale of goods (C.I.F Basis) ", Url: ""),
-    Legalformsdatamodel(
-        title: "Defence In Any Suit for debt (F.O.B Basis) ", Url: ""),
-    Legalformsdatamodel(
-        title: "Agreement for sale of goods under the buyer's trade mark ",
-        Url: ""),
-    Legalformsdatamodel(
-        title: "Agreement for sale of leasehold property ", Url: ""),
-    Legalformsdatamodel(
-        title: "Agreement for sale of mortgaged house ", Url: ""),
-    Legalformsdatamodel(title: "Agreement for sale of ready goods ", Url: ""),
-    Legalformsdatamodel(
-        title: "Agreements for transfer of developments rights ", Url: ""),
-    Legalformsdatamodel(
-        title: "Agreements for sale technical equipment ", Url: ""),
-    Legalformsdatamodel(title: "Deed in respect of leasehold ", Url: ""),
-    Legalformsdatamodel(title: "Deed of a house ", Url: ""),
-    Legalformsdatamodel(title: "Deed of apartment ", Url: ""),
-    Legalformsdatamodel(
-        title:
-            "Deed of conveyance (where the consideration is payable by installments ",
-        Url: ""),
-    Legalformsdatamodel(title: "Deed of conveyance by mortgage ", Url: ""),
-    Legalformsdatamodel(
-        title: "Deed of conveyance in favor of mortgage ", Url: ""),
-    Legalformsdatamodel(
-        title:
-            "Deed of conveyance of a property exclusive of a flat or floor in the building ",
-        Url: ""),
-    Legalformsdatamodel(title: "Deed of apartment ", Url: ""),
-    Legalformsdatamodel(
-        title:
-            "Deed of conveyance (where the consideration is payable by installments ",
-        Url: ""),
-    Legalformsdatamodel(title: "Deed of conveyance by mortgage ", Url: ""),
-    Legalformsdatamodel(
-        title: "Deed of conveyance in favor of mortgage ", Url: ""),
-    Legalformsdatamodel(
-        title:
-            "Deed of conveyance of a property exclusive of a flat or floor in the building ",
-        Url: ""),
-    Legalformsdatamodel(
-        title: "Deed of conveyance of an interest in property ", Url: ""),
-    Legalformsdatamodel(
-        title: "Deed of conveyance of freehold property ", Url: ""),
-    Legalformsdatamodel(title: "Deed of conveyance of reversion ", Url: ""),
-    Legalformsdatamodel(
-        title: "Deed of conveyance subject to right of way ", Url: ""),
-    Legalformsdatamodel(
-        title: "Development agreement by the landlords in front of a builder ",
-        Url: ""),
-    Legalformsdatamodel(
-        title:
-            "Form for obtaining income-tax clearance certificate under section 230a, income-tax act,1961 form no.34a ",
-        Url: ""),
-    Legalformsdatamodel(
-        title:
-            "Form of agreement to be entered between promoter and purchaser of flat ",
-        Url: ""),
-    Legalformsdatamodel(
-        title:
-            "Particulars of conditions of sale by auction of moveable property ",
-        Url: ""),
-    Legalformsdatamodel(
-        title: "Sales by official liquidator of the company ", Url: ""),
-    Legalformsdatamodel(
-        title:
-            "Sales deed by liquidator in the voluntary winding up of the company ",
-        Url: ""),
-    Legalformsdatamodel(title: "Sales deed of land with buildings ", Url: ""),
-    Legalformsdatamodel(
-        title: "Sales of a house by an executor appointed under will ",
-        Url: ""),
-    Legalformsdatamodel(
-        title: "Sales of property to various purchases as tenants in common ",
-        Url: ""),
-    Legalformsdatamodel(
-        title: "Sales of property to various purchasers in different portions ",
-        Url: ""),
-    Legalformsdatamodel(
-        title:
-            "Statement of transfer of immovable property for obtaining no-objection certificate from appointment authority income tax department form no.37-1 ",
-        Url: ""),
-  ];
-
   void onback() {
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => Legal()));
   }
-  
+
   launcher(command) async {
     if (await canLaunch(command)) {
       await launch(command);
@@ -130,9 +28,9 @@ class _saleslegalformsState extends State<saleslegalforms> {
     }
   }
 
-
   @override
-  Widget build(BuildContext context) {        final translate = AppLocalizations.of(context);
+  Widget build(BuildContext context) {
+    final translate = AppLocalizations.of(context);
 
     return WillPopScope(
       onWillPop: () {
@@ -140,68 +38,116 @@ class _saleslegalformsState extends State<saleslegalforms> {
         return Future.value(false);
       },
       child: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 60,
-          backgroundColor: navy,
-          title: Text("Legal Forms-Sales Laws"),
-          leading: IconButton(
-              onPressed: () => Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => Legal())),
-              icon: Icon(Icons.arrow_back)),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.only(top:12.0,bottom: 12),
-          child: ListView.separated(
-            physics: BouncingScrollPhysics(),
-            separatorBuilder: (context, index) {
-              return Divider();
-            },
-            itemCount: sales_legalforms.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                  leading: Icon(Icons.remove_red_eye, color: navy),
-                  title: Text(
-                    sales_legalforms[index].title,
-                    style: hStyle,
-                  ),
-                  // onTap: ()=>{launch(legalforms[index].Url)});
-                  onTap: () {       showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                              elevation: 10,
-                              content: Text(
-translate!.helptitle,                                style: hStyle,
-                              ),
-                              contentPadding: EdgeInsets.only(
-                                  top: 20, left: 20, right: 20, bottom: 10),
-                              actions: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10),
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.phone,
-                                        color: navy,
-                                      ),
-                                      FlatButton(
-                                        onPressed: () {
-                                          launcher("tel: 8940383000");
-                                        },
-                                        child: Text(
-                                          "8940383000",
-                                          style: hStyle,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ));
-             });
-            },
+          appBar: AppBar(
+            toolbarHeight: 60,
+            backgroundColor: navy,
+            title: FittedBox(child: Text(translate!.forms13,
+              style: GoogleFonts.mulish(
+                  color: white, fontWeight: FontWeight.w500, fontSize: 18.sp),)),
+            leading: IconButton(
+                onPressed: () => Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => Legal())),
+                icon: Icon(Icons.arrow_back)),
           ),
-        ),
+          body: sales(context)),
+    );
+  }
+
+  sales(context) {
+    final translate = AppLocalizations.of(context);
+    List<Legalformsdatamodel> sales_legalforms = [
+      Legalformsdatamodel(title: translate!.salesform1, Url: ""),
+      Legalformsdatamodel(title: translate.salesform2, Url: ""),
+      Legalformsdatamodel(title: translate.salesform3, Url: ""),
+      Legalformsdatamodel(title: translate.salesform4, Url: ""),
+      Legalformsdatamodel(title: translate.salesform5, Url: ""),
+      Legalformsdatamodel(title: translate.salesform6, Url: ""),
+      Legalformsdatamodel(title: translate.salesform7, Url: ""),
+      Legalformsdatamodel(title: translate.salesform8, Url: ""),
+      Legalformsdatamodel(title: translate.salesform9, Url: ""),
+      Legalformsdatamodel(title: translate.salesform10, Url: ""),
+      Legalformsdatamodel(title: translate.salesform11, Url: ""),
+      Legalformsdatamodel(title: translate.salesform12, Url: ""),
+      Legalformsdatamodel(title: translate.salesform13, Url: ""),
+      Legalformsdatamodel(title: translate.salesform14, Url: ""),
+      Legalformsdatamodel(title: translate.salesform15, Url: ""),
+      Legalformsdatamodel(title: translate.salesform16, Url: ""),
+      Legalformsdatamodel(title: translate.salesform17, Url: ""),
+      Legalformsdatamodel(title: translate.salesform18, Url: ""),
+      Legalformsdatamodel(title: translate.salesform19, Url: ""),
+      Legalformsdatamodel(title: translate.salesform20, Url: ""),
+      Legalformsdatamodel(title: translate.salesform21, Url: ""),
+      Legalformsdatamodel(title: translate.salesform22, Url: ""),
+      Legalformsdatamodel(title: translate.salesform23, Url: ""),
+      Legalformsdatamodel(title: translate.salesform24, Url: ""),
+      Legalformsdatamodel(title: translate.salesform25, Url: ""),
+      Legalformsdatamodel(title: translate.salesform26, Url: ""),
+      Legalformsdatamodel(title: translate.salesform27, Url: ""),
+      Legalformsdatamodel(title: translate.salesform28, Url: ""),
+      Legalformsdatamodel(title: translate.salesform29, Url: ""),
+      Legalformsdatamodel(title: translate.salesform30, Url: ""),
+      Legalformsdatamodel(title: translate.salesform31, Url: ""),
+      Legalformsdatamodel(title: translate.salesform32, Url: ""),
+      Legalformsdatamodel(title: translate.salesform33, Url: ""),
+      Legalformsdatamodel(title: translate.salesform34, Url: ""),
+      Legalformsdatamodel(title: translate.salesform35, Url: ""),
+      Legalformsdatamodel(title: translate.salesform36, Url: ""),
+      Legalformsdatamodel(title: translate.salesform37, Url: ""),
+      Legalformsdatamodel(title: translate.salesform38, Url: ""),
+    ];
+    return Padding(
+      padding: const EdgeInsets.only(top: 12.0, bottom: 12),
+      child: ListView.separated(
+        physics: BouncingScrollPhysics(),
+        separatorBuilder: (context, index) {
+          return Divider();
+        },
+        itemCount: sales_legalforms.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+              leading: Icon(Icons.remove_red_eye, color: navy),
+              title: Text(
+                sales_legalforms[index].title,
+                style: hStyle,
+              ),
+              // onTap: ()=>{launch(legalforms[index].Url)});
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                          elevation: 10,
+                          content: Text(
+                            translate.helptitle,
+                            style: hStyle,
+                          ),
+                          contentPadding: EdgeInsets.only(
+                              top: 20, left: 20, right: 20, bottom: 10),
+                          actions: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.phone,
+                                    color: navy,
+                                  ),
+                                  FlatButton(
+                                    onPressed: () {
+                                      launcher("tel: 8940383000");
+                                    },
+                                    child: Text(
+                                      "8940383000",
+                                      style: hStyle,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ));
+              });
+        },
       ),
     );
   }

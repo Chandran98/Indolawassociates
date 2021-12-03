@@ -310,7 +310,7 @@ class _LoginpageState extends State<Loginpage> {
                                 child: Text(
                                   !isLoading
                                       ? "Verify Your OTP "
-                                      : "Sending OTP code via SMS",
+                                      : "Verifying OTP code via SMS",
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.mulish(
                                       fontSize: 20.sp,
@@ -590,4 +590,7 @@ class _LoginpageState extends State<Loginpage> {
       displaySnackBar('Number not found, please sign up first');
     }
   }
+
+
+
 }

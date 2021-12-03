@@ -81,7 +81,8 @@ class _CatepageState extends State<Catepage> {
   ];
 
   @override
-  Widget build(BuildContext context) {    final translate = AppLocalizations.of(context);
+  Widget build(BuildContext context) {
+    final translate = AppLocalizations.of(context);
 
     return WillPopScope(
       onWillPop: () {
@@ -200,8 +201,8 @@ class _CatepageState extends State<Catepage> {
                                         color: white,
                                         size: 22,
                                       ),
-                                      Text(translate!.apply
-                                        ,
+                                      Text(
+                                        translate!.apply,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 13.sp,
@@ -246,8 +247,8 @@ class _CatepageState extends State<Catepage> {
                                   color: white,
                                   height: MediaQuery.of(context).size.height *
                                       0.2.h,
-                                  width: MediaQuery.of(context).size.height *
-                                      0.18.h,
+                                  width: MediaQuery.of(context).size.width *
+                                      0.38.h,
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -256,53 +257,61 @@ class _CatepageState extends State<Catepage> {
                                     children: [
                                       Row(
                                         children: [
-                                          Icon(Icons.check,color: gold),
+                                          Icon(Icons.check, color: gold),
                                           SizedBox(
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
-                                                0.03.w,
+                                                0.02.w,
                                           ),
-                                          Text(
-                                            widget.r1,
-                                            style: GoogleFonts.mulish(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 13.sp,
-                                                color: navy),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Icon(Icons.check,color: gold),SizedBox(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.03.w,
-                                          ),
-                                          Text(
-                                            widget.r3,
-                                            style: GoogleFonts.mulish(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 13.sp,
-                                                color: navy),
+                                          Expanded(
+                                            child: Text(
+                                              widget.r1,
+                                              style: GoogleFonts.mulish(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 11.sp,
+                                                  color: navy),
+                                            ),
                                           ),
                                         ],
                                       ),
                                       Row(
                                         children: [
-                                          Icon(Icons.check,color: gold),SizedBox(
+                                          Icon(Icons.check, color: gold),
+                                          SizedBox(
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
-                                                0.03.w,
+                                                0.02.w,
                                           ),
-                                          Text(
-                                            widget.r5,
-                                            style: GoogleFonts.mulish(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 13.sp,
-                                                color: navy),
+                                          Expanded(
+                                            child: Text(
+                                              widget.r3,
+                                              style: GoogleFonts.mulish(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 11.sp,
+                                                  color: navy),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Icon(Icons.check, color: gold),
+                                          SizedBox(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.02.w,
+                                          ),
+                                          Expanded(
+                                            child: Text(
+                                              widget.r5,
+                                              style: GoogleFonts.mulish(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 11.sp,
+                                                  color: navy),
+                                            ),
                                           ),
                                         ],
                                       )
@@ -311,8 +320,8 @@ class _CatepageState extends State<Catepage> {
                                 ),
                                 Container(
                                   color: white,
-                                  width: MediaQuery.of(context).size.height *
-                                      0.179.h,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.4.w,
                                   height: MediaQuery.of(context).size.height *
                                       0.2.h,
                                   child: Column(
@@ -323,52 +332,64 @@ class _CatepageState extends State<Catepage> {
                                     children: [
                                       Row(
                                         children: [
-                                          Icon(Icons.check,color: gold),SizedBox(
+                                          Icon(Icons.check, color: gold),
+                                          SizedBox(
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
-                                                0.03.w,
+                                                0.02.w,
                                           ),
-                                          Text(
-                                            widget.r2,
-                                            style: GoogleFonts.mulish(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 13.sp,
-                                                color: navy),
+                                          Expanded(
+                                            child: Text(
+                                              widget.r2,
+                                              style: GoogleFonts.mulish(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 11.sp,
+                                                  color: navy),
+                                            ),
                                           ),
                                         ],
                                       ),
                                       Row(
                                         children: [
-                                          Icon(Icons.check,color: gold),SizedBox(
+                                          Icon(Icons.check, color: gold),
+                                          SizedBox(
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
-                                                0.03.w,
+                                                0.02.w,
                                           ),
-                                          Text(
-                                            widget.r4,
-                                            style: GoogleFonts.mulish(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 13.sp,
-                                                color: navy),
+                                          Expanded(
+                                            child: Text(
+                                              widget.r4,
+                                              style: GoogleFonts.mulish(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 11.sp,
+                                                  color: navy),
+                                            ),
                                           ),
                                         ],
                                       ),
                                       Row(
                                         children: [
-                                          Icon(Icons.check,color: gold,),SizedBox(
+                                          Icon(
+                                            Icons.check,
+                                            color: gold,
+                                          ),
+                                          SizedBox(
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
-                                                0.03.w,
+                                                0.02.w,
                                           ),
-                                          Text(
-                                            widget.r6,
-                                            style: GoogleFonts.mulish(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 13.sp,
-                                                color: navy),
+                                          Expanded(
+                                            child: Text(
+                                              widget.r6,
+                                              style: GoogleFonts.mulish(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 11.sp,
+                                                  color: navy),
+                                            ),
                                           ),
                                         ],
                                       )

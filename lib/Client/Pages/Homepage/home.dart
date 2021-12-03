@@ -5,15 +5,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/Pages/Categories.dart/Categories_Pages.dart';
-import 'package:indolawassociates/Client/Pages/Homepage/Maps.dart';
-import 'package:indolawassociates/Client/Pages/Register_Login_screen/Sign_Up/dummy.dart';
 import 'package:indolawassociates/Client/Pages/darwerlist.dart/Offers.dart';
 import 'package:indolawassociates/Client/components/Card_details.dart';
-import 'package:indolawassociates/Client/components/lawyer_card.dart';
+import 'package:indolawassociates/Client/components/lawyers/dummy2.dart';
+import 'package:indolawassociates/Client/Extra/lawyer_card.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'Notification.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -21,9 +19,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-
-  
   launcher(command) async {
     if (await canLaunch(command)) {
       await launch(command);
@@ -31,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
       print("");
     }
   }
+
   final List<Toplawyerlist> topcom = [
     Toplawyerlist(
         name: "Amos Athisayaraj",
@@ -62,7 +58,6 @@ class _HomeScreenState extends State<HomeScreen> {
         type: 'ILA Lawyer',
         Image: 'assets/images/flaw.png',
         Experience: "1yrs"),
-  
     Toplawyerlist(
         name: "Vivek",
         type: 'ILA Lawyer',
@@ -72,12 +67,12 @@ class _HomeScreenState extends State<HomeScreen> {
         name: "Rajkumar",
         type: 'ILA Lawyer',
         Image: 'assets/images/malelaw.png',
-        Experience: "1yrs"),];
+        Experience: "1yrs"),
+  ];
   final List<String> slider = [
     "assets/images/01.jpg",
     "assets/images/02.jpg",
     "assets/images/03.jpg",
-    
   ];
   List<Widget> cslide() {
     return slider
@@ -97,14 +92,20 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-        final translate = AppLocalizations.of(context);
+    final translate = AppLocalizations.of(context);
 
     return Scaffold(
       backgroundColor: white,
-      floatingActionButton: FloatingActionButton.extended(label:Text(translate!.quickcall) ,icon: Icon(Icons.call,size: 20.r,),
+      floatingActionButton: FloatingActionButton.extended(
+          label: Text(translate!.quickcall),
+          icon: Icon(
+            Icons.call,
+            size: 20.r,
+          ),
           backgroundColor: navy,
-        
-          onPressed: () {launcher("tel: 8940383000");}),
+          onPressed: () {
+            launcher("tel: 8940383000");
+          }),
       body: DoubleBackToCloseApp(
         snackBar: const SnackBar(
           backgroundColor: navy,
@@ -114,7 +115,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         child: SafeArea(
-          child: SingleChildScrollView(physics: BouncingScrollPhysics(),
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
             child: Column(
               children: [
                 Container(
@@ -123,12 +125,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                          child: Row(                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   Container(
                                     child: IconButton(
@@ -144,9 +148,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                   // Container(height: MediaQuery.of(context).size.height*0.1.h,width: MediaQuery.of(context).size.width*0.3.w,
                                   //   child:Image.asset("assets/images/ILA_Logo1.png")
                                   // ),
-                                  
                                 ],
-                              ),Container(
+                              ),
+                              Container(
                                 child: IconButton(
                                   iconSize: 20.r,
                                   color: white,
@@ -157,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   onPressed: () => Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Maped())),
+                                          builder: (context) => Lawyerlist())),
                                 ),
                               ),
                             ],
@@ -169,7 +173,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 30),
                           child: Text(
-                            translate.hometitle,textScaleFactor: 1,
+                            translate.hometitle,
+                            textScaleFactor: 1,
                             style: GoogleFonts.mulish(
                               fontWeight: FontWeight.bold,
                               fontSize: 22.sp,
@@ -191,7 +196,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             items: cslide(),
                             options: CarouselOptions(
                               autoPlayAnimationDuration: Duration(seconds: 1),
-                              height: MediaQuery.of(context).size.height * 0.2.h,
+                              height:
+                                  MediaQuery.of(context).size.height * 0.2.h,
                               enlargeCenterPage: true,
                               autoPlay: true,
                               viewportFraction: 0.8,
@@ -240,24 +246,25 @@ class _HomeScreenState extends State<HomeScreen> {
                         //             Lawyercard(toplawyerlist: topcom[index]),
                         //       )),
                         // ),
-                        
                       ],
                     ),
                   ),
-                ),Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      // child: Container(
-                      //     color: white,
-                      //     height: MediaQuery.of(context).size.height * 0.5.h,
-                          child: ListView.builder(shrinkWrap: true,
-          
-                            physics: BouncingScrollPhysics(),
-                            scrollDirection: Axis.vertical,
-                            itemCount: topcom.length,
-                            itemBuilder: (context, index) =>
-                                Lawyercard(toplawyerlist: topcom[index]),
-                          )
-                          // ),
+                ),
+                Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    // child: Container(
+                    //     color: white,
+                    //     height: MediaQuery.of(context).size.height * 0.5.h,
+                    child: Lawyerlist()
+                    // ListView.builder(
+                    //   shrinkWrap: true,
+                    //   physics: BouncingScrollPhysics(),
+                    //   scrollDirection: Axis.vertical,
+                    //   itemCount: topcom.length,
+                    //   itemBuilder: (context, index) =>
+                    //       Lawyercard(toplawyerlist: topcom[index]),
+                    // )
+                    // ),
                     ),
               ],
             ),

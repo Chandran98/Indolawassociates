@@ -1,10 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../main.dart';
-import 'Card_details.dart';
+import '../components/Card_details.dart';
 
 class Lawyercard extends StatelessWidget {
   const Lawyercard({Key? key, required this.toplawyerlist}) : super(key: key);
@@ -159,7 +160,8 @@ class Lawyercard extends StatelessWidget {
                 context, MaterialPageRoute(builder: (context) => Mainhome())),
           ),
         ),
-        body:Container(child: SingleChildScrollView(
+        body:Container(
+          child: SingleChildScrollView(
           child: Column(children: [  Padding(
             padding: const EdgeInsets.only(top:3.0),
             child: Container(
@@ -210,7 +212,8 @@ class Lawyercard extends StatelessWidget {
                   ),
                 ),
                         ]),
-        ))
+        ),
+        )
         
         
         
@@ -359,6 +362,12 @@ class Lawyercard extends StatelessWidget {
       ),
     );
   }
+
+// getlawyers(){
+//   FirebaseFirestore.instance.collection("LawyersDB").get().then((value) {
+//     setsta
+//   });
+// }
 }
 
 // class HeaderCurvedContainer extends CustomPainter {

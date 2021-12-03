@@ -1,14 +1,13 @@
-import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/Pages/Homepage/drawer.dart';
-import 'package:indolawassociates/Client/model/careersmodel.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:intl/intl.dart';
 
 class Careers extends StatefulWidget {
   const Careers({Key? key}) : super(key: key);
@@ -19,8 +18,6 @@ class Careers extends StatefulWidget {
 
 class _CareersState extends State<Careers> {
   GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-
-  late Careersmodel _careersmodel;
 
   var careersopt;
   List careersoptlist = ["Yes", "No"];
@@ -35,26 +32,43 @@ class _CareersState extends State<Careers> {
   final _contactaddresscontroller = TextEditingController();
   final _dobcontroller = TextEditingController();
 
+  @override
+  void dispose() {
+    // ignore: todo
+    // TODO: implement dispose
+    super.dispose();
+    _namecontroller.dispose();
+    _employeeidcontroller.dispose();
+    _specializationcontroller.dispose();
+    _mobilecontroller.dispose();
+    _experiencecontroller.dispose();
+    _preferedareacontroller.dispose();
+    _addresscontroller.dispose();
+    _contactaddresscontroller.dispose();
+    _dobcontroller.dispose();
+  }
+
   void onback() {
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => Maindrawer()));
   }
 
-  DateTime _datetime = DateTime.now();
+  // DateTime _datetime = DateTime.now();
+  // var myformat = DateFormat("dd-MM-yyyy");
 
-  Future<Null> selectTimePicker(context) async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: _datetime,
-        firstDate: DateTime(1900),
-        lastDate: DateTime(2500));
+  // Future<Null> selectTimePicker(context) async {
+  //   final DateTime? picked = await showDatePicker(
+  //       context: context,
+  //       initialDate: _datetime,
+  //       firstDate: DateTime(1900),
+  //       lastDate: DateTime(2500));
 
-    if (picked != null && picked != _datetime) {
-      setState(() {
-        _datetime = picked;
-      });
-    }
-  }
+  //   if (picked != null && picked != _datetime) {
+  //     setState(() {
+  //       _datetime = picked;
+  //     });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +97,9 @@ class _CareersState extends State<Careers> {
                     ),
                   )),
           label: Text(
-            "Join Us Now",
+            translate!.career1,
+            style: GoogleFonts.mulish(
+                color: white, fontWeight: FontWeight.w500, fontSize: 13.sp),
           ),
           icon: Icon(Icons.arrow_back_ios_new_rounded),
         ),
@@ -91,7 +107,7 @@ class _CareersState extends State<Careers> {
           elevation: 0,
           backgroundColor: white,
           title: Text(
-            translate!.drawerkey7,
+            translate.drawerkey7,
             style: GoogleFonts.mulish(
                 color: navy, fontWeight: FontWeight.w500, fontSize: 20),
           ),
@@ -104,35 +120,35 @@ class _CareersState extends State<Careers> {
               )),
         ),
         body: SafeArea(
-          child: SingleChildScrollView(
-              child: Stack(
-            children: [
-              Container(
-                height: MediaQuery.of(context).size.height * 0.25.h,
+            child: Stack(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 0.25.h,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("assets/images/COD.jpg"),
+                      fit: BoxFit.fill)),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 200.0),
+              child: Container(
+                width: MediaQuery.of(context).size.width * 1.h,
+                height: MediaQuery.of(context).size.height * 0.56.h,
                 decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/COD.jpg"),
-                        fit: BoxFit.fill)),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 200.0),
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 1.h,
-                  height: MediaQuery.of(context).size.height * 0.56.h,
-                  decoration: BoxDecoration(
-                      color: white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(22),
-                        topRight: Radius.circular(22),
-                      )),
+                    color: white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(22),
+                      topRight: Radius.circular(22),
+                    )),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 30, 20, 20),
+                    padding: const EdgeInsets.fromLTRB(20, 30, 20, 20),
+                    child: SingleChildScrollView(
                       child: Column(
                         children: [
                           Text(
-                            "Lawyer ",
+                            translate.career2,
                             style: bStyle,
                             textScaleFactor: 1,
                           ),
@@ -148,7 +164,7 @@ class _CareersState extends State<Careers> {
                                 MediaQuery.of(context).size.height * 0.015.h,
                           ),
                           Text(
-                            "Chennai, Tamilnadu",
+                            translate.career3,
                             style: GoogleFonts.mulish(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 15.sp,
@@ -161,14 +177,16 @@ class _CareersState extends State<Careers> {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(right: 190.0),
-                            child: Text(
-                              "Job Description",
-                              style: GoogleFonts.mulish(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18.sp,
-                                  color: gold),
-                              textAlign: TextAlign.start,
-                              textScaleFactor: 1,
+                            child: FittedBox(
+                              child: Text(
+                                translate.career4,
+                                style: GoogleFonts.mulish(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18.sp,
+                                    color: gold),
+                                textAlign: TextAlign.start,
+                                textScaleFactor: 1,
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -176,13 +194,13 @@ class _CareersState extends State<Careers> {
                                 MediaQuery.of(context).size.height * 0.015.h,
                           ),
                           Text(
-                            "     At the heart of every great change is a great human. Every day our People of Change are doing incredible things by working together to pursue our shared purpose–to deliver on the promise of technology and human ingenuity.Come be part of our team–bring your ideas, ingenuity and determination to make a difference, and we’ll solve some of the world’s biggest challenges. Choose a career with us, and together, let's create positive, long-lasting value.",
+                            translate.career5,
                             style: GoogleFonts.mulish(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 14.sp,
+                                fontSize: 13.sp,
                                 color: navy),
                             textAlign: TextAlign.justify,
-                            textScaleFactor: 1,
+                            // textScaleFactor: 1,
                           ),
                         ],
                       ),
@@ -190,9 +208,9 @@ class _CareersState extends State<Careers> {
                   ),
                 ),
               ),
-            ],
-          )),
-        ),
+            ),
+          ],
+        )),
       ),
     );
   }
@@ -256,13 +274,13 @@ class _CareersState extends State<Careers> {
                             labelStyle: TextStyle(
                                 color: navy, fontWeight: FontWeight.bold))),
                     SizedBox(height: 20),
-                    // TextFormField(
+                    // TextField(
                     //     controller: _dobcontroller,
-                    //     validator: MultiValidator([
-                    //       RequiredValidator(errorText: DOB)
-                    //       // MaxLengthValidator(10, errorText: phonenummax),
-                    //       // MinLengthValidator(10, errorText: phonenummin)
-                    //     ]),
+                    //     // validator: MultiValidator([
+                    //     //   RequiredValidator(errorText: DOB)
+                    //     //   // MaxLengthValidator(10, errorText: phonenummax),
+                    //     //   // MinLengthValidator(10, errorText: phonenummin)
+                    //     // ]),
                     //     decoration: InputDecoration(
                     //         border: OutlineInputBorder(
                     //             borderRadius:
@@ -274,20 +292,49 @@ class _CareersState extends State<Careers> {
                     //         labelText: "Date Of Birth",
                     //         labelStyle: TextStyle(
                     //             color: navy, fontWeight: FontWeight.bold))),
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey, width: 1),
-                          borderRadius: BorderRadius.circular(20)),
-                      padding: EdgeInsets.all(5),
-                      child: FlatButton(
-                          onPressed: () {
-                            selectTimePicker(context);
-                          },
-                          child: Row(
-                            children: [Text(_datetime.toString())],
-                          )),
+
+                    TextFormField(
+                      controller: _dobcontroller,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                          prefixIcon: Icon(
+                            Icons.date_range,
+                            color: navy,
+                          ),
+                          labelText: "Date of Birth",
+                          labelStyle: TextStyle(
+                              color: navy, fontWeight: FontWeight.bold)),
+                      onTap: () async {
+                        FocusScope.of(context).requestFocus(new FocusNode());
+                        await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(2015),
+                          lastDate: DateTime(2025),
+                        ).then((selectedDate) {
+                          if (selectedDate != null) {
+                            _dobcontroller.text =
+                                DateFormat('dd-MM-yyyy').format(selectedDate);
+                            print(_dobcontroller.text);
+                          }
+                        });
+                        // var dob = DateFormat("dd-MM-yyyy");
+                        // // DateTime date = DateTime(1900);
+                        // FocusScope.of(context).requestFocus(new FocusNode());
+
+                        // final _picked = await showDatePicker(
+                        //     context: context,
+                        //     initialDate: DateTime.now(),
+                        //     firstDate: DateTime(1900),
+                        //     lastDate: DateTime(2100));
+
+                        // _dobcontroller.text = DateFormat("dd-MM-yyyy").format(_picked);
+                        // print(_picked);
+                      },
                     ),
+
                     SizedBox(height: 20),
                     TextFormField(
                         validator: MultiValidator([
@@ -418,41 +465,13 @@ class _CareersState extends State<Careers> {
                             child: TextButton(
                               onPressed: () async {
                                 if (_formkey.currentState!.validate()) {
-                                  String name = _namecontroller.text;
-                                  String permenantAddress =
-                                      _addresscontroller.text;
-                                  String mobileNo = _mobilecontroller.text;
-                                  // String dateOfBirth = _dobcontroller.text;
-                                  DateTime dateOfBirth = _datetime;
+                                  joiningform();
+                                  Navigator.of(context).pop();
 
-                                  String employeeId =
-                                      _employeeidcontroller.text;
-                                  String contactAddress =
-                                      _contactaddresscontroller.text;
-                                  String prefferedArea =
-                                      _preferedareacontroller.text;
-                                  String okayToAssociate = careersopt;
-
-                                  Careersmodel formsd = await submitdata(
-                                      dateOfBirth,
-                                      name,
-                                      employeeId,
-                                      contactAddress,
-                                      specialization,
-                                      experience,
-                                      prefferedArea,
-                                      permenantAddress,
-                                      mobileNo,
-                                      okayToAssociate);
-                                  setState(() {
-                                    _careersmodel = formsd;
-                                    Navigator.of(context).pop();
-
-                                    ScaffoldMessenger.of(context)
-                                        .showSnackBar(SnackBar(
-                                      content: Text("Submitted"),
-                                    ));
-                                  });
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(SnackBar(
+                                    content: Text("Submitted"),
+                                  ));
                                 }
                               },
                               child: Center(
@@ -490,41 +509,60 @@ class _CareersState extends State<Careers> {
           //   ),
         ),
       );
+  Future<void> joiningform() async {
+    // FirebaseAuth _auth = FirebaseAuth.instance;
+
+    CollectionReference lawyerform =
+        FirebaseFirestore.instance.collection("Lawyer forms");
+    return lawyerform.add({
+      "Name": _namecontroller.text.trim(),
+      "Mobile": _mobilecontroller.text.trim(),
+      "DOB": _dobcontroller.text.trim(),
+      "Emloyee ID": _employeeidcontroller.text.trim(),
+      "Address": _addresscontroller.text.trim(),
+      "Contact Address": _contactaddresscontroller.text.trim(),
+      "Specialization": _specializationcontroller.text.trim(),
+      "Experience": _experiencecontroller.text.trim(),
+      "prefered Area": _preferedareacontroller.text.trim(),
+      "Okay to Associaate": careersopt
+    }).then((value) => SnackBar(content: Text("Updated")));
+  }
 }
 
-Future<Careersmodel> submitdata(
-  DateTime dateOfBirth,
-  String name,
-  employeeId,
-  contactAddress,
-  specialization,
-  experience,
-  prefferedArea,
-  permenantAddress,
-  mobileNo,
-  okayToAssociate,
-) async {
-  final response = await http
-      .post(Uri.parse("http://api.indolawassociates.com/api/join"), body: {
-    "name": name,
-    "date_of_birth": dateOfBirth,
-    "employee_id": employeeId,
-    "permenant_address": permenantAddress,
-    "contact_address": contactAddress,
-    "mobile_no": mobileNo,
-    "specialization": specialization,
-    "experience": experience,
-    "okay_to_associate": okayToAssociate,
-    "preffered_area": prefferedArea,
-  });
-  var data = response.body.toString();
-  var _data = jsonDecode(data);
-  return careersmodelFromJson(_data);
+// Future<Careersmodel> submitdata(
+//   DateTime dateOfBirth,
+//   String name,
+//   employeeId,
+//   contactAddress,
+//   specialization,
+//   experience,
+//   prefferedArea,
+//   permenantAddress,
+//   mobileNo,
+//   okayToAssociate,
+// ) async {
+//   final response = await http
+//       .post(Uri.parse("http://api.indolawassociates.com/api/join"), body: {
+//     "name": name,
+//     "date_of_birth": dateOfBirth,
+//     "employee_id": employeeId,
+//     "permenant_address": permenantAddress,
+//     "contact_address": contactAddress,
+//     "mobile_no": mobileNo,
+//     "specialization": specialization,
+//     "experience": experience,
+//     "okay_to_associate": okayToAssociate,
+//     "preffered_area": prefferedArea,
+//   });
+//   var data = response.body.toString();
+//   var _data = jsonDecode(data);
+//   return careersmodelFromJson(_data);
 
-  // if (response.statusCode == 201) {
-  //   final  data = response.body;
-  //   return formModelFromJson(data);
-  // } else {
-  //   return null;
-  // }
-}
+//   // if (response.statusCode == 201) {
+//   //   final  data = response.body;
+//   //   return formModelFromJson(data);
+//   // } else {
+//   //   return null;
+//   // }
+// }
+ 

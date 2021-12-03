@@ -389,7 +389,7 @@ class _SignUpState extends State<SignUp> {
                                     child: Text(
                                       !isLoading
                                           ? "Verify Your OTP "
-                                          : "Sending OTP code via SMS",
+                                          : "Verifying OTP code via SMS",
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.mulish(
                                           fontSize: 20,

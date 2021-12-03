@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/model/Legalforms_data_models.dart';
 import 'package:indolawassociates/Client/Pages/bottomnavybar/Legalforms.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
@@ -14,13 +16,7 @@ class Familylegalforms extends StatefulWidget {
 }
 
 class _FamilylegalformsState extends State<Familylegalforms> {
-  List<Legalformsdatamodel> family_legalforms = [
-    Legalformsdatamodel(
-        title: "Adoption Deed ", Url: ""), Legalformsdatamodel(
-        title: "Adoption by a Widow of a Son ", Url: ""), Legalformsdatamodel(
-        title: "Adoption of a daughter by an Unmarried Women ", Url: ""), Legalformsdatamodel(
-        title: "Divorce Petition by Hindu Wife on the Grounds of Cruelty ", Url: ""),
-       ];
+  
 
   void onback() {
     Navigator.pushReplacement(
@@ -48,13 +44,26 @@ class _FamilylegalformsState extends State<Familylegalforms> {
         appBar: AppBar(
           toolbarHeight: 60,
           backgroundColor: navy,
-          title: Text("Legal Forms-Family Laws"),
+          title: FittedBox(child: Text(translate!.forms8,
+              style: GoogleFonts.mulish(
+                  color: white, fontWeight: FontWeight.w500, fontSize: 18.sp),)),
           leading: IconButton(
               onPressed: () => Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (context) => Legal())),
               icon: Icon(Icons.arrow_back)),
         ),
-        body: Padding(
+        body:   family(context) ),
+    );
+  }
+  family(context){    final translate = AppLocalizations.of(context);
+List<Legalformsdatamodel> family_legalforms = [
+    Legalformsdatamodel(
+        title: translate!.familyform1, Url: ""), Legalformsdatamodel(
+        title: translate.familyform2, Url: ""), Legalformsdatamodel(
+        title: translate.familyform3, Url: ""), Legalformsdatamodel(
+        title: translate.familyform4, Url: ""),
+       ];
+       return Padding(
           padding: const EdgeInsets.only(top:12.0,bottom: 12),
           child: ListView.separated(
             physics: BouncingScrollPhysics(),
@@ -75,7 +84,7 @@ class _FamilylegalformsState extends State<Familylegalforms> {
                         builder: (context) => AlertDialog(
                               elevation: 10,
                               content: Text(
-translate!.helptitle,                                style: hStyle,
+translate.helptitle,                                style: hStyle,
                               ),
                               contentPadding: EdgeInsets.only(
                                   top: 20, left: 20, right: 20, bottom: 10),
@@ -106,10 +115,8 @@ translate!.helptitle,                                style: hStyle,
              });
             },
           ),
-        ),
-      ),
-    );
-  }
+        );
+   }
 }
 
 

@@ -5,11 +5,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/Pages/darwerlist.dart/Careers.dart';
+import 'package:indolawassociates/Client/Pages/darwerlist.dart/Careers/Careers.dart';
 import 'package:indolawassociates/Client/Pages/darwerlist.dart/Contact.dart';
 import 'package:indolawassociates/Client/Pages/darwerlist.dart/Offers.dart';
 import 'package:indolawassociates/Client/Pages/darwerlist.dart/Otherservices.dart';
-import 'package:indolawassociates/Client/Pages/darwerlist.dart/ProfilePage.dart';
+import 'package:indolawassociates/Client/Pages/darwerlist.dart/Profile/ProfilePage.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/Client/Pages/Register_Login_screen/Login.dart/log.dart';
@@ -30,13 +30,22 @@ class _MaindrawerState extends State<Maindrawer> {
   alert() {
     return showDialog(
         context: context,
-        builder: (context) => AlertDialog(
+        builder: (context) { 
+              final translate = AppLocalizations.of(context);
+
+          return AlertDialog(
               contentPadding: EdgeInsets.all(18),
               elevation: 10,
-              title: Text(
-                "Do you want to Logout?",
-                style: bStyle,
-                textScaleFactor: 1,
+              title: Expanded(
+                child: Text(
+             translate!.logoutkey   ,
+                  style: GoogleFonts.mulish(
+                                  fontSize: 17.sp,
+                                  fontWeight: FontWeight.bold,
+                                  color: navy,
+                                ),
+                  textScaleFactor: 1,
+                ),
               ),
               actions: [
                 // ignore: deprecated_member_use
@@ -48,7 +57,7 @@ class _MaindrawerState extends State<Maindrawer> {
                               builder: (BuildContext context) => Loginpage())));
                     },
                     child: Text(
-                      "Yes",
+                      translate.yes,
                       style: hStyle,
                       textScaleFactor: 1,
                     )),
@@ -57,12 +66,13 @@ class _MaindrawerState extends State<Maindrawer> {
                     onPressed: () => Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) => Maindrawer())),
                     child: Text(
-                      "No",
+                      translate.no,
                       style: hStyle,
                       textScaleFactor: 1,
                     ))
               ],
-            ));
+            );}
+            );
   }
 
   void onback() {

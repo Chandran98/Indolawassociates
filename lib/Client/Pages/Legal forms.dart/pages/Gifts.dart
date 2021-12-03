@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/model/Legalforms_data_models.dart';
 import 'package:indolawassociates/Client/Pages/bottomnavybar/Legalforms.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 
 class Giftslegalforms extends StatefulWidget {
   Giftslegalforms({Key? key}) : super(key: key);
@@ -14,25 +15,6 @@ class Giftslegalforms extends StatefulWidget {
 }
 
 class _GiftslegalformsState extends State<Giftslegalforms> {
-  List<Legalformsdatamodel> gifts_legalforms = [
-    Legalformsdatamodel(
-        title: "Gift Of Books for Education of Daughter ", Url: ""),Legalformsdatamodel(
-        title: "Gift Of Immovable Property ", Url: ""),Legalformsdatamodel(
-        title: "Gift by father to his son of land by mortgage ", Url: ""),Legalformsdatamodel(
-        title: "Gift by lady to her minor grand sons ", Url: ""),Legalformsdatamodel(
-        title: "Gift of a house to the daughter ", Url: ""),Legalformsdatamodel(
-        title: "Gift of a piece of land ", Url: ""),Legalformsdatamodel(
-        title: "Gift of charity ", Url: ""),Legalformsdatamodel(
-        title: "Gift of land for building a temple ", Url: ""),Legalformsdatamodel(
-        title: "Gift of library to trust without reversion clause ", Url: ""),Legalformsdatamodel(
-        title: "Gift of money to brother for meeting the marriage expenses of the niece of the donor ", Url: ""),Legalformsdatamodel(
-        title: "Gift of money to grand son ", Url: ""),Legalformsdatamodel(
-        title: "Gift to a purpose with a condition for revocation ", Url: ""),Legalformsdatamodel(
-        title: "Gift to daughter ", Url: ""),Legalformsdatamodel(
-        title: "Gift to son ", Url: ""),Legalformsdatamodel(
-        title: "Gift with a condition for revocation                   ", Url: ""),
-       ];
-
   void onback() {
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => Legal()));
@@ -47,7 +29,8 @@ class _GiftslegalformsState extends State<Giftslegalforms> {
   }
 
   @override
-  Widget build(BuildContext context) {        final translate = AppLocalizations.of(context);
+  Widget build(BuildContext context) {
+    final translate = AppLocalizations.of(context);
 
     return WillPopScope(
       onWillPop: () {
@@ -55,87 +38,97 @@ class _GiftslegalformsState extends State<Giftslegalforms> {
         return Future.value(false);
       },
       child: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 60,
-          backgroundColor: navy,
-          title: Text("Legal Forms-Gifts Laws"),
-          leading: IconButton(
-              onPressed: () => Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => Legal())),
-              icon: Icon(Icons.arrow_back)),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.only(top:12.0,bottom: 12),
-          child: ListView.separated(
-            physics: BouncingScrollPhysics(),
-            separatorBuilder: (context, index) {
-              return Divider();
-            },
-            itemCount: gifts_legalforms.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                  leading: Icon(Icons.remove_red_eye, color: navy),
-                  title: Text(
-                    gifts_legalforms[index].title,
-                    style: hStyle,
-                  ),
-                  // onTap: ()=>{launch(legalforms[index].Url)});
-                  onTap: () {       showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                              elevation: 10,
-                              content: Text(
-translate!.helptitle,                                style: hStyle,
-                              ),
-                              contentPadding: EdgeInsets.only(
-                                  top: 20, left: 20, right: 20, bottom: 10),
-                              actions: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10),
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.phone,
-                                        color: navy,
-                                      ),
-                                      FlatButton(
-                                        onPressed: () {
-                                          launcher("tel: 8940383000");
-                                        },
-                                        child: Text(
-                                          "8940383000",
-                                          style: hStyle,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ));
-             });
-            },
+          appBar: AppBar(
+            toolbarHeight: 60,
+            backgroundColor: navy,
+            title: FittedBox(
+              child: Text(translate!.forms9,
+                style: GoogleFonts.mulish(
+                    color: white, fontWeight: FontWeight.w500, fontSize: 18.sp),),
+            ),
+            leading: IconButton(
+                onPressed: () => Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => Legal())),
+                icon: Icon(Icons.arrow_back)),
           ),
-        ),
+          body: gifts(context)),
+    );
+  }
+
+  gifts(context) {
+    final translate = AppLocalizations.of(context);
+
+    List<Legalformsdatamodel> gifts_legalforms = [
+      Legalformsdatamodel(title: translate!.giftsform1, Url: ""),
+      Legalformsdatamodel(title: translate.giftsform2, Url: ""),
+      Legalformsdatamodel(title: translate.giftsform3, Url: ""),
+      Legalformsdatamodel(title: translate.giftsform4, Url: ""),
+      Legalformsdatamodel(title: translate.giftsform5, Url: ""),
+      Legalformsdatamodel(title: translate.giftsform6, Url: ""),
+      Legalformsdatamodel(title: translate.giftsform7, Url: ""),
+      Legalformsdatamodel(title: translate.giftsform8, Url: ""),
+      Legalformsdatamodel(title: translate.giftsform9, Url: ""),
+      Legalformsdatamodel(title: translate.giftsform10, Url: ""),
+      Legalformsdatamodel(title: translate.giftsform11, Url: ""),
+      Legalformsdatamodel(title: translate.giftsform12, Url: ""),
+      Legalformsdatamodel(title: translate.giftsform13, Url: ""),
+      Legalformsdatamodel(title: translate.giftsform14, Url: ""),
+      // Legalformsdatamodel(title: translate.giftsform1, Url: ""),
+    ];
+    return Padding(
+      padding: const EdgeInsets.only(top: 12.0, bottom: 12),
+      child: ListView.separated(
+        physics: BouncingScrollPhysics(),
+        separatorBuilder: (context, index) {
+          return Divider();
+        },
+        itemCount: gifts_legalforms.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+              leading: Icon(Icons.remove_red_eye, color: navy),
+              title: Text(
+                gifts_legalforms[index].title,
+                style: hStyle,
+              ),
+              // onTap: ()=>{launch(legalforms[index].Url)});
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                          elevation: 10,
+                          content: Text(
+                            translate.helptitle,
+                            style: hStyle,
+                          ),
+                          contentPadding: EdgeInsets.only(
+                              top: 20, left: 20, right: 20, bottom: 10),
+                          actions: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.phone,
+                                    color: navy,
+                                  ),
+                                  FlatButton(
+                                    onPressed: () {
+                                      launcher("tel: 8940383000");
+                                    },
+                                    child: Text(
+                                      "8940383000",
+                                      style: hStyle,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ));
+              });
+        },
       ),
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
