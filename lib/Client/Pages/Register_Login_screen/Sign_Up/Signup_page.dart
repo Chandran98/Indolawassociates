@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/main.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import '../Login.dart/log.dart';
+import '../Login.dart/Login_page.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;

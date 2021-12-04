@@ -6,12 +6,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/Pages/Categories.dart/Categories_Pages.dart';
 import 'package:indolawassociates/Client/Pages/darwerlist.dart/Offers.dart';
-import 'package:indolawassociates/Client/components/Card_details.dart';
-import 'package:indolawassociates/Client/components/lawyers/dummy2.dart';
-import 'package:indolawassociates/Client/Extra/lawyer_card.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
+import 'package:indolawassociates/Client/components/slider/slider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'lawyers/Lawyerlist_page.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -27,48 +27,6 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  final List<Toplawyerlist> topcom = [
-    Toplawyerlist(
-        name: "Amos Athisayaraj",
-        type: 'ILA Lawyer',
-        Image: 'assets/images/malelaw.png',
-        Experience: " 2 yrs"),
-    Toplawyerlist(
-        name: "Illanovan",
-        type: 'ILA Lawyer',
-        Image: 'assets/images/malelaw.png',
-        Experience: " 5yrs"),
-    Toplawyerlist(
-        name: "Lawrence",
-        type: 'ILA Lawyer',
-        Image: 'assets/images/malelaw.png',
-        Experience: "8 yrs"),
-    Toplawyerlist(
-        name: "Valenteena Jafflet",
-        type: 'ILA Lawyer',
-        Image: 'assets/images/flaw.png',
-        Experience: "3 yrs"),
-    Toplawyerlist(
-        name: "Kalavathy",
-        type: 'ILA Lawyer',
-        Image: 'assets/images/flaw.png',
-        Experience: "1yrs"),
-    Toplawyerlist(
-        name: "Yamuna",
-        type: 'ILA Lawyer',
-        Image: 'assets/images/flaw.png',
-        Experience: "1yrs"),
-    Toplawyerlist(
-        name: "Vivek",
-        type: 'ILA Lawyer',
-        Image: 'assets/images/malelaw.png',
-        Experience: "1yrs"),
-    Toplawyerlist(
-        name: "Rajkumar",
-        type: 'ILA Lawyer',
-        Image: 'assets/images/malelaw.png',
-        Experience: "1yrs"),
-  ];
   final List<String> slider = [
     "assets/images/01.jpg",
     "assets/images/02.jpg",
@@ -161,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   onPressed: () => Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Lawyerlist())),
+                                          builder: (context) => Slisder())),
                                 ),
                               ),
                             ],
@@ -185,23 +143,21 @@ class _HomeScreenState extends State<HomeScreen> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.02.h,
                         ),
-                        // Padding(
-                        //   padding: EdgeInsets.symmetric(horizontal: 30),
-                        //   child: SearchBarmap(),
-                        // ),
-                        // SizedBox(
-                        //   height: MediaQuery.of(context).size.height * 0.021,
-                        // ),
-                        CarouselSlider(
-                            items: cslide(),
-                            options: CarouselOptions(
-                              autoPlayAnimationDuration: Duration(seconds: 1),
-                              height:
-                                  MediaQuery.of(context).size.height * 0.2.h,
-                              enlargeCenterPage: true,
-                              autoPlay: true,
-                              viewportFraction: 0.8,
-                            )),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Slisder(),
+                        ),
+
+                        // CarouselSlider(
+                        //     items: cslide(),
+                        //     options: CarouselOptions(
+                        //       autoPlayAnimationDuration: Duration(seconds: 1),
+                        //       height:
+                        //           MediaQuery.of(context).size.height * 0.2.h,
+                        //       enlargeCenterPage: true,
+                        //       autoPlay: true,
+                        //       viewportFraction: 0.8,
+                        //     )),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.021.h,
                         ),
@@ -233,39 +189,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                   color: navy,
                                   fontWeight: FontWeight.bold)),
                         ),
-                        // Padding(
-                        //   padding: const EdgeInsets.all(15.0),
-                        //   child: Container(
-                        //       color: white,
-                        //       height: MediaQuery.of(context).size.height * 0.5,
-                        //       child: ListView.builder(
-                        //         physics: BouncingScrollPhysics(),
-                        //         scrollDirection: Axis.vertical,
-                        //         itemCount: topcom.length,
-                        //         itemBuilder: (context, index) =>
-                        //             Lawyercard(toplawyerlist: topcom[index]),
-                        //       )),
-                        // ),
                       ],
                     ),
                   ),
                 ),
                 Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    // child: Container(
-                    //     color: white,
-                    //     height: MediaQuery.of(context).size.height * 0.5.h,
-                    child: Lawyerlist()
-                    // ListView.builder(
-                    //   shrinkWrap: true,
-                    //   physics: BouncingScrollPhysics(),
-                    //   scrollDirection: Axis.vertical,
-                    //   itemCount: topcom.length,
-                    //   itemBuilder: (context, index) =>
-                    //       Lawyercard(toplawyerlist: topcom[index]),
-                    // )
-                    // ),
-                    ),
+                  padding: const EdgeInsets.all(15.0),
+                  child: Lawyerlist(),
+                ),
               ],
             ),
           ),
@@ -273,10 +204,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
-  // categorylist() {
-  //   return SingleChildScrollView(
-  //     scrollDirection: Axis.vertical,
-  //     child: Categorycardlist()   );
-  // }
 }

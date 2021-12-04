@@ -4,19 +4,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 
-import '../../../main.dart';
+import '../../../../main.dart';
 
-class LAwyerpagw extends StatefulWidget {
-  LAwyerpagw(
+
+class LawyerInfopage extends StatefulWidget {
+  LawyerInfopage(
       {required this.name,
       required this.specialized,
       required this.description});
   final String name, specialized, description;
   @override
-  _LAwyerpagwState createState() => _LAwyerpagwState();
+  _LawyerInfopageState createState() => _LawyerInfopageState();
 }
 
-class _LAwyerpagwState extends State<LAwyerpagw> {
+class _LawyerInfopageState extends State<LawyerInfopage> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -75,14 +76,14 @@ class _LAwyerpagwState extends State<LAwyerpagw> {
                       child: Column(
                         children: [
                           Text(
-                            widget.name.toString(),
+                            widget.name,
                             style: GoogleFonts.mulish(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20.sp,
                                 color: navy),
                           ),
                           // Text("Experience ${toplawyerlist.Experience}",style: hStyle,),
-                          Text(widget.specialized.toString(),
+                          Text("${widget.specialized} Lawyer",
                               style: GoogleFonts.mulish(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 16.sp,
@@ -91,7 +92,7 @@ class _LAwyerpagwState extends State<LAwyerpagw> {
                             height: MediaQuery.of(context).size.height * 0.03.h,
                           ),
                           Text(
-                            widget.description.toString(),
+                            widget.description,
                             style: GoogleFonts.mulish(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 15.sp,

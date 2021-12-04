@@ -12,7 +12,7 @@ import 'package:indolawassociates/Client/Pages/darwerlist.dart/Otherservices.dar
 import 'package:indolawassociates/Client/Pages/darwerlist.dart/Profile/ProfilePage.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
-import 'package:indolawassociates/Client/Pages/Register_Login_screen/Login.dart/log.dart';
+import 'package:indolawassociates/Client/Pages/Register_Login_screen/Login.dart/Login_page.dart';
 import 'package:indolawassociates/Client/provider/languageprovider.dart';
 import 'package:provider/provider.dart';
 import '../../../main.dart';
@@ -30,49 +30,49 @@ class _MaindrawerState extends State<Maindrawer> {
   alert() {
     return showDialog(
         context: context,
-        builder: (context) { 
-              final translate = AppLocalizations.of(context);
+        builder: (context) {
+          final translate = AppLocalizations.of(context);
 
           return AlertDialog(
-              contentPadding: EdgeInsets.all(18),
-              elevation: 10,
-              title: Expanded(
-                child: Text(
-             translate!.logoutkey   ,
-                  style: GoogleFonts.mulish(
-                                  fontSize: 17.sp,
-                                  fontWeight: FontWeight.bold,
-                                  color: navy,
-                                ),
-                  textScaleFactor: 1,
+            contentPadding: EdgeInsets.all(18),
+            elevation: 10,
+            title: Expanded(
+              child: Text(
+                translate!.logoutkey,
+                style: GoogleFonts.mulish(
+                  fontSize: 17.sp,
+                  fontWeight: FontWeight.bold,
+                  color: navy,
                 ),
+                textScaleFactor: 1,
               ),
-              actions: [
-                // ignore: deprecated_member_use
-                FlatButton(
-                    onPressed: () {
-                      _auth.signOut().then((value) => Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => Loginpage())));
-                    },
-                    child: Text(
-                      translate.yes,
-                      style: hStyle,
-                      textScaleFactor: 1,
-                    )),
-                // ignore: deprecated_member_use
-                FlatButton(
-                    onPressed: () => Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => Maindrawer())),
-                    child: Text(
-                      translate.no,
-                      style: hStyle,
-                      textScaleFactor: 1,
-                    ))
-              ],
-            );}
-            );
+            ),
+            actions: [
+              // ignore: deprecated_member_use
+              FlatButton(
+                  onPressed: () {
+                    _auth.signOut().then((value) => Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => Loginpage())));
+                  },
+                  child: Text(
+                    translate.yes,
+                    style: hStyle,
+                    textScaleFactor: 1,
+                  )),
+              // ignore: deprecated_member_use
+              FlatButton(
+                  onPressed: () => Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => Maindrawer())),
+                  child: Text(
+                    translate.no,
+                    style: hStyle,
+                    textScaleFactor: 1,
+                  ))
+            ],
+          );
+        });
   }
 
   void onback() {
@@ -165,30 +165,33 @@ class _MaindrawerState extends State<Maindrawer> {
                             ],
                           ),
                           SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.015.h,
+                            height:
+                                MediaQuery.of(context).size.height * 0.015.h,
                           ),
                           Container(
-                              child: Text(
-                                "Hi  $_username ",
-                                textScaleFactor: 1,
-                                style: (GoogleFonts.mulish(
-                                  fontSize: 19.sp,
-                                  fontWeight: FontWeight.bold,
-                                  color: white,
-                                )),
-                              
+                            child: Text(
+                              "Hi  $_username ",
+                              textScaleFactor: 1,
+                              style: (GoogleFonts.mulish(
+                                fontSize: 19.sp,
+                                fontWeight: FontWeight.bold,
+                                color: white,
+                              )),
                             ),
                           ),
                           SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.005.h,
+                            height:
+                                MediaQuery.of(context).size.height * 0.005.h,
                           ),
                           Container(
-                              child: Text("$_phone",style: GoogleFonts.mulish(
-                                  fontSize: 17.sp,
-                                  // fontWeight: FontWeight.bold,
-                                  color: white,
-                                ),),
-                            
+                            child: Text(
+                              "$_phone",
+                              style: GoogleFonts.mulish(
+                                fontSize: 17.sp,
+                                // fontWeight: FontWeight.bold,
+                                color: white,
+                              ),
+                            ),
                           ),
                         ],
                       )),
@@ -335,30 +338,11 @@ class _MaindrawerState extends State<Maindrawer> {
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .get()
         .then((value) {
-      if(mounted)setState(() {
-        _username = value.data()!["name"].toString();
-        _phone = value.data()!["cellnumber"].toString();
-      });
+      if (mounted)
+        setState(() {
+          _username = value.data()!["name"].toString();
+          _phone = value.data()!["cellnumber"].toString();
+        });
     });
   }
-  // Future getuser() async {
-  //   if (_auth.currentUser != null) {
-  //     var cellNumber = _auth.currentUser!.phoneNumber;
-  //     cellNumber = '0' +
-  //         _auth.currentUser!.phoneNumber!.substring(3, cellNumber!.length);
-  //     debugPrint(cellNumber);
-  //     await _firestore
-  //         .collection("ILA")
-  //         .where("cellnumber", isEqualTo: cellNumber)
-  //         .get()
-  //         .then((result) {
-  //       if (result.docs.length > 0) {
-  //         if (mounted)
-  //           setState(() {
-  //             username = result.docs[0].data()['name'];
-  //           });
-  //       }
-  //     });
-  //   }
-  // }
 }

@@ -2,11 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/Pages/Homepage/drawer.dart';
-import 'package:indolawassociates/Client/components/lawyers/services/lawyer_services.dart';
+import 'package:indolawassociates/Client/Pages/Homepage/lawyers/services/lawyer_services.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
-
-import 'dummy3.dart';
+import 'Lawyerinfo_page.dart';
 
 class Lawyerlist extends StatefulWidget {
   const Lawyerlist({Key? key}) : super(key: key);
@@ -18,9 +16,7 @@ class Lawyerlist extends StatefulWidget {
 class _LawyerlistState extends State<Lawyerlist> {
   final FirebaseFirestore db = FirebaseFirestore.instance;
   LawyerDB lawyerDB = LawyerDB();
-  // String ? name;
-  // String ? specialized;
-  // String ? description;
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -41,8 +37,8 @@ class _LawyerlistState extends State<Lawyerlist> {
                   onTap: () => Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => LAwyerpagw(
-                                name:name,
+                          builder: (context) => LawyerInfopage(
+                                name: name,
                                 specialized: specialized,
                                 description: description,
                               ))),

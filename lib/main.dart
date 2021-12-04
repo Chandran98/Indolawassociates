@@ -17,7 +17,7 @@ import 'Client/Pages/bottomnavybar/Legalforms.dart';
 import 'Client/Pages/bottomnavybar/NRI.dart';
 import 'Client/Pages/bottomnavybar/Para_legal_services/para_legal_services.dart';
 import 'Client/constants/constant.dart';
-import 'Client/Pages/Register_Login_screen/Login.dart/log.dart';
+import 'Client/Pages/Register_Login_screen/Login.dart/Login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
