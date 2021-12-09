@@ -1,10 +1,9 @@
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:indolawassociates/Client/Pages/Register_Login_screen/Login/Login_page.dart';
 import 'package:indolawassociates/Client/Pages/darwerlist.dart/Careers/Careers.dart';
 import 'package:indolawassociates/Client/Pages/darwerlist.dart/Contact.dart';
 import 'package:indolawassociates/Client/Pages/darwerlist.dart/Offers.dart';
@@ -12,7 +11,6 @@ import 'package:indolawassociates/Client/Pages/darwerlist.dart/Otherservices.dar
 import 'package:indolawassociates/Client/Pages/darwerlist.dart/Profile/ProfilePage.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
-import 'package:indolawassociates/Client/Pages/Register_Login_screen/Login.dart/Login_page.dart';
 import 'package:indolawassociates/Client/provider/languageprovider.dart';
 import 'package:provider/provider.dart';
 import '../../../main.dart';
@@ -150,7 +148,9 @@ class _MaindrawerState extends State<Maindrawer> {
                                 padding: const EdgeInsets.all(12.0),
                                 child: Container(
                                   child: IconButton(
-                                    onPressed: () => Navigator.of(context)
+                                    onPressed: () =>
+                                    //  Scaffold.of(context).openEndDrawer(),
+                                    Navigator.of(context)
                                         .pushReplacement(MaterialPageRoute(
                                             builder: (context) => Mainhome())),
                                     icon: Icon(
@@ -270,7 +270,7 @@ class _MaindrawerState extends State<Maindrawer> {
                                       actionsPadding: EdgeInsets.symmetric(
                                           horizontal: 30.w),
                                       actions: [
-                                        FlatButton(
+                                        TextButton(
                                             onPressed: () {
                                               context
                                                   .read<Languagenotifier>()
@@ -281,7 +281,7 @@ class _MaindrawerState extends State<Maindrawer> {
                                               translate.primarylanguage,
                                               style: hStyle,
                                             )),
-                                        FlatButton(
+                                        TextButton(
                                             onPressed: () {
                                               context
                                                   .read<Languagenotifier>()

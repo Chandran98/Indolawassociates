@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:indolawassociates/Client/utils/Internet%20connectivity/Network_status.dart';
 import '../../../main.dart';
 
 class NRI extends StatelessWidget {
@@ -35,7 +36,7 @@ class NRI extends StatelessWidget {
                   Icons.arrow_back,
                   color: white,
                 )),
-          ),
+          ),body: NetworkSensitive(child: Container(),),
         ),
       ),
     );

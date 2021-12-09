@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -244,7 +245,16 @@ class _OtherservicescardfdState extends State<Otherservicescardfd> {
 
   var gendertry;
   List genderlist = ["Male", "Female", "Others"];
-
+ @override
+  void dispose() {
+    _namecontroller.dispose();
+    _mobilecontroller.dispose();
+    _emailcontroller.dispose();
+    _servicecontroller.dispose();
+    _servicecontroller.dispose();
+    _addresscontroller.dispose();
+    super.dispose();
+  }
   void onback() {
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => OtherServicesform()));
@@ -469,273 +479,292 @@ class _OtherservicescardfdState extends State<Otherservicescardfd> {
     );
   }
 
-  Widget buildformsheet() => SingleChildScrollView(
-        //       child: Container(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Form(
-                key: _formkey,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 18.0),
-                      child: Text(
-                        "Fill The Form",
-                        style: GoogleFonts.mulish(
-                            color: navy,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22.sp),
-                      ),
-                    ),
-                    SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02.h),
-                    TextFormField(
-                        validator: MultiValidator([
-                          RequiredValidator(errorText: usernamenull),
-                        ]),
-                        controller: _namecontroller,
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                            prefixIcon: Icon(
-                              Icons.person,
+  Widget buildformsheet() => SafeArea(
+    child: SingleChildScrollView(
+          //       child: Container(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: Form(
+                  key: _formkey,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 18.0),
+                        child: Text(
+                          "Fill The Form",
+                          style: GoogleFonts.mulish(
                               color: navy,
-                            ),
-                            labelText: "Name",
-                            labelStyle: TextStyle(
-                                color: navy, fontWeight: FontWeight.bold))),
-                    SizedBox(height: 20),
-                    TextFormField(
-                        controller: _emailcontroller,
-                        validator: MultiValidator([
-                          RequiredValidator(errorText: emailnull),
-                          PatternValidator(
-                              (r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+"),
-                              errorText: invalidemail)
-                        ]),
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                            prefixIcon: Icon(
-                              Icons.mail,
-                              color: navy,
-                            ),
-                            labelText: "Email",
-                            labelStyle: TextStyle(
-                                color: navy, fontWeight: FontWeight.bold))),
-                    SizedBox(height: 20),
-
-                    //   TextFormField(
-                    //     controller: _gendercontroller,
-                    //     decoration: InputDecoration(
-                    //         border: OutlineInputBorder(
-                    //             borderRadius:
-                    //                 BorderRadius.all(Radius.circular(20))),
-                    //         labelText: "Gender",
-                    //         labelStyle: TextStyle(
-                    //             color: navy, fontWeight: FontWeight.bold))),
-                    // SizedBox(height: 20),
-                    Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey, width: 1),
-                          borderRadius: BorderRadius.circular(20)),
-                      padding: EdgeInsets.all(5),
-                      child: DropdownButton(
-                        underline: SizedBox(),
-                        iconSize: 35,
-                        iconEnabledColor: navy,
-                        isExpanded: true,
-                        dropdownColor: Colors.white,
-                        hint: Text(
-                          "Gender",
-                          style: TextStyle(
-                              fontSize: 15.sp,
-                              color: navy,
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22.sp),
                         ),
-                        items: genderlist.map((valueitem) {
-                          return DropdownMenuItem(
-                            value: valueitem,
-                            child: Text(valueitem),
-                          );
-                        }).toList(),
-                        onChanged: (selected) {
-                          setState(() {
-                            gendertry = selected;
-                          });
-                        },
-                        value: gendertry,
                       ),
-                    ),
-                    SizedBox(height: 20),
-
-                    TextFormField(
-                        controller: _mobilecontroller,
-                        keyboardType: TextInputType.numberWithOptions(),
-                        validator: MultiValidator([
-                          MaxLengthValidator(10, errorText: phonenummax),
-                          MinLengthValidator(10, errorText: phonenummin)
-                        ]),
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                            prefixIcon: Icon(
-                              Icons.mobile_screen_share,
-                              color: navy,
-                            ),
-                            labelText: "Mobile",
-                            labelStyle: TextStyle(
-                                color: navy, fontWeight: FontWeight.bold))),
-                    SizedBox(height: 20),
-                    TextFormField(
-                        validator: MultiValidator([
-                          RequiredValidator(errorText: addressnull),
-                        ]),
-                        keyboardType: TextInputType.streetAddress,
-                        controller: _addresscontroller,
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                            labelText: "Address",
-                            labelStyle: TextStyle(
-                                color: navy, fontWeight: FontWeight.bold))),
-                    SizedBox(height: 20),
-
-                    TextFormField(
-                        controller: _servicecontroller,
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                            labelText: "Services",
-                            labelStyle: TextStyle(
-                                color: navy, fontWeight: FontWeight.bold))),
-                    SizedBox(height: 20),
-                    // ignore: deprecated_member_use
-                    // Container(color: gold,height: MediaQuery.of(context).size.height *0.05,width: MediaQuery.of(context).size.height *0.2,
-                    //   child: InkWell(
-
-                    //     // onPressed: () async{if(_formkey.currentState!.validate()){
-                    //     //   String name = _namecontroller.text;
-                    //     //   String email = _emailcontroller.text;
-                    //     //   String address = _addresscontroller.text;
-                    //     //   String gender = _gendercontroller.text;
-                    //     //   String mobile = _mobilecontroller.text;
-                    //     //   String service = _servicecontroller.text;
-
-                    //       // FormModel? forms = await submitdata(
-                    //       //     name, gender, email, address, mobile, service);
-                    //       // setState(() {
-                    //       //   _formModel = forms!;
-                    //       // });
-
-                    //     // }},
-
-                    //     child: Text(
-                    //       "Submit",
-                    //       style: GoogleFonts.mulish(color: Colors.white),
-                    //     ),
-                    //      onTap: () {  },
-                    //   ),
-
-                    // ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Container(
-                          height: MediaQuery.of(context).size.height * .05.h,
-                          width: MediaQuery.of(context).size.width * .3.w,
-                          child: Material(
-                            borderRadius: BorderRadius.circular(20.0),
-                            color: Colors.green,
-                            elevation: 7.0,
-                            child: TextButton(
-                              onPressed: ()
-//                               {
-
-                                  async {
-                                if (_formkey.currentState!.validate()) {
-                                  String name = _namecontroller.text;
-                                  String email = _emailcontroller.text;
-                                  String address = _addresscontroller.text;
-                                  String gender = gendertry;
-                                  String mobile = _mobilecontroller.text;
-                                  String service = _servicecontroller.text;
-
-                                  FormModel forms = await submitdata(name,
-                                      gender, email, address, mobile, service);
-                                  setState(() {
-                                    _formModel = forms;
-                                    Navigator.of(context).pop();
-
-                                    ScaffoldMessenger.of(context)
-                                        .showSnackBar(SnackBar(
-                                      content: Text("Submitted"),
-                                    ));
-                                  });
-                                }
-                              },
-                              child: Center(
-                                  child: Text('Submit',
-                                      style: TextStyle(
-                                          color: white, fontSize: 20))),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.02.h),
+                      TextFormField(
+                          validator: MultiValidator([
+                            RequiredValidator(errorText: usernamenull),
+                          ]),
+                          controller: _namecontroller,
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
+                              prefixIcon: Icon(
+                                Icons.person,
+                                color: navy,
+                              ),
+                              labelText: "Name",
+                              labelStyle: TextStyle(
+                                  color: navy, fontWeight: FontWeight.bold))),
+                      SizedBox(height: 20),
+                      TextFormField(
+                          controller: _emailcontroller,
+                          validator: MultiValidator([
+                            RequiredValidator(errorText: emailnull),
+                            PatternValidator(
+                                (r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+"),
+                                errorText: invalidemail)
+                          ]),
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
+                              prefixIcon: Icon(
+                                Icons.mail,
+                                color: navy,
+                              ),
+                              labelText: "Email",
+                              labelStyle: TextStyle(
+                                  color: navy, fontWeight: FontWeight.bold))),
+                      SizedBox(height: 20),
+  
+                      //   TextFormField(
+                      //     controller: _gendercontroller,
+                      //     decoration: InputDecoration(
+                      //         border: OutlineInputBorder(
+                      //             borderRadius:
+                      //                 BorderRadius.all(Radius.circular(20))),
+                      //         labelText: "Gender",
+                      //         labelStyle: TextStyle(
+                      //             color: navy, fontWeight: FontWeight.bold))),
+                      // SizedBox(height: 20),
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey, width: 1),
+                            borderRadius: BorderRadius.circular(20)),
+                        padding: EdgeInsets.all(5),
+                        child: DropdownButton(
+                          underline: SizedBox(),
+                          iconSize: 35,
+                          iconEnabledColor: navy,
+                          isExpanded: true,
+                          dropdownColor: Colors.white,
+                          hint: Text(
+                            "Gender",
+                            style: TextStyle(
+                                fontSize: 15.sp,
+                                color: navy,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          items: genderlist.map((valueitem) {
+                            return DropdownMenuItem(
+                              value: valueitem,
+                              child: Text(valueitem),
+                            );
+                          }).toList(),
+                          onChanged: (selected) {
+                            setState(() {
+                              gendertry = selected;
+                            });
+                          },
+                          value: gendertry,
+                        ),
+                      ),
+                      SizedBox(height: 20),
+  
+                      TextFormField(
+                          controller: _mobilecontroller,
+                          keyboardType: TextInputType.numberWithOptions(),
+                          validator: MultiValidator([
+                            MaxLengthValidator(10, errorText: phonenummax),
+                            MinLengthValidator(10, errorText: phonenummin)
+                          ]),
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
+                              prefixIcon: Icon(
+                                Icons.mobile_screen_share,
+                                color: navy,
+                              ),
+                              labelText: "Mobile",
+                              labelStyle: TextStyle(
+                                  color: navy, fontWeight: FontWeight.bold))),
+                      SizedBox(height: 20),
+                      TextFormField(
+                          validator: MultiValidator([
+                            RequiredValidator(errorText: addressnull),
+                          ]),
+                          keyboardType: TextInputType.streetAddress,
+                          controller: _addresscontroller,
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
+                              labelText: "Address",
+                              labelStyle: TextStyle(
+                                  color: navy, fontWeight: FontWeight.bold))),
+                      SizedBox(height: 20),
+  
+                      TextFormField(
+                          controller: _servicecontroller,
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
+                              labelText: "Services",
+                              labelStyle: TextStyle(
+                                  color: navy, fontWeight: FontWeight.bold))),
+                      SizedBox(height: 20),
+                      // ignore: deprecated_member_use
+                      // Container(color: gold,height: MediaQuery.of(context).size.height *0.05,width: MediaQuery.of(context).size.height *0.2,
+                      //   child: InkWell(
+  
+                      //     // onPressed: () async{if(_formkey.currentState!.validate()){
+                      //     //   String name = _namecontroller.text;
+                      //     //   String email = _emailcontroller.text;
+                      //     //   String address = _addresscontroller.text;
+                      //     //   String gender = _gendercontroller.text;
+                      //     //   String mobile = _mobilecontroller.text;
+                      //     //   String service = _servicecontroller.text;
+  
+                      //       // FormModel? forms = await submitdata(
+                      //       //     name, gender, email, address, mobile, service);
+                      //       // setState(() {
+                      //       //   _formModel = forms!;
+                      //       // });
+  
+                      //     // }},
+  
+                      //     child: Text(
+                      //       "Submit",
+                      //       style: GoogleFonts.mulish(color: Colors.white),
+                      //     ),
+                      //      onTap: () {  },
+                      //   ),
+  
+                      // ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                            height: MediaQuery.of(context).size.height * .05.h,
+                            width: MediaQuery.of(context).size.width * .3.w,
+                            child: Material(
+                              borderRadius: BorderRadius.circular(20.0),
+                              color: Colors.green,
+                              elevation: 7.0,
+                              child: TextButton(
+                                onPressed: ()
+  //                               {
+  
+                                    async {
+                                  if (_formkey.currentState!.validate()) {
+                                    servicesform();
+                                    // String name = _namecontroller.text;
+                                    // String email = _emailcontroller.text;
+                                    // String address = _addresscontroller.text;
+                                    // String gender = gendertry;
+                                    // String mobile = _mobilecontroller.text;
+                                    // String service = _servicecontroller.text;
+  
+                                    // FormModel forms = await submitdata(name,
+                                    //     gender, email, address, mobile, service);
+                                    // setState(() {
+                                    //   _formModel = forms;
+                                      Navigator.of(context).pop();
+  
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                        content: Text("Submitted"),
+                                          )
+                                    );
+                                  }
+                                },
+                                child: Center(
+                                    child: Text('Submit',
+                                        style: TextStyle(
+                                            color: white, fontSize: 20))),
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                          height: MediaQuery.of(context).size.height * .05.h,
-                          width: MediaQuery.of(context).size.width * .3.w,
-                          child: Material(
-                            borderRadius: BorderRadius.circular(20.0),
-                            color: Colors.red,
-                            elevation: 7.0,
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: Center(
-                                  child: Text('Back',
-                                      style: TextStyle(
-                                          color: white, fontSize: 20))),
+                          Container(
+                            height: MediaQuery.of(context).size.height * .05.h,
+                            width: MediaQuery.of(context).size.width * .3.w,
+                            child: Material(
+                              borderRadius: BorderRadius.circular(20.0),
+                              color: Colors.red,
+                              elevation: 7.0,
+                              child: TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Center(
+                                    child: Text('Back',
+                                        style: TextStyle(
+                                            color: white, fontSize: 20))),
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
-          //   ),
+            ],
+            //   ),
+          ),
         ),
-      );
+  );
+Future<void> servicesform() async {
+    // FirebaseAuth _auth = FirebaseAuth.instance;
+
+    CollectionReference lawyerform =
+        FirebaseFirestore.instance.collection("ILA Services forms");
+    return lawyerform.add({
+      "Name": _namecontroller.text.trim(),
+      "Mobile": _mobilecontroller.text.trim(),
+      "Email": _emailcontroller.text.trim(),
+      "Services": _servicecontroller.text.trim(),
+      "Address": _addresscontroller.text.trim(),
+      "Gender": gendertry
+    }).then((value) => SnackBar(content: Text("Updated")));
+  }
+
+
 }
 
-Future<FormModel> submitdata(
-    String name, gender, email, address, mobile, service) async {
-  var response = await http
-      .post(Uri.parse("http://api.indolawassociates.com/api/form"), body: {
-    "name": name,
-    "gender": gender,
-    "email": email,
-    "address": address,
-    "mobile": mobile,
-    "service": service,
-  });
-  final data = response.body;
-  return formModelFromJson(data);
-  // if (response.statusCode == 201) {
+// Future<FormModel> submitdata(
+//     String name, gender, email, address, mobile, service) async {
+//   var response = await http
+//       .post(Uri.parse("http://api.indolawassociates.com/api/form"), body: {
+//     "name": name,
+//     "gender": gender,
+//     "email": email,
+//     "address": address,
+//     "mobile": mobile,
+//     "service": service,
+//   });
+//   final data = response.body;
+//   return formModelFromJson(data);
+//   // if (response.statusCode == 201) {
 
-  // } else {
-  //   return null;
-  // }
-}
+//   // } else {
+//   //   return null;
+//   // }
+// }

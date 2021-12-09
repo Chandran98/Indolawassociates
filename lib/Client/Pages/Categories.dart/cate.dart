@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -51,6 +52,18 @@ class _CatepageState extends State<Catepage> {
   final _mobilecontroller = TextEditingController();
   final _addresscontroller = TextEditingController();
   final _servicecontroller = TextEditingController();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _gendercontroller.dispose();
+    _emailcontroller.dispose();
+    _mobilecontroller.dispose();
+    _servicecontroller.dispose();
+    _namecontroller.dispose();
+    _emailcontroller.dispose();
+  }
 
   void onback() {
     Navigator.pushReplacement(
@@ -703,24 +716,25 @@ class _CatepageState extends State<Catepage> {
                             child: TextButton(
                               onPressed: () async {
                                 if (_formkey.currentState!.validate()) {
-                                  String name = _namecontroller.text;
-                                  String email = _emailcontroller.text;
-                                  String address = _addresscontroller.text;
-                                  String gender = gendertry;
-                                  String mobile = _mobilecontroller.text;
-                                  String service = category;
+                                  // String name = _namecontroller.text;
+                                  // String email = _emailcontroller.text;
+                                  // String address = _addresscontroller.text;
+                                  // String gender = gendertry;
+                                  // String mobile = _mobilecontroller.text;
+                                  // String service = category;
 
-                                  FormModel? forms = await submitdata(name,
-                                      gender, email, address, mobile, service);
-                                  setState(() {
-                                    _formModel = forms;
-                                    Navigator.of(context).pop();
+                                  // FormModel? forms = await submitdata(name,
+                                  //     gender, email, address, mobile, service);
+                                  // setState(() {
+                                  //   _formModel = forms;
 
-                                    ScaffoldMessenger.of(context)
-                                        .showSnackBar(SnackBar(
-                                      content: Text("Submitted"),
-                                    ));
-                                  });
+                                  paralegalservicesform();
+                                  Navigator.of(context).pop();
+
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(SnackBar(
+                                    content: Text("Submitted"),
+                                  ));
                                 }
                               },
                               child: Center(
@@ -758,21 +772,36 @@ class _CatepageState extends State<Catepage> {
           //   ),
         ),
       );
+
+  Future<void> paralegalservicesform() async {
+    // FirebaseAuth _auth = FirebaseAuth.instance;
+
+    CollectionReference lawyerform =
+        FirebaseFirestore.instance.collection("Paralegal forms");
+    return lawyerform.add({
+      "Name": _namecontroller.text.trim(),
+      "Mobile": _mobilecontroller.text.trim(),
+      "Email": _emailcontroller.text.trim(),
+      "Services": category,
+      "Address": _addresscontroller.text.trim(),
+      "Gender": gendertry
+    }).then((value) => SnackBar(content: Text("Updated")));
+  }
 }
 
-Future<FormModel> submitdata(
-    String name, gender, email, address, mobile, service) async {
-  var response = await http.post(
-      Uri.parse("http://api.indolawassociates.com/public/api/form"),
-      body: {
-        "name": name,
-        "gender": gender,
-        "email": email,
-        "address": address,
-        "mobile": mobile,
-        "service": service,
-      });
+// Future<FormModel> submitdata(
+//     String name, gender, email, address, mobile, service) async {
+//   var response = await http.post(
+//       Uri.parse("http://api.indolawassociates.com/public/api/form"),
+//       body: {
+//         "name": name,
+//         "gender": gender,
+//         "email": email,
+//         "address": address,
+//         "mobile": mobile,
+//         "service": service,
+//       });
 
-  final data = response.body;
-  return formModelFromJson(data);
-}
+//   final data = response.body;
+//   return formModelFromJson(data);
+// }

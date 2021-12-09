@@ -3,33 +3,45 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../main.dart';
 
 
 class LawyerInfopage extends StatefulWidget {
   LawyerInfopage(
-      {required this.name,
+      {required this.name,required this.images,
       required this.specialized,
       required this.description});
-  final String name, specialized, description;
+  final String name, specialized, description,images;
+  
   @override
   _LawyerInfopageState createState() => _LawyerInfopageState();
 }
 
 class _LawyerInfopageState extends State<LawyerInfopage> {
+
+  void onback(){
+     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Mainhome()));
+  }  launcher(command) async {
+    if (await canLaunch(command)) {
+      await launch(command);
+    } else {
+      print("");
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        // onback();
+        onback();
         return Future.value(false);
       },
       child: Scaffold(
           floatingActionButton: FloatingActionButton.extended(
               backgroundColor: gold,
               onPressed: () {
-                // launcher("tel: 04443511235");
+                launcher("tel: 04443511235");
               },
               icon: Icon(Icons.call),
               label: Text(
@@ -60,10 +72,10 @@ class _LawyerInfopageState extends State<LawyerInfopage> {
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.2.h,
                     width: MediaQuery.of(context).size.width * 1.w,
-                    // decoration: BoxDecoration(
-                    //     image: DecorationImage(
-                    //         image: AssetImage(toplawyerlist.Image),
-                    //         fit: BoxFit.contain)),
+                    decoration: BoxDecoration(color: white,
+                        image: DecorationImage(
+                            image:NetworkImage(widget.images),
+                            fit: BoxFit.contain)),
                   ),
                 ),
                 Container(

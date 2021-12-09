@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:indolawassociates/Client/Pages/Register_Login_screen/Login/otppage.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/Client/Pages/Register_Login_screen/Sign_Up/Signup_page.dart';
 import 'package:indolawassociates/main.dart';
@@ -38,8 +39,7 @@ class _LoginpageState extends State<Loginpage> {
   late String otpcoder;
 
   void initState() {
-    _listenotp();
-
+SmsAutoFill().listenForCode();
     Timer.run(() {
       if (_auth.currentUser != null) {
         Navigator.pushAndRemoveUntil(
@@ -55,13 +55,15 @@ class _LoginpageState extends State<Loginpage> {
     super.initState();
   }
 
-  void _listenotp() {
-    SmsAutoFill().listenForCode();
+  void _listenotp()async {
+   await SmsAutoFill().listenForCode();
   }
 
   @override
   void dispose() {
     numberController.dispose();
+        SmsAutoFill().unregisterListener();
+
     super.dispose();
   }
 
@@ -79,39 +81,40 @@ class _LoginpageState extends State<Loginpage> {
             backgroundColor: navy,
             content: Text(
               'Tap back again to exit app.',
-              style: TextStyle(fontSize:18),
+              style: TextStyle(fontSize: 18),
             ),
           ),
-            child:  Stack(
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.27.h,
-              width: MediaQuery.of(context).size.width * 1.w,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/Login_image.jpg"),
-                      fit: BoxFit.cover)),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 200.h),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(22),
-                        topRight: Radius.circular(22))),
-                height: MediaQuery.of(context).size.height * .7.h,
+          child: Stack(
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height * 0.27.h,
                 width: MediaQuery.of(context).size.width * 1.w,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/Login_image.jpg"),
+                        fit: BoxFit.cover)),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 200.h),
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.75.h,
-                  width: MediaQuery.of(context).size.width * 1.w,
                   decoration: BoxDecoration(
                       color: white,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(22),
                           topRight: Radius.circular(22))),
-                  padding: EdgeInsets.symmetric(vertical: 30.h,horizontal: 20.w),
-                  child:Form(
+                  height: MediaQuery.of(context).size.height * .7.h,
+                  width: MediaQuery.of(context).size.width * 1.w,
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.75.h,
+                    width: MediaQuery.of(context).size.width * 1.w,
+                    decoration: BoxDecoration(
+                        color: white,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(22),
+                            topRight: Radius.circular(22))),
+                    padding:
+                        EdgeInsets.symmetric(vertical: 30.h, horizontal: 20.w),
+                    child: Form(
                         key: _formKey,
                         child: Padding(
                           padding: const EdgeInsets.all(20.0),
@@ -119,8 +122,8 @@ class _LoginpageState extends State<Loginpage> {
                             child: Column(
                               children: [
                                 SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.01.h,
+                                  height: MediaQuery.of(context).size.height *
+                                      0.01.h,
                                 ),
                                 Text(
                                   "Welcome Back!",
@@ -131,7 +134,8 @@ class _LoginpageState extends State<Loginpage> {
                                   textAlign: TextAlign.left,
                                 ),
                                 SizedBox(
-                                  height: MediaQuery.of(context).size.height * 0.01,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.01,
                                 ),
                                 Container(
                                     child: Padding(
@@ -163,7 +167,7 @@ class _LoginpageState extends State<Loginpage> {
                                     onChanged: (phoneNumber) {
                                       setState(() {
                                         phone = phoneNumber.completeNumber;
-                                        print(phone);
+                                        // print(phone);
                                       });
                                     },
                                   ),
@@ -190,10 +194,11 @@ class _LoginpageState extends State<Loginpage> {
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 10.0),
                                         child: !isLoading
-                                            ? new TextButton(
+                                            ? new TextButton( 
                                                 onPressed: () async {
-                                                  final otpcode =
-                                                      SmsAutoFill().getAppSignature;
+                                                  final otpcode = SmsAutoFill()
+                                                      .getAppSignature;
+                                                      print(otpcode);
                                                   if (!isLoading) {
                                                     if (_formKey.currentState!
                                                         .validate()) {
@@ -202,21 +207,28 @@ class _LoginpageState extends State<Loginpage> {
                                                       await login();
                                                     }
                                                   }
+                                                  final signature =
+                                                      SmsAutoFill()
+                                                          .getAppSignature;
+                                                          print(signature);
                                                 },
                                                 child: Container(
                                                     decoration: BoxDecoration(
                                                       borderRadius:
-                                                          BorderRadius.circular(20),
+                                                          BorderRadius.circular(
+                                                              20),
                                                       color: gold,
                                                     ),
-                                                    height: MediaQuery.of(context)
-                                                            .size
-                                                            .height *
-                                                        0.07.h,
-                                                    width: MediaQuery.of(context)
-                                                            .size
-                                                            .width *
-                                                        0.5.h,
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.07.h,
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.5.h,
                                                     // padding: const EdgeInsets.symmetric(
                                                     //   vertical: 15.0,
                                                     //   horizontal: 15.0,
@@ -224,12 +236,16 @@ class _LoginpageState extends State<Loginpage> {
                                                     child: Center(
                                                       child: Text(
                                                         "Log In",
-                                                        style: GoogleFonts.mulish(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            color: white,
-                                                            fontSize: 20.sp),
-                                                        textAlign: TextAlign.center,
+                                                        style:
+                                                            GoogleFonts.mulish(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: white,
+                                                                fontSize:
+                                                                    20.sp),
+                                                        textAlign:
+                                                            TextAlign.center,
                                                       ),
                                                     )),
                                               )
@@ -271,12 +287,11 @@ class _LoginpageState extends State<Loginpage> {
                             ),
                           ),
                         )),
-
+                  ),
                 ),
-              ),
-            )
-          ],
-        ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -326,6 +341,8 @@ class _LoginpageState extends State<Loginpage> {
                                       codeLength: 6,
                                       onCodeChanged: (val) {
                                         otpcoder = val!;
+                                        // FocusScope.of(context)
+                                        //     .requestFocus(FocusNode());
                                       },
                                       keyboardType: TextInputType.number,
                                       autoFocus: true,
@@ -448,8 +465,7 @@ class _LoginpageState extends State<Loginpage> {
                                           CrossAxisAlignment.center,
                                       children: <Widget>[
                                         CircularProgressIndicator(
-                                          
-                                            backgroundColor: Colors.red,
+                                          backgroundColor: Colors.red,
                                         )
                                       ].where((c) => c != null).toList(),
                                     )
@@ -590,7 +606,4 @@ class _LoginpageState extends State<Loginpage> {
       displaySnackBar('Number not found, please sign up first');
     }
   }
-
-
-
 }

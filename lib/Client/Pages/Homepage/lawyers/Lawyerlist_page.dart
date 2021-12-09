@@ -33,6 +33,8 @@ class _LawyerlistState extends State<Lawyerlist> {
                 final String name = doc.get("name");
                 final String specialized = doc.get("specialized");
                 final String description = doc.get("description");
+                final String images = doc.get("images");
+
                 return InkWell(
                   onTap: () => Navigator.pushReplacement(
                       context,
@@ -41,6 +43,7 @@ class _LawyerlistState extends State<Lawyerlist> {
                                 name: name,
                                 specialized: specialized,
                                 description: description,
+                                images: images,
                               ))),
                   child: Card(
                     color: Colors.amber,
@@ -72,16 +75,17 @@ class _LawyerlistState extends State<Lawyerlist> {
                                         0.05.w,
                                     height: MediaQuery.of(context).size.height *
                                         0.08.h,
-                                    // decoration: BoxDecoration(
-                                    //   // border: Border.all(color: Colors.white, width: 5),
+                                    decoration: BoxDecoration(
+                                      // border: Border.all(color: Colors.white, width: 5),
 
-                                    //   shape: BoxShape.circle,
-                                    //   image: DecorationImage(
-                                    //     image: AssetImage(toplawyerlist.Image),
-                                    //     fit: BoxFit.contain,
-                                    //   ),
-                                    //   color: Colors.grey.shade100,
-                                    // ),
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        
+                                        image: NetworkImage(images),
+                                        fit: BoxFit.contain,
+                                      ),
+                                      color: Colors.grey.shade100,
+                                    ),
                                   )),
                               Expanded(
                                   flex: 4,
@@ -106,7 +110,7 @@ class _LawyerlistState extends State<Lawyerlist> {
                                               color: navy),
                                         ),
                                         Text(
-                                          specialized.toString(),
+                                          "${specialized.toString()} Lawyer",
                                           style: GoogleFonts.varelaRound(
                                               fontSize: 14.sp, color: navy),
                                         ),

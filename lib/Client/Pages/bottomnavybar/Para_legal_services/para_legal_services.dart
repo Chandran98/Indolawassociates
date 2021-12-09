@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -5,8 +6,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/Client/model/form_model.dart';
+import 'package:indolawassociates/Client/utils/Internet%20connectivity/Network_status.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../../../main.dart';import "package:flutter_gen/gen_l10n/app_localizations.dart";
+import '../../../../main.dart';
+import "package:flutter_gen/gen_l10n/app_localizations.dart";
 
 /////////////////////////////////////        Legal forms Data Model          /////////////////////////////////
 
@@ -25,7 +28,6 @@ class Paralegal extends StatefulWidget {
 }
 
 class _ParalegalState extends State<Paralegal> {
- 
   void onback() {
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => Mainhome()));
@@ -40,79 +42,76 @@ class _ParalegalState extends State<Paralegal> {
         return Future.value(false);
       },
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: navy,
-          title: Text(
-            translate!.paralegalservices,
-            style: GoogleFonts.mulish(
-                color: white, fontWeight: FontWeight.w500, fontSize: 20.sp),
+          appBar: AppBar(
+            backgroundColor: navy,
+            title: Text(
+              translate!.paralegalservices,
+              style: GoogleFonts.mulish(
+                  color: white, fontWeight: FontWeight.w500, fontSize: 20.sp),
+            ),
+            leading: IconButton(
+                onPressed: () => Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => Mainhome())),
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: white,
+                )),
           ),
-          leading: IconButton(
-              onPressed: () => Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => Mainhome())),
-              icon: Icon(
-                Icons.arrow_back,
-                color: white,
-              )),
-        ),
-        body:  paralegallist(context)),
+          body: NetworkSensitive(child: paralegallist(context))),
     );
 
     // Widget op()
   }
 
-  Widget paralegallist(context){ 
-        final translate = AppLocalizations.of(context);
+  Widget paralegallist(context) {
+    final translate = AppLocalizations.of(context);
 
     final List<Paramodel> paralegallist = [
-    Paramodel(
-        Paralegaltitle: translate!.paralegal1,
-        paralegalcontent:
-        translate.paralegalsub1),
-    Paramodel(
-        Paralegaltitle: translate.paralegal2,
-        paralegalcontent:translate.paralegalsub2),
-    Paramodel(
-        Paralegaltitle: translate.paralegal3,
-        paralegalcontent:translate.paralegalsub3),
-    Paramodel(
-        Paralegaltitle: translate.paralegal4,
-        paralegalcontent:translate.paralegalsub4),
-    // Paramodel(Paralegaltitle: " Legal Notice", paralegalcontent: ''),
-    Paramodel(
-        Paralegaltitle: translate.paralegal5,
-        paralegalcontent:translate.paralegalsub5),
-    Paramodel(
-        Paralegaltitle: translate.paralegal6,
-        paralegalcontent:translate.paralegalsub6),
-    Paramodel(
-        Paralegaltitle: translate.paralegal7,
-        paralegalcontent:translate.paralegalsub7),
-  ];return  ListView.separated(
-          physics: BouncingScrollPhysics(),
-          separatorBuilder: (context, index) {
-            return Divider();
-          },
-          itemCount: paralegallist.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-                leading: Icon(Icons.logout, color: navy),
-                title: Text(
-                  paralegallist[index].Paralegaltitle,
-                  style: hStyle,
-                ),
-                onTap: () => Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ParalegalPage(
-                            paralegalcontent:
-                                paralegallist[index].paralegalcontent,
-                            Paralegaltitle:
-                                paralegallist[index].Paralegaltitle))));
-          },
-        );
-    
-}
+      Paramodel(
+          Paralegaltitle: translate!.paralegal1,
+          paralegalcontent: translate.paralegalsub1),
+      Paramodel(
+          Paralegaltitle: translate.paralegal2,
+          paralegalcontent: translate.paralegalsub2),
+      Paramodel(
+          Paralegaltitle: translate.paralegal3,
+          paralegalcontent: translate.paralegalsub3),
+      Paramodel(
+          Paralegaltitle: translate.paralegal4,
+          paralegalcontent: translate.paralegalsub4),
+      // Paramodel(Paralegaltitle: " Legal Notice", paralegalcontent: ''),
+      Paramodel(
+          Paralegaltitle: translate.paralegal5,
+          paralegalcontent: translate.paralegalsub5),
+      Paramodel(
+          Paralegaltitle: translate.paralegal6,
+          paralegalcontent: translate.paralegalsub6),
+      Paramodel(
+          Paralegaltitle: translate.paralegal7,
+          paralegalcontent: translate.paralegalsub7),
+    ];
+    return ListView.separated(
+      physics: BouncingScrollPhysics(),
+      separatorBuilder: (context, index) {
+        return Divider();
+      },
+      itemCount: paralegallist.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+            leading: Icon(Icons.logout, color: navy),
+            title: Text(
+              paralegallist[index].Paralegaltitle,
+              style: hStyle,
+            ),
+            onTap: () => Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ParalegalPage(
+                        paralegalcontent: paralegallist[index].paralegalcontent,
+                        Paralegaltitle: paralegallist[index].Paralegaltitle))));
+      },
+    );
+  }
 }
 
 ////////////////////////////////    Legal forms Page      ////////////////////////////////
@@ -168,6 +167,32 @@ class _ParalegalPageState extends State<ParalegalPage> {
     }
   }
 
+  Future<void> servicesform() async {
+    // FirebaseAuth _auth = FirebaseAuth.instance;
+
+    CollectionReference lawyerform =
+        FirebaseFirestore.instance.collection("Paralegal forms");
+    return lawyerform.add({
+      "Name": _namecontroller.text.trim(),
+      "Mobile": _mobilecontroller.text.trim(),
+      "Email": _emailcontroller.text.trim(),
+      "Services": paralegal,
+      "Address": _addresscontroller.text.trim(),
+      "Gender": gendertry
+    }).then((value) => SnackBar(content: Text("Updated")));
+  }
+
+  @override
+  void dispose() {
+    _namecontroller.dispose();
+    _mobilecontroller.dispose();
+    _emailcontroller.dispose();
+    _servicecontroller.dispose();
+    _servicecontroller.dispose();
+    _addresscontroller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final translate = AppLocalizations.of(context);
@@ -183,7 +208,9 @@ class _ParalegalPageState extends State<ParalegalPage> {
             backgroundColor: white,
             title: Text(widget.Paralegaltitle,
                 style: GoogleFonts.mulish(
-                    fontSize: 18.5.sp, fontWeight: FontWeight.w500, color: navy)),
+                    fontSize: 18.5.sp,
+                    fontWeight: FontWeight.w500,
+                    color: navy)),
             leading: IconButton(
                 onPressed: () => Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => Paralegal())),
@@ -285,12 +312,13 @@ class _ParalegalPageState extends State<ParalegalPage> {
                                 textScaleFactor: 1,
                               ),
                               SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.015.h,
+                                height: MediaQuery.of(context).size.height *
+                                    0.015.h,
                               ),
                               InkWell(
                                 onTap: () {
-                                  launcher("mailto: indolawassociates@gmail.com");
+                                  launcher(
+                                      "mailto: indolawassociates@gmail.com");
                                 },
                                 child: Row(
                                   children: [
@@ -581,32 +609,41 @@ class _ParalegalPageState extends State<ParalegalPage> {
                             color: Colors.green,
                             elevation: 7.0,
                             child: TextButton(
-                              onPressed: ()
-                                  //  {
-                                  //   Navigator.of(context).pop();
-
-                                  //   ScaffoldMessenger.of(context)
-                                  //       .showSnackBar(SnackBar(
-                                  //     content: Text("Submitted"),
-                                  //   ));
-                                  // },
-                                  async {
+                              onPressed: () {
                                 if (_formkey.currentState!.validate()) {
-                                  String name = _namecontroller.text;
-                                  String email = _emailcontroller.text;
-                                  String address = _addresscontroller.text;
-                                  String gender = gendertry;
-                                  String mobile = _mobilecontroller.text;
-                                  String service = paralegal;
-
-                                  FormModel forms = await submitdata(name,
-                                      gender, email, address, mobile, service);
-                                  setState(() {
-                                    _formModel = forms;
-                                    Navigator.pop(context);
-                                  });
+                                  servicesform();
+                                  Navigator.of(context).pop();
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(SnackBar(
+                                    content: Text("Submitted"),
+                                  ));
                                 }
                               },
+                              //  {
+                              //   Navigator.of(context).pop();
+
+                              //   ScaffoldMessenger.of(context)
+                              //       .showSnackBar(SnackBar(
+                              //     content: Text("Submitted"),
+                              //   ));
+                              // },
+                              //     async {
+                              //   if (_formkey.currentState!.validate()) {
+                              //     String name = _namecontroller.text;
+                              //     String email = _emailcontroller.text;
+                              //     String address = _addresscontroller.text;
+                              //     String gender = gendertry;
+                              //     String mobile = _mobilecontroller.text;
+                              //     String service = paralegal;
+
+                              //     FormModel forms = await submitdata(name,
+                              //         gender, email, address, mobile, service);
+                              //     setState(() {
+                              //       _formModel = forms;
+                              //       Navigator.pop(context);
+                              //     });
+                              //   }
+                              // },
                               child: Center(
                                   child: Text('Submit',
                                       style: TextStyle(
@@ -644,24 +681,26 @@ class _ParalegalPageState extends State<ParalegalPage> {
       );
 }
 
-Future<FormModel> submitdata(
-    String name, gender, email, address, mobile, service) async {
-  final response = await http
-      .post(Uri.parse("http://api.indolawassociates.com/api/form"), body: {
-    "name": name,
-    "gender": gender,
-    "email": email,
-    "address": address,
-    "mobile": mobile,
-    "service": service,
-  });
-  var data = response.body;
-  return formModelFromJson(data);
+// Future<FormModel> submitdata(
+//     String name, gender, email, address, mobile, service) async {
+//   final response = await http
+//       .post(Uri.parse("http://api.indolawassociates.com/api/form"), body: {
+//     "name": name,
+//     "gender": gender,
+//     "email": email,
+//     "address": address,
+//     "mobile": mobile,
+//     "service": service,
+//   });
+//   var data = response.body;
+//   return formModelFromJson(data);
 
-  // if (response.statusCode == 201) {
-  //   final  data = response.body;
-  //   return formModelFromJson(data);
-  // } else {
-  //   return null;
-  // }
-}
+//   // if (response.statusCode == 201) {
+//   //   final  data = response.body;
+//   //   return formModelFromJson(data);
+//   // } else {
+//   //   return null;
+//   // }
+// }
+
+

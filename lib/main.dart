@@ -9,15 +9,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/l10n/l10n.dart';
 import 'package:indolawassociates/Client/provider/languageprovider.dart';
+import 'package:indolawassociates/Client/utils/Internet%20connectivity/connectivity.dart';
 import 'package:provider/provider.dart';
 import 'Client/Pages/Homepage/drawer.dart';
 import 'Client/Pages/Homepage/home.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'Client/Pages/Register_Login_screen/Login/Login_page.dart';
 import 'Client/Pages/bottomnavybar/Legalforms.dart';
 import 'Client/Pages/bottomnavybar/NRI.dart';
 import 'Client/Pages/bottomnavybar/Para_legal_services/para_legal_services.dart';
 import 'Client/constants/constant.dart';
-import 'Client/Pages/Register_Login_screen/Login.dart/Login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,29 +40,34 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
         providers: [
           // ChangeNotifier()
-          ChangeNotifierProvider(create: (context) => Languagenotifier())
+          ChangeNotifierProvider(create: (context) => Languagenotifier()),
+          StreamProvider<ConnectivityStatus>(
+              create: (_) => ConnectivityService().streamController.stream,
+              initialData: ConnectivityStatus.Offline)
         ],
         child:
-        //  Consumer(
-        //   builder: (_, provider, snapshot) {
-        //     return 
-            Builder(builder: (context)=>ScreenUtilInit(
-              designSize: Size(390, 690),
-              builder: () => MaterialApp(
-                locale: Provider.of<Languagenotifier>(context, listen: true)
-                    .currentlocale,
-                    localizationsDelegates: const[
-                      GlobalCupertinoLocalizations.delegate,
-                      GlobalMaterialLocalizations.delegate,
-                      GlobalWidgetsLocalizations.delegate,
-                      AppLocalizations.delegate,
-                    ],
-                    supportedLocales: L10n.all,
-                debugShowCheckedModeBanner: false,
-                home: SplashScreen(),
-              ),
-            ))
-          // },
+            //  Consumer(
+            //   builder: (_, provider, snapshot) {
+            //     return
+            Builder(
+                builder: (context) => ScreenUtilInit(
+                      designSize: Size(390, 710),
+                      builder: () => MaterialApp(
+                        locale:
+                            Provider.of<Languagenotifier>(context, listen: true)
+                                .currentlocale,
+                        localizationsDelegates: const [
+                          GlobalCupertinoLocalizations.delegate,
+                          GlobalMaterialLocalizations.delegate,
+                          GlobalWidgetsLocalizations.delegate,
+                          AppLocalizations.delegate,
+                        ],
+                        supportedLocales: L10n.all,
+                        debugShowCheckedModeBanner: false,
+                        home: SplashScreen(),
+                      ),
+                    ))
+        // },
         );
   }
 }
@@ -139,7 +145,7 @@ class _MainhomeState extends State<Mainhome> {
 
   @override
   Widget build(BuildContext context) {
-        final translate = AppLocalizations.of(context);
+    final translate = AppLocalizations.of(context);
 
     return Scaffold(
         drawer: Maindrawer(),
@@ -163,12 +169,14 @@ class _MainhomeState extends State<Mainhome> {
               ),
               BottomNavyBarItem(
                 icon: Icon(Icons.library_books, color: navy),
-                title: Text(translate.navkey3,
+                title: Text(
+                  translate.navkey3,
                   style: hStyle,
                 ),
                 inactiveColor: Color(0xffB4B4E4),
                 activeColor: Colors.lightBlue,
-              ), BottomNavyBarItem(
+              ),
+              BottomNavyBarItem(
                 icon: Icon(Icons.groups_rounded, color: navy),
                 title: Text(
                   translate.navkey4,
@@ -201,7 +209,7 @@ class _MainhomeState extends State<Mainhome> {
         return Legal();
       case 3:
         return NRI();
-      
+
       case 0:
       default:
         return HomeScreen();

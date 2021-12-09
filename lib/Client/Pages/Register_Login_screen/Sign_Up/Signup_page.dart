@@ -6,10 +6,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:indolawassociates/Client/Pages/Register_Login_screen/Login/Login_page.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/main.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import '../Login.dart/Login_page.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
