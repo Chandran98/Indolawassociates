@@ -45,7 +45,8 @@ class _LawyerlistState extends State<Lawyerlist> {
                                 description: description,
                                 images: images,
                               ))),
-                  child: Card(
+                  child: 
+                  Card(
                     color: Colors.amber,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(

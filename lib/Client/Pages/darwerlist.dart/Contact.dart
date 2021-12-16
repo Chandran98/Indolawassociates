@@ -141,7 +141,7 @@ class _ContactState extends State<Contact> {
                                           padding: const EdgeInsets.all(10),
                                           child: FittedBox(
                                             child: Text(
-                                              translate.phone,
+                                              "translate.",
                                               style: hStyle,textScaleFactor: 1,
                                             ),
                                           ),

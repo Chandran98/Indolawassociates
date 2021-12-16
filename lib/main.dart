@@ -2,19 +2,21 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/l10n/l10n.dart';
 import 'package:indolawassociates/Client/provider/languageprovider.dart';
 import 'package:indolawassociates/Client/utils/Internet%20connectivity/connectivity.dart';
+import 'package:indolawassociates/UI/routes/route.dart';
+import 'package:indolawassociates/UI/pages/MainHomePage.dart';
+import 'package:indolawassociates/UI/themes/themes.dart';
 import 'package:provider/provider.dart';
 import 'Client/Pages/Homepage/drawer.dart';
 import 'Client/Pages/Homepage/home.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'Client/Pages/Register_Login_screen/Login/Login_page.dart';
 import 'Client/Pages/bottomnavybar/Legalforms.dart';
 import 'Client/Pages/bottomnavybar/NRI.dart';
 import 'Client/Pages/bottomnavybar/Para_legal_services/para_legal_services.dart';
@@ -38,37 +40,47 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [
-          // ChangeNotifier()
-          ChangeNotifierProvider(create: (context) => Languagenotifier()),
-          StreamProvider<ConnectivityStatus>(
-              create: (_) => ConnectivityService().streamController.stream,
-              initialData: ConnectivityStatus.Offline)
-        ],
-        child:
-            //  Consumer(
-            //   builder: (_, provider, snapshot) {
-            //     return
-            Builder(
-                builder: (context) => ScreenUtilInit(
-                      designSize: Size(390, 710),
-                      builder: () => MaterialApp(
-                        locale:
-                            Provider.of<Languagenotifier>(context, listen: true)
-                                .currentlocale,
-                        localizationsDelegates: const [
-                          GlobalCupertinoLocalizations.delegate,
-                          GlobalMaterialLocalizations.delegate,
-                          GlobalWidgetsLocalizations.delegate,
-                          AppLocalizations.delegate,
-                        ],
-                        supportedLocales: L10n.all,
-                        debugShowCheckedModeBanner: false,
-                        home: SplashScreen(),
-                      ),
-                    ))
-        // },
-        );
+      providers: [
+        // ChangeNotifier()
+        ChangeNotifierProvider(create: (context) => Languagenotifier()),
+        ChangeNotifierProvider(create: (context) => Themenotifier()),
+        StreamProvider<ConnectivityStatus>(
+            create: (_) => ConnectivityService().streamController.stream,
+            initialData: ConnectivityStatus.Offline)
+      ],
+      child: Consumer(builder: (_, Themenotifier notifier, child) {
+        return Builder(
+            builder: (context) => ScreenUtilInit(
+                designSize: Size(390, 710),
+                builder: () {
+                  return MaterialApp(
+                    locale: Provider.of<Languagenotifier>(context, listen: true)
+                        .currentlocale,
+                    localizationsDelegates: const [
+                      GlobalCupertinoLocalizations.delegate,
+                      GlobalMaterialLocalizations.delegate,
+                      GlobalWidgetsLocalizations.delegate,
+                      AppLocalizations.delegate,
+                    ],
+                    supportedLocales: L10n.all,
+                    debugShowCheckedModeBanner: false,
+                    home: SplashScreen(),
+                    routes: routes,
+                    // theme: notifier.darktheme ? dark : light,
+
+                    // routes: {
+                    //   Settingspage.id: (context) => Settingspage(),
+                    //   Testingpage.id: (context) => Testingpage()
+                    // },
+                  );
+                  //  Consumer<Themenotifier>(
+                  //     builder: (_, Themenotifier notifier, child) {
+                  //   return
+                  // }
+                  // );
+                }));
+      }),
+    );
   }
 }
 
@@ -82,13 +94,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
 
-  // void initState() {
-  //   super.initState();
-  //   Timer(
-  //       Duration(seconds: 4),
-  //       () => Navigator.pushReplacement(
-  //           context, MaterialPageRoute(builder: (context) => Intro())));
-  // }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -100,32 +106,8 @@ class _SplashScreenState extends State<SplashScreen> {
           "assets/images/ILAlogopvt.png",
           fit: BoxFit.contain,
         ),
-        nextScreen: Loginpage());
-    // return Container(color: white,
-    //   child: Center(
-    //     child: Image.asset("assets/images/ILALOGO.png",height: MediaQuery.of(context).size.height*0.32,),
-    // Text(
-    //   " ILA \nLOGO ",
-    //   style: GoogleFonts.mulish(
-    //       fontSize: 60,
-    //       fontWeight: FontWeight.bold,
-    //       color: white,
-    //       decoration: TextDecoration.none),
-    // ),
-    // ),
-    // decoration: BoxDecoration(
-    //   // gradient: LinearGradient(
-    //   //     colors: [Colors.purple, Colors.red],
-    //   //     begin: Alignment.bottomCenter,
-    //   //     end: Alignment.topCenter),
-    //   color: Colors.white,
-    //          image: DecorationImage(
-    //            image: AssetImage(
-    //              "assets/images/ILALOGO.png",
-    //            ),
-    //            )
-    // ),
-    // );
+        nextScreen: MainHomepage());
+   
   }
 }
 
@@ -153,24 +135,22 @@ class _MainhomeState extends State<Mainhome> {
             backgroundColor: white,
             items: <BottomNavyBarItem>[
               BottomNavyBarItem(
-                  inactiveColor: Color(0xFFFDD8B5),
-                  activeColor: Colors.lightBlue,
-                  icon: Icon(Icons.home, color: navy),
-                  title: Text(translate!.navkey1,
-                      style: GoogleFonts.mulish(color: navy, fontSize: 18.sp))),
+                  inactiveColor: CupertinoColors.systemGrey,
+                  activeColor: Colors.black,
+                  icon: Icon(
+                    CupertinoIcons.home,
+                  ),
+                  title: Text("")),
               BottomNavyBarItem(
-                inactiveColor: Color(0xffB4B4E4),
-                activeColor: Colors.lightBlue,
+                // inactiveColor: Color(0xffB4B4E4),
+                // activeColor: Colors.lightBlue,
                 icon: Icon(Icons.book_online_outlined, color: navy),
-                title: Text(
-                  translate.navkey2,
-                  style: hStyle,
-                ),
+                title: Text("."),
               ),
               BottomNavyBarItem(
                 icon: Icon(Icons.library_books, color: navy),
                 title: Text(
-                  translate.navkey3,
+                  translate!.navkey3,
                   style: hStyle,
                 ),
                 inactiveColor: Color(0xffB4B4E4),
@@ -182,8 +162,8 @@ class _MainhomeState extends State<Mainhome> {
                   translate.navkey4,
                   style: hStyle,
                 ),
-                inactiveColor: Color(0xffB4B4E4),
-                activeColor: Colors.lightBlue,
+                // inactiveColor: Color(0xffB4B4E4),
+                // activeColor: Colors.lightBlue,
               ),
               // BottomNavyBarItem(
               //     inactiveColor: Color(0xFF9393EE),

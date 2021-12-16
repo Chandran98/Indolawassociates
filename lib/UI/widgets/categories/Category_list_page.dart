@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:indolawassociates/Client/Pages/Categories.dart/cate.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/Client/model/categories_data_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:indolawassociates/UI/widgets/categories/Category_info_page.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
 
 class Cateslider extends StatefulWidget {
@@ -25,18 +27,7 @@ class _CatesliderState extends State<Cateslider> {
     final translate = AppLocalizations.of(context);
     final List<Categorylist> categorylist = [
       Categorylist(
-          categorytitle: translate!.categorytitle1,
-          categorypic: "assets/icons/property.png",
-          categorysubtitle: translate.categorysubtitle1,
-          categorypageimages: 'assets/images/property_cate.jpg',
-          r1: translate.propertykey1,
-          r2: translate.propertykey2,
-          r3: translate.propertykey3,
-          r4: translate.propertykey4,
-          r5: translate.propertykey5,
-          r6: ''),
-      Categorylist(
-          categorytitle: translate.categorytitle2,
+          categorytitle: translate!.categorytitle2,
           categorypic: "assets/icons/family.png",
           categorysubtitle: translate.categorysubtitle2,
           categorypageimages: 'assets/images/div_cate.jpg',
@@ -79,6 +70,17 @@ class _CatesliderState extends State<Cateslider> {
           r4: translate.cyberkey4,
           r5: translate.cyberkey5,
           r6: translate.cyberkey6),
+      Categorylist(
+          categorytitle: translate.categorytitle1,
+          categorypic: "assets/icons/property.png",
+          categorysubtitle: translate.categorysubtitle1,
+          categorypageimages: 'assets/images/property_cate.jpg',
+          r1: translate.propertykey1,
+          r2: translate.propertykey2,
+          r3: translate.propertykey3,
+          r4: translate.propertykey4,
+          r5: translate.propertykey5,
+          r6: ''),
       Categorylist(
           categorytitle: translate.categorytitle6,
           categorypic: "assets/icons/civilrights.png",
@@ -124,39 +126,63 @@ class _CatesliderState extends State<Cateslider> {
           r5: translate.consumerkey5,
           r6: translate.consumerkey6),
     ];
+    double width = MediaQuery.of(context).size.width;
 
-    return Container(width: 100,
-      child: Center(
-        child: Container(height: 100,
-          child: Column(
-            children: [
-              ClipOval(
-                child: Container(padding: EdgeInsets.all(18),
-                  width: MediaQuery.of(context).size.width * 0.19.w,
-                  height: MediaQuery.of(context).size.height * 0.08.h,
-                  decoration: BoxDecoration(
-                      color: white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(12),
-                        bottomLeft: Radius.circular(12),
-                      ),
-                      image: DecorationImage(
-                          image: AssetImage(
-                            categorylist[index].categorypic,
-                          ),
-                          fit: BoxFit.contain)),
+    double height = MediaQuery.of(context).size.height;
+
+    return InkWell(
+      onTap: () {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Catesider(
+                      r1: categorylist[index].r1,
+                      r2: categorylist[index].r2,
+                      r3: categorylist[index].r3,
+                      r4: categorylist[index].r4,
+                      r5: categorylist[index].r5,
+                      r6: categorylist[index].r6,
+                      categorysubtitle: categorylist[index].categorysubtitle,
+                      categorypageimages:
+                          categorylist[index].categorypageimages,
+                      categorytitle: categorylist[index].categorytitle,
+                    )));
+      },
+      child: Container(
+        width: height * 0.135.h,
+        child: Center(
+          child: Container(
+            height: height * 0.18.h,
+            child: Column(
+              children: [
+                ClipOval(
+                  child: Container(
+                    width: width * 0.15.w,
+                    height: height * 0.08.h,
+                    decoration: BoxDecoration(
+                        color: white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(12),
+                          bottomLeft: Radius.circular(12),
+                        ),
+                        image: DecorationImage(
+                            image: AssetImage(
+                              categorylist[index].categorypic,
+                            ),
+                            fit: BoxFit.contain)),
+                  ),
                 ),
-              ),
-              Container(
-                  margin: EdgeInsets.all(5),
-                  child: FittedBox(
-                    child: Text(categorylist[index].categorytitle,
-                        style: TextStyle(
-                            fontSize: 13.sp,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black)),
-                  ))
-            ],
+                Container(
+                    margin: EdgeInsets.all(5),
+                    child: FittedBox(
+                      child: Text(categorylist[index].categorytitle,
+                          style: TextStyle(
+                              fontSize: 13.sp,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black)),
+                    ))
+              ],
+            ),
           ),
         ),
       ),
@@ -165,26 +191,20 @@ class _CatesliderState extends State<Cateslider> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // backgroundColor: w,
-      body: Center(
-        child: Container(
-            child: Column(
-          children: [
-            Expanded(
-                child: ScrollSnapList(selectedItemAnchor: SelectedItemAnchor.MIDDLE,
-                    itemBuilder: _buildcateslide,
-                    itemCount: 9,shrinkWrap: true,
-                    itemSize: 100,allowAnotherDirection: true,
-                    dynamicItemSize: true,
-                    onItemFocus: (select) {
-                      setState(() {
-                        currentpage = select;
-                      });
-                    })),
-          ],
-        )),
-      ),
-    );
+    return Expanded(
+        child: ScrollSnapList(
+            selectedItemAnchor: SelectedItemAnchor.MIDDLE,
+            itemBuilder: _buildcateslide,
+            itemCount: 9,
+            shrinkWrap: true,
+            itemSize: 120,
+            allowAnotherDirection: true,
+            initialIndex: 4,
+            dynamicItemSize: true,
+            onItemFocus: (select) {
+              setState(() {
+                currentpage = select;
+              });
+            }));
   }
 }

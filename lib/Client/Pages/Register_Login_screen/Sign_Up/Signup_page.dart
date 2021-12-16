@@ -316,7 +316,8 @@ class _SignUpState extends State<SignUp> {
                             height: MediaQuery.of(context).size.height * 0.02.h,
                           ),
                         ],
-                      ))
+                      ),
+                      )
                 ],
               ),
             ),

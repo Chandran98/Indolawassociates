@@ -103,6 +103,7 @@ class _CatepageState extends State<Catepage> {
         return Future.value(false);
       },
       child: Scaffold(
+        
         appBar: AppBar(
           toolbarHeight: MediaQuery.of(context).size.height * 0.065.h,
           backgroundColor: white,
@@ -154,9 +155,9 @@ class _CatepageState extends State<Catepage> {
             //   child:
             // )
             Padding(
-              padding: const EdgeInsets.only(top: 170.0),
+              padding: const EdgeInsets.only(top: 170),
               child: Container(
-                height: MediaQuery.of(context).size.height * 0.58.h,
+                height: MediaQuery.of(context).size.height * 0.6.h,
                 decoration: BoxDecoration(
                     color: white,
                     borderRadius: BorderRadius.only(
@@ -164,334 +165,280 @@ class _CatepageState extends State<Catepage> {
                       topRight: Radius.circular(22),
                     )),
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                widget.categorytitle,
-                                style: bStyle,
-                                textScaleFactor: 1,
+                  padding: const EdgeInsets.symmetric(horizontal: 20,vertical:20),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              widget.categorytitle,
+                              style: bStyle,
+                              textScaleFactor: 1,
+                            ),
+                            InkWell(
+                              onTap: () => showModalBottomSheet(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.vertical(
+                                          top: Radius.circular(25))),
+                                  enableDrag: false,
+                                  isScrollControlled: true,
+                                  context: context,
+                                  builder: (context) => SingleChildScrollView(
+                                        child: Container(
+                                          padding: EdgeInsets.only(
+                                              bottom: MediaQuery.of(context)
+                                                  .viewInsets
+                                                  .bottom),
+                                          child: buildformsheet(),
+                                        ),
+                                      )),
+                              child: Container(
+                                height: MediaQuery.of(context).size.height *
+                                    0.045.h,
+                                width: MediaQuery.of(context).size.width *
+                                    0.36.w,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(18),
+                                  color: gold,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Icon(
+                                      Icons.arrow_back_ios_new_rounded,
+                                      color: white,
+                                      size: 22,
+                                    ),
+                                    Text(
+                                      translate!.apply,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 13.sp,
+                                          color: white),
+                                    ),
+                                  ],
+                                ),
                               ),
-                              InkWell(
-                                onTap: () => showModalBottomSheet(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.vertical(
-                                            top: Radius.circular(25))),
-                                    enableDrag: false,
-                                    isScrollControlled: true,
-                                    context: context,
-                                    builder: (context) => SingleChildScrollView(
-                                          child: Container(
-                                            padding: EdgeInsets.only(
-                                                bottom: MediaQuery.of(context)
-                                                    .viewInsets
-                                                    .bottom),
-                                            child: buildformsheet(),
+                            )
+                          ],
+                        ),
+              
+                        // Text("Experience ${toplawyerlist.Experience}",style: hStyle,),
+                        // Text(
+                        //   "toplawyerlist.type",
+                        //     style: GoogleFonts.mulish(
+                        //         fontWeight: FontWeight.w600,
+                        //         fontSize: 16,
+                        //         color: navy)),
+                        SizedBox(
+                          height:
+                              MediaQuery.of(context).size.height * 0.025.h,
+                        ),
+                        Text(
+                          widget.categorysubtitle,
+                          style: GoogleFonts.mulish(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 13.sp,
+                              color: navy),
+                          textAlign: TextAlign.justify,
+                          // textScaleFactor: 1,
+                        ),
+                        // SizedBox(
+                        //   height: MediaQuery.of(context).size.height * 0.03.h,
+                        // ),
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.15.h,
+                          width: double.infinity,
+                          child: Row(
+                            children: [
+                              Container(
+                                color: white,
+                                height: MediaQuery.of(context).size.height *
+                                    0.2.h,
+                                width: MediaQuery.of(context).size.width *
+                                    0.38.h,
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(Icons.check, color: gold),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.02.w,
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                            widget.r1,
+                                            style: GoogleFonts.mulish(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 11.sp,
+                                                color: navy),
                                           ),
-                                        )),
-                                child: Container(
-                                  height: MediaQuery.of(context).size.height *
-                                      0.045.h,
-                                  width: MediaQuery.of(context).size.width *
-                                      0.36.w,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(18),
-                                    color: gold,
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Icon(
-                                        Icons.arrow_back_ios_new_rounded,
-                                        color: white,
-                                        size: 22,
-                                      ),
-                                      Text(
-                                        translate!.apply,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 13.sp,
-                                            color: white),
-                                      ),
-                                    ],
-                                  ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.check, color: gold),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.02.w,
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                            widget.r3,
+                                            style: GoogleFonts.mulish(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 11.sp,
+                                                color: navy),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.check, color: gold),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.02.w,
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                            widget.r5,
+                                            style: GoogleFonts.mulish(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 11.sp,
+                                                color: navy),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                color: white,
+                                width:
+                                    MediaQuery.of(context).size.width * 0.4.w,
+                                height: MediaQuery.of(context).size.height *
+                                    0.2.h,
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(Icons.check, color: gold),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.02.w,
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                            widget.r2,
+                                            style: GoogleFonts.mulish(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 11.sp,
+                                                color: navy),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.check, color: gold),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.02.w,
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                            widget.r4,
+                                            style: GoogleFonts.mulish(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 11.sp,
+                                                color: navy),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.check,
+                                          color: gold,
+                                        ),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.02.w,
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                            widget.r6,
+                                            style: GoogleFonts.mulish(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 11.sp,
+                                                color: navy),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
                                 ),
                               )
                             ],
                           ),
-
-                          // Text("Experience ${toplawyerlist.Experience}",style: hStyle,),
-                          // Text(
-                          //   "toplawyerlist.type",
-                          //     style: GoogleFonts.mulish(
-                          //         fontWeight: FontWeight.w600,
-                          //         fontSize: 16,
-                          //         color: navy)),
-                          SizedBox(
-                            height:
-                                MediaQuery.of(context).size.height * 0.025.h,
-                          ),
-                          Text(
-                            widget.categorysubtitle,
-                            style: GoogleFonts.mulish(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 13.sp,
-                                color: navy),
-                            textAlign: TextAlign.justify,
-                            // textScaleFactor: 1,
-                          ),
-                          // SizedBox(
-                          //   height: MediaQuery.of(context).size.height * 0.03.h,
-                          // ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.15.h,
-                            width: double.infinity,
-                            child: Row(
-                              children: [
-                                Container(
-                                  color: white,
-                                  height: MediaQuery.of(context).size.height *
-                                      0.2.h,
-                                  width: MediaQuery.of(context).size.width *
-                                      0.38.h,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Icon(Icons.check, color: gold),
-                                          SizedBox(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.02.w,
-                                          ),
-                                          Expanded(
-                                            child: Text(
-                                              widget.r1,
-                                              style: GoogleFonts.mulish(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 11.sp,
-                                                  color: navy),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Icon(Icons.check, color: gold),
-                                          SizedBox(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.02.w,
-                                          ),
-                                          Expanded(
-                                            child: Text(
-                                              widget.r3,
-                                              style: GoogleFonts.mulish(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 11.sp,
-                                                  color: navy),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Icon(Icons.check, color: gold),
-                                          SizedBox(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.02.w,
-                                          ),
-                                          Expanded(
-                                            child: Text(
-                                              widget.r5,
-                                              style: GoogleFonts.mulish(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 11.sp,
-                                                  color: navy),
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  color: white,
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.4.w,
-                                  height: MediaQuery.of(context).size.height *
-                                      0.2.h,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Icon(Icons.check, color: gold),
-                                          SizedBox(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.02.w,
-                                          ),
-                                          Expanded(
-                                            child: Text(
-                                              widget.r2,
-                                              style: GoogleFonts.mulish(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 11.sp,
-                                                  color: navy),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Icon(Icons.check, color: gold),
-                                          SizedBox(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.02.w,
-                                          ),
-                                          Expanded(
-                                            child: Text(
-                                              widget.r4,
-                                              style: GoogleFonts.mulish(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 11.sp,
-                                                  color: navy),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            Icons.check,
-                                            color: gold,
-                                          ),
-                                          SizedBox(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.02.w,
-                                          ),
-                                          Expanded(
-                                            child: Text(
-                                              widget.r6,
-                                              style: GoogleFonts.mulish(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 11.sp,
-                                                  color: navy),
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-
-                          Text(
-                            translate.drawerkey5,
-                            style: GoogleFonts.mulish(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16.sp,
-                                color: gold),
-                            textAlign: TextAlign.justify,
-                            textScaleFactor: 1,
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.01.h,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              launcher("mailto: indolawassociates@gmail.com");
-                            },
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.mail,
-                                  color: navy,
-                                ),
-                                SizedBox(
-                                  width: 10.w,
-                                ),
-                                Text(
-                                  "info@indolawassociates.com",
-                                  style: GoogleFonts.mulish(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 14.sp,
-                                      color: navy),
-                                  textAlign: TextAlign.justify,
-                                  textScaleFactor: 1,
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.01.h,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              launcher("tel: 8940383000");
-                            },
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.call_sharp,
-                                  color: navy,
-                                ),
-                                SizedBox(
-                                  width: 10.w,
-                                ),
-                                Text(
-                                  "8940383000",
-                                  style: GoogleFonts.mulish(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 14.sp,
-                                      color: navy),
-                                  textAlign: TextAlign.justify,
-                                  textScaleFactor: 1,
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.01.h,
-                          ),
-                          Row(
+                        ),
+              
+                        Text(
+                          translate.drawerkey5,
+                          style: GoogleFonts.mulish(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16.sp,
+                              color: gold),
+                          textAlign: TextAlign.justify,
+                          textScaleFactor: 1,
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01.h,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            launcher("mailto: indolawassociates@gmail.com");
+                          },
+                          child: Row(
                             children: [
                               Icon(
-                                Icons.timer_rounded,
+                                Icons.mail,
                                 color: navy,
                               ),
                               SizedBox(
                                 width: 10.w,
                               ),
                               Text(
-                                "${translate.workingshift}: 8am-6pm",
+                                "info@indolawassociates.com",
                                 style: GoogleFonts.mulish(
                                     fontWeight: FontWeight.w600,
                                     fontSize: 14.sp,
@@ -501,8 +448,59 @@ class _CatepageState extends State<Catepage> {
                               ),
                             ],
                           ),
-                        ],
-                      ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01.h,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            launcher("tel: 8940383000");
+                          },
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.call_sharp,
+                                color: navy,
+                              ),
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              Text(
+                                "8940383000",
+                                style: GoogleFonts.mulish(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14.sp,
+                                    color: navy),
+                                textAlign: TextAlign.justify,
+                                textScaleFactor: 1,
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01.h,
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.timer_rounded,
+                              color: navy,
+                            ),
+                            SizedBox(
+                              width: 10.w,
+                            ),
+                            Text(
+                              "${translate.workingshift}: 8am-6pm",
+                              style: GoogleFonts.mulish(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14.sp,
+                                  color: navy),
+                              textAlign: TextAlign.justify,
+                              textScaleFactor: 1,
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -787,6 +785,7 @@ class _CatepageState extends State<Catepage> {
       "Gender": gendertry
     }).then((value) => SnackBar(content: Text("Updated")));
   }
+
 }
 
 // Future<FormModel> submitdata(
