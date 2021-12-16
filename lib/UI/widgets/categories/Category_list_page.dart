@@ -156,9 +156,9 @@ class _CatesliderState extends State<Cateslider> {
             child: Column(
               children: [
                 ClipOval(
-                  child: Container(
-                    width: width * 0.15.w,
-                    height: height * 0.08.h,
+                  child: Container(padding: EdgeInsets.all(5),
+                    width: width * 0.192.w,
+                    height: height * 0.081.h,
                     decoration: BoxDecoration(
                         color: white,
                         borderRadius: BorderRadius.only(
@@ -179,7 +179,7 @@ class _CatesliderState extends State<Cateslider> {
                           style: TextStyle(
                               fontSize: 13.sp,
                               fontWeight: FontWeight.w600,
-                              color: Colors.black)),
+                              color: Colors.white)),
                     ))
               ],
             ),

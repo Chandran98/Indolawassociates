@@ -14,15 +14,15 @@ class Notificationpage extends StatefulWidget {
 }
 
 class _NotificationpageState extends State<Notificationpage> {
-
-  onback(){
+  onback() {
     Navigator.of(context).pop();
   }
+
   @override
   Widget build(BuildContext context) {
     final translate = AppLocalizations.of(context);
 
-    return  WillPopScope(
+    return WillPopScope(
       onWillPop: () {
         onback();
         return Future.value(false);
@@ -33,17 +33,17 @@ class _NotificationpageState extends State<Notificationpage> {
             elevation: 3,
             toolbarHeight: 60.h,
             centerTitle: true,
-            backgroundColor: white,
+            backgroundColor: black,
             title: Text(
               "Notification",
               style: GoogleFonts.poppins(
-                  color: black, fontWeight: FontWeight.w500, fontSize: 20.sp),
+                  color: white, fontWeight: FontWeight.w500, fontSize: 20.sp),
             ),
             leading: IconButton(
                 onPressed: () => Navigator.pushNamed(context, homeroute),
                 icon: Image.asset(
                   "assets/icons/rback.png",
-                  color: black,
+                  color: white,
                   height: 35,
                 )),
           ),

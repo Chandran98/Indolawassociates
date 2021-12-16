@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/pages/Paralegal/paralegal.dart';
 import 'package:indolawassociates/UI/pages/Redesign.dart';
-import 'package:indolawassociates/UI/pages/legalforms/formsinfo.dart';
+import 'package:indolawassociates/UI/pages/legalforms/legalforms_page.dart';
 import 'package:indolawassociates/UI/pages/profilepage.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -31,6 +31,7 @@ class _MainHomepageState extends State<MainHomepage>
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => MainHomepage()));
   }
+
   @override
   Widget build(BuildContext context) {
     final translate = AppLocalizations.of(context);
@@ -44,6 +45,7 @@ class _MainHomepageState extends State<MainHomepage>
           bottomNavigationBar: SizedBox(
             height: kBottomNavigationBarHeight,
             child: BottomAppBar(
+              color: black, 
               child: TabBar(
                   onTap: (index) {
                     setState(() {
@@ -51,9 +53,11 @@ class _MainHomepageState extends State<MainHomepage>
                     });
                   },
                   indicator: const UnderlineTabIndicator(
-                      insets: EdgeInsets.only(bottom: kBottomNavigationBarHeight),
-                      borderSide: BorderSide(color: Colors.black, width: 2)),
-                  labelColor: black,
+                      insets:
+                          EdgeInsets.only(bottom: kBottomNavigationBarHeight),
+                      borderSide: BorderSide(color: green, width: 4)),
+                  labelColor: green,
+                  indicatorColor: green,
                   unselectedLabelColor: Colors.grey,
                   controller: tabController,
                   tabs: [

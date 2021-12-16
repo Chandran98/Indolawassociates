@@ -1,19 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart' as http;
 import 'package:indolawassociates/Client/constants/constant.dart';
-import 'package:indolawassociates/Client/model/form_model.dart';
 import 'package:indolawassociates/Client/utils/Internet%20connectivity/Network_status.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/pages/Paralegal/paralegalinfopage.dart';
-import 'package:indolawassociates/UI/pages/Redesign.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
-import 'package:indolawassociates/UI/pages/MainHomePage.dart';
-import 'package:url_launcher/url_launcher.dart';
-import '../../../../../main.dart';
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
 
 /////////////////////////////////////        Legal forms Data Model          /////////////////////////////////
@@ -52,17 +44,17 @@ class _TParalegalState extends State<TParalegal> {
               elevation: 3,
               toolbarHeight: 60.h,
               centerTitle: true,
-              backgroundColor: white,
+              backgroundColor: black,
               title: Text(
                 translate!.paralegalservices,
                 style: GoogleFonts.poppins(
-                    color: black, fontWeight: FontWeight.w500, fontSize: 20.sp),
+                    color: white, fontWeight: FontWeight.w500, fontSize: 20.sp),
               ),
               leading: IconButton(
                   onPressed: () => Navigator.pushNamed(context,homeroute),
                   icon: Image.asset(
                     "assets/icons/rback.png",
-                    color: black,
+                    color: white,
                     height: 35,
                   )),
             ),

@@ -1,12 +1,15 @@
 import 'dart:ui';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart';
 import 'package:indolawassociates/Client/components/slider/slider.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -16,6 +19,7 @@ import 'package:indolawassociates/UI/components/clippath.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
+import 'package:indolawassociates/UI/services/fireabase_service.dart';
 import 'package:indolawassociates/UI/widgets/Lawyers/Lawyer_list.dart';
 import 'package:provider/src/provider.dart';
 import '../widgets/categories/Category_list_page.dart';
@@ -29,6 +33,14 @@ class CloneHOME extends StatefulWidget {
 
 class _CloneHOME extends State<CloneHOME> {
   @override
+  void initState() {
+    super.initState();
+    getusername();
+  }
+
+  GetdataFB getdataFB = GetdataFB();
+
+  @override
   Widget build(BuildContext context) {
     final translate = AppLocalizations.of(context);
     List language = [translate!.language1, translate.primarylanguage];
@@ -37,7 +49,10 @@ class _CloneHOME extends State<CloneHOME> {
     return NetworkSensitive(
       child: SafeArea(
         child: Scaffold(
-          floatingActionButton: FloatingActionButton.extended(
+          floatingActionButton:
+          
+          
+           FloatingActionButton.extended(
               label: Text(
                 translate.quickcall,
                 style: TextStyle(color: Colors.white),
@@ -50,7 +65,7 @@ class _CloneHOME extends State<CloneHOME> {
               backgroundColor: black,
               onPressed: () {}),
           // bottomNavigationBar: Bottombar(),
-          backgroundColor: Color(0xffF5F5F5),
+          backgroundColor: gradsoj,
           // backgroundColor: white,
           // bottomNavigationBar: Navbar(),
           body: DoubleBackToCloseApp(
@@ -80,8 +95,31 @@ class _CloneHOME extends State<CloneHOME> {
                         //     blurRadius: 6.0,
                         //   )
                         // ],
-                        color: white,
+                        gradient: LinearGradient(
+                            begin: Alignment.bottomRight,
+                            stops: [
+                              0.1,
+                              0.9
+                            ],
+                            colors: [
+                              green.withOpacity(.8),
+                              Colors.black
+                            ]),
                       ),
+                      // gradient: new LinearGradient(
+                      //     colors: [
+                      //   // green,
+                      //   // green,
+                      //   green,
+                      //   Colors.white,
+                      // ],
+                      //     stops: [
+                      //   0.0,
+                      //   1.0
+                      // ],
+                      //     begin: FractionalOffset.centerRight,
+                      //     end: FractionalOffset.centerLeft,
+                      //     tileMode: TileMode.repeated)),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 5.0,
@@ -98,12 +136,12 @@ class _CloneHOME extends State<CloneHOME> {
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.end,
                                 children: [
-                                  Image.asset(
-                                    "assets/images/ILALOGO.png",
-                                    height: height * 0.04.h,
-                                  ),
+                                  // Image.asset(
+                                  //   "assets/images/ILALOGO.png",
+                                  //   height: height * 0.04.h,
+                                  // ),
                                   Row(
                                     children: [
                                       IconButton(
@@ -111,7 +149,9 @@ class _CloneHOME extends State<CloneHOME> {
                                             languagebutton();
                                           },
                                           icon: Image.asset(
-                                              "assets/icons/lang.png")),
+                                            "assets/icons/lang.png",
+                                            color: white,
+                                          )),
                                       SizedBox(
                                         width: width * 0.02.w,
                                       ),
@@ -119,7 +159,9 @@ class _CloneHOME extends State<CloneHOME> {
                                           onPressed: () => Navigator.pushNamed(
                                               context, notificationroute),
                                           icon: SvgPicture.asset(
-                                              "assets/icons/notification.svg")),
+                                            "assets/icons/notification.svg",
+                                            color: white,
+                                          )),
                                     ],
                                   ),
                                 ],
@@ -135,20 +177,25 @@ class _CloneHOME extends State<CloneHOME> {
                               child: Container(
                                 height: height * 0.07.h,
                                 width: width * 0.6.w,
-                                child: DefaultTextStyle(
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 18.sp, color: black),
-                                  child: AnimatedTextKit(
-                                      pause: Duration(seconds: 1),
-                                      repeatForever: true,
-                                      animatedTexts: [
-                                        FadeAnimatedText(
-                                          "HI Richie",
-                                        ),
-                                        FadeAnimatedText(translate.welcome),
-                                        FadeAnimatedText(translate.hometitle),
-                                      ]),
-                                ),
+                                child: Text(translate.hometitle,style: 
+                                GoogleFonts.poppins(
+                                      fontSize: 18.sp, color: white),
+                                )
+                                
+                                // DefaultTextStyle(
+                                //   style: GoogleFonts.poppins(
+                                //       fontSize: 18.sp, color: white),
+                                //   child: AnimatedTextKit(
+                                //       pause: Duration(seconds: 1),
+                                //       repeatForever: true,
+                                //       animatedTexts: [
+                                //         FadeAnimatedText(
+                                //           "Hi ${_username}",
+                                //         ),
+                                //         FadeAnimatedText(translate.welcome),
+                                //         FadeAnimatedText(translate.hometitle),
+                                //       ]),
+                                // ),
                               ),
                             ),
                             // SizedBox(
@@ -159,7 +206,7 @@ class _CloneHOME extends State<CloneHOME> {
                               translate.hometitle2,
                               style: GoogleFonts.poppins(
                                 fontSize: 13.sp,
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.w600,
                               ),
                             )),
@@ -186,7 +233,7 @@ class _CloneHOME extends State<CloneHOME> {
                           translate.hometitle3,
                           style: GoogleFonts.poppins(
                             fontSize: 14.sp,
-                            color: Colors.black,
+                            color: white,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -244,5 +291,17 @@ class _CloneHOME extends State<CloneHOME> {
                     ))
               ],
             ));
+  }
+
+  getusername() {
+    return FirebaseFirestore.instance
+        .collection("ILA")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get()
+        .then((value) {
+      if (mounted)
+        setState(() {
+        });
+    });
   }
 }

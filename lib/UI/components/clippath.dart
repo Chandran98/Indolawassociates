@@ -7,10 +7,10 @@ class CustomdClipper extends CustomClipper<Path> {
     double width = size.width;
     var path = Path();
     path.lineTo(0, height - 60);
-    path.quadraticBezierTo(width / 2, height, width, height - 60);    
+    path.quadraticBezierTo(width / 2, height, width, height - 60);
 
     path.lineTo(width, 0);
-path.close();
+    path.close();
     return path;
   }
 

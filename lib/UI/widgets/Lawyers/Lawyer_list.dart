@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/Pages/Homepage/lawyers/services/lawyer_services.dart';
+import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 
 import 'Lawyer_info_page.dart';
@@ -52,11 +53,20 @@ class _RelawyerlistState extends State<Relawyerlist> {
                                 ))),
                     child: Card(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(20)),
                         elevation: 4,
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Colors.white70,
+                            gradient: LinearGradient(
+                                begin: Alignment.bottomLeft,
+                                stops: [
+                                  0.2,
+                                  0.6
+                                ],
+                                colors: [
+                                  green.withOpacity(.8),
+                                  Colors.purple.shade700.withOpacity(0.9)
+                                ]),
                             borderRadius: BorderRadius.all(Radius.circular(20)),
                           ),
                           height: height * 0.22.h,
@@ -89,14 +99,14 @@ class _RelawyerlistState extends State<Relawyerlist> {
                                 style: GoogleFonts.poppins(
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.w400,
-                                    color: black),
+                                    color: white),
                               ),
                               Text(
                                 "${specialized.toString()} Lawyer",
                                 style: GoogleFonts.poppins(
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.w400,
-                                    color: black),
+                                    color: white),
                               )
                             ],
                           ),

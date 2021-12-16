@@ -48,17 +48,17 @@ class _LegalinfoState extends State<Legalinfo> {
             elevation: 3,
             toolbarHeight: 60.h,
             centerTitle: true,
-            backgroundColor: white,
+            backgroundColor: black,
             title: Text(
               translate!.legalforms,
               style: GoogleFonts.poppins(
-                  color: black, fontWeight: FontWeight.w500, fontSize: 20.sp),
+                  color: white, fontWeight: FontWeight.w500, fontSize: 20.sp),
             ),
             leading: IconButton(
-                onPressed: () => Navigator.pushNamed(context,homeroute),
+                onPressed: () => Navigator.pushNamed(context, homeroute),
                 icon: Image.asset(
                   "assets/icons/rback.png",
-                  color: black,
+                  color: white,
                   height: 35,
                 )),
           ),

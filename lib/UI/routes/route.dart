@@ -6,7 +6,7 @@ import 'package:indolawassociates/UI/pages/NRI.dart';
 import 'package:indolawassociates/UI/pages/Paralegal/paralegal.dart';
 import 'package:indolawassociates/UI/pages/careerspage.dart';
 import 'package:indolawassociates/UI/pages/contactpage.dart';
-import 'package:indolawassociates/UI/pages/legalforms/formsinfo.dart';
+import 'package:indolawassociates/UI/pages/legalforms/legalforms_page.dart';
 import 'package:indolawassociates/UI/pages/notification.dart';
 import 'package:indolawassociates/UI/pages/offer.dart';
 import 'package:indolawassociates/UI/pages/otherservices/otherservicespage.dart';
