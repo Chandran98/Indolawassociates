@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/model/Legalforms_data_models.dart';
 import 'package:indolawassociates/Client/Pages/bottomnavybar/Legalforms.dart';
@@ -41,21 +41,21 @@ class _BusinesslegalformsdState extends State<Businesslegalformsd> {
       child: Scaffold(
           appBar: AppBar(
             elevation: 3,
-            toolbarHeight: 60.h,
+              toolbarHeight: 9.h,
             centerTitle: true,
-            backgroundColor: white,
+            backgroundColor: dialog,
             title: FittedBox(
               child: Text(
                 translate!.forms3,
                 style: GoogleFonts.poppins(
-                    color: black, fontWeight: FontWeight.w500, fontSize: 20.sp),
+                    color: white, fontWeight: FontWeight.w500, fontSize: 13.sp),
               ),
             ),
             leading: IconButton(
                 onPressed: () => Navigator.pushNamed(context, legalformroute),
                 icon: Image.asset(
                   "assets/icons/rback.png",
-                  color: black,
+                  color: white,
                   height: 35,
                 )),
           ),
@@ -163,11 +163,11 @@ class _BusinesslegalformsdState extends State<Businesslegalformsd> {
               onTap: () {
                 showDialog(
                     context: context,
-                    builder: (context) => AlertDialog(
+                    builder: (context) => AlertDialog(backgroundColor: dialog,
                           elevation: 10,
                           content: Text(
                             translate.helptitle,
-                            style: hStyle,
+                            style: dfont,
                           ),
                           contentPadding: EdgeInsets.only(
                               top: 20, left: 20, right: 20, bottom: 10),
@@ -179,7 +179,7 @@ class _BusinesslegalformsdState extends State<Businesslegalformsd> {
                                 children: [
                                   Icon(
                                     Icons.phone,
-                                    color: navy,
+                                    color: white,
                                   ),
                                   FlatButton(
                                     onPressed: () {
@@ -187,7 +187,7 @@ class _BusinesslegalformsdState extends State<Businesslegalformsd> {
                                     },
                                     child: Text(
                                       "8940383000",
-                                      style: hStyle,
+                                      style: dfont,
                                     ),
                                   ),
                                 ],

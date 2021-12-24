@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
-import 'package:indolawassociates/UI/pages/Paralegal/paralegal.dart';
-import 'package:indolawassociates/UI/pages/Redesign.dart';
+import 'package:indolawassociates/UI/pages/Home_page.dart';
 import 'package:indolawassociates/UI/pages/legalforms/legalforms_page.dart';
-import 'package:indolawassociates/UI/pages/profilepage.dart';
+import 'package:indolawassociates/UI/pages/Settingspage/profilepage.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:indolawassociates/UI/pages/Servicepage/services.dart';
+import 'package:indolawassociates/UI/routes/route.dart';
 
 class MainHomepage extends StatefulWidget {
   MainHomepage({Key? key}) : super(key: key);
@@ -25,7 +26,7 @@ class _MainHomepageState extends State<MainHomepage>
     tabController = TabController(length: 4, vsync: this);
   }
 
-  List<Widget> pages = [CloneHOME(), TParalegal(), Legalinfo(), Settingspage()];
+  List<Widget> pages = [CloneHOME(), Servicesall(), Legalinfo(), Settingspage()];
 
   void onback() {
     Navigator.pushReplacement(
@@ -45,7 +46,7 @@ class _MainHomepageState extends State<MainHomepage>
           bottomNavigationBar: SizedBox(
             height: kBottomNavigationBarHeight,
             child: BottomAppBar(
-              color: black, 
+              color: black,
               child: TabBar(
                   onTap: (index) {
                     setState(() {

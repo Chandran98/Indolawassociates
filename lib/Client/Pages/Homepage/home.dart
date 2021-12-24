@@ -1,6 +1,6 @@
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/Pages/Categories.dart/Categories_Pages.dart';
@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
             label: Text(translate.quickcall),
             icon: Icon(
               Icons.call,
-              size: 20.r,
+              size: 20,
             ),
             backgroundColor: navy,
             onPressed: () {
@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     IconButton(
-                                        iconSize: 40.r,
+                                        iconSize: 40,
                                         color: white,
                                         icon: SvgPicture.asset(
                                           "assets/icons/menu.svg",
@@ -165,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             padding: const EdgeInsets.all(8.0),
                                             child: Container(
                                               child: IconButton(
-                                                iconSize: 20.r,
+                                                iconSize: 20,
                                                 color: white,
                                                 icon: SvgPicture.asset(
                                                   "assets/icons/notification.svg",

@@ -6,21 +6,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:indolawassociates/Client/l10n/l10n.dart';
 import 'package:indolawassociates/Client/provider/languageprovider.dart';
 import 'package:indolawassociates/Client/utils/Internet%20connectivity/connectivity.dart';
+import 'package:indolawassociates/UI/pages/Login/loginpage.dart';
+import 'package:indolawassociates/UI/provider/theme.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:indolawassociates/UI/pages/MainHomePage.dart';
 import 'package:indolawassociates/UI/themes/themes.dart';
 import 'package:provider/provider.dart';
+import 'package:sizer/sizer.dart';
 import 'Client/Pages/Homepage/drawer.dart';
 import 'Client/Pages/Homepage/home.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'Client/Pages/bottomnavybar/Legalforms.dart';
 import 'Client/Pages/bottomnavybar/NRI.dart';
 import 'Client/Pages/bottomnavybar/Para_legal_services/para_legal_services.dart';
 import 'Client/constants/constant.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sizer/sizer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,42 +46,45 @@ class MyApp extends StatelessWidget {
       providers: [
         // ChangeNotifier()
         ChangeNotifierProvider(create: (context) => Languagenotifier()),
-        ChangeNotifierProvider(create: (context) => Themenotifier()),
+        // ChangeNotifierProvider(create: (context) => THemeprovider()),
         StreamProvider<ConnectivityStatus>(
             create: (_) => ConnectivityService().streamController.stream,
             initialData: ConnectivityStatus.Offline)
       ],
-      child: Consumer(builder: (_, Themenotifier notifier, child) {
-        return Builder(
-            builder: (context) => ScreenUtilInit(
-                designSize: Size(390, 710),
-                builder: () {
-                  return MaterialApp(
-                    locale: Provider.of<Languagenotifier>(context, listen: true)
-                        .currentlocale,
-                    localizationsDelegates: const [
-                      GlobalCupertinoLocalizations.delegate,
-                      GlobalMaterialLocalizations.delegate,
-                      GlobalWidgetsLocalizations.delegate,
-                      AppLocalizations.delegate,
-                    ],
-                    supportedLocales: L10n.all,
-                    debugShowCheckedModeBanner: false,
-                    home: SplashScreen(),
-                    routes: routes,
-                    // theme: notifier.darktheme ? dark : light,
+      child: Consumer(builder: (_, notifier, child) {
+        return Builder(builder: (context) {
+          // ScreenUtilInit(
+          //     designSize: Size(360, 710),
+          //     builder: () {
+     return       Sizer(
+      builder: (context, orientation, deviceType)=>
+           MaterialApp(
+            locale: Provider.of<Languagenotifier>(context, listen: true)
+                .currentlocale,
+            localizationsDelegates: const [
+              GlobalCupertinoLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              AppLocalizations.delegate,
+            ],
+            supportedLocales: L10n.all,
+            debugShowCheckedModeBanner: false,
+            home: SplashScreen(),
+            routes: routes,
+            // theme: notifier.darktheme ? dip :lite,
 
-                    // routes: {
-                    //   Settingspage.id: (context) => Settingspage(),
-                    //   Testingpage.id: (context) => Testingpage()
-                    // },
-                  );
-                  //  Consumer<Themenotifier>(
-                  //     builder: (_, Themenotifier notifier, child) {
-                  //   return
-                  // }
-                  // );
-                }));
+            // routes: {
+            //   Settingspage.id: (context) => Settingspage(),
+            //   Testingpage.id: (context) => Testingpage()
+            // },
+          )
+          //  Consumer<Themenotifier>(
+          //     builder: (_, Themenotifier notifier, child) {
+          //   return
+          // }
+          // );
+          // });
+        );});
       }),
     );
   }
@@ -93,9 +99,6 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-
- 
-
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
@@ -106,8 +109,7 @@ class _SplashScreenState extends State<SplashScreen> {
           "assets/images/ILAlogopvt.png",
           fit: BoxFit.contain,
         ),
-        nextScreen: MainHomepage());
-   
+        nextScreen: DemoLogin());
   }
 }
 

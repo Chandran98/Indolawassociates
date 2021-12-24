@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,7 +10,7 @@ import 'package:indolawassociates/UI/components/appbar.dart';
 import 'package:indolawassociates/UI/components/button.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/pages/MainHomePage.dart';
-import 'package:indolawassociates/main.dart';
+import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -68,8 +68,7 @@ class _CatesiderState extends State<Catesider> {
   // }
 
   void onback() {
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => Mainhome()));
+    Navigator.pushNamed(context, homeroute);
   }
 
   launcher(command) async {
@@ -100,339 +99,358 @@ class _CatesiderState extends State<Catesider> {
 
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: white,
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                // SizedBox(
-                //   height: height * 0.02,
-                // ),
-                CustomAppbar(
-                  title: widget.categorytitle,
-                  navipage: MainHomepage(),
-                  style: GoogleFonts.poppins(
-                      fontSize: 25.sp,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500),
-                ),
-                Card(
-                  elevation: 4,
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.18.h,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(widget.categorypageimages),
-                            fit: BoxFit.cover)),
-                  ),
-                ),
-                SizedBox(
-                  height: height * 0.01,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Text(
-                    widget.categorysubtitle,
+    return WillPopScope(
+      onWillPop: () {
+        onback();
+        return Future.value(false);
+      },
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: white,
+          body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  // SizedBox(
+                  //   height: height * 0.02,
+                  // ),
+                  CustomAppbar(
+                    title: widget.categorytitle,
+                    navipage: MainHomepage(),
                     style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w400, fontSize: 12.sp, color: black),
-                    textAlign: TextAlign.justify,
+                        fontSize: 15.sp,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
                   ),
-                ),
-                SizedBox(
-                  height: height * 0.005,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: .0),
-                  child: Container(
-                    color: white,
-                    height: MediaQuery.of(context).size.height * 0.15.h,
-                    width: double.infinity,
-                    child: Row(
-                      children: [
-                        Container(
-                          color: white,
-                          height: MediaQuery.of(context).size.height * 0.2.h,
-                          width: MediaQuery.of(context).size.width * 0.38.h,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.check, color: gold),
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.02.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      widget.r1,
-                                      style: GoogleFonts.mulish(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 11.sp,
-                                          color: black),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(Icons.check, color: gold),
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.02.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      widget.r3,
-                                      style: GoogleFonts.mulish(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 11.sp,
-                                          color: black),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(Icons.check, color: gold),
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.02.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      widget.r5,
-                                      style: GoogleFonts.mulish(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 11.sp,
-                                          color: black),
-                                    ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                        Container(
-                          color: white,
-                          width: MediaQuery.of(context).size.width * 0.4.w,
-                          height: MediaQuery.of(context).size.height * 0.2.h,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.check, color: gold),
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.02.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      widget.r2,
-                                      style: GoogleFonts.mulish(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 11.sp,
-                                          color: black),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(Icons.check, color: gold),
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.02.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      widget.r4,
-                                      style: GoogleFonts.mulish(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 11.sp,
-                                          color: black),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.check,
-                                    color: gold,
-                                  ),
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.02.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      widget.r6,
-                                      style: GoogleFonts.mulish(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 11.sp,
-                                          color: black),
-                                    ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        )
-                      ],
+                  Card(
+                    elevation: 4,
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.03.h,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage(widget.categorypageimages),
+                              fit: BoxFit.cover)),
                     ),
                   ),
-                ),
-                CustomButton(
-                  style: GoogleFonts.poppins(
-                      // fontWeight: FontWeight.bold,
-                      color: black,
-                      fontSize: 15.sp),
-                  height: height * 0.06,
-                  text: translate!.apply,
-                  width: width * 0.4,
-                  onpressed: () => showModalBottomSheet(
-                      shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.vertical(top: Radius.circular(25))),
-                      enableDrag: false,
-                      isScrollControlled: true,
-                      context: context,
-                      builder: (context) => SingleChildScrollView(
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                  bottom: MediaQuery.of(context).viewInsets.bottom),
-                              child: buildformsheet(),
-                            ),
-                          )),
-                ),
-                SizedBox(
-                  height: height * 0.001,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Divider(
-                    color: divcolor,
+                  SizedBox(
+                    height: height * 0.003.h,
                   ),
-                ),
-                SizedBox(
-                  height: height * 0.001,
-                ),
-                Text(
-                  translate.drawerkey5,
-                  style: GoogleFonts.poppins(
-                      // fontWeight: FontWeight.bold,
-                      color: black,
-                      fontSize: 12.sp),
-                ),
-                SizedBox(
-                  height: height * 0.001,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        launcher("tel: 8940383000");
-                      },
-                      child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(35),
-                              color: white,
-                              border: Border.all(color: navy)),
-                          height: height * 0.06,
-                          width: width * 0.35,
-                          // padding: const EdgeInsets.symmetric(
-                          //   vertical: 15.0,
-                          //   horizontal: 15.0,
-                          // ),
-                          child: Center(
-                            child: Row(
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Text(
+                      widget.categorysubtitle,
+                      style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 10.sp,
+                          color: black),
+                      textAlign: TextAlign.justify,
+                    ),
+                  ),
+                  SizedBox(
+                    height: height * 0.005,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: .0),
+                    child: Container(
+                      color: white,
+                      height: MediaQuery.of(context).size.height * 0.015.h,
+                      width: width * 1.w,
+                      child: Row(
+                        children: [
+                          Container(
+                            // color: navy,
+                            height: MediaQuery.of(context).size.height * 0.2.h,
+                            width: MediaQuery.of(context).size.width * 0.11.w,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Image.asset(
-                                  "assets/icons/call.png",
-                                  color: black,
-                                  height: 20.h,
+                                Row(
+                                  children: [
+                                    Icon(Icons.check, color: gold),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.003.w,
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        widget.r1,
+                                        style: GoogleFonts.mulish(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 10.sp,
+                                            color: black),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                Text(
-    translate.mobile,                                style: GoogleFonts.poppins(
-                                      // fontWeight: FontWeight.bold,
-                                      color: black,
-                                      fontSize: 12.sp),
-                                  textAlign: TextAlign.center,
+                                Row(
+                                  children: [
+                                    Icon(Icons.check, color: gold),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.003.w,
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        widget.r3,
+                                        style: GoogleFonts.mulish(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 10.sp,
+                                            color: black),
+                                      ),
+                                    ),
+                                  ],
                                 ),
+                                Row(
+                                  children: [
+                                    Icon(Icons.check, color: gold),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.003.w,
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        widget.r5,
+                                        style: GoogleFonts.mulish(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 10.sp,
+                                            color: black),
+                                      ),
+                                    ),
+                                  ],
+                                )
                               ],
                             ),
-                          )),
-                    ),
-          
-                    TextButton(
-                      onPressed: () {
-                        launcher("mailto: indolawassociates@gmail.com");
-                      },
-                      child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(35),
-                              color: white,
-                              border: Border.all(color: navy)),
-                          height: height * 0.06,
-                          width: width * 0.35,
-                          // padding: const EdgeInsets.symmetric(
-                          //   vertical: 15.0,
-                          //   horizontal: 15.0,
-                          // ),
-                          child: Center(
-                            child: Row(
+                          ),
+                          //  SizedBox(
+                          //             width: MediaQuery.of(context).size.width *
+                          //                 0.005.w,
+                          //           ),
+                          Container(
+                            // color: green,
+                            height: MediaQuery.of(context).size.height * 0.2.h,
+                            width: MediaQuery.of(context).size.width * 0.11.w,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                FaIcon(
-                                  (FontAwesomeIcons.mailBulk),
-                                  color: black,
+                                Row(
+                                  children: [
+                                    Icon(Icons.check, color: gold),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.003.w,
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        widget.r2,
+                                        style: GoogleFonts.mulish(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 10.sp,
+                                            color: black),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                Text(
-    translate.mail,                                style: GoogleFonts.poppins(
-                                      // fontWeight: FontWeight.bold,
-                                      color: black,
-                                      fontSize: 12.sp),
-                                  textAlign: TextAlign.center,
+                                Row(
+                                  children: [
+                                    Icon(Icons.check, color: gold),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.003.w,
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        widget.r4,
+                                        style: GoogleFonts.mulish(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 10.sp,
+                                            color: black),
+                                      ),
+                                    ),
+                                  ],
                                 ),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.check,
+                                      color: gold,
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.003.w,
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        widget.r6,
+                                        style: GoogleFonts.mulish(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 10.sp,
+                                            color: black),
+                                      ),
+                                    ),
+                                  ],
+                                )
                               ],
                             ),
-                          )),
+                          )
+                        ],
+                      ),
                     ),
-          
-                    //   , CustomButton(
-                    // height: height * 0.06,
-                    //     text: "Email us",
-                    //     width: width*0.35,
-                    //     onpressed: (){},
-                    //     style: GoogleFonts.poppins(
-                    //   // fontWeight: FontWeight.bold,
-                    //   color: black,
-                    //   fontSize: 12.sp),)
-                  ],
-                )
-              ],
+                  ),
+                  CustomButton(
+                    style: GoogleFonts.poppins(
+                        // fontWeight: FontWeight.bold,
+                        color: black,
+                        fontSize: 10.sp),
+                    height: height * 0.06,
+                    text: translate!.apply,
+                    width: width * 0.4,
+                    onpressed: () => showModalBottomSheet(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(25))),
+                        enableDrag: false,
+                        isScrollControlled: true,
+                        context: context,
+                        builder: (context) => SingleChildScrollView(
+                              child: Container(
+                                padding: EdgeInsets.only(
+                                    bottom: MediaQuery.of(context)
+                                        .viewInsets
+                                        .bottom),
+                                child: buildformsheet(),
+                              ),
+                            )),
+                  ),
+                  SizedBox(
+                    height: height * 0.001.h,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Divider(
+                      color: divcolor,
+                    ),
+                  ),
+                  SizedBox(
+                    height: height * 0.001.h,
+                  ),
+                  Text(
+                    translate.drawerkey5,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                        // fontWeight: FontWeight.bold,
+                        color: black,
+                        fontSize: 12.sp),
+                  ),
+                  SizedBox(
+                    height: height * 0.001,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          launcher("tel: 8940383000");
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(35),
+                                color: white,
+                                border: Border.all(color: navy)),
+                            height: height * 0.06,
+                            width: width * 0.35,
+                            // padding: const EdgeInsets.symmetric(
+                            //   vertical: 15.0,
+                            //   horizontal: 15.0,
+                            // ),
+                            child: Center(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Image.asset(
+                                    "assets/icons/call.png",
+                                    color: black,
+                                    height: 4.h,
+                                  ),
+                                  Text(
+                                    translate.mobile,
+                                    style: GoogleFonts.poppins(
+                                        // fontWeight: FontWeight.bold,
+                                        color: black,
+                                        fontSize: 12.sp),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              ),
+                            )),
+                      ),
+
+                      TextButton(
+                        onPressed: () {
+                          launcher("mailto: indolawassociates@gmail.com");
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(35),
+                                color: white,
+                                border: Border.all(color: navy)),
+                            height: height * 0.06,
+                            width: width * 0.35,
+                            // padding: const EdgeInsets.symmetric(
+                            //   vertical: 15.0,
+                            //   horizontal: 15.0,
+                            // ),
+                            child: Center(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  FaIcon(
+                                    (FontAwesomeIcons.mailBulk),
+                                    color: black,
+                                  ),
+                                  Text(
+                                    translate.mail,
+                                    style: GoogleFonts.poppins(
+                                        // fontWeight: FontWeight.bold,
+                                        color: black,
+                                        fontSize: 12.sp),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              ),
+                            )),
+                      ),
+
+                      //   , CustomButton(
+                      // height: height * 0.06,
+                      //     text: "Email us",
+                      //     width: width*0.35,
+                      //     onpressed: (){},
+                      //     style: GoogleFonts.poppins(
+                      //   // fontWeight: FontWeight.bold,
+                      //   color: black,
+                      //   fontSize: 12.sp),)
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
   }
-  
+
   Widget buildformsheet() => SingleChildScrollView(
         //       child: Container(
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          // mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
               padding: const EdgeInsets.all(20),
@@ -441,17 +459,17 @@ class _CatesiderState extends State<Catesider> {
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 18.0),
+                      padding: const EdgeInsets.only(top: 10.0),
                       child: Text(
                         "Fill The Form",
-                        style: GoogleFonts.mulish(
+                        style: GoogleFonts.poppins(
                             color: navy,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22.sp),
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18.sp),
                       ),
                     ),
                     SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02.h),
+                        height: MediaQuery.of(context).size.height * 0.002.h),
                     TextFormField(
                         validator: MultiValidator([
                           RequiredValidator(errorText: usernamenull),
@@ -504,7 +522,7 @@ class _CatesiderState extends State<Catesider> {
                         hint: Text(
                           "Gender",
                           style: TextStyle(
-                              fontSize: 15.sp,
+                              // fontSize: 15.sp,
                               color: navy,
                               fontWeight: FontWeight.bold),
                         ),
@@ -571,7 +589,7 @@ class _CatesiderState extends State<Catesider> {
                         hint: Text(
                           "Services",
                           style: TextStyle(
-                              fontSize: 15.sp,
+                              // fontSize: 15.sp,
                               color: navy,
                               fontWeight: FontWeight.bold),
                         ),
@@ -622,8 +640,8 @@ class _CatesiderState extends State<Catesider> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
-                          height: MediaQuery.of(context).size.height * .05.h,
-                          width: MediaQuery.of(context).size.width * .3.w,
+                          height: MediaQuery.of(context).size.height * .008.h,
+                          width: MediaQuery.of(context).size.width * .08.w,
                           child: Material(
                             borderRadius: BorderRadius.circular(20.0),
                             color: Colors.green,
@@ -660,8 +678,8 @@ class _CatesiderState extends State<Catesider> {
                           ),
                         ),
                         Container(
-                          height: MediaQuery.of(context).size.height * .05.h,
-                          width: MediaQuery.of(context).size.width * .3.w,
+                          height: MediaQuery.of(context).size.height * .008.h,
+                          width: MediaQuery.of(context).size.width * .08.w,
                           child: Material(
                             borderRadius: BorderRadius.circular(20.0),
                             color: Colors.red,
@@ -702,5 +720,4 @@ class _CatesiderState extends State<Catesider> {
       "Gender": gendertry
     }).then((value) => SnackBar(content: Text("Updated")));
   }
-
 }

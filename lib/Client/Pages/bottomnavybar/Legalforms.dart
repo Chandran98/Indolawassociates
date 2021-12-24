@@ -16,7 +16,6 @@ import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:indolawassociates/Client/utils/Internet%20connectivity/Network_status.dart';
 import '../../../main.dart';
-import "package:flutter_gen/gen_l10n/app_localizations.dart";
 
 class Legal extends StatefulWidget {
   const Legal({Key? key}) : super(key: key);

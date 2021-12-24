@@ -1,19 +1,18 @@
+import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/components/clippath.dart';
 import 'package:indolawassociates/UI/components/socialmedia.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
-import 'package:indolawassociates/UI/pages/signup/signup.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:indolawassociates/UI/pages/MainHomePage.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:sms_autofill/sms_autofill.dart';
-import '../../../main.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -40,16 +39,39 @@ class _DemoLoginState extends State<DemoLogin> {
   var verificationCode = '';
   late String phone;
   late String otpcoder;
+
+  void _listenotp() async {
+    await SmsAutoFill().listenForCode();
+  }
+
+  @override
+  void initState() {
+    SmsAutoFill().listenForCode();
+
+    Timer.run(() {
+        if (_auth.currentUser != null) {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) => MainHomepage(),
+          ),
+          (route) => false,
+        );
+      }
+    });
+    _listenotp();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return isOTPScreen ? _otpscreen(context) : _loginscreen(context);
   }
 
   _loginscreen(context) {
-    
-  void onback() {
-    SystemNavigator.pop();
-  }
+    void onback() {
+      SystemNavigator.pop();
+    }
 
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
@@ -62,7 +84,7 @@ class _DemoLoginState extends State<DemoLogin> {
         child: Scaffold(
           backgroundColor: Color(0xffF5F5F5),
           key: _scaffoldKey,
-          body:  SingleChildScrollView(
+          body: SingleChildScrollView(
             child: Form(
               key: _formkey,
               child: Column(
@@ -70,8 +92,8 @@ class _DemoLoginState extends State<DemoLogin> {
                   ClipPath(
                     clipper: CustomdClipper(),
                     child: Container(
-                      height: height * 0.3.h,
-                      width: double.infinity,
+                      height: height * 0.04.h,
+                      width: width * 1.w,
                       decoration: new BoxDecoration(
                         boxShadow: [
                           BoxShadow(
@@ -95,13 +117,13 @@ class _DemoLoginState extends State<DemoLogin> {
                             padding: const EdgeInsets.only(top: 35),
                             child: Image.asset(
                               "assets/icons/ilatri.png",
-                              height: height * 0.08,
+                              height: height * 0.01.h,
                             ),
                           ),
                           Image.asset(
                             "assets/icons/titleb.png",
-                            height: height * 0.08,
-                            width: width * 0.7.w,
+                            height: height * 0.01.h,
+                            width: width * 0.2.w,
                             color: black,
                           )
                         ],
@@ -109,7 +131,7 @@ class _DemoLoginState extends State<DemoLogin> {
                     ),
                   ),
                   SizedBox(
-                    height: height * 0.01.h,
+                    height: height * 0.002.h,
                   ),
                   Text(
                     "Welcome Back!",
@@ -119,7 +141,7 @@ class _DemoLoginState extends State<DemoLogin> {
                         fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
-                    height: height * 0.04.h,
+                    height: height * 0.002.h,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
@@ -137,7 +159,7 @@ class _DemoLoginState extends State<DemoLogin> {
                         labelText: "Mobile no.",
                         hintText: "Mobile ",
                         labelStyle: GoogleFonts.poppins(
-                            fontSize: 15.sp,
+                            fontSize: 10.sp,
                             color: Colors.black,
                             fontWeight: FontWeight.w400),
                       ),
@@ -151,7 +173,7 @@ class _DemoLoginState extends State<DemoLogin> {
                       },
                     ),
                   ),
-                  SizedBox(height: height * 0.02.h),
+                  SizedBox(height: height * 0.002.h),
                   Container(
                       // margin: EdgeInsets.only(top: 40, bottom: 5),
                       child: Padding(
@@ -159,7 +181,8 @@ class _DemoLoginState extends State<DemoLogin> {
                           child: !isLoading
                               ? new TextButton(
                                   onPressed: () async {
-                                    final otpcode = SmsAutoFill().getAppSignature;
+                                    final otpcode =
+                                        SmsAutoFill().getAppSignature;
                                     print(otpcode);
                                     if (!isLoading) {
                                       if (_formkey.currentState!.validate()) {
@@ -173,11 +196,12 @@ class _DemoLoginState extends State<DemoLogin> {
                                   },
                                   child: Container(
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                           color: white,
                                           border: Border.all(color: navy)),
-                                      height: height * 0.06.h,
-                                      width: width * 0.5.h,
+                                      height: height * 0.008.h,
+                                      width: width * 0.15.w,
                                       // padding: const EdgeInsets.symmetric(
                                       //   vertical: 15.0,
                                       //   horizontal: 15.0,
@@ -188,26 +212,27 @@ class _DemoLoginState extends State<DemoLogin> {
                                           style: GoogleFonts.poppins(
                                               // fontWeight: FontWeight.bold,
                                               color: black,
-                                              fontSize: 20.sp),
+                                              fontSize: 15.sp),
                                           textAlign: TextAlign.center,
                                         ),
                                       )),
                                 )
                               : CircularProgressIndicator(
-                                  backgroundColor: Colors.red,
+                                  // backgroundColor: Colors.white,
+                                  color: green,
                                 ))),
-                  SizedBox(height: height * 0.02.h),
+                  SizedBox(height: height * 0.008.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Container(
                         child: Text("New User ?",
                             style: GoogleFonts.poppins(
-                                fontSize: 15.sp, color: black)),
+                                fontSize: 12.sp, color: black)),
                       ),
-                      SizedBox(width: width * 0.01.w),
+                      SizedBox(width: width * 0.002.w),
                       InkWell(
-                        onTap: () => Navigator.pushNamed(context,signuproute),
+                        onTap: () => Navigator.pushNamed(context, signuproute),
                         child: Text(
                           "Sign Up",
                           style: GoogleFonts.mulish(
@@ -222,7 +247,7 @@ class _DemoLoginState extends State<DemoLogin> {
                   ),
                   // SizedBox(height: height * 0.02.h),
                   SizedBox(
-                    height: height * 0.1.h,
+                    height: height * 0.008.h,
                   ),
                   Socialmedia()
                 ],
@@ -237,9 +262,10 @@ class _DemoLoginState extends State<DemoLogin> {
   _otpscreen(context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-  void onback() {
-    Navigator.pushNamed(context, loginpageroute);
-  }
+    void onback() {
+      Navigator.pushNamed(context, loginpageroute);
+    }
+
     return WillPopScope(
       onWillPop: () {
         onback();
@@ -258,8 +284,8 @@ class _DemoLoginState extends State<DemoLogin> {
                     clipper: CustomdClipper(),
                     child: Container(
                       color: white,
-                      height: height * 0.28.h,
-                      width: double.infinity,
+                      height: height * 0.04.h,
+                      width: width * 1.w,
                       // decoration: new BoxDecoration(
                       //   boxShadow: [
                       //     BoxShadow(
@@ -280,13 +306,13 @@ class _DemoLoginState extends State<DemoLogin> {
                             padding: const EdgeInsets.only(top: 25),
                             child: Image.asset(
                               "assets/icons/ilatri.png",
-                              height: height * 0.08,
+                              height: height * 0.01.h,
                             ),
                           ),
                           Image.asset(
                             "assets/icons/titleb.png",
-                            height: height * 0.08,
-                            width: width * 0.7.w,
+                            height: height * 0.01.h,
+                            width: width * 0.2.w,
                             color: black,
                           ),
                           // TextButton(
@@ -300,7 +326,7 @@ class _DemoLoginState extends State<DemoLogin> {
                     ),
                   ),
                   SizedBox(
-                    height: height * 0.06.h,
+                    height: height * 0.002.h,
                   ),
                   SingleChildScrollView(
                     child: Padding(
@@ -309,14 +335,14 @@ class _DemoLoginState extends State<DemoLogin> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "The code has been sent to\n +91 7448954986",
+                            "The code has been sent to\n your mobile via SMS",
                             style: GoogleFonts.poppins(
-                                fontSize: 15.sp,
+                                fontSize: 13.sp,
                                 color: Colors.black,
                                 fontWeight: FontWeight.w400),
                           ),
                           SizedBox(
-                            height: height * 0.02.h,
+                            height: height * 0.004.h,
                           ),
                           // Container(color: gold,
                           //     child: Padding(
@@ -335,26 +361,26 @@ class _DemoLoginState extends State<DemoLogin> {
                           !isLoading
                               ? Container(
                                   child: PinFieldAutoFill(
-                                  decoration: UnderlineDecoration(
-                                      colorBuilder: FixedColorBuilder(black)),
-                                  codeLength: 6,
-                                  onCodeChanged: (val) {
-                                    if(val!=null){
-                                      return otpcoder = val;
-                                    }else{
-                                      return Text("Please enter OTP");
-                                    }
-                                    
-                                    // FocusScope.of(context)
-                                    //     .requestFocus(FocusNode());
-                                  },
-                                  keyboardType: TextInputType.number,
-                                  // autoFocus: true,
-                                ),
+                                    decoration: UnderlineDecoration(
+                                        colorBuilder: FixedColorBuilder(black)),
+                                    codeLength: 6,
+                                    onCodeChanged: (val) {
+                                      if (val != null) {
+                                        return otpcoder = val;
+                                      } else {
+                                        return Text("Please enter OTP");
+                                      }
+
+                                      // FocusScope.of(context)
+                                      //     .requestFocus(FocusNode());
+                                    },
+                                    keyboardType: TextInputType.number,
+                                    // autoFocus: true,
+                                  ),
                                 )
                               : Container(
                                   // color: navy,
-                                ),
+                                  ),
                           !isLoading
                               ? Container(
                                   // margin: EdgeInsets.only(top: 40, bottom: 5),
@@ -383,8 +409,10 @@ class _DemoLoginState extends State<DemoLogin> {
                                                           {
                                                             if (mounted)
                                                               setState(() {
-                                                                isLoading = false;
-                                                                isResend = false;
+                                                                isLoading =
+                                                                    false;
+                                                                isResend =
+                                                                    false;
                                                               }),
                                                             Navigator
                                                                 .pushAndRemoveUntil(
@@ -392,7 +420,7 @@ class _DemoLoginState extends State<DemoLogin> {
                                                               MaterialPageRoute(
                                                                 builder: (BuildContext
                                                                         context) =>
-                                                                    Mainhome(),
+                                                                    MainHomepage(),
                                                               ),
                                                               (route) => false,
                                                             )
@@ -417,14 +445,14 @@ class _DemoLoginState extends State<DemoLogin> {
                                             }
                                           }
                                         },
-                                        child:  Container(
+                                        child: Container(
                                           decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(15),
                                               color: white,
                                               border: Border.all(color: navy)),
-                                          width: width * .6.w,
-                                          height: height * .06.h,
+                                          height: height * 0.008.h,
+                                          width: width * 0.15.w,
                                           child: Material(
                                             borderRadius:
                                                 BorderRadius.circular(15),
@@ -436,7 +464,7 @@ class _DemoLoginState extends State<DemoLogin> {
                                                         // fontWeight:
                                                         //     FontWeight.bold,
                                                         color: black,
-                                                        fontSize: 20.sp))),
+                                                        fontSize: 15.sp))),
                                           ),
                                         ),
                                       )))
@@ -451,45 +479,45 @@ class _DemoLoginState extends State<DemoLogin> {
                                             CrossAxisAlignment.center,
                                         children: <Widget>[
                                           CircularProgressIndicator(
-                                            backgroundColor: Colors.red,
+                                            color: green,
                                           )
                                         ].where((c) => c != null).toList(),
                                       )
                                     ]),
                           isResend
-                              ? 
-                                TextButton(onPressed: () async {
-                                          if (mounted)
-                                            setState(() {
-                                              isResend = false;
-                                              isLoading = true;
-                                            });
-                                          await login();
-                                        },
+                              ? TextButton(
+                                  onPressed: () async {
+                                    if (mounted)
+                                      setState(() {
+                                        isResend = false;
+                                        isLoading = true;
+                                      });
+                                    await login();
+                                  },
                                   child: Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 40),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 40),
                                     child: Container(
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(15),
-                                                  color: white,
-                                                  border: Border.all(color: navy)),
-                                              width: width * .5.w,
-                                              height: height * .06.h,
-                                              child: Material(
-                                                borderRadius:
-                                                    BorderRadius.circular(15),
-                                                elevation: 4,
-                                                color: white,
-                                                child: Center(
-                                                    child: Text('Resend code',
-                                                        style: GoogleFonts.poppins(
-                                                            // fontWeight:
-                                                            //     FontWeight.bold,
-                                                            color: black,
-                                                            fontSize: 20.sp))),
-                                              ),
-                                            ),
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          color: white,
+                                          border: Border.all(color: navy)),
+                                      height: height * 0.008.h,
+                                      width: width * 0.15.w,
+                                      child: Material(
+                                        borderRadius: BorderRadius.circular(15),
+                                        elevation: 4,
+                                        color: white,
+                                        child: Center(
+                                            child: Text('Resend code',
+                                                style: GoogleFonts.poppins(
+                                                    // fontWeight:
+                                                    //     FontWeight.bold,
+                                                    color: black,
+                                                    fontSize: 14.sp))),
+                                      ),
+                                    ),
                                   ),
                                 )
                               // Container(
@@ -524,10 +552,10 @@ class _DemoLoginState extends State<DemoLogin> {
                               //             ),
                               //           ),
                               //         )))
-                           
+
                               : Column(),
                           SizedBox(
-                            height: height * 0.06,
+                            height: height * 0.005.h,
                           ),
                           Socialmedia()
                         ],

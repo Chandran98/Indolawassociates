@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
+import 'package:indolawassociates/UI/components/socialmedia.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
-import 'package:indolawassociates/UI/pages/profilepage.dart';
+import 'package:indolawassociates/UI/pages/Settingspage/profilepage.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -24,8 +26,11 @@ class _ContactpageState extends State<Contactpage> {
     }
   }
 
-  void onback() {Navigator.of(context).pop();
+  void onback() {
+    Navigator.of(context).pop();
   }
+
+  var whatsapp = "+91 8940383000";
 
   @override
   Widget build(BuildContext context) {
@@ -51,14 +56,15 @@ class _ContactpageState extends State<Contactpage> {
                     children: <Widget>[
                       Container(
                         child: IconButton(
-                            iconSize: 40.r,
+                            iconSize: 20,
                             color: white,
                             icon: Image.asset(
                               "assets/icons/rback.png",
                               color: iconcolor,
-                              height: 40.h,
+                              height: 20.h,
                             ),
-                            onPressed: () => Navigator.pushNamed(context,settingsroute)),
+                            onPressed: () =>
+                                Navigator.pushNamed(context, settingsroute)),
                       ),
                       // Padding(
                       //   padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -77,20 +83,21 @@ class _ContactpageState extends State<Contactpage> {
                     ],
                   ),
                   SizedBox(
-                    height: height * 0.02.h,
+                    height: height * 0.002.h,
                   ),
                   Text(
                     translate!.cpage,
                     style: GoogleFonts.poppins(
-                        fontSize: 30.sp,
+                        fontSize: 20.sp,
                         color: Colors.black,
                         fontWeight: FontWeight.w500),
                   ),
                   SizedBox(
-                    height: height * 0.008.h,
+                    height: height * 0.002.h,
                   ),
                   Text(
                     translate.helpline1,
+                    // textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                         fontSize: 12.sp,
                         color: Colors.black,
@@ -111,7 +118,47 @@ class _ContactpageState extends State<Contactpage> {
                     ),
                   ),
                   SizedBox(
-                    height: height * 0.03.h,
+                    height: height * 0.003.h,
+                  ),
+                  InkWell(
+                    onTap: () async => await launch(
+                        "https://wa.me/$whatsapp?text= Hi, I have an emergency"),
+                    child: Container(
+                        decoration: BoxDecoration(
+                            // borderRadius: BorderRadius.circular(15),
+                            color: white,
+                            border: Border.all(color: Color(0xff2748A0))),
+                        height: MediaQuery.of(context).size.height * 0.01.h,
+                        width: MediaQuery.of(context).size.width * 0.2.w,
+                        // padding: const EdgeInsets.symmetric(
+                        //   vertical: 15.0,
+                        //   horizontal: 15.0,
+                        // ),
+                        child: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              FaIcon(
+                                FontAwesomeIcons.whatsapp,
+                                color: Colors.green,
+                              ),
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              Text(
+                                translate.whatsapp,
+                                style: GoogleFonts.poppins(
+                                    // fontWeight: FontWeight.bold,
+                                    color: black,
+                                    fontSize: 15.sp),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                        )),
+                  ),
+                  SizedBox(
+                    height: height * 0.0023.h,
                   ),
                   InkWell(
                     onTap: () {
@@ -122,25 +169,30 @@ class _ContactpageState extends State<Contactpage> {
                             // borderRadius: BorderRadius.circular(15),
                             color: white,
                             border: Border.all(color: Color(0xff2748A0))),
-                        height: MediaQuery.of(context).size.height * 0.06.h,
-                        width: MediaQuery.of(context).size.width * 0.7.h,
+                        height: MediaQuery.of(context).size.height * 0.01.h,
+                        width: MediaQuery.of(context).size.width * 0.2.w,
                         // padding: const EdgeInsets.symmetric(
                         //   vertical: 15.0,
                         //   horizontal: 15.0,
                         // ),
                         child: Center(
-                          child: Text(
-                            translate.mobile,
-                            style: GoogleFonts.poppins(
-                                // fontWeight: FontWeight.bold,
-                                color: black,
-                                fontSize: 20.sp),
-                            textAlign: TextAlign.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                translate.mobile,
+                                style: GoogleFonts.poppins(
+                                    // fontWeight: FontWeight.bold,
+                                    color: black,
+                                    fontSize: 15.sp),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
                           ),
                         )),
                   ),
                   SizedBox(
-                    height: height * 0.03.h,
+                    height: height * 0.002.h,
                   ),
                   InkWell(
                     onTap: () {
@@ -151,8 +203,8 @@ class _ContactpageState extends State<Contactpage> {
                             // borderRadius: BorderRadius.circular(15),
                             color: white,
                             border: Border.all(color: Color(0xff2748A0))),
-                        height: MediaQuery.of(context).size.height * 0.06.h,
-                        width: MediaQuery.of(context).size.width * 0.7.h,
+                        height: MediaQuery.of(context).size.height * 0.01.h,
+                        width: MediaQuery.of(context).size.width * 0.2.w,
                         // padding: const EdgeInsets.symmetric(
                         //   vertical: 15.0,
                         //   horizontal: 15.0,
@@ -163,13 +215,13 @@ class _ContactpageState extends State<Contactpage> {
                             style: GoogleFonts.poppins(
                                 // fontWeight: FontWeight.bold,
                                 color: black,
-                                fontSize: 20.sp),
+                                fontSize: 15.sp),
                             textAlign: TextAlign.center,
                           ),
                         )),
                   ),
                   SizedBox(
-                    height: height * 0.03.h,
+                    height: height * 0.002.h,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -178,29 +230,29 @@ class _ContactpageState extends State<Contactpage> {
                     ),
                   ),
                   SizedBox(
-                    height: height * 0.02.h,
+                    height: height * 0.002.h,
                   ),
                   FittedBox(
                     child: Text(
                       translate.exp,
                       style: GoogleFonts.poppins(
-                          fontSize: 18.sp,
+                          fontSize: 15.sp,
                           color: Colors.black,
                           fontWeight: FontWeight.w500),
                     ),
                   ),
                   SizedBox(
-                    height: height * 0.008.h,
+                    height: height * 0.002.h,
                   ),
                   Text(
                     translate.helptitle,
                     style: GoogleFonts.poppins(
-                        fontSize: 12.sp,
+                        fontSize: 10.sp,
                         color: Colors.black,
                         fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
-                    height: height * 0.012.h,
+                    height: height * 0.001.h,
                   ),
                   InkWell(
                     onTap: () {
@@ -213,59 +265,9 @@ class _ContactpageState extends State<Contactpage> {
                     ),
                   ),
                   SizedBox(
-                    height: height * 0.1.h,
+                    height: height * 0.0035.h,
                   ),
-                  Text(
-                    translate.follow,
-                    style: GoogleFonts.poppins(
-                        fontSize: 14.sp,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400),
-                  ),
-                  SizedBox(
-                    height: height * 0.005.h,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          launch(
-                              "https://www.linkedin.com/company/indo-law-associates");
-                        },
-                        child: Image.asset(
-                          "assets/icons/likin.png",
-                          height: height * 0.065,
-                        ),
-                      ),
-                      SizedBox(
-                        width: width * 0.02.w,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          launcher(
-                              "https://www.facebook.com/Indo-Law-Associates-112576861204879/?ref=pages_you_manage");
-                        },
-                        child: Image.asset(
-                          "assets/icons/fb.png",
-                          height: height * 0.055,
-                        ),
-                      ),
-                      SizedBox(
-                        width: width * 0.03.w,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          launcher(
-                              "https://www.instagram.com/indolaw_associates/");
-                        },
-                        child: Image.asset(
-                          "assets/icons/insta.png",
-                          height: height * 0.04,
-                        ),
-                      ),
-                    ],
-                  )
+                  Socialmedia()
                 ],
               ),
             ),

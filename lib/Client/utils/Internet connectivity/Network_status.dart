@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/Client/utils/Internet%20connectivity/connectivity.dart';
 import 'package:provider/provider.dart';

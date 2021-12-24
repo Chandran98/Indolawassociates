@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/Client/utils/Internet%20connectivity/Network_status.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
-import 'package:indolawassociates/UI/pages/Paralegal/paralegalinfopage.dart';
+import 'package:indolawassociates/UI/pages/Servicepage/Paralegal/paralegalinfopage.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
 
@@ -40,24 +38,24 @@ class _TParalegalState extends State<TParalegal> {
       child: SafeArea(
         child: Scaffold(
             backgroundColor: white,
-            appBar: AppBar(
-              elevation: 3,
-              toolbarHeight: 60.h,
-              centerTitle: true,
-              backgroundColor: black,
-              title: Text(
-                translate!.paralegalservices,
-                style: GoogleFonts.poppins(
-                    color: white, fontWeight: FontWeight.w500, fontSize: 20.sp),
-              ),
-              leading: IconButton(
-                  onPressed: () => Navigator.pushNamed(context,homeroute),
-                  icon: Image.asset(
-                    "assets/icons/rback.png",
-                    color: white,
-                    height: 35,
-                  )),
-            ),
+            // appBar: AppBar(
+            //   elevation: 3,
+            //   toolbarHeight: 60.h,
+            //   centerTitle: true,
+            //   backgroundColor: dialog,
+            //   title: Text(
+            //     translate!.paralegalservices,
+            //     style: GoogleFonts.poppins(
+            //         color: white, fontWeight: FontWeight.w500, fontSize: 20.sp),
+            //   ),
+            //   leading: IconButton(
+            //       onPressed: () => Navigator.pushNamed(context,homeroute),
+            //       icon: Image.asset(
+            //         "assets/icons/rback.png",
+            //         color: white,
+            //         height: 35,
+            //       )),
+            // ),
             body: NetworkSensitive(child: paralegallist(context))),
       ),
     );

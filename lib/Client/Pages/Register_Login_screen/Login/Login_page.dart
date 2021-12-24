@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/Pages/Register_Login_screen/Login/otppage.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
@@ -39,8 +39,7 @@ class _LoginpageState extends State<Loginpage> {
   late String otpcoder;
 
   void initState() {
-    
-SmsAutoFill().listenForCode();
+    SmsAutoFill().listenForCode();
     Timer.run(() {
       if (_auth.currentUser != null) {
         Navigator.pushAndRemoveUntil(
@@ -56,14 +55,14 @@ SmsAutoFill().listenForCode();
     super.initState();
   }
 
-  void _listenotp()async {
-   await SmsAutoFill().listenForCode();
+  void _listenotp() async {
+    await SmsAutoFill().listenForCode();
   }
 
   @override
   void dispose() {
     numberController.dispose();
-        SmsAutoFill().unregisterListener();
+    SmsAutoFill().unregisterListener();
 
     super.dispose();
   }
@@ -195,11 +194,11 @@ SmsAutoFill().listenForCode();
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 10.0),
                                         child: !isLoading
-                                            ? new TextButton( 
+                                            ? new TextButton(
                                                 onPressed: () async {
                                                   final otpcode = SmsAutoFill()
                                                       .getAppSignature;
-                                                      print(otpcode);
+                                                  print(otpcode);
                                                   if (!isLoading) {
                                                     if (_formKey.currentState!
                                                         .validate()) {
@@ -211,7 +210,7 @@ SmsAutoFill().listenForCode();
                                                   final signature =
                                                       SmsAutoFill()
                                                           .getAppSignature;
-                                                          print(signature);
+                                                  print(signature);
                                                 },
                                                 child: Container(
                                                     decoration: BoxDecoration(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/model/Legalforms_data_models.dart';
 import 'package:indolawassociates/Client/Pages/bottomnavybar/Legalforms.dart';
@@ -39,21 +39,21 @@ class _MortgagelegalformsState extends State<Mortgagelegalforms> {
       child: Scaffold(
          appBar: AppBar(
               elevation: 3,
-              toolbarHeight: 60.h,
+              toolbarHeight: 9.h,
               centerTitle: true,
-              backgroundColor: white,
+              backgroundColor: dialog,
               title: FittedBox(
                 child: Text(
                   translate!.forms10,
                   style: GoogleFonts.poppins(
-                      color: black, fontWeight: FontWeight.w500, fontSize: 20.sp),
+                      color: white, fontWeight: FontWeight.w500, fontSize: 13.sp),
                 ),
               ),
               leading: IconButton(
                   onPressed: () => Navigator.pushNamed(context, legalformroute),
                   icon: Image.asset(
                     "assets/icons/rback.png",
-                    color: black,
+                    color: white,
                     height: 35,
                   )),
             ),
@@ -101,39 +101,41 @@ return Padding(
                   ),
                   // onTap: ()=>{launch(legalforms[index].Url)});
                   onTap: () {
-                    showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                              elevation: 10,
-                              content: Text(
-translate.helptitle,                                style: hStyle,
-                              ),
-                              contentPadding: EdgeInsets.only(
-                                  top: 20, left: 20, right: 20, bottom: 10),
-                              actions: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10),
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.phone,
-                                        color: navy,
-                                      ),
-                                      FlatButton(
-                                        onPressed: () {
-                                          launcher("tel: 8940383000");
-                                        },
-                                        child: Text(
-                                          "8940383000",
-                                          style: hStyle,
-                                        ),
-                                      ),
-                                    ],
+                   
+                showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(backgroundColor: dialog,
+                          elevation: 10,
+                          content: Text(
+                            translate.helptitle,
+                            style: dfont,
+                          ),
+                          contentPadding: EdgeInsets.only(
+                              top: 20, left: 20, right: 20, bottom: 10),
+                          actions: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.phone,
+                                    color: white,
                                   ),
-                                )
-                              ],
-                            ));
+                                  FlatButton(
+                                    onPressed: () {
+                                      launcher("tel: 8940383000");
+                                    },
+                                    child: Text(
+                                      "8940383000",
+                                      style: dfont,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ));
                   });
             },
           ),

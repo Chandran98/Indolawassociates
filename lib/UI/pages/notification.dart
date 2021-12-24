@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
@@ -31,20 +31,20 @@ class _NotificationpageState extends State<Notificationpage> {
         child: Scaffold(
           appBar: AppBar(
             elevation: 3,
-            toolbarHeight: 60.h,
+            toolbarHeight: 10.h,
             centerTitle: true,
-            backgroundColor: black,
+            backgroundColor: dialog,
             title: Text(
               "Notification",
               style: GoogleFonts.poppins(
-                  color: white, fontWeight: FontWeight.w500, fontSize: 20.sp),
+                  color: white, fontWeight: FontWeight.w400, fontSize: 15.sp),
             ),
             leading: IconButton(
                 onPressed: () => Navigator.pushNamed(context, homeroute),
                 icon: Image.asset(
                   "assets/icons/rback.png",
                   color: white,
-                  height: 35,
+                  height: 5.h,
                 )),
           ),
         ),

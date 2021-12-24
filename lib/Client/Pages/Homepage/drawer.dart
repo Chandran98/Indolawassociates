@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/Pages/Register_Login_screen/Login/Login_page.dart';
 import 'package:indolawassociates/Client/Pages/darwerlist.dart/Careers/Careers.dart';
@@ -157,7 +157,7 @@ class _MaindrawerState extends State<Maindrawer> {
                                                     Mainhome())),
                                     icon: Icon(
                                       Icons.home,
-                                      size: 30.r,
+                                      size: 30,
                                       color: Colors.white,
                                       semanticLabel: "Home",
                                     ),

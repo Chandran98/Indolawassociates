@@ -5,23 +5,21 @@ import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart';
 import 'package:indolawassociates/Client/components/slider/slider.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:indolawassociates/Client/provider/languageprovider.dart';
 import 'package:indolawassociates/Client/utils/Internet%20connectivity/Network_status.dart';
 import 'package:indolawassociates/UI/components/clippath.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:indolawassociates/UI/services/fireabase_service.dart';
 import 'package:indolawassociates/UI/widgets/Lawyers/Lawyer_list.dart';
 import 'package:provider/src/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../widgets/categories/Category_list_page.dart';
 
 class CloneHOME extends StatefulWidget {
@@ -39,7 +37,15 @@ class _CloneHOME extends State<CloneHOME> {
   }
 
   GetdataFB getdataFB = GetdataFB();
+  launcher(command) async {
+    if (await canLaunch(command)) {
+      await launch(command);
+    } else {
+      print("");
+    }
+  }
 
+  String _username = "";
   @override
   Widget build(BuildContext context) {
     final translate = AppLocalizations.of(context);
@@ -49,21 +55,20 @@ class _CloneHOME extends State<CloneHOME> {
     return NetworkSensitive(
       child: SafeArea(
         child: Scaffold(
-          floatingActionButton:
-          
-          
-           FloatingActionButton.extended(
+          floatingActionButton: FloatingActionButton.extended(
               label: Text(
                 translate.quickcall,
                 style: TextStyle(color: Colors.white),
               ),
               icon: Icon(
                 Icons.call,
-                size: 20.r,
+                size: 20,
                 color: Colors.white,
               ),
               backgroundColor: black,
-              onPressed: () {}),
+              onPressed: () {
+                launcher("tel: 8940383000");
+              }),
           // bottomNavigationBar: Bottombar(),
           backgroundColor: gradsoj,
           // backgroundColor: white,
@@ -82,10 +87,10 @@ class _CloneHOME extends State<CloneHOME> {
                   Column(
                 children: [
                   ClipPath(
-                    // clipBehavior: Clip.antiAliasWithSaveLayer,
+                    //   // clipBehavior: Clip.antiAliasWithSaveLayer,
                     clipper: CustomdClipper(),
                     child: Container(
-                      height: height * 0.33.h,
+                      height: height * 0.048.h,
                       width: width * 1.w,
                       decoration: new BoxDecoration(
                         // boxShadow: [
@@ -97,14 +102,8 @@ class _CloneHOME extends State<CloneHOME> {
                         // ],
                         gradient: LinearGradient(
                             begin: Alignment.bottomRight,
-                            stops: [
-                              0.1,
-                              0.9
-                            ],
-                            colors: [
-                              green.withOpacity(.8),
-                              Colors.black
-                            ]),
+                            stops: [0.1, 0.9],
+                            colors: [green.withOpacity(.8), Colors.black]),
                       ),
                       // gradient: new LinearGradient(
                       //     colors: [
@@ -122,22 +121,31 @@ class _CloneHOME extends State<CloneHOME> {
                       //     tileMode: TileMode.repeated)),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 5.0,
+                          horizontal: 2.0,
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              height: height * 0.01.h,
+                              height: height * 0.001.h,
                             ),
                             Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
+                                  const EdgeInsets.symmetric(horizontal: 15),
                               child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment:
-                                    MainAxisAlignment.end,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
+                                  FittedBox(
+                                    child: Text(
+                                      "Hi $_username",
+                                      style: GoogleFonts.poppins(
+                                          color: white,
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
                                   // Image.asset(
                                   //   "assets/images/ILALOGO.png",
                                   //   height: height * 0.04.h,
@@ -153,11 +161,16 @@ class _CloneHOME extends State<CloneHOME> {
                                             color: white,
                                           )),
                                       SizedBox(
-                                        width: width * 0.02.w,
+                                        width: width * 0.002.w,
                                       ),
                                       IconButton(
-                                          onPressed: () => Navigator.pushNamed(
-                                              context, notificationroute),
+                                          onPressed: () {
+                                            Navigator.pushNamed(
+                                                context, notificationroute);
+                                          },
+
+                                          // => Navigator.pushNamed(
+                                          //     context, notificationroute),
                                           icon: SvgPicture.asset(
                                             "assets/icons/notification.svg",
                                             color: white,
@@ -168,35 +181,36 @@ class _CloneHOME extends State<CloneHOME> {
                               ),
                             ),
                             SizedBox(
-                              height: height * 0.008.h,
+                              height: height * 0.001.h,
                             ),
 
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 15.0),
                               child: Container(
-                                height: height * 0.07.h,
-                                width: width * 0.6.w,
-                                child: Text(translate.hometitle,style: 
-                                GoogleFonts.poppins(
-                                      fontSize: 18.sp, color: white),
-                                )
-                                
-                                // DefaultTextStyle(
-                                //   style: GoogleFonts.poppins(
-                                //       fontSize: 18.sp, color: white),
-                                //   child: AnimatedTextKit(
-                                //       pause: Duration(seconds: 1),
-                                //       repeatForever: true,
-                                //       animatedTexts: [
-                                //         FadeAnimatedText(
-                                //           "Hi ${_username}",
-                                //         ),
-                                //         FadeAnimatedText(translate.welcome),
-                                //         FadeAnimatedText(translate.hometitle),
-                                //       ]),
-                                // ),
-                              ),
+                                  height: height * 0.008.h,
+                                  width: width * 0.15.w,
+                                  child: Text(
+                                    translate.hometitle,
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 13.sp, color: white),
+                                  )
+
+                                  // DefaultTextStyle(
+                                  //   style: GoogleFonts.poppins(
+                                  //       fontSize: 18.sp, color: white),
+                                  //   child: AnimatedTextKit(
+                                  //       pause: Duration(seconds: 1),
+                                  //       repeatForever: true,
+                                  //       animatedTexts: [
+                                  //         FadeAnimatedText(
+                                  //           "Hi ${_username}",
+                                  //         ),
+                                  //         FadeAnimatedText(translate.welcome),
+                                  //         FadeAnimatedText(translate.hometitle),
+                                  //       ]),
+                                  // ),
+                                  ),
                             ),
                             // SizedBox(
                             //   height: height * 0.00.h,
@@ -219,12 +233,14 @@ class _CloneHOME extends State<CloneHOME> {
                       ),
                     ),
                   ),
+                  // ,
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         child: Slisder(),
-                        height: height * 0.17.h,
+                        height: height * 0.022.h,
+                        width: width * 1.w,
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
@@ -232,14 +248,14 @@ class _CloneHOME extends State<CloneHOME> {
                         child: Text(
                           translate.hometitle3,
                           style: GoogleFonts.poppins(
-                            fontSize: 14.sp,
+                            fontSize: 12.sp,
                             color: white,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: Relawyerlist(),
                       ),
                     ],
@@ -262,14 +278,15 @@ class _CloneHOME extends State<CloneHOME> {
   languagebutton() {
     final translate = AppLocalizations.of(context);
 
-    showDialog(
+    showCupertinoDialog(
         context: context,
         builder: (context) => AlertDialog(
+              backgroundColor: dialog,
               title: Text(
                 translate!.languagekey,
-                style: hStyle,
+                style: dfont,
               ),
-              actionsPadding: EdgeInsets.symmetric(horizontal: 30.w),
+              // actionsPadding: EdgeInsets.symmetric(horizontal: 1.w),
               actions: [
                 TextButton(
                     onPressed: () {
@@ -278,7 +295,7 @@ class _CloneHOME extends State<CloneHOME> {
                     },
                     child: Text(
                       translate.primarylanguage,
-                      style: hStyle,
+                      style: dfont,
                     )),
                 TextButton(
                     onPressed: () {
@@ -287,7 +304,7 @@ class _CloneHOME extends State<CloneHOME> {
                     },
                     child: Text(
                       translate.language1,
-                      style: hStyle,
+                      style: dfont,
                     ))
               ],
             ));
@@ -301,6 +318,7 @@ class _CloneHOME extends State<CloneHOME> {
         .then((value) {
       if (mounted)
         setState(() {
+          _username = value.data()!["name"].toString();
         });
     });
   }

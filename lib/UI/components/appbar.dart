@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
@@ -19,7 +19,7 @@ CustomAppbar({required this.title,required this.navipage,required this.style});
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: Container(
                         child: IconButton(
-                            iconSize: 40.r,
+                            iconSize: 40,
                             color: white,
                             icon: Image.asset(
                               "assets/icons/rback.png",

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
@@ -48,92 +48,95 @@ class _LawyerinfocardState extends State<Lawyerinfocard> {
           floatingActionButton: FloatingActionButton.extended(
               backgroundColor: black,
               onPressed: () {
-                launcher("tel: 04443511235");
+                launcher("tel: 8940383000");
               },
               icon: Icon(Icons.call),
               label: Text(
                 "Book Appointment",
+                // style: dfont,
               )),
           body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              // mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Row(
-                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Container(
-                      child: IconButton(
-                          iconSize: 40.r,
-                          color: white,
-                          icon: Image.asset(
-                            "assets/icons/rback.png",
-                            color: iconcolor,
-                            height: 40.h,
-                          ),
-                          onPressed: () => Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MainHomepage()))),
-                    ),
-                    SizedBox(
-                      width: width * 0.08.w,
-                    ),
-                    Text("Lawyer info",
-                        style: GoogleFonts.poppins(
-                            fontSize: 20.5.sp,
-                            fontWeight: FontWeight.w500,
-                            color: black))
-                  ],
-                ),
-                SizedBox(
-                  height: height * 0.03.h,
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.2.h,
-                  width: MediaQuery.of(context).size.width * 1.w,
-                  decoration: BoxDecoration(
-                      // shape: BoxShape.circle,
-                      image: DecorationImage(
-                        image: NetworkImage(widget.images),
-                        fit: BoxFit.contain,
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                // mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Row(
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        child: IconButton(
+                            iconSize: 5.h,
+                            // color: navy,
+                            icon: Image.asset(
+                              "assets/icons/rback.png",
+                              color: iconcolor,
+                              height: 12.h,
+                            ),
+                            onPressed: () => Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MainHomepage()))),
                       ),
-                      color: white),
-                ),
-                SizedBox(
-                  height: height * 0.05.h,
-                ),
-                Text(
-                  widget.name,
-                  style: GoogleFonts.mulish(
-                      fontSize: 18.sp,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500),
-                ),
-                SizedBox(
-                  height: height * 0.005.h,
-                ),
-                Text(
-                  "${widget.specialized} Lawyer",
-                  style: GoogleFonts.mulish(
-                      fontSize: 15.sp,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.03.h,
-                ),
-                Text(
-                  widget.description,
-                  style: GoogleFonts.poppins(
-                    // fontWeight: FontWeight.w600,
-                    fontSize: 15.sp,
+                      SizedBox(
+                        width: width * 0.04.w,
+                      ),
+                      Text("Lawyer info",
+                          style: GoogleFonts.poppins(
+                              fontSize: 15.5.sp,
+                              fontWeight: FontWeight.w500,
+                              color: black))
+                    ],
                   ),
-                  textAlign: TextAlign.justify,
-                  textScaleFactor: 1,
-                ),
-              ],
+                  SizedBox(
+                    height: height * 0.003.h,
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.03.h,
+                    width: MediaQuery.of(context).size.width * 1.w,
+                    decoration: BoxDecoration(
+                        // shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: NetworkImage(widget.images),
+                          fit: BoxFit.contain,
+                        ),
+                        color: white),
+                  ),
+                  SizedBox(
+                    height: height * 0.003.h,
+                  ),
+                  Text(
+                    widget.name,
+                    style: GoogleFonts.mulish(
+                        fontSize: 15.sp,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  // SizedBox(
+                  //   height: height * 0.001.h,
+                  // ),
+                  Text(
+                    "${widget.specialized} Lawyer",
+                    style: GoogleFonts.mulish(
+                        fontSize: 12.sp,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.003.h,
+                  ),
+                  Text(
+                    widget.description,
+                    style: GoogleFonts.poppins(
+                      // fontWeight: FontWeight.w600,
+                      fontSize: 11.sp,
+                    ),
+                    textAlign: TextAlign.justify,
+                    textScaleFactor: 1,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

@@ -4,6 +4,7 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:google_fonts/google_fonts.dart';
+// import 'package:indolawassociates/Client/Pages/Register_Login_screen/Login/Login_page.dart';
 // import 'package:indolawassociates/Client/constants/constant.dart';
 // import 'package:sms_autofill/sms_autofill.dart';
 
@@ -20,6 +21,9 @@
 // }
 
 // class _OTppageState extends State<OTppage> {
+
+
+//   Loginpage loginpage=Loginpage();
 //   final _formKeyOTP = GlobalKey<FormState>();
 //   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -273,92 +277,92 @@
 //     );
 //   }
 
-//   Future login() async {
-//     if (mounted)
-//       setState(() {
-//         isLoading = true;
-//       });
+//   // Future login() async {
+//   //   if (mounted)
+//   //     setState(() {
+//   //       isLoading = true;
+//   //     });
 
-//     // var phoneNumber = numberController.text.trim();
-//     var phoneNumber = phone;
+//   //   // var phoneNumber = numberController.text.trim();
+//   //   var phoneNumber = phone;
 
-//     var isValidUser = false;
-//     // var number = numberController.text.trim();
-//     var number = phone;
+//   //   var isValidUser = false;
+//   //   // var number = numberController.text.trim();
+//   //   var number = phone;
 
-//     await _firestore
-//         .collection('ILA')
-//         .where('cellnumber', isEqualTo: number)
-//         .get()
-//         .then((result) {
-//       if (result.docs.length > 0) {
-//         isValidUser = true;
-//       }
-//     });
+//   //   await _firestore
+//   //       .collection('ILA')
+//   //       .where('cellnumber', isEqualTo: number)
+//   //       .get()
+//   //       .then((result) {
+//   //     if (result.docs.length > 0) {
+//   //       isValidUser = true;
+//   //     }
+//   //   });
 
-//     if (isValidUser) {
-//       var verifyPhoneNumber = _auth.verifyPhoneNumber(
-//         phoneNumber: phoneNumber,
-//         verificationCompleted: (phoneAuthCredential) {
-//           _auth.signInWithCredential(phoneAuthCredential).then((user) async => {
-//                 if (user != null)
-//                   {
-//                     if (mounted)
-//                       {
-//                         setState(() {
-//                           isLoading = false;
-//                           isOTPScreen = false;
-//                         }),
-//                       },
-//                     Navigator.pushAndRemoveUntil(
-//                       context,
-//                       MaterialPageRoute(
-//                         builder: (BuildContext context) => Mainhome(),
-//                       ),
-//                       (route) => false,
-//                     )
-//                   }
-//               });
-//         },
-//         verificationFailed: (FirebaseAuthException error) {
-//           displaySnackBar('Validation error, please try again later');
-//           if (mounted)
-//             setState(() {
-//               isLoading = false;
-//             });
-//         },
-//         codeSent: (verificationId, [forceResendingToken]) {
-//           if (mounted)
-//             setState(() {
-//               isLoading = false;
-//               verificationCode = verificationId;
+//   //   if (isValidUser) {
+//   //     var verifyPhoneNumber = _auth.verifyPhoneNumber(
+//   //       phoneNumber: phoneNumber,
+//   //       verificationCompleted: (phoneAuthCredential) {
+//   //         _auth.signInWithCredential(phoneAuthCredential).then((user) async => {
+//   //               if (user != null)
+//   //                 {
+//   //                   if (mounted)
+//   //                     {
+//   //                       setState(() {
+//   //                         isLoading = false;
+//   //                         isOTPScreen = false;
+//   //                       }),
+//   //                     },
+//   //                   Navigator.pushAndRemoveUntil(
+//   //                     context,
+//   //                     MaterialPageRoute(
+//   //                       builder: (BuildContext context) => Mainhome(),
+//   //                     ),
+//   //                     (route) => false,
+//   //                   )
+//   //                 }
+//   //             });
+//   //       },
+//   //       verificationFailed: (FirebaseAuthException error) {
+//   //         displaySnackBar('Validation error, please try again later');
+//   //         if (mounted)
+//   //           setState(() {
+//   //             isLoading = false;
+//   //           });
+//   //       },
+//   //       codeSent: (verificationId, [forceResendingToken]) {
+//   //         if (mounted)
+//   //           setState(() {
+//   //             isLoading = false;
+//   //             verificationCode = verificationId;
 
-//               isOTPScreen = true;
-//             });
-//         },
-//         codeAutoRetrievalTimeout: (String verificationId) {
-//           if (mounted)
-//             setState(() {
-//               isLoading = false;
+//   //             isOTPScreen = true;
+//   //           });
+//   //       },
+//   //       codeAutoRetrievalTimeout: (String verificationId) {
+//   //         if (mounted)
+//   //           setState(() {
+//   //             isLoading = false;
 
-//               verificationCode = verificationId;
-//             });
-//         },
-//         timeout: Duration(seconds: 60),
-//       );
-//       await verifyPhoneNumber;
-//     } else {
-//       if (mounted) {
-//         setState(() {
-//           isLoading = false;
-//         });
-//       }
-//       displaySnackBar('Number not found, please sign up first');
-//     }
-//   }
+//   //             verificationCode = verificationId;
+//   //           });
+//   //       },
+//   //       timeout: Duration(seconds: 60),
+//   //     );
+//   //     await verifyPhoneNumber;
+//   //   } else {
+//   //     if (mounted) {
+//   //       setState(() {
+//   //         isLoading = false;
+//   //       });
+//   //     }
+//   //     displaySnackBar('Number not found, please sign up first');
+//   //   }
+//   // }
 
-//   displaySnackBar(text) {
-//     final snackBar = SnackBar(content: Text(text));
-//     _scaffoldKey.currentState!.showSnackBar(snackBar);
-//   }
+//   // displaySnackBar(text) {
+//   //   final snackBar = SnackBar(content: Text(text));
+//   //   _scaffoldKey.currentState!.showSnackBar(snackBar);
+//   // }
 // }

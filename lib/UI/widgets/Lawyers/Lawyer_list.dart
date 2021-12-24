@@ -1,11 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/Pages/Homepage/lawyers/services/lawyer_services.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
-
 import 'Lawyer_info_page.dart';
 
 class Relawyerlist extends StatefulWidget {
@@ -27,7 +26,7 @@ class _RelawyerlistState extends State<Relawyerlist> {
       stream: lawyerDB.getlawyerdb(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator(color: green,));
         } else {
           return SingleChildScrollView(
             physics: BouncingScrollPhysics(),
@@ -52,6 +51,7 @@ class _RelawyerlistState extends State<Relawyerlist> {
                                   images: images,
                                 ))),
                     child: Card(
+                        color: dialog,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)),
                         elevation: 4,
@@ -69,19 +69,19 @@ class _RelawyerlistState extends State<Relawyerlist> {
                                 ]),
                             borderRadius: BorderRadius.all(Radius.circular(20)),
                           ),
-                          height: height * 0.22.h,
-                          width: width * 0.45.w,
+                          height: height * 0.035.h,
+                          width: width * 0.12.w,
                           child: Column(
                             children: [
                               Padding(
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 10),
+                                    horizontal: 2, vertical: 2),
                                 child: Container(
-                                  margin: EdgeInsets.all(2),
+                                  // margin: EdgeInsets.all(2),
                                   width:
-                                      MediaQuery.of(context).size.width * 0.5.w,
+                                      MediaQuery.of(context).size.width * 0.06.w,
                                   height: MediaQuery.of(context).size.height *
-                                      0.1.h,
+                                      0.021.h,
                                   decoration: BoxDecoration(
                                     // border: Border.all(color: Colors.white, width: 5),
 
@@ -97,14 +97,14 @@ class _RelawyerlistState extends State<Relawyerlist> {
                               Text(
                                 name.toString(),
                                 style: GoogleFonts.poppins(
-                                    fontSize: 16.sp,
+                                    fontSize: 12.sp,
                                     fontWeight: FontWeight.w400,
                                     color: white),
                               ),
                               Text(
                                 "${specialized.toString()} Lawyer",
                                 style: GoogleFonts.poppins(
-                                    fontSize: 16.sp,
+                                    fontSize: 12.sp,
                                     fontWeight: FontWeight.w400,
                                     color: white),
                               )

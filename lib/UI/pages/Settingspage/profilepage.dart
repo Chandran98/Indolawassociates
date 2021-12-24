@@ -2,15 +2,21 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/Client/provider/languageprovider.dart';
 import 'package:indolawassociates/Client/utils/Internet%20connectivity/Network_status.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
+import 'package:indolawassociates/UI/pages/Servicepage/NRI.dart';
+import 'package:indolawassociates/UI/pages/Settingspage/careers/careerspage.dart';
+import 'package:indolawassociates/UI/provider/theme.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+// ignore: implementation_imports
 import 'package:provider/src/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -58,12 +64,12 @@ class _SettingspageState extends State<Settingspage> {
                   translate!.drawerkey6,
                   style: GoogleFonts.poppins(
                       color: black,
-                      fontSize: 15.sp,
+                      fontSize: 12.sp,
                       fontWeight: FontWeight.w500),
                 ),
                 icon: Icon(
                   Icons.logout,
-                  size: 20.r,
+                  size: 20,
                   color: Colors.black,
                 ),
                 backgroundColor: white,
@@ -73,8 +79,14 @@ class _SettingspageState extends State<Settingspage> {
                 }),
             body: SingleChildScrollView(
               child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topRight,
+                      stops: [0.1, 0.9],
+                      colors: [green.withOpacity(.8), Colors.black]),
+                ),
                 width: width,
-                color: black,
+                // color: black,
                 child: Padding(
                   padding: const EdgeInsets.only(top: 20),
                   child: Column(
@@ -86,12 +98,12 @@ class _SettingspageState extends State<Settingspage> {
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Container(
                               child: IconButton(
-                                  iconSize: 40.r,
+                                  iconSize: 20,
                                   color: white,
                                   icon: Image.asset(
                                     "assets/icons/rback.png",
                                     color: white,
-                                    height: 40.h,
+                                    height: 20.h,
                                   ),
 
                                   // onPressed: () => pushNewScreenWithRouteSettings(
@@ -103,16 +115,23 @@ class _SettingspageState extends State<Settingspage> {
                                       Navigator.pushNamed(context, homeroute)),
                             ),
                           ),
+                          // Consumer(builder: (_, THemeprovider notifier, child) {
+                          //   return Padding(
+                          //     padding:
+                          //         const EdgeInsets.symmetric(horizontal: 30),
+                          //     child: SwitchListTile(value: notifier.darktheme, onChanged:(val){ notifier.switchtheme();})
+                          //   );
+                          // }),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 30),
                             child: Container(
                               child: IconButton(
-                                  iconSize: 40.r,
-                                  color: white,
+                                  iconSize: 20,
+                                  // color: green,
                                   icon: Image.asset(
                                     "assets/icons/edit.png",
-                                    color: white,
-                                    height: 24.h,
+                                    color: green.withOpacity(0.1),
+                                    height: 20.h,
                                   ),
                                   onPressed: () {}),
                             ),
@@ -120,8 +139,8 @@ class _SettingspageState extends State<Settingspage> {
                         ],
                       ),
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.1.h,
-                        width: MediaQuery.of(context).size.width * 0.25.w,
+                        height: MediaQuery.of(context).size.height * 0.015.h,
+                        width: MediaQuery.of(context).size.width * 0.08.w,
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
@@ -131,42 +150,42 @@ class _SettingspageState extends State<Settingspage> {
                             color: white),
                       ),
                       SizedBox(
-                        height: height * 0.015.h,
+                        height: height * 0.002.h,
                       ),
                       Text(
                         _username,
                         style: GoogleFonts.mulish(
-                            fontSize: 15.sp,
+                            fontSize: 12.sp,
                             color: Colors.white,
                             fontWeight: FontWeight.w500),
                       ),
-                      SizedBox(
-                        height: height * 0.005.h,
-                      ),
+                      // SizedBox(
+                      //   height: height * 0.002.h,
+                      // ),
                       Text(
                         _mobilenumber,
                         style: GoogleFonts.mulish(
-                            fontSize: 15.sp,
+                            fontSize: 12.sp,
                             color: Colors.white,
                             fontWeight: FontWeight.w500),
                       ),
-                      SizedBox(
-                        height: height * 0.005.h,
-                      ),
+                      // SizedBox(
+                      //   height: height * 0.005.h,
+                      // ),
                       Text(
                         _email,
                         style: GoogleFonts.mulish(
-                            fontSize: 15.sp,
+                            fontSize: 12.sp,
                             color: Colors.white,
                             fontWeight: FontWeight.w500),
                       ),
-                      SizedBox(
-                        height: height * 0.005.h,
-                      ),
+                      // SizedBox(
+                      //   height: height * 0.005.h,
+                      // ),
                       Text(
                         _location,
                         style: GoogleFonts.mulish(
-                            fontSize: 15.sp,
+                            fontSize: 12.sp,
                             color: Colors.white,
                             fontWeight: FontWeight.w500),
                       ),
@@ -179,10 +198,10 @@ class _SettingspageState extends State<Settingspage> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.02.h,
-                            ),
+                            // SizedBox(
+                            //   height:
+                            //       MediaQuery.of(context).size.height * 0.02.h,
+                            // ),
                             ListTile(
                               leading: IconButton(
                                   onPressed: () {},
@@ -203,51 +222,74 @@ class _SettingspageState extends State<Settingspage> {
                                 color: divcolor,
                               ),
                             ),
-                            ListTile(
-                              leading: IconButton(
-                                  onPressed: () {},
-                                  icon: Image.asset(
-                                    "assets/icons/services.png",
-                                    color: white,
-                                    height: 20,
-                                  )),
-                              title: Text(translate.drawerkey3,
-                                  textScaleFactor: 1, style: dfont),
-                              onTap: () => Navigator.pushNamed(
-                                  context, otherserviceroute),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
-                              child: Divider(
-                                color: divcolor,
-                              ),
-                            ),
-                            ListTile(
-                              leading: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    CupertinoIcons.person_3_fill,
-                                    color: white,
-                                  )
-                                  // Image.asset(
-                                  //   "assets/icons/career.png",
-                                  //   color: iconcolor,
-                                  //   height: 20,
-                                  // )
-                                  ),
-                              title: Text(translate.navkey4,
-                                  textScaleFactor: 1, style: dfont),
-                              onTap: () =>
-                                  Navigator.pushNamed(context, nriroute),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
-                              child: Divider(
-                                color: divcolor,
-                              ),
-                            ),
+                            // ListTile(
+                            //   leading: IconButton(
+                            //       onPressed: () {},
+                            //       icon:Icon(CupertinoIcons.list_bullet,color: white,)),
+                            //   title: Text(translate.drawerkey3,
+                            //       textScaleFactor: 1, style: dfont),
+                            //   onTap: () => Navigator.pushNamed(
+                            //       context, otherserviceroute),
+                            // ),
+                            // Padding(
+                            //   padding:
+                            //       const EdgeInsets.symmetric(horizontal: 20),
+                            //   child: Divider(
+                            //     color: divcolor,
+                            //   ),
+                            // ),
+                            // // ListTile(
+                            // //   leading: IconButton(
+                            // //       onPressed: () {},
+                            // //       icon: Icon(
+                            // //         CupertinoIcons.person_3_fill,
+                            // //         color: white,
+                            // //       )
+                            // //       // Image.asset(
+                            // //       //   "assets/icons/career.png",
+                            // //       //   color: iconcolor,
+                            // //       //   height: 20,
+                            // //       // )
+                            // //       ),
+                            // //   title: Text(translate.navkey4,
+                            // //       textScaleFactor: 1, style: dfont),
+                            // //   onTap: () =>
+                            // //       Navigator.pushNamed(context, nriroute),
+                            // // ),
+                            // // Padding(
+                            // //   padding:
+                            // //       const EdgeInsets.symmetric(horizontal: 20),
+                            // //   child: Divider(
+                            // //     color: divcolor,
+                            // //   ),
+                            // // ),
+                            // ListTile(
+                            //   leading: IconButton(
+                            //       onPressed: () {},
+                            //       icon: Icon(
+                            //         CupertinoIcons.person_3_fill,
+                            //         color: white,
+                            //       )
+                            //       // Image.asset(
+                            //       //   "assets/icons/career.png",
+                            //       //   color: iconcolor,
+                            //       //   height: 20,
+                            //       // )
+                            //       ),
+                            //   title: Text(translate.navkey4,
+                            //       textScaleFactor: 1, style: dfont),
+                            //   onTap: () => Navigator.pushReplacement(
+                            //       context,
+                            //       MaterialPageRoute(
+                            //           builder: (context) => NRIsection())),
+                            // ),
+                            // Padding(
+                            //   padding:
+                            //       const EdgeInsets.symmetric(horizontal: 20),
+                            //   child: Divider(
+                            //     color: divcolor,
+                            //   ),
+                            // ),
                             ListTile(
                               leading: IconButton(
                                   onPressed: () {},
@@ -258,8 +300,10 @@ class _SettingspageState extends State<Settingspage> {
                                   )),
                               title: Text(translate.drawerkey7,
                                   textScaleFactor: 1, style: dfont),
-                              onTap: () =>
-                                  Navigator.pushNamed(context, careersroute),
+                              onTap: () => Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Careerspage())),
                             ),
                             Padding(
                               padding:
@@ -279,15 +323,16 @@ class _SettingspageState extends State<Settingspage> {
                               title: Text(translate.drawerkey4,
                                   textScaleFactor: 1, style: dfont),
                               onTap: () {
-                                showDialog(
+                                showCupertinoDialog(
                                     context: context,
                                     builder: (context) => AlertDialog(
+                                          backgroundColor: dialog,
                                           title: Text(
                                             translate.languagekey,
-                                            style: demofont,
+                                            style: dfont,
                                           ),
                                           actionsPadding: EdgeInsets.symmetric(
-                                              horizontal: 30.w),
+                                              horizontal: 2.w),
                                           actions: [
                                             TextButton(
                                                 onPressed: () {
@@ -298,7 +343,7 @@ class _SettingspageState extends State<Settingspage> {
                                                 },
                                                 child: Text(
                                                   translate.primarylanguage,
-                                                  style: demofont,
+                                                  style: dfont,
                                                 )),
                                             TextButton(
                                                 onPressed: () {
@@ -309,7 +354,7 @@ class _SettingspageState extends State<Settingspage> {
                                                 },
                                                 child: Text(
                                                   translate.language1,
-                                                  style: demofont,
+                                                  style: dfont,
                                                 ))
                                           ],
                                         ));
@@ -335,12 +380,12 @@ class _SettingspageState extends State<Settingspage> {
                               onTap: () =>
                                   Navigator.pushNamed(context, contactroute),
                             ),
-                            // Padding(
-                            //   padding: const EdgeInsets.symmetric(horizontal: 20),
-                            //   child: Divider(
-                            //     color: divcolor,
-                            //   ),
-                            // ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 20),
+                              child: Divider(
+                                color: divcolor,
+                              ),
+                            ),
                           ],
                         ),
                       ),

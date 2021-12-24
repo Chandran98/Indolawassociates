@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,7 +9,6 @@ import 'package:indolawassociates/Client/model/form_model.dart';
 import 'package:indolawassociates/UI/components/button.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:indolawassociates/UI/pages/otherservices/otherservicespage.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -62,8 +61,7 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
   }
 
   void onback() {
-    Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (context) => OtherServicesformre()));
+    Navigator.pushNamed(context, servicespage);
   }
 
   @override
@@ -95,40 +93,43 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                     children: <Widget>[
                       Container(
                         child: IconButton(
-                            iconSize: 40.r,
+                            iconSize: 40,
                             color: white,
                             icon: Image.asset(
                               "assets/icons/rback.png",
                               color: iconcolor,
-                              height: 40.h,
+                              height: 10.h,
                             ),
-                            onPressed: () =>Navigator.pushNamed(context,otherserviceroute)),
+                            onPressed: () => Navigator.pushNamed(
+                                context, servicespage)),
                       ),
-                      Expanded(
-                        child: Text(widget.servicetitle,
-                            style: GoogleFonts.poppins(
-                                fontSize: 20.5.sp,
-                                fontWeight: FontWeight.w500,
-                                color: black)),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Expanded(
+                          child: Text(widget.servicetitle,
+                              style: GoogleFonts.poppins(
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color: black)),
+                        ),
                       )
                     ],
                   ),
                   SizedBox(
-                    height: height * 0.03.h,
+                    height: height * 0.003.h,
                   ),
                   Card(
                     elevation: 4,
                     child: Container(
-                      height: MediaQuery.of(context).size.height * 0.2.h,
+                      height: MediaQuery.of(context).size.height * 0.03.h,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image:
-                                  AssetImage(widget.serviceimage),
+                              image: AssetImage(widget.serviceimage),
                               fit: BoxFit.cover)),
                     ),
                   ),
                   SizedBox(
-                    height: height * 0.05.h,
+                    height: height * 0.005.h,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -136,20 +137,20 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                       widget.servicecontent,
                       style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w400,
-                          fontSize: 13.sp,
+                          fontSize: 10.sp,
                           color: black),
                       textAlign: TextAlign.justify,
                     ),
                   ),
                   SizedBox(
-                    height: height * 0.01.h,
+                    height: height * 0.002.h,
                   ),
 
                   CustomButton(
                     style: GoogleFonts.poppins(
                         // fontWeight: FontWeight.bold,
                         color: black,
-                        fontSize: 15.sp),
+                        fontSize: 11.sp),
                     height: height * 0.06,
                     text: translate!.apply,
                     width: width * 0.4,
@@ -184,10 +185,10 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                     style: GoogleFonts.poppins(
                         // fontWeight: FontWeight.bold,
                         color: black,
-                        fontSize: 12.sp),
+                        fontSize: 10.sp),
                   ),
                   SizedBox(
-                    height: height * 0.01.h,
+                    height: height * 0.002.h,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -215,7 +216,7 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                                   Image.asset(
                                     "assets/icons/call.png",
                                     color: black,
-                                    height: 20.h,
+                                    height: 2.h,
                                   ),
                                   Text(
                                     translate.mobile,
@@ -285,9 +286,8 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
         ))));
   }
 
-  
   Widget buildformsheet() => SafeArea(
-    child: SingleChildScrollView(
+        child: SingleChildScrollView(
           //       child: Container(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -299,7 +299,7 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                   child: Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 18.0),
+                        padding: const EdgeInsets.only(top: 10.0),
                         child: Text(
                           "Fill The Form",
                           style: GoogleFonts.mulish(
@@ -309,7 +309,7 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                         ),
                       ),
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02.h),
+                          height: MediaQuery.of(context).size.height * 0.003.h),
                       TextFormField(
                           validator: MultiValidator([
                             RequiredValidator(errorText: usernamenull),
@@ -348,7 +348,7 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                               labelStyle: TextStyle(
                                   color: navy, fontWeight: FontWeight.bold))),
                       SizedBox(height: 20),
-  
+
                       //   TextFormField(
                       //     controller: _gendercontroller,
                       //     decoration: InputDecoration(
@@ -392,7 +392,7 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                         ),
                       ),
                       SizedBox(height: 20),
-  
+
                       TextFormField(
                           controller: _mobilecontroller,
                           keyboardType: TextInputType.numberWithOptions(),
@@ -426,7 +426,7 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                               labelStyle: TextStyle(
                                   color: navy, fontWeight: FontWeight.bold))),
                       SizedBox(height: 20),
-  
+
                       TextFormField(
                           controller: _servicecontroller,
                           decoration: InputDecoration(
@@ -440,7 +440,7 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                       // ignore: deprecated_member_use
                       // Container(color: gold,height: MediaQuery.of(context).size.height *0.05,width: MediaQuery.of(context).size.height *0.2,
                       //   child: InkWell(
-  
+
                       //     // onPressed: () async{if(_formkey.currentState!.validate()){
                       //     //   String name = _namecontroller.text;
                       //     //   String email = _emailcontroller.text;
@@ -448,37 +448,37 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                       //     //   String gender = _gendercontroller.text;
                       //     //   String mobile = _mobilecontroller.text;
                       //     //   String service = _servicecontroller.text;
-  
+
                       //       // FormModel? forms = await submitdata(
                       //       //     name, gender, email, address, mobile, service);
                       //       // setState(() {
                       //       //   _formModel = forms!;
                       //       // });
-  
+
                       //     // }},
-  
+
                       //     child: Text(
                       //       "Submit",
                       //       style: GoogleFonts.mulish(color: Colors.white),
                       //     ),
                       //      onTap: () {  },
                       //   ),
-  
+
                       // ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Container(
-                            height: MediaQuery.of(context).size.height * .05.h,
-                            width: MediaQuery.of(context).size.width * .3.w,
+                            height: MediaQuery.of(context).size.height * .008.h,
+                            width: MediaQuery.of(context).size.width * .08.w,
                             child: Material(
                               borderRadius: BorderRadius.circular(20.0),
                               color: Colors.green,
                               elevation: 7.0,
                               child: TextButton(
                                 onPressed: ()
-  //                               {
-  
+                                    //                               {
+
                                     async {
                                   if (_formkey.currentState!.validate()) {
                                     servicesform();
@@ -488,18 +488,17 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                                     // String gender = gendertry;
                                     // String mobile = _mobilecontroller.text;
                                     // String service = _servicecontroller.text;
-  
+
                                     // FormModel forms = await submitdata(name,
                                     //     gender, email, address, mobile, service);
                                     // setState(() {
                                     //   _formModel = forms;
-                                      Navigator.of(context).pop();
-  
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(SnackBar(
-                                        content: Text("Submitted"),
-                                          )
-                                    );
+                                    Navigator.of(context).pop();
+
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(
+                                      content: Text("Submitted"),
+                                    ));
                                   }
                                 },
                                 child: Center(
@@ -510,8 +509,8 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                             ),
                           ),
                           Container(
-                            height: MediaQuery.of(context).size.height * .05.h,
-                            width: MediaQuery.of(context).size.width * .3.w,
+                            height: MediaQuery.of(context).size.height * .008.h,
+                            width: MediaQuery.of(context).size.width * .08.w,
                             child: Material(
                               borderRadius: BorderRadius.circular(20.0),
                               color: Colors.red,
@@ -537,8 +536,8 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
             //   ),
           ),
         ),
-  );
-Future<void> servicesform() async {
+      );
+  Future<void> servicesform() async {
     // FirebaseAuth _auth = FirebaseAuth.instance;
 
     CollectionReference lawyerform =
@@ -552,6 +551,4 @@ Future<void> servicesform() async {
       "Gender": gendertry
     }).then((value) => SnackBar(content: Text("Updated")));
   }
-
-
 }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:indolawassociates/Client/Pages/Categories.dart/cate.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/Client/model/categories_data_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/widgets/categories/Category_info_page.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
 
@@ -17,11 +18,12 @@ class Cateslider extends StatefulWidget {
 class _CatesliderState extends State<Cateslider> {
   int currentpage = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    currentpage = 1;
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   currentpage = 1;
+  // }
+// bool? selectedindex =false;
 
   Widget _buildcateslide(BuildContext context, int index) {
     final translate = AppLocalizations.of(context);
@@ -149,41 +151,40 @@ class _CatesliderState extends State<Cateslider> {
                     )));
       },
       child: Container(
-        width: height * 0.135.h,
-        child: Center(
-          child: Container(
-            height: height * 0.18.h,
-            child: Column(
-              children: [
-                ClipOval(
-                  child: Container(padding: EdgeInsets.all(5),
-                    width: width * 0.192.w,
-                    height: height * 0.081.h,
-                    decoration: BoxDecoration(
-                        color: white,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(12),
-                          bottomLeft: Radius.circular(12),
+        width: 20.w, padding: EdgeInsets.symmetric(horizontal: 8),
+
+        // height: height * 0.18.h,
+        child: Column(
+          children: [
+            ClipOval(
+              child: Container(
+                // padding: EdgeInsets.all(20),
+                width: width * 0.192.w,
+                height: height * 0.015.h,
+                decoration: BoxDecoration(
+                    // color:selectedindex==true?  white:green.withOpacity(.01),
+                    shape: BoxShape.circle,
+                    color: white,
+                    // borderRadius: BorderRadius.only(
+                    //   topLeft: Radius.circular(12),
+                    //   bottomLeft: Radius.circular(12),
+                    // ),
+                    image: DecorationImage(
+                        image: AssetImage(
+                          categorylist[index].categorypic,
                         ),
-                        image: DecorationImage(
-                            image: AssetImage(
-                              categorylist[index].categorypic,
-                            ),
-                            fit: BoxFit.contain)),
-                  ),
-                ),
-                Container(
-                    margin: EdgeInsets.all(5),
-                    child: FittedBox(
-                      child: Text(categorylist[index].categorytitle,
-                          style: TextStyle(
-                              fontSize: 13.sp,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white)),
-                    ))
-              ],
+                        fit: BoxFit.contain)),
+              ),
             ),
-          ),
+            Container(
+                child: FittedBox(
+              child: Text(categorylist[index].categorytitle,
+                  style: TextStyle(
+                      fontSize: 13.sp,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white)),
+            ))
+          ],
         ),
       ),
     );
@@ -197,13 +198,14 @@ class _CatesliderState extends State<Cateslider> {
             itemBuilder: _buildcateslide,
             itemCount: 9,
             shrinkWrap: true,
-            itemSize: 120,
+            itemSize: 78,
             allowAnotherDirection: true,
             initialIndex: 4,
             dynamicItemSize: true,
             onItemFocus: (select) {
               setState(() {
                 currentpage = select;
+                // selectedindex=true;
               });
             }));
   }

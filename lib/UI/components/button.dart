@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
@@ -32,10 +32,12 @@ class CustomButton extends StatelessWidget {
           //   horizontal: 15.0,
           // ),
           child: Center(
-            child: Text(
-              text,
-              style:style,
-              textAlign: TextAlign.center,
+            child: Flexible(
+              child: Text(
+                text,
+                style:style,
+                textAlign: TextAlign.center,
+              ),
             ),
           )),
     );

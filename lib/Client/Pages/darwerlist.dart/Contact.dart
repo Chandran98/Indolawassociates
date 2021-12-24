@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/Pages/Homepage/drawer.dart';
@@ -47,7 +47,7 @@ class _ContactState extends State<Contact> {
                     children: <Widget>[
                       Container(
                         child: IconButton(
-                            iconSize: 40.r,
+                            iconSize: 40,
                             color: white,
                             icon: SvgPicture.asset(
                               "assets/icons/back.svg",

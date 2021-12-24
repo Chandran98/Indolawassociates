@@ -2,7 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:indolawassociates/Client/constants/constant.dart';
+import 'package:indolawassociates/UI/constant/constant.dart';
+import 'package:sizer/sizer.dart';
 
 class Slisder extends StatefulWidget {
   Slisder({Key? key}) : super(key: key);
@@ -32,7 +34,10 @@ class _SlisderState extends State<Slisder> {
             AsyncSnapshot<List<QueryDocumentSnapshot<Map<String, dynamic>>>>
                 snapshot) {
           if (!snapshot.hasData) {
-            return Center(child: CircularProgressIndicator());
+            return Center(
+                child: CircularProgressIndicator(
+              color: green,
+            ));
           } else {
             return CarouselSlider.builder(
               itemCount: snapshot.data!.length,

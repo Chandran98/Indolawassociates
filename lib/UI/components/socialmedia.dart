@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -20,7 +20,7 @@ class Socialmedia extends StatelessWidget {
                     fontWeight: FontWeight.w400),
               ),
               SizedBox(
-                height: height * 0.005.h,
+                height: height * 0.001.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -33,7 +33,7 @@ class Socialmedia extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: width * 0.02.w,
+                    width: width * 0.002.w,
                   ),
                   InkWell(
                     onTap: () {launch("https://www.facebook.com/Indo-Law-Associates-112576861204879/?ref=pages_you_manage");},
@@ -43,7 +43,7 @@ class Socialmedia extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: width * 0.03.w,
+                    width: width * 0.005.w,
                   ),
                   InkWell(
                     onTap: () {launch("https://www.instagram.com/indolaw_associates/");},
