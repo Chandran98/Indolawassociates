@@ -106,9 +106,10 @@ class _CareerspageState extends State<Careerspage> {
                               onPressed: () =>
                                   Navigator.pushNamed(context, settingsroute)),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 80.0),
+                      ),  SizedBox(
+                    width: width * 0.03.w,
+                  ),
+                      Expanded(
                         child: Text(
                           translate!.drawerkey7,
                           style: GoogleFonts.poppins(
@@ -179,8 +180,8 @@ class _CareerspageState extends State<Careerspage> {
                             borderRadius: BorderRadius.circular(20),
                             color: white,
                             border: Border.all(color: navy)),
-                        height: MediaQuery.of(context).size.height * 0.01.h,
-                        width: MediaQuery.of(context).size.width * 0.15.w,
+                        height: MediaQuery.of(context).size.height * 0.008.h,
+                        width: MediaQuery.of(context).size.width * 0.13.w,
                         // padding: const EdgeInsets.symmetric(
                         //   vertical: 15.0,
                         //   horizontal: 15.0,

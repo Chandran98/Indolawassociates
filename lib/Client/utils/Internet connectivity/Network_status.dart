@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:sizer/sizer.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/Client/utils/Internet%20connectivity/connectivity.dart';
@@ -20,17 +21,20 @@ class NetworkSensitive extends StatelessWidget {
     if (connectionstatus == ConnectivityStatus.Mobile) {
       return child;
     }
+    
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child:Container(color: white,width: double.infinity,
           child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 130),
+                      padding: const EdgeInsets.symmetric(vertical: 100),
                       child: Expanded(
                         child: Container(
-                            color: Colors.white,
-                            height: 100.h,
-                            width: 100.h,
+                            // color: Colors.green,
+                            height: height*0.021.h,
+                            width: width*0.051.w,
                             child: Image.asset("assets/images/wifioff.jpg")),
                       ),
                     ),
@@ -41,7 +45,7 @@ class NetworkSensitive extends StatelessWidget {
                       child: Text(
                         "No internet Connection \n  Check your internet connection and try again",
                         textAlign: TextAlign.center,
-                        style: hStyle,
+                        style: demofont,
                       ),
                     ),
                   ],

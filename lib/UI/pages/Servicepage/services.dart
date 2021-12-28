@@ -46,7 +46,7 @@ class _ServiceallsState extends State<Servicesall>
           child: DefaultTabController(
             length: 3,
             child: SafeArea(
-              child: Scaffold(
+              child: Scaffold(backgroundColor: white,
                 appBar: AppBar(
                   elevation: 3,
                   toolbarHeight: 6.h,

@@ -198,7 +198,7 @@ class _CatesliderState extends State<Cateslider> {
             itemBuilder: _buildcateslide,
             itemCount: 9,
             shrinkWrap: true,
-            itemSize: 78,
+            itemSize: 20.w,
             allowAnotherDirection: true,
             initialIndex: 4,
             dynamicItemSize: true,

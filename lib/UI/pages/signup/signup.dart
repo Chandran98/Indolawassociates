@@ -487,8 +487,9 @@ class _DemosignupState extends State<Demosignup> {
                         ),
                         Text(
                           isLoading
-                              ? "Verifying your OTP"
+                              ? "Verify your OTP"
                               : "The code has been sent to\n your mobile via SMS",
+
                           style: GoogleFonts.poppins(
                               fontSize: 14.sp,
                               color: Colors.black,

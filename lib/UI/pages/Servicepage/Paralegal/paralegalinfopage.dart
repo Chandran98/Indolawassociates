@@ -164,15 +164,15 @@ class _ParalegalPageState extends State<ParalegalPage> {
                             onPressed: () =>
                                 Navigator.pushNamed(context, servicespage)),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5),
-                        child: Expanded(
-                          child: Text(widget.Paralegaltitle,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 13.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: black)),
-                        ),
+                      SizedBox(
+                        width: width * 0.02.w,
+                      ),
+                      Expanded(
+                        child: Text(widget.Paralegaltitle,
+                            style: GoogleFonts.poppins(
+                                fontSize: 13.sp,
+                                fontWeight: FontWeight.w500,
+                                color: black)),
                       )
                     ],
                   ),
@@ -208,15 +208,8 @@ class _ParalegalPageState extends State<ParalegalPage> {
                     height: height * 0.002.h,
                   ),
 
-                  CustomButton(
-                    style: GoogleFonts.poppins(
-                        // fontWeight: FontWeight.bold,
-                        color: black,
-                        fontSize: 11.sp),
-                    height: height * 0.06,
-                    text: translate!.apply,
-                    width: width * 0.4,
-                    onpressed: () => showModalBottomSheet(
+                  TextButton(
+                    onPressed: () => showModalBottomSheet(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.vertical(
                                 top: Radius.circular(25))),
@@ -232,7 +225,54 @@ class _ParalegalPageState extends State<ParalegalPage> {
                                 child: buildformsheet(),
                               ),
                             )),
+                    child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(35),
+                            color: white,
+                            border: Border.all(color: navy)),
+                        height: height * 0.06,
+                        width: width * 0.4,
+                        // padding: const EdgeInsets.symmetric(
+                        //   vertical: 15.0,
+                        //   horizontal: 15.0,
+                        // ),
+                        child: Center(
+                          child: Text(
+                            translate!.apply,
+                            style: GoogleFonts.poppins(
+                                // fontWeight: FontWeight.bold,
+                                color: black,
+                                fontSize: 11.sp),
+                            textAlign: TextAlign.center,
+                          ),
+                        )),
                   ),
+
+                  // CustomButton(
+                  //   style: GoogleFonts.poppins(
+                  //       // fontWeight: FontWeight.bold,
+                  //       color: black,
+                  //       fontSize: 11.sp),
+                  //   height: height * 0.06,
+                  //   text: translate!.apply,
+                  //   width: width * 0.4,
+                  //   onpressed: () => showModalBottomSheet(
+                  //       shape: RoundedRectangleBorder(
+                  //           borderRadius: BorderRadius.vertical(
+                  //               top: Radius.circular(25))),
+                  //       enableDrag: false,
+                  //       isScrollControlled: true,
+                  //       context: context,
+                  //       builder: (context) => SingleChildScrollView(
+                  //             child: Container(
+                  //               padding: EdgeInsets.only(
+                  //                   bottom: MediaQuery.of(context)
+                  //                       .viewInsets
+                  //                       .bottom),
+                  //               child: buildformsheet(),
+                  //             ),
+                  //           )),
+                  // ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Divider(
@@ -243,7 +283,8 @@ class _ParalegalPageState extends State<ParalegalPage> {
                     height: height * 0.003.h,
                   ),
                   Text(
-                    translate.drawerkey5,textAlign: TextAlign.center,
+                    translate.drawerkey5,
+                    textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                         // fontWeight: FontWeight.bold,
                         color: black,
@@ -278,7 +319,7 @@ class _ParalegalPageState extends State<ParalegalPage> {
                                   Image.asset(
                                     "assets/icons/call.png",
                                     color: black,
-                                    height:3.5.h,
+                                    height: 3.5.h,
                                   ),
                                   Text(
                                     translate.mobile,
@@ -341,8 +382,6 @@ class _ParalegalPageState extends State<ParalegalPage> {
                       //   fontSize: 12.sp),)
                     ],
                   )
-               
-               
                 ],
               ),
             ),
@@ -710,8 +749,8 @@ class _ParalegalPageState extends State<ParalegalPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
-                            height: MediaQuery.of(context).size.height * .008.h,
-                            width: MediaQuery.of(context).size.width * .08.w,
+                          height: MediaQuery.of(context).size.height * .008.h,
+                          width: MediaQuery.of(context).size.width * .08.w,
                           child: Material(
                             borderRadius: BorderRadius.circular(20.0),
                             color: Colors.green,
@@ -760,8 +799,8 @@ class _ParalegalPageState extends State<ParalegalPage> {
                           ),
                         ),
                         Container(
-                            height: MediaQuery.of(context).size.height * .008.h,
-                            width: MediaQuery.of(context).size.width * .08.w,
+                          height: MediaQuery.of(context).size.height * .008.h,
+                          width: MediaQuery.of(context).size.width * .08.w,
                           child: Material(
                             borderRadius: BorderRadius.circular(20.0),
                             color: Colors.red,

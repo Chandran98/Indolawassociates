@@ -69,8 +69,8 @@ class _RelawyerlistState extends State<Relawyerlist> {
                                 ]),
                             borderRadius: BorderRadius.all(Radius.circular(20)),
                           ),
-                          height: height * 0.035.h,
-                          width: width * 0.12.w,
+                          height: height * 0.03.h,
+                          width: width * 0.1.w,
                           child: Column(
                             children: [
                               Padding(
@@ -79,9 +79,9 @@ class _RelawyerlistState extends State<Relawyerlist> {
                                 child: Container(
                                   // margin: EdgeInsets.all(2),
                                   width:
-                                      MediaQuery.of(context).size.width * 0.06.w,
+                                      MediaQuery.of(context).size.width * 0.05.w,
                                   height: MediaQuery.of(context).size.height *
-                                      0.021.h,
+                                      0.017.h,
                                   decoration: BoxDecoration(
                                     // border: Border.all(color: Colors.white, width: 5),
 

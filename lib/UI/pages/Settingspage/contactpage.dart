@@ -143,7 +143,7 @@ class _ContactpageState extends State<Contactpage> {
                                 color: Colors.green,
                               ),
                               SizedBox(
-                                width: 10.w,
+                                width: 7.w,
                               ),
                               Text(
                                 translate.whatsapp,
@@ -178,7 +178,10 @@ class _ContactpageState extends State<Contactpage> {
                         child: Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+                            children: [ Icon(Icons.phone,size: 09.w,),
+                              SizedBox(
+                                width: 8.w,
+                              ),
                               Text(
                                 translate.mobile,
                                 style: GoogleFonts.poppins(
@@ -210,13 +213,24 @@ class _ContactpageState extends State<Contactpage> {
                         //   horizontal: 15.0,
                         // ),
                         child: Center(
-                          child: Text(
-                            translate.mail,
-                            style: GoogleFonts.poppins(
-                                // fontWeight: FontWeight.bold,
-                                color: black,
-                                fontSize: 15.sp),
-                            textAlign: TextAlign.center,
+                          child: Row(                            mainAxisAlignment: MainAxisAlignment.center,
+
+                            children: [FaIcon(
+                                FontAwesomeIcons.mailBulk,
+                                color: Color.fromARGB(255, 175, 116, 76),
+                              ),
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              Text(
+                                translate.mail,
+                                style: GoogleFonts.poppins(
+                                    // fontWeight: FontWeight.bold,
+                                    color: black,
+                                    fontSize: 15.sp),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
                           ),
                         )),
                   ),

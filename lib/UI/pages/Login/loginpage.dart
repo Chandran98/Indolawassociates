@@ -335,8 +335,9 @@ class _DemoLoginState extends State<DemoLogin> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "The code has been sent to\n your mobile via SMS",
-                            style: GoogleFonts.poppins(
+                            isLoading
+                              ? "Verifying your OTP"
+                              : "The code has been sent to\n your mobile via SMS",  style: GoogleFonts.poppins(
                                 fontSize: 13.sp,
                                 color: Colors.black,
                                 fontWeight: FontWeight.w400),

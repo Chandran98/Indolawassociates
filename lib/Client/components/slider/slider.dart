@@ -2,8 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
+import 'package:indolawassociates/Client/components/slider/sliderzoom.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
+import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:sizer/sizer.dart';
 
 class Slisder extends StatefulWidget {
@@ -21,54 +22,66 @@ class _SlisderState extends State<Slisder> {
   }
 
   int index = 0;
+  var image;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // color: Color(0xffF5F5F5),
-      // color: white,
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, offerroute);
+      },
+      child: Container(
+        // color: Color(0xffF5F5F5),
+        // color: white,
 
-      child: FutureBuilder(
-        future: getslider(),
-        // initialData: InitialData,
-        builder: (BuildContext context,
-            AsyncSnapshot<List<QueryDocumentSnapshot<Map<String, dynamic>>>>
-                snapshot) {
-          if (!snapshot.hasData) {
-            return Center(
-                child: CircularProgressIndicator(
-              color: green,
-            ));
-          } else {
-            return CarouselSlider.builder(
-              itemCount: snapshot.data!.length,
-              itemBuilder: (_, index, int) {
-                DocumentSnapshot<Map<String, dynamic>> slider =
-                    snapshot.data![index];
-                Map<String, dynamic>? fetchimage = slider.data();
-                return Card(
+        child: FutureBuilder(
+          future: getslider(),
+          // initialData: InitialData,
+          builder: (BuildContext context,
+              AsyncSnapshot<List<QueryDocumentSnapshot<Map<String, dynamic>>>>
+                  snapshot) {
+            if (!snapshot.hasData) {
+              return Center(
+                  child: CircularProgressIndicator(
+                color: green,
+              ));
+            } else {
+              return CarouselSlider.builder(
+                itemCount: snapshot.data!.length,
+                itemBuilder: (_, index, int) {
+                  DocumentSnapshot<Map<String, dynamic>> slider =
+                      snapshot.data![index];
+                  Map<String, dynamic>? fetchimage = slider.data();
+                  image = fetchimage!["images"];
+                  return Card(
                     // color: Color(0xffF5F5F5),
                     elevation: 4,
+                    // child: Hero(
+                    //   tag: "slider$image",
+                    // child: Image.network(image),
                     child: CachedNetworkImage(
                       fit: BoxFit.cover,
-                      imageUrl: fetchimage!["images"],
-                    ));
-              },
-              options: CarouselOptions(
-                  initialPage: 0,
-                  autoPlay: true,
-                  autoPlayAnimationDuration: Duration(seconds: 1),
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  height: MediaQuery.of(context).size.height * 0.2.h,
-                  enlargeCenterPage: true,
-                  viewportFraction: 0.8,
-                  onPageChanged: (i, carouselPageChangedReason) {
-                    setState(() {
-                      index = i;
-                    });
-                  }),
-            );
-          }
-        },
+                      imageUrl: image,
+                      // ),
+                    ),
+                  );
+                },
+                options: CarouselOptions(
+                    initialPage: 0,
+                    autoPlay: true,
+                    autoPlayAnimationDuration: Duration(seconds: 1),
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    height: MediaQuery.of(context).size.height * 0.2.h,
+                    enlargeCenterPage: true,
+                    viewportFraction: 0.8,
+                    onPageChanged: (i, carouselPageChangedReason) {
+                      setState(() {
+                        index = i;
+                      });
+                    }),
+              );
+            }
+          },
+        ),
       ),
     );
   }

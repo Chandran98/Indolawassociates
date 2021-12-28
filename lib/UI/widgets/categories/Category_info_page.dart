@@ -117,14 +117,46 @@ class _CatesiderState extends State<Catesider> {
                   // SizedBox(
                   //   height: height * 0.02,
                   // ),
-                  CustomAppbar(
-                    title: widget.categorytitle,
-                    navipage: MainHomepage(),
-                    style: GoogleFonts.poppins(
-                        fontSize: 15.sp,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500),
+                  // CustomAppbar(
+                  //   title: widget.categorytitle,
+                  //   navipage: MainHomepage(),
+                  //   style: GoogleFonts.poppins(
+                  //       fontSize: 15.sp,
+                  //       color: Colors.black,
+                  //       fontWeight: FontWeight.w500),
+                  // ),
+                  Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Container(
+                          child: IconButton(
+                              iconSize: 40,
+                              color: white,
+                              icon: Image.asset(
+                                "assets/icons/rback.png",
+                                color: iconcolor,
+                                height: 40.h,
+                              ),
+                              onPressed: () => Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MainHomepage()))),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 70.0),
+                        child: Text(
+                          widget.categorytitle,
+                          style: GoogleFonts.poppins(
+                              fontSize: 15.sp,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      )
+                    ],
                   ),
+
                   Card(
                     elevation: 4,
                     child: Container(
@@ -152,164 +184,155 @@ class _CatesiderState extends State<Catesider> {
                   SizedBox(
                     height: height * 0.005,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: .0),
-                    child: Container(
-                      color: white,
-                      height: MediaQuery.of(context).size.height * 0.015.h,
-                      width: width * 1.w,
-                      child: Row(
-                        children: [
-                          Container(
-                            // color: navy,
-                            height: MediaQuery.of(context).size.height * 0.2.h,
-                            width: MediaQuery.of(context).size.width * 0.11.w,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Row(
-                                  children: [
-                                    Icon(Icons.check, color: gold),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.003.w,
+                  Container(
+                    // color: navy,
+                    height: MediaQuery.of(context).size.height * 0.015.h,
+                    width: width * 1.w,
+                    child: Row(
+                      children: [
+                        Container(
+                          // color: white,
+                          height: MediaQuery.of(context).size.height * 0.2.h,
+                          width: MediaQuery.of(context).size.width * 0.11.w,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.check, color: gold),
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.003.w,
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      widget.r1,
+                                      style: GoogleFonts.mulish(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 10.sp,
+                                          color: black),
                                     ),
-                                    Expanded(
-                                      child: Text(
-                                        widget.r1,
-                                        style: GoogleFonts.mulish(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 10.sp,
-                                            color: black),
-                                      ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.check, color: gold),
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.003.w,
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      widget.r3,
+                                      style: GoogleFonts.mulish(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 10.sp,
+                                          color: black),
                                     ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Icon(Icons.check, color: gold),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.003.w,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.check, color: gold),
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.003.w,
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      widget.r5,
+                                      style: GoogleFonts.mulish(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 10.sp,
+                                          color: black),
                                     ),
-                                    Expanded(
-                                      child: Text(
-                                        widget.r3,
-                                        style: GoogleFonts.mulish(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 10.sp,
-                                            color: black),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Icon(Icons.check, color: gold),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.003.w,
-                                    ),
-                                    Expanded(
-                                      child: Text(
-                                        widget.r5,
-                                        style: GoogleFonts.mulish(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 10.sp,
-                                            color: black),
-                                      ),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
+                                  ),
+                                ],
+                              )
+                            ],
                           ),
-                          //  SizedBox(
-                          //             width: MediaQuery.of(context).size.width *
-                          //                 0.005.w,
-                          //           ),
-                          Container(
-                            // color: green,
-                            height: MediaQuery.of(context).size.height * 0.2.h,
-                            width: MediaQuery.of(context).size.width * 0.11.w,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Row(
-                                  children: [
-                                    Icon(Icons.check, color: gold),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.003.w,
+                        ),
+                        //  SizedBox(
+                        //             width: MediaQuery.of(context).size.width *
+                        //                 0.005.w,
+                        //           ),
+                        Container(
+                          // color: green,
+                          height: MediaQuery.of(context).size.height * 0.2.h,
+                          width: MediaQuery.of(context).size.width * 0.11.w,
+                          child: Column(
+                            // crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.check, color: gold),
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.003.w,
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      widget.r2,
+                                      style: GoogleFonts.mulish(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 10.sp,
+                                          color: black),
                                     ),
-                                    Expanded(
-                                      child: Text(
-                                        widget.r2,
-                                        style: GoogleFonts.mulish(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 10.sp,
-                                            color: black),
-                                      ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.check, color: gold),
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.003.w,
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      widget.r4,
+                                      style: GoogleFonts.mulish(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 10.sp,
+                                          color: black),
                                     ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Icon(Icons.check, color: gold),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.003.w,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.check,
+                                    color: gold,
+                                  ),
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.003.w,
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      widget.r6,
+                                      style: GoogleFonts.mulish(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 10.sp,
+                                          color: black),
                                     ),
-                                    Expanded(
-                                      child: Text(
-                                        widget.r4,
-                                        style: GoogleFonts.mulish(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 10.sp,
-                                            color: black),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.check,
-                                      color: gold,
-                                    ),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.003.w,
-                                    ),
-                                    Expanded(
-                                      child: Text(
-                                        widget.r6,
-                                        style: GoogleFonts.mulish(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 10.sp,
-                                            color: black),
-                                      ),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        )
+                      ],
                     ),
                   ),
-                  CustomButton(
-                    style: GoogleFonts.poppins(
-                        // fontWeight: FontWeight.bold,
-                        color: black,
-                        fontSize: 10.sp),
-                    height: height * 0.06,
-                    text: translate!.apply,
-                    width: width * 0.4,
-                    onpressed: () => showModalBottomSheet(
+
+                  TextButton(
+                    onPressed: () => showModalBottomSheet(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.vertical(
                                 top: Radius.circular(25))),
@@ -325,7 +348,54 @@ class _CatesiderState extends State<Catesider> {
                                 child: buildformsheet(),
                               ),
                             )),
+                    child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(35),
+                            color: white,
+                            border: Border.all(color: navy)),
+                        height: height * 0.06,
+                        width: width * 0.4,
+                        // padding: const EdgeInsets.symmetric(
+                        //   vertical: 15.0,
+                        //   horizontal: 15.0,
+                        // ),
+                        child: Center(
+                          child: Text(
+                            translate!.apply,
+                            style: GoogleFonts.poppins(
+                                // fontWeight: FontWeight.bold,
+                                color: black,
+                                fontSize: 10.sp),
+                            textAlign: TextAlign.center,
+                          ),
+                        )),
                   ),
+
+                  // CustomButton(
+                  //   style: GoogleFonts.poppins(
+                  //       // fontWeight: FontWeight.bold,
+                  //       color: black,
+                  //       fontSize: 10.sp),
+                  //   height: height * 0.06,
+                  //   text: translate!.apply,
+                  //   width: width * 0.4,
+                  //   onpressed: () => showModalBottomSheet(
+                  //       shape: RoundedRectangleBorder(
+                  //           borderRadius: BorderRadius.vertical(
+                  //               top: Radius.circular(25))),
+                  //       enableDrag: false,
+                  //       isScrollControlled: true,
+                  //       context: context,
+                  //       builder: (context) => SingleChildScrollView(
+                  //             child: Container(
+                  //               padding: EdgeInsets.only(
+                  //                   bottom: MediaQuery.of(context)
+                  //                       .viewInsets
+                  //                       .bottom),
+                  //               child: buildformsheet(),
+                  //             ),
+                  //           )),
+                  // ),
                   SizedBox(
                     height: height * 0.001.h,
                   ),
@@ -447,7 +517,7 @@ class _CatesiderState extends State<Catesider> {
     );
   }
 
-  Widget buildformsheet() => SingleChildScrollView(
+  buildformsheet() => SingleChildScrollView(
         //       child: Container(
         child: Column(
           // mainAxisSize: MainAxisSize.min,

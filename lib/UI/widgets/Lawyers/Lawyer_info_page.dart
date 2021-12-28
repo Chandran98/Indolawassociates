@@ -130,7 +130,7 @@ class _LawyerinfocardState extends State<Lawyerinfocard> {
                     widget.description,
                     style: GoogleFonts.poppins(
                       // fontWeight: FontWeight.w600,
-                      fontSize: 11.sp,
+                      fontSize: 10.sp,
                     ),
                     textAlign: TextAlign.justify,
                     textScaleFactor: 1,

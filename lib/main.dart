@@ -10,10 +10,7 @@ import 'package:indolawassociates/Client/l10n/l10n.dart';
 import 'package:indolawassociates/Client/provider/languageprovider.dart';
 import 'package:indolawassociates/Client/utils/Internet%20connectivity/connectivity.dart';
 import 'package:indolawassociates/UI/pages/Login/loginpage.dart';
-import 'package:indolawassociates/UI/provider/theme.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
-import 'package:indolawassociates/UI/pages/MainHomePage.dart';
-import 'package:indolawassociates/UI/themes/themes.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'Client/Pages/Homepage/drawer.dart';
@@ -23,7 +20,6 @@ import 'Client/Pages/bottomnavybar/NRI.dart';
 import 'Client/Pages/bottomnavybar/Para_legal_services/para_legal_services.dart';
 import 'Client/constants/constant.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:sizer/sizer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,35 +52,35 @@ class MyApp extends StatelessWidget {
           // ScreenUtilInit(
           //     designSize: Size(360, 710),
           //     builder: () {
-     return       Sizer(
-      builder: (context, orientation, deviceType)=>
-           MaterialApp(
-            locale: Provider.of<Languagenotifier>(context, listen: true)
-                .currentlocale,
-            localizationsDelegates: const [
-              GlobalCupertinoLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              AppLocalizations.delegate,
-            ],
-            supportedLocales: L10n.all,
-            debugShowCheckedModeBanner: false,
-            home: SplashScreen(),
-            routes: routes,
-            // theme: notifier.darktheme ? dip :lite,
+          return Sizer(
+              builder: (context, orientation, deviceType) => MaterialApp(
+                    locale: Provider.of<Languagenotifier>(context, listen: true)
+                        .currentlocale,
+                    localizationsDelegates: const [
+                      GlobalCupertinoLocalizations.delegate,
+                      GlobalMaterialLocalizations.delegate,
+                      GlobalWidgetsLocalizations.delegate,
+                      AppLocalizations.delegate,
+                    ],
+                    supportedLocales: L10n.all,
+                    debugShowCheckedModeBanner: false,
+                    home: SplashScreen(),
+                    routes: routes,
+                    // theme: notifier.darktheme ? dip :lite,
 
-            // routes: {
-            //   Settingspage.id: (context) => Settingspage(),
-            //   Testingpage.id: (context) => Testingpage()
-            // },
-          )
-          //  Consumer<Themenotifier>(
-          //     builder: (_, Themenotifier notifier, child) {
-          //   return
-          // }
-          // );
-          // });
-        );});
+                    // routes: {
+                    //   Settingspage.id: (context) => Settingspage(),
+                    //   Testingpage.id: (context) => Testingpage()
+                    // },
+                  )
+              //  Consumer<Themenotifier>(
+              //     builder: (_, Themenotifier notifier, child) {
+              //   return
+              // }
+              // );
+              // });
+              );
+        });
       }),
     );
   }

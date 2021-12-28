@@ -100,18 +100,16 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                               color: iconcolor,
                               height: 10.h,
                             ),
-                            onPressed: () => Navigator.pushNamed(
-                                context, servicespage)),
+                            onPressed: () =>
+                                Navigator.pushNamed(context, servicespage)),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Expanded(
-                          child: Text(widget.servicetitle,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 15.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: black)),
-                        ),
+                      Expanded(
+                        child: Text(widget.servicetitle,
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.poppins(
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.w500,
+                                color: black)),
                       )
                     ],
                   ),
@@ -145,16 +143,8 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                   SizedBox(
                     height: height * 0.002.h,
                   ),
-
-                  CustomButton(
-                    style: GoogleFonts.poppins(
-                        // fontWeight: FontWeight.bold,
-                        color: black,
-                        fontSize: 11.sp),
-                    height: height * 0.06,
-                    text: translate!.apply,
-                    width: width * 0.4,
-                    onpressed: () => showModalBottomSheet(
+                  TextButton(
+                    onPressed: () => showModalBottomSheet(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.vertical(
                                 top: Radius.circular(25))),
@@ -170,7 +160,53 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                                 child: buildformsheet(),
                               ),
                             )),
+                    child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(35),
+                            color: white,
+                            border: Border.all(color: navy)),
+                        height: height * 0.06,
+                        width: width * 0.4,
+                        // padding: const EdgeInsets.symmetric(
+                        //   vertical: 15.0,
+                        //   horizontal: 15.0,
+                        // ),
+                        child: Center(
+                          child: Text(
+                            translate!.apply,
+                            style: GoogleFonts.poppins(
+                                // fontWeight: FontWeight.bold,
+                                color: black,
+                                fontSize: 11.sp),
+                            textAlign: TextAlign.center,
+                          ),
+                        )),
                   ),
+                  // CustomButton(
+                  //   style: GoogleFonts.poppins(
+                  //       // fontWeight: FontWeight.bold,
+                  //       color: black,
+                  //       fontSize: 11.sp),
+                  //   height: height * 0.06,
+                  //   text: translate!.apply,
+                  //   width: width * 0.4,
+                  //   onpressed: () => showModalBottomSheet(
+                  //       shape: RoundedRectangleBorder(
+                  //           borderRadius: BorderRadius.vertical(
+                  //               top: Radius.circular(25))),
+                  //       enableDrag: false,
+                  //       isScrollControlled: true,
+                  //       context: context,
+                  //       builder: (context) => SingleChildScrollView(
+                  //             child: Container(
+                  //               padding: EdgeInsets.only(
+                  //                   bottom: MediaQuery.of(context)
+                  //                       .viewInsets
+                  //                       .bottom),
+                  //               child: buildformsheet(),
+                  //             ),
+                  //           )),
+                  // ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Divider(

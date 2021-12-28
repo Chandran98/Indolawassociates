@@ -89,8 +89,9 @@ class _CloneHOME extends State<CloneHOME> {
                   ClipPath(
                     //   // clipBehavior: Clip.antiAliasWithSaveLayer,
                     clipper: CustomdClipper(),
-                    child: Container(
-                      height: height * 0.048.h,
+                    child:
+                     Container(
+                      height: height * 0.05.h,
                       width: width * 1.w,
                       decoration: new BoxDecoration(
                         // boxShadow: [
@@ -137,7 +138,7 @@ class _CloneHOME extends State<CloneHOME> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  FittedBox(
+                                  Expanded(
                                     child: Text(
                                       "Hi $_username",
                                       style: GoogleFonts.poppins(
@@ -167,6 +168,7 @@ class _CloneHOME extends State<CloneHOME> {
                                           onPressed: () {
                                             Navigator.pushNamed(
                                                 context, notificationroute);
+                                            // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Testing()));
                                           },
 
                                           // => Navigator.pushNamed(
