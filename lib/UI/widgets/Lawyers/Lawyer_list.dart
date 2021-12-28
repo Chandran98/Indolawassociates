@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -26,12 +27,15 @@ class _RelawyerlistState extends State<Relawyerlist> {
       stream: lawyerDB.getlawyerdb(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return Center(child: CircularProgressIndicator(color: green,));
+          return Center(
+              child: CircularProgressIndicator(
+            color: green,
+          ));
         } else {
           return SingleChildScrollView(
             physics: BouncingScrollPhysics(),
-            scrollDirection: Axis.horizontal,
-            child: Row(
+            scrollDirection: Axis.vertical,
+            child: Column(
               children: [
                 ...snapshot.data!.docs
                     .map((QueryDocumentSnapshot<Object?> doc) {
@@ -39,12 +43,24 @@ class _RelawyerlistState extends State<Relawyerlist> {
                   final String specialized = doc.get("specialized");
                   final String description = doc.get("description");
                   final String images = doc.get("images");
+                  final String area1 = doc.get("area1");
+                  final String area2 = doc.get("area2");
+                  final String area3 = doc.get("area3");
+                  final String area4 = doc.get("area4");
+                  final String area5 = doc.get("area5");
+                  final String area6 = doc.get("area6");
 
                   return InkWell(
                     onTap: () => Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => Lawyerinfocard(
+                                  area1: area1,
+                                  area2: area2,
+                                  area3: area3,
+                                  area4: area4,
+                                  area5: area5,
+                                  area6: area6,
                                   name: name,
                                   specialized: specialized,
                                   description: description,
@@ -56,61 +72,76 @@ class _RelawyerlistState extends State<Relawyerlist> {
                             borderRadius: BorderRadius.circular(20)),
                         elevation: 4,
                         child: Container(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                                begin: Alignment.bottomLeft,
-                                stops: [
-                                  0.2,
-                                  0.6
-                                ],
-                                colors: [
-                                  green.withOpacity(.8),
-                                  Colors.purple.shade700.withOpacity(0.9)
-                                ]),
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                          ),
-                          height: height * 0.03.h,
-                          width: width * 0.1.w,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 2, vertical: 2),
-                                child: Container(
-                                  // margin: EdgeInsets.all(2),
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.05.w,
-                                  height: MediaQuery.of(context).size.height *
-                                      0.017.h,
-                                  decoration: BoxDecoration(
-                                    // border: Border.all(color: Colors.white, width: 5),
-
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                      image: NetworkImage(images),
-                                      fit: BoxFit.contain,
-                                    ),
-                                    color: Colors.grey.shade100,
-                                  ),
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                    begin: Alignment.bottomLeft,
+                                    stops: [
+                                      0.2,
+                                      0.6
+                                    ],
+                                    colors: [
+                                      green.withOpacity(.8),
+                                      Colors.purple.shade700.withOpacity(0.9)
+                                    ]),
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(30),
+                                    bottomRight: Radius.circular(30))
+                                // BorderRadius.all(Radius.circular(20)),
                                 ),
-                              ),
-                              Text(
-                                name.toString(),
-                                style: GoogleFonts.poppins(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: white),
-                              ),
-                              Text(
-                                "${specialized.toString()} Lawyer",
-                                style: GoogleFonts.poppins(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: white),
-                              )
-                            ],
-                          ),
-                        )),
+                            height: height * 0.02.h,
+                            // width: width * 0.3.w,
+                            child: Row(
+                              children: [
+                                Expanded(
+                                    flex: 1,
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.04.w,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.011.h,
+                                      decoration: BoxDecoration(
+                                        // border: Border.all(color: Colors.white, width: 5),
+
+                                        shape: BoxShape.circle,
+                                        image: DecorationImage(
+                                          image: NetworkImage(images),
+                                          fit: BoxFit.contain,
+                                        ),
+                                        color: Colors.grey.shade100,
+                                      ),
+                                    )),
+                                Expanded(
+                                    flex: 2,
+                                    child: Container(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          AutoSizeText(
+                                            name.toString(),
+                                            style: GoogleFonts.poppins(
+                                                fontSize: 12.sp,
+                                                fontWeight: FontWeight.w400,
+                                                color: white),
+                                          ),
+                                          SizedBox(
+                                            height: height * 0.003.h,
+                                          ),
+                                          AutoSizeText(
+                                            "${specialized.toString()} Lawyer",
+                                            style: GoogleFonts.poppins(
+                                                fontSize: 12.sp,
+                                                fontWeight: FontWeight.w400,
+                                                color: white),
+                                          )
+                                        ],
+                                      ),
+                                    )),
+                              ],
+                            ))),
 
                     //  Card(
                     //   color: Colors.amber,

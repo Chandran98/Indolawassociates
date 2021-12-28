@@ -3,8 +3,9 @@
 // import 'package:sizer/sizer.dart';
 // import 'package:google_fonts/google_fonts.dart';
 // import 'package:indolawassociates/Client/Pages/Homepage/lawyers/services/lawyer_services.dart';
+// import 'package:indolawassociates/Client/constants/constant.dart';
 // import 'package:indolawassociates/UI/constant/constant.dart';
-// import 'package:indolawassociates/UI/widgets/Lawyers/Lawyer_info_page.dart';
+// import 'Lawyer_info_page.dart';
 
 // class Relawyerlist extends StatefulWidget {
 //   Relawyerlist({Key? key}) : super(key: key);
@@ -25,12 +26,15 @@
 //       stream: lawyerDB.getlawyerdb(),
 //       builder: (context, snapshot) {
 //         if (!snapshot.hasData) {
-//           return CircularProgressIndicator();
+//           return Center(
+//               child: CircularProgressIndicator(
+//             color: green,
+//           ));
 //         } else {
 //           return SingleChildScrollView(
 //             physics: BouncingScrollPhysics(),
-//             scrollDirection: Axis.horizontal,
-//             child: Row(
+//             scrollDirection: Axis.vertical,
+//             child: Column(
 //               children: [
 //                 ...snapshot.data!.docs
 //                     .map((QueryDocumentSnapshot<Object?> doc) {
@@ -50,27 +54,37 @@
 //                                   images: images,
 //                                 ))),
 //                     child: Card(
+//                         color: dialog,
 //                         shape: RoundedRectangleBorder(
-//                             borderRadius: BorderRadius.circular(10)),
+//                             borderRadius: BorderRadius.circular(20)),
 //                         elevation: 4,
 //                         child: Container(
 //                           decoration: BoxDecoration(
-//                             color: Colors.white70,
+//                             gradient: LinearGradient(
+//                                 begin: Alignment.bottomLeft,
+//                                 stops: [
+//                                   0.2,
+//                                   0.6
+//                                 ],
+//                                 colors: [
+//                                   green.withOpacity(.8),
+//                                   Colors.purple.shade700.withOpacity(0.9)
+//                                 ]),
 //                             borderRadius: BorderRadius.all(Radius.circular(20)),
 //                           ),
-//                           height: height * 0.22.h,
-//                           width: width * 0.45.w,
+//                           height: height * 0.03.h,
+//                           width: width * 0.1.w,
 //                           child: Column(
 //                             children: [
 //                               Padding(
 //                                 padding: const EdgeInsets.symmetric(
-//                                     horizontal: 10, vertical: 10),
+//                                     horizontal: 2, vertical: 2),
 //                                 child: Container(
-//                                   margin: EdgeInsets.all(2),
-//                                   width:
-//                                       MediaQuery.of(context).size.width * 0.5.w,
+//                                   // margin: EdgeInsets.all(2),
+//                                   width: MediaQuery.of(context).size.width *
+//                                       0.05.w,
 //                                   height: MediaQuery.of(context).size.height *
-//                                       0.1.h,
+//                                       0.017.h,
 //                                   decoration: BoxDecoration(
 //                                     // border: Border.all(color: Colors.white, width: 5),
 
@@ -86,16 +100,16 @@
 //                               Text(
 //                                 name.toString(),
 //                                 style: GoogleFonts.poppins(
-//                                     fontSize: 16.sp,
+//                                     fontSize: 12.sp,
 //                                     fontWeight: FontWeight.w400,
-//                                     color: black),
+//                                     color: white),
 //                               ),
 //                               Text(
 //                                 "${specialized.toString()} Lawyer",
 //                                 style: GoogleFonts.poppins(
-//                                     fontSize: 16.sp,
+//                                     fontSize: 12.sp,
 //                                     fontWeight: FontWeight.w400,
-//                                     color: black),
+//                                     color: white),
 //                               )
 //                             ],
 //                           ),

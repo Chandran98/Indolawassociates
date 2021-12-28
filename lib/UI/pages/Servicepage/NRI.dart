@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:indolawassociates/UI/components/slider/slider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/components/slider/slider.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import "package:flutter_gen/gen_l10n/app_localizations.dart";

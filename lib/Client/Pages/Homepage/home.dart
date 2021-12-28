@@ -6,13 +6,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/Pages/Categories.dart/Categories_Pages.dart';
 import 'package:indolawassociates/Client/Pages/Homepage/drawer.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
-import 'package:indolawassociates/Client/components/slider/slider.dart';
 import 'package:indolawassociates/Client/provider/languageprovider.dart';
 import 'package:indolawassociates/Client/utils/Internet%20connectivity/Network_status.dart';
 import 'package:indolawassociates/UI/pages/MainHomePage.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../UI/components/slider/slider.dart';
 import 'lawyers/Lawyerlist_page.dart';
 
 class HomeScreen extends StatefulWidget {

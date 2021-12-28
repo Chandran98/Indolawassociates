@@ -13,6 +13,7 @@ import 'package:indolawassociates/UI/pages/MainHomePage.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class Catesider extends StatefulWidget {
   const Catesider({
@@ -172,13 +173,14 @@ class _CatesiderState extends State<Catesider> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Text(
+                    child: AutoSizeText(
+                      
                       widget.categorysubtitle,
                       style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w400,
-                          fontSize: 10.sp,
+                          // fontSize: 10.sp,
                           color: black),
-                      textAlign: TextAlign.justify,
+                      textAlign: TextAlign.justify,minFontSize: 5.0,maxFontSize: 13.0,
                     ),
                   ),
                   SizedBox(

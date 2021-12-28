@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -168,7 +169,7 @@ class _ParalegalPageState extends State<ParalegalPage> {
                         width: width * 0.02.w,
                       ),
                       Expanded(
-                        child: Text(widget.Paralegaltitle,
+                        child: AutoSizeText(widget.Paralegaltitle,
                             style: GoogleFonts.poppins(
                                 fontSize: 13.sp,
                                 fontWeight: FontWeight.w500,

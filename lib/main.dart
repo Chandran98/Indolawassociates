@@ -1,6 +1,7 @@
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -25,12 +26,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
-    MyApp(),
-    // DevicePreview(
-    //   enabled: !kReleaseMode,
-    //   builder: (context) =>MyApp()
-    // )
-  );
+      MyApp());
+      // DevicePreview(enabled: !kReleaseMode, builder: (context) => MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -98,7 +95,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-        duration: 3000,
+        duration: 1000,
         splashTransition: SplashTransition.fadeTransition,
         splashIconSize: MediaQuery.of(context).size.width * 0.8.h,
         splash: Image.asset(

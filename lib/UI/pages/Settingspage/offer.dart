@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:indolawassociates/UI/components/slider/sliderzoom.dart';
 import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/components/slider/slider.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/components/button.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
@@ -10,7 +10,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../Client/components/slider/sliderzoom.dart';
 
 class Offersub extends StatelessWidget {
   const Offersub({Key? key}) : super(key: key);

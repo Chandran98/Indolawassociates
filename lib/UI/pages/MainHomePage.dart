@@ -1,3 +1,4 @@
+import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
@@ -40,9 +41,20 @@ class _MainHomepageState extends State<MainHomepage>
     return SafeArea(
       child: Scaffold(
           body: TabBarView(
-              physics: const NeverScrollableScrollPhysics(),
-              controller: tabController,
-              children: pages),
+                physics: const NeverScrollableScrollPhysics(),
+                controller: tabController,
+                children: pages),
+          
+          // DoubleBackToCloseApp(
+          //   snackBar: const SnackBar(
+          //     backgroundColor: black,
+          //     content: Text(
+          //       'Tap back again to exit app.',
+          //       style: TextStyle(fontSize: 18),
+          //     ),
+          //   ),
+          //   child:
+          // ),
           bottomNavigationBar: SizedBox(
             height: kBottomNavigationBarHeight,
             child: BottomAppBar(
