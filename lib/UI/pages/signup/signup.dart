@@ -21,14 +21,14 @@ import '../../../main.dart';
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-class Demosignup extends StatefulWidget {
-  Demosignup({Key? key}) : super(key: key);
+class Signuppage extends StatefulWidget {
+  Signuppage({Key? key}) : super(key: key);
 
   @override
-  _DemosignupState createState() => _DemosignupState();
+  _SignuppageState createState() => _SignuppageState();
 }
 
-class _DemosignupState extends State<Demosignup> {
+class _SignuppageState extends State<Signuppage> {
   final _formKey = GlobalKey<FormState>();
   final _formKeyOTP = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();

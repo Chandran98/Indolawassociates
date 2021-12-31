@@ -96,7 +96,7 @@ class _RelawyerlistState extends State<Relawyerlist> {
                                     flex: 1,
                                     child: Container(
                                       width: MediaQuery.of(context).size.width *
-                                          0.04.w,
+                                          0.05.w,
                                       height:
                                           MediaQuery.of(context).size.height *
                                               0.011.h,

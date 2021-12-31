@@ -41,6 +41,8 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
   // ignore: unused_field
   late FormModel _formModel;
 
+  var whatsapp = "+91 8940383000";
+
   final _namecontroller = TextEditingController();
   // final _gendercontroller = TextEditingController();
   final _emailcontroller = TextEditingController();
@@ -222,7 +224,7 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                     style: GoogleFonts.poppins(
                         // fontWeight: FontWeight.bold,
                         color: black,
-                        fontSize: 10.sp),
+                        fontSize: 13.sp),
                   ),
                   SizedBox(
                     height: height * 0.002.h,
@@ -269,9 +271,8 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                       ),
 
                       TextButton(
-                        onPressed: () {
-                          launcher("mailto: indolawassociates@gmail.com");
-                        },
+                        onPressed:  () async => await launch(
+                        "https://wa.me/$whatsapp?text= Hi, I have an emergency"),
                         child: Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(35),
@@ -289,11 +290,11 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   FaIcon(
-                                    (FontAwesomeIcons.mailBulk),
-                                    color: black,
+                                    (FontAwesomeIcons.whatsapp),
+                                    color: Colors.green,
                                   ),
-                                  Text(
-                                    translate.mail,
+                                  AutoSizeText(
+                                    translate.whatsapp,
                                     style: GoogleFonts.poppins(
                                         // fontWeight: FontWeight.bold,
                                         color: black,

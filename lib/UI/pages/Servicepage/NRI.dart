@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:indolawassociates/UI/components/slider/slider.dart';
 import 'package:sizer/sizer.dart';
@@ -28,6 +29,8 @@ class _NRIsectionState extends State<NRIsection> {
       print("");
     }
   }
+
+  var whatsapp = "+91 8940383000";
 
   @override
   Widget build(BuildContext context) {
@@ -175,10 +178,9 @@ class _NRIsectionState extends State<NRIsection> {
                             )),
                       ),
 
-                      TextButton(
-                        onPressed: () {
-                          launcher("mailto: indolawassociates@gmail.com");
-                        },
+                         TextButton(
+                        onPressed:  () async => await launch(
+                        "https://wa.me/$whatsapp?text= Hi, I have an emergency"),
                         child: Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(35),
@@ -196,11 +198,11 @@ class _NRIsectionState extends State<NRIsection> {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   FaIcon(
-                                    (FontAwesomeIcons.mailBulk),
-                                    color: black,
+                                    (FontAwesomeIcons.whatsapp),
+                                    color: Colors.green,
                                   ),
-                                  Text(
-                                    translate.mail,
+                                  AutoSizeText(
+                                    translate.whatsapp,
                                     style: GoogleFonts.poppins(
                                         // fontWeight: FontWeight.bold,
                                         color: black,
@@ -212,7 +214,7 @@ class _NRIsectionState extends State<NRIsection> {
                             )),
                       ),
 
-                      //   , CustomButton(
+                   //   , CustomButton(
                       // height: height * 0.06,
                       //     text: "Email us",
                       //     width: width*0.35,

@@ -47,7 +47,7 @@ class _SliderimageState extends State<Sliderimage> {
           if (!snapshot.hasData) {
             return Center(
                 child: CircularProgressIndicator(
-              color: green,
+              color: white,
             ));
           }
           return ListView.builder(

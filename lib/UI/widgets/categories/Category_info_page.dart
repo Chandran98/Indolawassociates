@@ -79,6 +79,7 @@ class _CatesiderState extends State<Catesider> {
       print("");
     }
   }
+  var whatsapp = "+91 8940383000";
 
   var gendertry;
   List genderlist = ["Male", "Female", "Others"];
@@ -462,10 +463,9 @@ class _CatesiderState extends State<Catesider> {
                             )),
                       ),
 
-                      TextButton(
-                        onPressed: () {
-                          launcher("mailto: indolawassociates@gmail.com");
-                        },
+                TextButton(
+                        onPressed:  () async => await launch(
+                        "https://wa.me/$whatsapp?text= Hi, I have an emergency"),
                         child: Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(35),
@@ -483,11 +483,11 @@ class _CatesiderState extends State<Catesider> {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   FaIcon(
-                                    (FontAwesomeIcons.mailBulk),
-                                    color: black,
+                                    (FontAwesomeIcons.whatsapp),
+                                    color: Colors.green,
                                   ),
-                                  Text(
-                                    translate.mail,
+                                  AutoSizeText(
+                                    translate.whatsapp,
                                     style: GoogleFonts.poppins(
                                         // fontWeight: FontWeight.bold,
                                         color: black,

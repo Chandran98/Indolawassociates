@@ -43,6 +43,7 @@ class _ParalegalPageState extends State<ParalegalPage> {
 
   var gendertry;
   List genderlist = ["Male", "Female", "Others"];
+  var whatsapp = "+91 8940383000";
 
   var paralegal;
   List paralegallist = [
@@ -336,9 +337,8 @@ class _ParalegalPageState extends State<ParalegalPage> {
                       ),
 
                       TextButton(
-                        onPressed: () {
-                          launcher("mailto: indolawassociates@gmail.com");
-                        },
+                        onPressed:  () async => await launch(
+                        "https://wa.me/$whatsapp?text= Hi, I have an emergency"),
                         child: Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(35),
@@ -356,11 +356,11 @@ class _ParalegalPageState extends State<ParalegalPage> {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   FaIcon(
-                                    (FontAwesomeIcons.mailBulk),
-                                    color: black,
+                                    (FontAwesomeIcons.whatsapp),
+                                    color: Colors.green,
                                   ),
-                                  Text(
-                                    translate.mail,
+                                  AutoSizeText(
+                                    translate.whatsapp,
                                     style: GoogleFonts.poppins(
                                         // fontWeight: FontWeight.bold,
                                         color: black,

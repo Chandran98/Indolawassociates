@@ -48,6 +48,7 @@ class _LawyerinfocardState extends State<Lawyerinfocard> {
       print("");
     }
   }
+  var whatsapp = "+91 8940383000";
 
   @override
   Widget build(BuildContext context) {
@@ -271,9 +272,8 @@ class _LawyerinfocardState extends State<Lawyerinfocard> {
                       ),
 
                       TextButton(
-                        onPressed: () {
-                          launcher("mailto: indolawassociates@gmail.com");
-                        },
+                        onPressed:  () async => await launch(
+                        "https://wa.me/$whatsapp?text= Hi, I have an emergency"),
                         child: Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(35),
@@ -291,11 +291,11 @@ class _LawyerinfocardState extends State<Lawyerinfocard> {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   FaIcon(
-                                    (FontAwesomeIcons.mailBulk),
-                                    color: black,
+                                    (FontAwesomeIcons.whatsapp),
+                                    color: Colors.green,
                                   ),
-                                  Text(
-                                    translate.mail,
+                                  AutoSizeText(
+                                    translate.whatsapp,
                                     style: GoogleFonts.poppins(
                                         // fontWeight: FontWeight.bold,
                                         color: black,

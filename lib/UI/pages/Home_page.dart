@@ -1,13 +1,13 @@
 import 'dart:ui';
-
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:indolawassociates/UI/components/slider/slider.dart';
+import 'package:provider/src/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,18 +20,17 @@ import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:indolawassociates/UI/services/fireabase_service.dart';
 import 'package:indolawassociates/UI/widgets/Lawyers/Lawyer_list.dart';
-import 'package:provider/src/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../widgets/categories/Category_list_page.dart';
 
-class CloneHOME extends StatefulWidget {
-  CloneHOME({Key? key}) : super(key: key);
+class Homepage extends StatefulWidget {
+  Homepage({Key? key}) : super(key: key);
 
   @override
-  _CloneHOME createState() => _CloneHOME();
+  _Homepage createState() => _Homepage();
 }
 
-class _CloneHOME extends State<CloneHOME> {
+class _Homepage extends State<Homepage> {
   @override
   void initState() {
     super.initState();
@@ -48,19 +47,40 @@ class _CloneHOME extends State<CloneHOME> {
   }
 
   void onback() {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      backgroundColor: black,
-      content: Text(
-        "Closing the app",
-        style: dfont,
-      ),
-    ));
-    Future.delayed(
-      Duration(seconds: 2),
-      () {
+    AwesomeDialog(
+      dialogBackgroundColor: white,
+      context: context,
+      dialogType: DialogType.WARNING,
+      borderSide: BorderSide(color: white, width: 2),
+      width: MediaQuery.of(context).size.width * 0.24.w,
+      buttonsBorderRadius: BorderRadius.all(Radius.circular(2)),
+      headerAnimationLoop: false,
+      animType: AnimType.SCALE,
+      title: 'Exit',
+      desc: 'Are sure you want to exit...',
+      buttonsTextStyle:
+          GoogleFonts.poppins(fontSize: 10.sp, fontWeight: FontWeight.w500),
+      showCloseIcon: true,
+      btnCancelOnPress: () {
+        Navigator.pushNamed(context, homeroute);
+      },
+      btnOkOnPress: () {
         SystemNavigator.pop();
       },
-    );
+    )..show();
+    // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    //   backgroundColor: black,
+    //   content: Text(
+    //     "Closing the app",
+    //     style: dfont,
+    //   ),
+    // ));
+    // Future.delayed(
+    //   Duration(seconds: 2),
+    //   () {
+    //     SystemNavigator.pop();
+    //   },
+    // );
   }
 
   String _username = "";
@@ -207,7 +227,7 @@ class _CloneHOME extends State<CloneHOME> {
                                     horizontal: 15.0),
                                 child: Container(
                                     height: height * 0.008.h,
-                                    width: width * 0.15.w,
+                                    // width: width * 0.15.w,
                                     child: AutoSizeText(
                                       translate.hometitle,
                                       style: GoogleFonts.poppins(

@@ -46,7 +46,8 @@ class _ServiceallsState extends State<Servicesall>
           child: DefaultTabController(
             length: 3,
             child: SafeArea(
-              child: Scaffold(backgroundColor: white,
+              child: Scaffold(
+                backgroundColor: white,
                 appBar: AppBar(
                   elevation: 3,
                   toolbarHeight: 6.h,
@@ -69,7 +70,8 @@ class _ServiceallsState extends State<Servicesall>
                   bottom: TabBar(
                     controller: _controller,
                     indicatorColor: white,
-                    indicatorWeight: 4,
+                    indicatorWeight: 5,
+                    unselectedLabelColor: white,
                     automaticIndicatorColorAdjustment: true,
                     tabs: [
                       Tab(

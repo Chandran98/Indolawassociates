@@ -1,6 +1,7 @@
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/pages/Home_page.dart';
 import 'package:indolawassociates/UI/pages/legalforms/legalforms_page.dart';
@@ -27,7 +28,7 @@ class _MainHomepageState extends State<MainHomepage>
     tabController = TabController(length: 4, vsync: this);
   }
 
-  List<Widget> pages = [CloneHOME(), Servicesall(), Legalinfo(), Settingspage()];
+  List<Widget> pages = [Homepage(), Servicesall(), Legalinfo(), Settingspage()];
 
   void onback() {
     Navigator.pushReplacement(
@@ -41,10 +42,10 @@ class _MainHomepageState extends State<MainHomepage>
     return SafeArea(
       child: Scaffold(
           body: TabBarView(
-                physics: const NeverScrollableScrollPhysics(),
-                controller: tabController,
-                children: pages),
-          
+              physics: const NeverScrollableScrollPhysics(),
+              controller: tabController,
+              children: pages),
+
           // DoubleBackToCloseApp(
           //   snackBar: const SnackBar(
           //     backgroundColor: black,
@@ -71,7 +72,7 @@ class _MainHomepageState extends State<MainHomepage>
                       borderSide: BorderSide(color: green, width: 4)),
                   labelColor: green,
                   indicatorColor: green,
-                  unselectedLabelColor: Colors.grey,
+                  unselectedLabelColor: white,
                   controller: tabController,
                   tabs: [
                     Tab(

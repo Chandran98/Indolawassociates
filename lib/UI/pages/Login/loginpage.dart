@@ -17,14 +17,14 @@ import 'package:sms_autofill/sms_autofill.dart';
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-class DemoLogin extends StatefulWidget {
-  DemoLogin({Key? key}) : super(key: key);
+class Loginscreen extends StatefulWidget {
+  Loginscreen({Key? key}) : super(key: key);
 
   @override
-  _DemoLoginState createState() => _DemoLoginState();
+  _LoginscreenState createState() => _LoginscreenState();
 }
 
-class _DemoLoginState extends State<DemoLogin> {
+class _LoginscreenState extends State<Loginscreen> {
   final _formkey = GlobalKey<FormState>();
   final _formKeyOTP = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();

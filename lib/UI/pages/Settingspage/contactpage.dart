@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/components/socialmedia.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
-import 'package:indolawassociates/UI/pages/Settingspage/profilepage.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -178,7 +177,11 @@ class _ContactpageState extends State<Contactpage> {
                         child: Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [ Icon(Icons.phone,size: 09.w,),
+                            children: [
+                              Icon(
+                                Icons.phone,
+                                size: 09.w,
+                              ),
                               SizedBox(
                                 width: 8.w,
                               ),
@@ -213,9 +216,10 @@ class _ContactpageState extends State<Contactpage> {
                         //   horizontal: 15.0,
                         // ),
                         child: Center(
-                          child: Row(                            mainAxisAlignment: MainAxisAlignment.center,
-
-                            children: [FaIcon(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              FaIcon(
                                 FontAwesomeIcons.mailBulk,
                                 color: Color.fromARGB(255, 175, 116, 76),
                               ),

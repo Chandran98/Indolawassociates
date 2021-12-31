@@ -102,7 +102,7 @@ class _SplashScreenState extends State<SplashScreen> {
           "assets/images/ILAlogopvt.png",
           fit: BoxFit.contain,
         ),
-        nextScreen: DemoLogin());
+        nextScreen: Loginscreen());
   }
 }
 

@@ -16,6 +16,7 @@ class Notificationpage extends StatefulWidget {
 class _NotificationpageState extends State<Notificationpage> {
   onback() {
     Navigator.of(context).pop();
+    // Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>n()));
   }
 
   @override
