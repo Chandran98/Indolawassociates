@@ -8,9 +8,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:indolawassociates/Client/l10n/l10n.dart';
-import 'package:indolawassociates/Client/provider/languageprovider.dart';
+import 'package:indolawassociates/UI/provider/languageprovider.dart';
 import 'package:indolawassociates/Client/utils/Internet%20connectivity/connectivity.dart';
 import 'package:indolawassociates/UI/pages/Login/loginpage.dart';
+import 'package:indolawassociates/UI/provider/location_provider.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
@@ -25,9 +26,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(
-      MyApp());
-      // DevicePreview(enabled: !kReleaseMode, builder: (context) => MyApp()));
+  runApp(MyApp());
+  // DevicePreview(enabled: !kReleaseMode, builder: (context) => MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -39,6 +39,8 @@ class MyApp extends StatelessWidget {
       providers: [
         // ChangeNotifier()
         ChangeNotifierProvider(create: (context) => Languagenotifier()),
+        ChangeNotifierProvider(create: (context) => Locationprovider()),
+
         // ChangeNotifierProvider(create: (context) => THemeprovider()),
         StreamProvider<ConnectivityStatus>(
             create: (_) => ConnectivityService().streamController.stream,

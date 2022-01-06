@@ -49,7 +49,7 @@ class _LoginscreenState extends State<Loginscreen> {
     SmsAutoFill().listenForCode();
 
     Timer.run(() {
-        if (_auth.currentUser != null) {
+      if (_auth.currentUser != null) {
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
@@ -336,8 +336,9 @@ class _LoginscreenState extends State<Loginscreen> {
                         children: [
                           Text(
                             isLoading
-                              ? "Verifying your OTP"
-                              : "The code has been sent to\n your mobile via SMS",  style: GoogleFonts.poppins(
+                                ? "Verifying your OTP"
+                                : "The code has been sent to\n your mobile via SMS",
+                            style: GoogleFonts.poppins(
                                 fontSize: 13.sp,
                                 color: Colors.black,
                                 fontWeight: FontWeight.w400),

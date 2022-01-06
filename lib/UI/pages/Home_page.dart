@@ -13,7 +13,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:indolawassociates/Client/provider/languageprovider.dart';
+import 'package:indolawassociates/UI/provider/languageprovider.dart';
 import 'package:indolawassociates/Client/utils/Internet%20connectivity/Network_status.dart';
 import 'package:indolawassociates/UI/components/clippath.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
@@ -203,7 +203,7 @@ class _Homepage extends State<Homepage> {
                                         IconButton(
                                             onPressed: () {
                                               Navigator.pushNamed(
-                                                  context, notificationroute);
+                                                  context, maps);
                                               // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Testing()));
                                             },
 

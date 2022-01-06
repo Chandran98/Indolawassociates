@@ -51,9 +51,9 @@ class _ParalegalPageState extends State<ParalegalPage> {
     "Pan card",
     "Birth and Death Certificate",
     "Will and Gift writing",
-    " Legal Notice",
+    "Legal Notice",
     "EC,Patta, Land Verification",
-    " Education Issues",
+    "Education Issues",
     "Affidavits"
   ];
   launcher(command) async {
@@ -337,8 +337,8 @@ class _ParalegalPageState extends State<ParalegalPage> {
                       ),
 
                       TextButton(
-                        onPressed:  () async => await launch(
-                        "https://wa.me/$whatsapp?text= Hi, I have an emergency"),
+                        onPressed: () async => await launch(
+                            "https://wa.me/$whatsapp?text= Hi, I have an emergency"),
                         child: Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(35),

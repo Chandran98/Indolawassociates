@@ -11,7 +11,7 @@ import 'package:indolawassociates/Client/Pages/darwerlist.dart/Otherservices.dar
 import 'package:indolawassociates/Client/Pages/darwerlist.dart/Profile/ProfilePage.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:indolawassociates/Client/constants/constant.dart';
-import 'package:indolawassociates/Client/provider/languageprovider.dart';
+import 'package:indolawassociates/UI/provider/languageprovider.dart';
 import 'package:provider/provider.dart';
 import '../../../main.dart';
 
