@@ -37,7 +37,7 @@ final routes = {
   settingsroute: (context) => Settingspage(),
   careersroute: (context) => Careerspage(),
   contactroute: (context) => Contactpage(),
-    maps: (context) => Mappingposition(),
+    // maps: (context) => Mappingposition(),
 
   // nriroute: (context) => NRIsection(),
   offerroute: (context) => Offersub(),
