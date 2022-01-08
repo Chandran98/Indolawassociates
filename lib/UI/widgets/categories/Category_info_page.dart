@@ -1,17 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+// import 'package:sizer/sizer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
-import 'package:indolawassociates/Client/model/form_model.dart';
 import 'package:indolawassociates/UI/components/appbar.dart';
 import 'package:indolawassociates/UI/components/button.dart';
+import 'package:indolawassociates/UI/components/contact_box.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
+import 'package:indolawassociates/UI/models/form_model.dart';
 import 'package:indolawassociates/UI/pages/MainHomePage.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:indolawassociates/UI/widgets/Lawyers/Lawyer_info_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
@@ -99,8 +100,8 @@ class _CatesiderState extends State<Catesider> {
   Widget build(BuildContext context) {
     final translate = AppLocalizations.of(context);
 
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
     return WillPopScope(
       onWillPop: () {
         onback();
@@ -138,7 +139,7 @@ class _CatesiderState extends State<Catesider> {
                               icon: Image.asset(
                                 "assets/icons/rback.png",
                                 color: iconcolor,
-                                height: 40.h,
+                                height: 40,
                               ),
                               onPressed: () => Navigator.pushReplacement(
                                   context,
@@ -150,10 +151,8 @@ class _CatesiderState extends State<Catesider> {
                         padding: const EdgeInsets.symmetric(horizontal: 70.0),
                         child: Text(
                           widget.categorytitle,
-                          style: GoogleFonts.poppins(
-                              fontSize: 15.sp,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500),
+                                          style: titletextblack,textAlign: TextAlign.center,
+
                         ),
                       )
                     ],
@@ -162,16 +161,14 @@ class _CatesiderState extends State<Catesider> {
                   Card(
                     elevation: 4,
                     child: Container(
-                      height: MediaQuery.of(context).size.height * 0.03.h,
+                      height: 150,width: 350,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(widget.categorypageimages),
                               fit: BoxFit.cover)),
                     ),
                   ),
-                  SizedBox(
-                    height: height * 0.003.h,
-                  ),
+                spaced20,
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: AutoSizeText(
@@ -184,154 +181,47 @@ class _CatesiderState extends State<Catesider> {
                       textAlign: TextAlign.justify,minFontSize: 5.0,maxFontSize: 13.0,
                     ),
                   ),
-                  SizedBox(
-                    height: height * 0.005,
-                  ),
-                  Container(
-                    // color: navy,
-                    height: MediaQuery.of(context).size.height * 0.015.h,
-                    width: width * 1.w,
-                    child: Row(
-                      children: [
-                        Container(
+                 spaced10,
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Container(
                           // color: white,
-                          height: MediaQuery.of(context).size.height * 0.2.h,
-                          width: MediaQuery.of(context).size.width * 0.11.w,
+                          // height:50,
+                          // width: 180,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.check, color: gold),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.003.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      widget.r1,
-                                      style: GoogleFonts.mulish(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 10.sp,
-                                          color: black),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(Icons.check, color: gold),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.003.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      widget.r3,
-                                      style: GoogleFonts.mulish(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 10.sp,
-                                          color: black),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(Icons.check, color: gold),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.003.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      widget.r5,
-                                      style: GoogleFonts.mulish(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 10.sp,
-                                          color: black),
-                                    ),
-                                  ),
-                                ],
-                              )
+                              Titlecard(title: widget.r1),
+                              Titlecard(title: widget.r3),
+                              Titlecard(title: widget.r5),
                             ],
                           ),
                         ),
-                        //  SizedBox(
-                        //             width: MediaQuery.of(context).size.width *
-                        //                 0.005.w,
-                        //           ),
-                        Container(
+                      ),
+                      //  SizedBox(
+                      //             width: MediaQuery.of(context).size.width *
+                      //                 0.005.w,
+                      //           ),
+                      Expanded(
+                        child: Container(
                           // color: green,
-                          height: MediaQuery.of(context).size.height * 0.2.h,
-                          width: MediaQuery.of(context).size.width * 0.11.w,
+                          // height:50,
+                          // width: 180,
                           child: Column(
                             // crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.check, color: gold),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.003.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      widget.r2,
-                                      style: GoogleFonts.mulish(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 10.sp,
-                                          color: black),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(Icons.check, color: gold),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.003.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      widget.r4,
-                                      style: GoogleFonts.mulish(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 10.sp,
-                                          color: black),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.check,
-                                    color: gold,
-                                  ),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.003.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      widget.r6,
-                                      style: GoogleFonts.mulish(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 10.sp,
-                                          color: black),
-                                    ),
-                                  ),
-                                ],
-                              )
-                            ],
+                              
+                              Titlecard(title: widget.r2),
+                              Titlecard(title: widget.r4),
+                              Titlecard(title: widget.r6),
+                             ],
                           ),
-                        )
-                      ],
-                    ),
+                        ),
+                      )
+                    ],
                   ),
 
                   TextButton(
@@ -356,8 +246,8 @@ class _CatesiderState extends State<Catesider> {
                             borderRadius: BorderRadius.circular(35),
                             color: white,
                             border: Border.all(color: navy)),
-                        height: height * 0.06,
-                        width: width * 0.4,
+                        height:50,
+                        width:150,
                         // padding: const EdgeInsets.symmetric(
                         //   vertical: 15.0,
                         //   horizontal: 15.0,
@@ -368,7 +258,7 @@ class _CatesiderState extends State<Catesider> {
                             style: GoogleFonts.poppins(
                                 // fontWeight: FontWeight.bold,
                                 color: black,
-                                fontSize: 10.sp),
+                                fontSize: 15),
                             textAlign: TextAlign.center,
                           ),
                         )),
@@ -399,118 +289,10 @@ class _CatesiderState extends State<Catesider> {
                   //             ),
                   //           )),
                   // ),
-                  SizedBox(
-                    height: height * 0.001.h,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Divider(
-                      color: divcolor,
-                    ),
-                  ),
-                  SizedBox(
-                    height: height * 0.001.h,
-                  ),
-                  Text(
-                    translate.drawerkey5,
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
-                        // fontWeight: FontWeight.bold,
-                        color: black,
-                        fontSize: 12.sp),
-                  ),
-                  SizedBox(
-                    height: height * 0.001,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          launcher("tel: 8940383000");
-                        },
-                        child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(35),
-                                color: white,
-                                border: Border.all(color: navy)),
-                            height: height * 0.06,
-                            width: width * 0.35,
-                            // padding: const EdgeInsets.symmetric(
-                            //   vertical: 15.0,
-                            //   horizontal: 15.0,
-                            // ),
-                            child: Center(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Image.asset(
-                                    "assets/icons/call.png",
-                                    color: black,
-                                    height: 4.h,
-                                  ),
-                                  Text(
-                                    translate.mobile,
-                                    style: GoogleFonts.poppins(
-                                        // fontWeight: FontWeight.bold,
-                                        color: black,
-                                        fontSize: 12.sp),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ],
-                              ),
-                            )),
-                      ),
-
-                TextButton(
-                        onPressed:  () async => await launch(
-                        "https://wa.me/$whatsapp?text= Hi, I have an emergency"),
-                        child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(35),
-                                color: white,
-                                border: Border.all(color: navy)),
-                            height: height * 0.06,
-                            width: width * 0.35,
-                            // padding: const EdgeInsets.symmetric(
-                            //   vertical: 15.0,
-                            //   horizontal: 15.0,
-                            // ),
-                            child: Center(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  FaIcon(
-                                    (FontAwesomeIcons.whatsapp),
-                                    color: Colors.green,
-                                  ),
-                                  AutoSizeText(
-                                    translate.whatsapp,
-                                    style: GoogleFonts.poppins(
-                                        // fontWeight: FontWeight.bold,
-                                        color: black,
-                                        fontSize: 12.sp),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ],
-                              ),
-                            )),
-                      ),
-
-                      //   , CustomButton(
-                      // height: height * 0.06,
-                      //     text: "Email us",
-                      //     width: width*0.35,
-                      //     onpressed: (){},
-                      //     style: GoogleFonts.poppins(
-                      //   // fontWeight: FontWeight.bold,
-                      //   color: black,
-                      //   fontSize: 12.sp),)
-                    ],
-                  )
-                ],
+                  // SizedBox(
+                  //   height: height * 0.001.h,
+                  // ),
+          Contactbox()      ],
               ),
             ),
           ),
@@ -534,14 +316,10 @@ class _CatesiderState extends State<Catesider> {
                       padding: const EdgeInsets.only(top: 10.0),
                       child: Text(
                         "Fill The Form",
-                        style: GoogleFonts.poppins(
-                            color: navy,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 18.sp),
+                        style: demofont
                       ),
                     ),
-                    SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.002.h),
+                    spaced10,
                     TextFormField(
                         validator: MultiValidator([
                           RequiredValidator(errorText: usernamenull),
@@ -556,8 +334,7 @@ class _CatesiderState extends State<Catesider> {
                               color: navy,
                             ),
                             labelText: "Name",
-                            labelStyle: TextStyle(
-                                color: navy, fontWeight: FontWeight.bold))),
+                            labelStyle: demofont)),
                     SizedBox(height: 20),
                     TextFormField(
                         controller: _emailcontroller,
@@ -577,8 +354,7 @@ class _CatesiderState extends State<Catesider> {
                               color: navy,
                             ),
                             labelText: "Email",
-                            labelStyle: TextStyle(
-                                color: navy, fontWeight: FontWeight.bold))),
+                            labelStyle: demofont)),
                     SizedBox(height: 20),
                     Container(
                       decoration: BoxDecoration(
@@ -593,10 +369,7 @@ class _CatesiderState extends State<Catesider> {
                         dropdownColor: Colors.white,
                         hint: Text(
                           "Gender",
-                          style: TextStyle(
-                              // fontSize: 15.sp,
-                              color: navy,
-                              fontWeight: FontWeight.bold),
+                          style: demofont,
                         ),
                         items: genderlist.map((valueitem) {
                           return DropdownMenuItem(
@@ -629,8 +402,7 @@ class _CatesiderState extends State<Catesider> {
                               color: navy,
                             ),
                             labelText: "Mobile",
-                            labelStyle: TextStyle(
-                                color: navy, fontWeight: FontWeight.bold))),
+                            labelStyle: demofont)),
                     SizedBox(height: 20),
                     TextFormField(
                         validator: MultiValidator([
@@ -643,8 +415,7 @@ class _CatesiderState extends State<Catesider> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20))),
                             labelText: "Address",
-                            labelStyle: TextStyle(
-                                color: navy, fontWeight: FontWeight.bold))),
+                            labelStyle: demofont)),
 
                     SizedBox(height: 20),
                     Container(
@@ -660,10 +431,7 @@ class _CatesiderState extends State<Catesider> {
                         dropdownColor: Colors.white,
                         hint: Text(
                           "Services",
-                          style: TextStyle(
-                              // fontSize: 15.sp,
-                              color: navy,
-                              fontWeight: FontWeight.bold),
+                          style:demofont,
                         ),
                         items: categorylist.map((valueitem) {
                           return DropdownMenuItem(
@@ -712,8 +480,8 @@ class _CatesiderState extends State<Catesider> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
-                          height: MediaQuery.of(context).size.height * .008.h,
-                          width: MediaQuery.of(context).size.width * .08.w,
+                          height:50,
+                          width: 150,
                           child: Material(
                             borderRadius: BorderRadius.circular(20.0),
                             color: Colors.green,
@@ -744,14 +512,13 @@ class _CatesiderState extends State<Catesider> {
                               },
                               child: Center(
                                   child: Text('Submit',
-                                      style: TextStyle(
-                                          color: white, fontSize: 20))),
+                                      style: dfont)),
                             ),
                           ),
                         ),
                         Container(
-                          height: MediaQuery.of(context).size.height * .008.h,
-                          width: MediaQuery.of(context).size.width * .08.w,
+                          height:50,
+                          width: 150,
                           child: Material(
                             borderRadius: BorderRadius.circular(20.0),
                             color: Colors.red,
@@ -762,8 +529,7 @@ class _CatesiderState extends State<Catesider> {
                               },
                               child: Center(
                                   child: Text('Back',
-                                      style: TextStyle(
-                                          color: white, fontSize: 20))),
+                                      style: dfont)),
                             ),
                           ),
                         ),
@@ -791,5 +557,32 @@ class _CatesiderState extends State<Catesider> {
       "Address": _addresscontroller.text.trim(),
       "Gender": gendertry
     }).then((value) => SnackBar(content: Text("Updated")));
+  }
+}
+
+class Titlecard extends StatelessWidget {
+  Titlecard({required this.title});
+  String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: Row(
+        children: [
+          Icon(Icons.check, color: gold),
+          SizedBox(
+            width: 10,
+          ),
+          Expanded(
+            child: Text(
+              title,
+              style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w400, fontSize: 13, color: black),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

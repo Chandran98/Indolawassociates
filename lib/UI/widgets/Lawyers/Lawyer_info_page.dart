@@ -1,9 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:sizer/sizer.dart';
+// import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
+import 'package:indolawassociates/UI/components/contact_box.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/pages/MainHomePage.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -52,8 +52,8 @@ class _LawyerinfocardState extends State<Lawyerinfocard> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
     final translate = AppLocalizations.of(context);
     return WillPopScope(
       onWillPop: () {
@@ -80,38 +80,34 @@ class _LawyerinfocardState extends State<Lawyerinfocard> {
                 // mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Row(
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Container(
                         child: IconButton(
-                            iconSize: 5.h,
+                            iconSize: 40,
                             // color: navy,
                             icon: Image.asset(
                               "assets/icons/rback.png",
                               color: iconcolor,
-                              height: 12.h,
+                              height: 35,
                             ),
                             onPressed: () => Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => MainHomepage()))),
                       ),
-                      SizedBox(
-                        width: width * 0.04.w,
-                      ),
-                      Text("Lawyer info",
-                          style: GoogleFonts.poppins(
-                              fontSize: 15.5.sp,
-                              fontWeight: FontWeight.w500,
-                              color: black))
+                      
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 40),
+                        child: Text("Lawyer info",                style: titletextblack,textAlign: TextAlign.center,
+),
+                      )
                     ],
                   ),
-                  SizedBox(
-                    height: height * 0.003.h,
-                  ),
+                  spaced10,
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.02.h,
-                    width: MediaQuery.of(context).size.width * 1.w,
+                    height:150,
+                    width: 300,
                     decoration: BoxDecoration(
                         // shape: BoxShape.circle,
                         image: DecorationImage(
@@ -120,208 +116,74 @@ class _LawyerinfocardState extends State<Lawyerinfocard> {
                         ),
                         color: white),
                   ),
-                  SizedBox(
-                    height: height * 0.003.h,
-                  ),
+                  spaced10,
                   Text(
                     widget.name,
-                    style: GoogleFonts.mulish(
-                        fontSize: 15.sp,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500),
+                style: titletextblack,textAlign: TextAlign.center,
                   ),
                   // SizedBox(
                   //   height: height * 0.001.h,
                   // ),
                   Text(
                     "${widget.specialized} Lawyer",
-                    style: GoogleFonts.mulish(
-                        fontSize: 12.sp,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500),
+                    style: demofont,
                   ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.003.h,
-                  ),
+                  spaced20,
                   AutoSizeText(
                     widget.description,
                     style: GoogleFonts.poppins(
                       // fontWeight: FontWeight.w600,
-                      fontSize: 10.sp,
+                      fontSize: 13,
                     ),
                     textAlign: TextAlign.justify,
                     textScaleFactor: 1,
                   ),
-                  SizedBox(
-                    height: height * 0.003.h,
-                  ),
+                 spaced10,
                   Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Pratices Area",
-                      style: GoogleFonts.mulish(
-                          fontSize: 12.sp,
-                          color: black,
-                          fontWeight: FontWeight.w500),
+                      style: demofont
                     ),
                   ),
-                  SizedBox(
-                    height: height * 0.003.h,
-                  ),
-                  Container(
-                    height: height * 0.02.h,
-                    child: Row(
-                      children: [
-                        Expanded(
-                            // flex: 1,
-                            child: Container(
-                          // color: navy,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Titlecard(title: widget.area1),
-                              Titlecard(title: widget.area2),
-                              Titlecard(title: widget.area3),
-                              // Titlecard(title: "title"),
-                              // Titlecard(title: "title"),
-                            ],
-                          ),
-                        )),
-                        Expanded(
-                            // flex: 1,
-                            child: Container(
-                          // color: green,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Titlecard(title: widget.area4),
-                              Titlecard(title: widget.area5),
-                              Titlecard(title: widget.area6),
-                              // Titlecard(title: "title"),
-                              // Titlecard(title: "title"),
-                            ],
-                          ),
-                        ))
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: height * 0.003.h,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Divider(
-                      color: divcolor,
-                    ),
-                  ),
-                  // SizedBox(
-                  //   height: height * 0.003.h,
-                  // ),
-                  Text(
-                    translate!.drawerkey5,
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
-                        // fontWeight: FontWeight.bold,
-                        color: black,
-                        fontSize: 13.sp),
-                  ),
-                  // SizedBox(
-                  //   height: height * 0.003.h,
-                  // ),
+                 spaced10,
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      TextButton(
-                        onPressed: () {
-                          launcher("tel: 8940383000");
-                        },
-                        child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(35),
-                                color: white,
-                                border: Border.all(color: navy)),
-                            height: height * 0.06,
-                            width: width * 0.35,
-                            // padding: const EdgeInsets.symmetric(
-                            //   vertical: 15.0,
-                            //   horizontal: 15.0,
-                            // ),
-                            child: Center(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Image.asset(
-                                    "assets/icons/call.png",
-                                    color: black,
-                                    height: 3.5.h,
-                                  ),
-                                  Text(
-                                    translate.mobile,
-                                    style: GoogleFonts.poppins(
-                                        // fontWeight: FontWeight.bold,
-                                        color: black,
-                                        fontSize: 12.sp),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ],
-                              ),
-                            )),
-                      ),
-
-                      TextButton(
-                        onPressed:  () async => await launch(
-                        "https://wa.me/$whatsapp?text= Hi, I have an emergency"),
-                        child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(35),
-                                color: white,
-                                border: Border.all(color: navy)),
-                            height: height * 0.06,
-                            width: width * 0.35,
-                            // padding: const EdgeInsets.symmetric(
-                            //   vertical: 15.0,
-                            //   horizontal: 15.0,
-                            // ),
-                            child: Center(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  FaIcon(
-                                    (FontAwesomeIcons.whatsapp),
-                                    color: Colors.green,
-                                  ),
-                                  AutoSizeText(
-                                    translate.whatsapp,
-                                    style: GoogleFonts.poppins(
-                                        // fontWeight: FontWeight.bold,
-                                        color: black,
-                                        fontSize: 12.sp),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ],
-                              ),
-                            )),
-                      ),
-
-                      //   , CustomButton(
-                      // height: height * 0.06,
-                      //     text: "Email us",
-                      //     width: width*0.35,
-                      //     onpressed: (){},
-                      //     style: GoogleFonts.poppins(
-                      //   // fontWeight: FontWeight.bold,
-                      //   color: black,
-                      //   fontSize: 12.sp),)
+                      Expanded(
+                          // flex: 1,
+                          child: Container(
+                        // color: navy,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Titlecard(title: widget.area1),
+                            Titlecard(title: widget.area2),
+                            Titlecard(title: widget.area3),
+                            // Titlecard(title: "title"),
+                            // Titlecard(title: "title"),
+                          ],
+                        ),
+                      )),
+                      Expanded(
+                          // flex: 1,
+                          child: Container(
+                        // color: green,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Titlecard(title: widget.area4),
+                            Titlecard(title: widget.area5),
+                            Titlecard(title: widget.area6),
+                            // Titlecard(title: "title"),
+                            // Titlecard(title: "title"),
+                          ],
+                        ),
+                      ))
                     ],
                   ),
-                  SizedBox(
-                    height: height * 0.003.h,
-                  ),
-                ],
+          Contactbox()      ],
               ),
             ),
           ),
@@ -337,20 +199,23 @@ class Titlecard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(Icons.check, color: gold),
-        SizedBox(
-          width: MediaQuery.of(context).size.width * 0.003.w,
-        ),
-        Expanded(
-          child: Text(
-            title,
-            style: GoogleFonts.mulish(
-                fontWeight: FontWeight.w600, fontSize: 10.sp, color: black),
+    return Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: Row(
+        children: [
+          Icon(Icons.check, color: gold),
+          SizedBox(
+            width: 10,
           ),
-        ),
-      ],
+          Expanded(
+            child: Text(
+              title,
+              style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w400, fontSize: 13, color: black),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

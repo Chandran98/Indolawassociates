@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
-import 'package:indolawassociates/Client/utils/Internet%20connectivity/Network_status.dart';
+import 'package:indolawassociates/UI/components/Internet%20connectivity/Network_status.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/Paralegal/paralegalinfopage.dart';
 import 'package:indolawassociates/UI/routes/route.dart';

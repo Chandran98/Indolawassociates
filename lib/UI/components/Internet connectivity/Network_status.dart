@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
-import 'package:sizer/sizer.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
-import 'package:indolawassociates/Client/utils/Internet%20connectivity/connectivity.dart';
 import 'package:provider/provider.dart';
+
+import 'connectivity.dart';
 
 class NetworkSensitive extends StatelessWidget {
   final double opacity;
@@ -22,8 +21,8 @@ class NetworkSensitive extends StatelessWidget {
       return child;
     }
     
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child:Container(color: white,width: double.infinity,
           child: Column(
@@ -33,8 +32,8 @@ class NetworkSensitive extends StatelessWidget {
                       child: Expanded(
                         child: Container(
                             // color: Colors.green,
-                            height: height*0.021.h,
-                            width: width*0.051.w,
+                            height: 50,
+                            width: 50,
                             child: Image.asset("assets/images/wifioff.jpg")),
                       ),
                     ),

@@ -2,11 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:sizer/sizer.dart';
+// import 'package:sizer/sizer.dart';
 
 class Slisder extends StatefulWidget {
   Slisder({Key? key}) : super(key: key);
@@ -26,9 +25,8 @@ class _SlisderState extends State<Slisder> {
   var image;
   @override
   Widget build(BuildContext context) {
-    
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
     return InkWell(
       onTap: () {
         Navigator.pushNamed(context, offerroute);
@@ -43,16 +41,17 @@ class _SlisderState extends State<Slisder> {
           builder: (BuildContext context,
               AsyncSnapshot<List<QueryDocumentSnapshot<Map<String, dynamic>>>>
                   snapshot) {
-            if (!snapshot.hasData) {return
-              // return  Shimmer.fromColors(baseColor: Colors.green,highlightColor: Colors.black,
-              //   child: Container(
-              //         // child: Slisder(),
-              //         height: height * 0.025.h,
-              //         width: width * 1.w,
-              //       ),
-              // );
-              Center(
-                  child: CircularProgressIndicator(
+            if (!snapshot.hasData) {
+              return
+                  // return  Shimmer.fromColors(baseColor: Colors.green,highlightColor: Colors.black,
+                  //   child: Container(
+                  //         // child: Slisder(),
+                  //         height: height * 0.025.h,
+                  //         width: width * 1.w,
+                  //       ),
+                  // );
+                  Center(
+                      child: CircularProgressIndicator(
                 color: green,
               ));
             } else {
@@ -81,7 +80,7 @@ class _SlisderState extends State<Slisder> {
                     autoPlay: true,
                     autoPlayAnimationDuration: Duration(seconds: 1),
                     autoPlayCurve: Curves.fastOutSlowIn,
-                    height: MediaQuery.of(context).size.height * 0.2.h,
+                    height: 160,
                     enlargeCenterPage: true,
                     viewportFraction: 0.8,
                     onPageChanged: (i, carouselPageChangedReason) {

@@ -2,11 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+// import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
+import 'package:indolawassociates/UI/components/Internet%20connectivity/Network_status.dart';
 import 'package:indolawassociates/UI/provider/languageprovider.dart';
-import 'package:indolawassociates/Client/utils/Internet%20connectivity/Network_status.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/NRI.dart';
 import 'package:indolawassociates/UI/pages/Settingspage/careers/careerspage.dart';
@@ -45,8 +44,8 @@ class _SettingspageState extends State<Settingspage> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
 
     final translate = AppLocalizations.of(context);
 
@@ -62,10 +61,7 @@ class _SettingspageState extends State<Settingspage> {
             floatingActionButton: FloatingActionButton.extended(
                 label: Text(
                   translate!.drawerkey6,
-                  style: GoogleFonts.poppins(
-                      color: black,
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w500),
+                  style: demofont
                 ),
                 icon: Icon(
                   Icons.logout,
@@ -85,7 +81,7 @@ class _SettingspageState extends State<Settingspage> {
                       stops: [0.1, 0.9],
                       colors: [green.withOpacity(.8), Colors.black]),
                 ),
-                width: width,
+
                 // color: black,
                 child: Padding(
                   padding: const EdgeInsets.only(top: 20),
@@ -96,24 +92,22 @@ class _SettingspageState extends State<Settingspage> {
                         children: <Widget>[
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Container(
-                              child: IconButton(
-                                  iconSize: 20,
+                            child: IconButton(
+                                iconSize: 50,
+                                color: white,
+                                icon: Image.asset(
+                                  "assets/icons/rback.png",
                                   color: white,
-                                  icon: Image.asset(
-                                    "assets/icons/rback.png",
-                                    color: white,
-                                    height: 20.h,
-                                  ),
+                                  height: 40,
+                                ),
 
-                                  // onPressed: () => pushNewScreenWithRouteSettings(
-                                  //     context,
-                                  //     screen: Testingpage(),
-                                  //     settings:
-                                  //         RouteSettings(name: Testingpage.id)),
-                                  onPressed: () =>
-                                      Navigator.pushNamed(context, homeroute)),
-                            ),
+                                // onPressed: () => pushNewScreenWithRouteSettings(
+                                //     context,
+                                //     screen: Testingpage(),
+                                //     settings:
+                                //         RouteSettings(name: Testingpage.id)),
+                                onPressed: () =>
+                                    Navigator.pushNamed(context, homeroute)),
                           ),
                           // Consumer(builder: (_, THemeprovider notifier, child) {
                           //   return Padding(
@@ -126,12 +120,12 @@ class _SettingspageState extends State<Settingspage> {
                             padding: const EdgeInsets.symmetric(horizontal: 30),
                             child: Container(
                               child: IconButton(
-                                  iconSize: 20,
+                                  iconSize: 40,
                                   // color: green,
                                   icon: Image.asset(
                                     "assets/icons/edit.png",
                                     color: green.withOpacity(0.1),
-                                    height: 20.h,
+                                    height: 40,
                                   ),
                                   onPressed: () {}),
                             ),
@@ -139,8 +133,8 @@ class _SettingspageState extends State<Settingspage> {
                         ],
                       ),
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.015.h,
-                        width: MediaQuery.of(context).size.width * 0.08.w,
+                        height: 100,
+                        width: 100,
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
@@ -150,12 +144,12 @@ class _SettingspageState extends State<Settingspage> {
                             color: white),
                       ),
                       SizedBox(
-                        height: height * 0.002.h,
+                        height: 20,
                       ),
                       Text(
                         _username,
-                        style: GoogleFonts.mulish(
-                            fontSize: 12.sp,
+                        style: GoogleFonts.poppins(
+                            fontSize: 17,
                             color: Colors.white,
                             fontWeight: FontWeight.w500),
                       ),
@@ -164,20 +158,14 @@ class _SettingspageState extends State<Settingspage> {
                       // ),
                       Text(
                         _mobilenumber,
-                        style: GoogleFonts.mulish(
-                            fontSize: 12.sp,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500),
+                        style: dfont
                       ),
                       // SizedBox(
                       //   height: height * 0.005.h,
                       // ),
                       Text(
                         _email,
-                        style: GoogleFonts.mulish(
-                            fontSize: 12.sp,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500),
+                        style: dfont,
                       ),
                       // SizedBox(
                       //   height: height * 0.005.h,
@@ -185,12 +173,12 @@ class _SettingspageState extends State<Settingspage> {
                       Text(
                         _location,
                         style: GoogleFonts.mulish(
-                            fontSize: 12.sp,
+                            fontSize: 17,
                             color: Colors.white,
                             fontWeight: FontWeight.w500),
                       ),
                       SizedBox(
-                        height: height * 0.005.h,
+                        height: 20,
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -204,11 +192,12 @@ class _SettingspageState extends State<Settingspage> {
                             // ),
                             ListTile(
                               leading: IconButton(
+                                  iconSize: 30,
                                   onPressed: () {},
                                   icon: Image.asset(
                                     "assets/icons/offer.png",
                                     color: white,
-                                    height: 20,
+                                    height: 25,
                                   )),
                               title: Text(translate.drawerkey2,
                                   textScaleFactor: 1, style: dfont),
@@ -296,7 +285,7 @@ class _SettingspageState extends State<Settingspage> {
                                   icon: Image.asset(
                                     "assets/icons/career.png",
                                     color: white,
-                                    height: 20,
+                                    height: 25,
                                   )),
                               title: Text(translate.drawerkey7,
                                   textScaleFactor: 1, style: dfont),
@@ -318,7 +307,7 @@ class _SettingspageState extends State<Settingspage> {
                                   icon: Image.asset(
                                     "assets/icons/lang.png",
                                     color: white,
-                                    height: 20,
+                                    height: 25,
                                   )),
                               title: Text(translate.drawerkey4,
                                   textScaleFactor: 1, style: dfont),
@@ -332,7 +321,7 @@ class _SettingspageState extends State<Settingspage> {
                                             style: dfont,
                                           ),
                                           actionsPadding: EdgeInsets.symmetric(
-                                              horizontal: 2.w),
+                                              horizontal: 2),
                                           actions: [
                                             TextButton(
                                                 onPressed: () {
@@ -373,7 +362,7 @@ class _SettingspageState extends State<Settingspage> {
                                   icon: Image.asset(
                                     "assets/icons/contact.png",
                                     color: white,
-                                    height: 20,
+                                    height: 25,
                                   )),
                               title: Text(translate.cpage,
                                   textScaleFactor: 1, style: dfont),
@@ -381,7 +370,8 @@ class _SettingspageState extends State<Settingspage> {
                                   Navigator.pushNamed(context, contactroute),
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 20),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
                               child: Divider(
                                 color: divcolor,
                               ),

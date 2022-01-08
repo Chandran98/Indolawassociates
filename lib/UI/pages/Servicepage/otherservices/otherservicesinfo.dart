@@ -1,15 +1,15 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+// import 'package:sizer/sizer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
-import 'package:indolawassociates/Client/model/form_model.dart';
 import 'package:indolawassociates/UI/components/button.dart';
+import 'package:indolawassociates/UI/components/contact_box.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:indolawassociates/UI/models/form_model.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -101,7 +101,7 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                             icon: Image.asset(
                               "assets/icons/rback.png",
                               color: iconcolor,
-                              height: 10.h,
+                              height: 40,
                             ),
                             onPressed: () =>
                                 Navigator.pushNamed(context, servicespage)),
@@ -109,43 +109,34 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                       Expanded(
                         child: AutoSizeText(widget.servicetitle,
                             textAlign: TextAlign.center,
-                            style: GoogleFonts.poppins(
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w500,
-                                color: black)),
+                            style: titletextblack),
                       )
                     ],
                   ),
-                  SizedBox(
-                    height: height * 0.003.h,
-                  ),
+                  spaced30,
                   Card(
                     elevation: 4,
                     child: Container(
-                      height: MediaQuery.of(context).size.height * 0.03.h,
+                      height: 180,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(widget.serviceimage),
                               fit: BoxFit.cover)),
                     ),
                   ),
-                  SizedBox(
-                    height: height * 0.005.h,
-                  ),
+                  spaced30,
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       widget.servicecontent,
                       style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w400,
-                          fontSize: 10.sp,
+                          fontSize: 14,
                           color: black),
                       textAlign: TextAlign.justify,
                     ),
                   ),
-                  SizedBox(
-                    height: height * 0.002.h,
-                  ),
+                  spaced20,
                   TextButton(
                     onPressed: () => showModalBottomSheet(
                         shape: RoundedRectangleBorder(
@@ -167,9 +158,9 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(35),
                             color: white,
-                            border: Border.all(color: navy)),
-                        height: height * 0.06,
-                        width: width * 0.4,
+                            border: Border.all(color: black)),
+                        height: 50,
+                        width: 150,
                         // padding: const EdgeInsets.symmetric(
                         //   vertical: 15.0,
                         //   horizontal: 15.0,
@@ -180,7 +171,7 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                             style: GoogleFonts.poppins(
                                 // fontWeight: FontWeight.bold,
                                 color: black,
-                                fontSize: 11.sp),
+                                fontSize: 15),
                             textAlign: TextAlign.center,
                           ),
                         )),
@@ -210,113 +201,8 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                   //             ),
                   //           )),
                   // ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Divider(
-                      color: divcolor,
-                    ),
-                  ),
-                  SizedBox(
-                    height: height * 0.005.h,
-                  ),
-                  Text(
-                    translate.drawerkey5,
-                    style: GoogleFonts.poppins(
-                        // fontWeight: FontWeight.bold,
-                        color: black,
-                        fontSize: 13.sp),
-                  ),
-                  SizedBox(
-                    height: height * 0.002.h,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          launcher("tel: 8940383000");
-                        },
-                        child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(35),
-                                color: white,
-                                border: Border.all(color: navy)),
-                            height: height * 0.06,
-                            width: width * 0.35,
-                            // padding: const EdgeInsets.symmetric(
-                            //   vertical: 15.0,
-                            //   horizontal: 15.0,
-                            // ),
-                            child: Center(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Image.asset(
-                                    "assets/icons/call.png",
-                                    color: black,
-                                    height: 2.h,
-                                  ),
-                                  Text(
-                                    translate.mobile,
-                                    style: GoogleFonts.poppins(
-                                        // fontWeight: FontWeight.bold,
-                                        color: black,
-                                        fontSize: 12.sp),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ],
-                              ),
-                            )),
-                      ),
-
-                      TextButton(
-                        onPressed:  () async => await launch(
-                        "https://wa.me/$whatsapp?text= Hi, I have an emergency"),
-                        child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(35),
-                                color: white,
-                                border: Border.all(color: navy)),
-                            height: height * 0.06,
-                            width: width * 0.35,
-                            // padding: const EdgeInsets.symmetric(
-                            //   vertical: 15.0,
-                            //   horizontal: 15.0,
-                            // ),
-                            child: Center(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  FaIcon(
-                                    (FontAwesomeIcons.whatsapp),
-                                    color: Colors.green,
-                                  ),
-                                  AutoSizeText(
-                                    translate.whatsapp,
-                                    style: GoogleFonts.poppins(
-                                        // fontWeight: FontWeight.bold,
-                                        color: black,
-                                        fontSize: 12.sp),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ],
-                              ),
-                            )),
-                      ),
-
-                      //   , CustomButton(
-                      // height: height * 0.06,
-                      //     text: "Email us",
-                      //     width: width*0.35,
-                      //     onpressed: (){},
-                      //     style: GoogleFonts.poppins(
-                      //   // fontWeight: FontWeight.bold,
-                      //   color: black,
-                      //   fontSize: 12.sp),)
-                    ],
-                  )
+                 spaced30,
+                  Contactbox(),
                 ],
               ),
             ),
@@ -340,14 +226,13 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                         padding: const EdgeInsets.only(top: 10.0),
                         child: Text(
                           "Fill The Form",
-                          style: GoogleFonts.mulish(
-                              color: navy,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 22.sp),
+                          style: GoogleFonts.poppins(
+                              color: black,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 20),
                         ),
                       ),
-                      SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.003.h),
+                      spaced30,
                       TextFormField(
                           validator: MultiValidator([
                             RequiredValidator(errorText: usernamenull),
@@ -359,11 +244,10 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                                       BorderRadius.all(Radius.circular(20))),
                               prefixIcon: Icon(
                                 Icons.person,
-                                color: navy,
+                                color: black,
                               ),
                               labelText: "Name",
-                              labelStyle: TextStyle(
-                                  color: navy, fontWeight: FontWeight.bold))),
+                              labelStyle: demofont)),
                       SizedBox(height: 20),
                       TextFormField(
                           controller: _emailcontroller,
@@ -380,11 +264,10 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                                       BorderRadius.all(Radius.circular(20))),
                               prefixIcon: Icon(
                                 Icons.mail,
-                                color: navy,
+                                color: black,
                               ),
                               labelText: "Email",
-                              labelStyle: TextStyle(
-                                  color: navy, fontWeight: FontWeight.bold))),
+                              labelStyle: demofont)),
                       SizedBox(height: 20),
 
                       //   TextFormField(
@@ -395,7 +278,7 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                       //                 BorderRadius.all(Radius.circular(20))),
                       //         labelText: "Gender",
                       //         labelStyle: TextStyle(
-                      //             color: navy, fontWeight: FontWeight.bold))),
+                      //             color: black, fontWeight: FontWeight.bold))),
                       // SizedBox(height: 20),
                       Container(
                         decoration: BoxDecoration(
@@ -405,16 +288,10 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                         child: DropdownButton(
                           underline: SizedBox(),
                           iconSize: 35,
-                          iconEnabledColor: navy,
+                          iconEnabledColor: black,
                           isExpanded: true,
                           dropdownColor: Colors.white,
-                          hint: Text(
-                            "Gender",
-                            style: TextStyle(
-                                fontSize: 15.sp,
-                                color: navy,
-                                fontWeight: FontWeight.bold),
-                          ),
+                          hint: Text("Gender", style: demofont),
                           items: genderlist.map((valueitem) {
                             return DropdownMenuItem(
                               value: valueitem,
@@ -444,11 +321,10 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                                       BorderRadius.all(Radius.circular(20))),
                               prefixIcon: Icon(
                                 Icons.mobile_screen_share,
-                                color: navy,
+                                color: black,
                               ),
                               labelText: "Mobile",
-                              labelStyle: TextStyle(
-                                  color: navy, fontWeight: FontWeight.bold))),
+                              labelStyle: demofont)),
                       SizedBox(height: 20),
                       TextFormField(
                           validator: MultiValidator([
@@ -461,8 +337,7 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(20))),
                               labelText: "Address",
-                              labelStyle: TextStyle(
-                                  color: navy, fontWeight: FontWeight.bold))),
+                              labelStyle: demofont)),
                       SizedBox(height: 20),
 
                       TextFormField(
@@ -472,8 +347,7 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(20))),
                               labelText: "Services",
-                              labelStyle: TextStyle(
-                                  color: navy, fontWeight: FontWeight.bold))),
+                              labelStyle: demofont)),
                       SizedBox(height: 20),
                       // ignore: deprecated_member_use
                       // Container(color: gold,height: MediaQuery.of(context).size.height *0.05,width: MediaQuery.of(context).size.height *0.2,
@@ -507,8 +381,8 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Container(
-                            height: MediaQuery.of(context).size.height * .008.h,
-                            width: MediaQuery.of(context).size.width * .08.w,
+                            height: 50,
+                            width: 150,
                             child: Material(
                               borderRadius: BorderRadius.circular(20.0),
                               color: Colors.green,
@@ -547,8 +421,8 @@ class _OTherservicesinfoState extends State<OTherservicesinfo> {
                             ),
                           ),
                           Container(
-                            height: MediaQuery.of(context).size.height * .008.h,
-                            width: MediaQuery.of(context).size.width * .08.w,
+                            height: 50,
+                            width: 150,
                             child: Material(
                               borderRadius: BorderRadius.circular(20.0),
                               color: Colors.red,

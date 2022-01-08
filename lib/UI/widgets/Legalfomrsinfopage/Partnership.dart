@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/model/Legalforms_data_models.dart';
-import 'package:indolawassociates/Client/Pages/bottomnavybar/Legalforms.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
+import 'package:indolawassociates/UI/models/Legalforms_data_models.dart';
 import 'package:indolawassociates/UI/provider/languageprovider.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/pages/legalforms/legalforms_page.dart';
@@ -45,14 +41,13 @@ class _PartnershiplegalformsState extends State<Partnershiplegalforms> {
         return Scaffold(
            appBar: AppBar(
               elevation: 3,
-              toolbarHeight: 9.h,
+              toolbarHeight: 70,
               centerTitle: true,
               backgroundColor: dialog,
               title: FittedBox(
                 child: Text(
                   translate!.forms12,
-                  style: GoogleFonts.poppins(
-                      color: white, fontWeight: FontWeight.w500, fontSize: 13.sp),
+                style: titletextwhite,textAlign: TextAlign.center,
                 ),
               ),
               leading: IconButton(

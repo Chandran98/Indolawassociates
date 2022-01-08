@@ -11,7 +11,7 @@ import 'package:indolawassociates/UI/pages/Settingspage/contactpage.dart';
 import 'package:indolawassociates/UI/pages/legalforms/legalforms_page.dart';
 import 'package:indolawassociates/UI/pages/notification.dart';
 import 'package:indolawassociates/UI/pages/Settingspage/offer.dart';
-import 'package:indolawassociates/UI/pages/Settingspage/profilepage.dart';
+import 'package:indolawassociates/UI/pages/Settingspage/settings_page.dart';
 import 'package:indolawassociates/UI/pages/signup/signup.dart';
 import 'package:indolawassociates/UI/pages/MainHomePage.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/services.dart';

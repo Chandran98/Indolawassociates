@@ -1,11 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+// import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/Pages/Homepage/lawyers/services/lawyer_services.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
+import 'package:indolawassociates/UI/widgets/Lawyers/lawyer_services.dart';
 import 'Lawyer_info_page.dart';
 
 class Relawyerlist extends StatefulWidget {
@@ -21,8 +20,8 @@ class _RelawyerlistState extends State<Relawyerlist> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
     return StreamBuilder<QuerySnapshot>(
       stream: lawyerDB.getlawyerdb(),
       builder: (context, snapshot) {
@@ -88,18 +87,15 @@ class _RelawyerlistState extends State<Relawyerlist> {
                                     bottomRight: Radius.circular(30))
                                 // BorderRadius.all(Radius.circular(20)),
                                 ),
-                            height: height * 0.02.h,
+                            height: 120,
                             // width: width * 0.3.w,
                             child: Row(
                               children: [
                                 Expanded(
                                     flex: 1,
                                     child: Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.05.w,
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.011.h,
+                                      // width: 50,
+                                      height:80,
                                       decoration: BoxDecoration(
                                         // border: Border.all(color: Colors.white, width: 5),
 
@@ -123,17 +119,17 @@ class _RelawyerlistState extends State<Relawyerlist> {
                                           AutoSizeText(
                                             name.toString(),
                                             style: GoogleFonts.poppins(
-                                                fontSize: 12.sp,
+                                                fontSize: 14,
                                                 fontWeight: FontWeight.w400,
                                                 color: white),
                                           ),
                                           SizedBox(
-                                            height: height * 0.003.h,
+                                            height: 20,
                                           ),
                                           AutoSizeText(
                                             "${specialized.toString()} Lawyer",
                                             style: GoogleFonts.poppins(
-                                                fontSize: 12.sp,
+                                                fontSize: 14,
                                                 fontWeight: FontWeight.w400,
                                                 color: white),
                                           )

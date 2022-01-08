@@ -10,4 +10,6 @@ class GetdataFB {
         .collection("ILA")
         .doc(FirebaseAuth.instance.currentUser!.uid).snapshots();
   }
+
+  
 }

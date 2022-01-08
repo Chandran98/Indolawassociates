@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+// import 'package:sizer/sizer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/components/socialmedia.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
@@ -55,12 +54,14 @@ class _ContactpageState extends State<Contactpage> {
                     children: <Widget>[
                       Container(
                         child: IconButton(
-                            iconSize: 20,
+                            iconSize: 45,
+                            splashColor: green,
+                            // iconSize: 20,
                             color: white,
                             icon: Image.asset(
                               "assets/icons/rback.png",
                               color: iconcolor,
-                              height: 20.h,
+                              height: 40,
                             ),
                             onPressed: () =>
                                 Navigator.pushNamed(context, settingsroute)),
@@ -82,23 +83,19 @@ class _ContactpageState extends State<Contactpage> {
                     ],
                   ),
                   SizedBox(
-                    height: height * 0.002.h,
+                    height: 15,
                   ),
                   Text(
                     translate!.cpage,
-                    style: GoogleFonts.poppins(
-                        fontSize: 20.sp,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500),
+                                    style: titletextblack,textAlign: TextAlign.center,
+
                   ),
-                  SizedBox(
-                    height: height * 0.002.h,
-                  ),
+                  SizedBox(height: 15),
                   Text(
                     translate.helpline1,
                     // textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                        fontSize: 12.sp,
+                        fontSize: 15,
                         color: Colors.black,
                         fontWeight: FontWeight.w400),
                   ),
@@ -106,7 +103,7 @@ class _ContactpageState extends State<Contactpage> {
                     translate.helplinetitle1,
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                        fontSize: 12.sp,
+                        fontSize: 15,
                         color: Colors.black,
                         fontWeight: FontWeight.w400),
                   ),
@@ -116,130 +113,156 @@ class _ContactpageState extends State<Contactpage> {
                       color: divcolor,
                     ),
                   ),
-                  SizedBox(
-                    height: height * 0.003.h,
-                  ),
-                  InkWell(
-                    onTap: () async => await launch(
-                        "https://wa.me/$whatsapp?text= Hi, I have an emergency"),
-                    child: Container(
-                        decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(15),
-                            color: white,
-                            border: Border.all(color: Color(0xff2748A0))),
-                        height: MediaQuery.of(context).size.height * 0.01.h,
-                        width: MediaQuery.of(context).size.width * 0.2.w,
-                        // padding: const EdgeInsets.symmetric(
-                        //   vertical: 15.0,
-                        //   horizontal: 15.0,
-                        // ),
-                        child: Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              FaIcon(
-                                FontAwesomeIcons.whatsapp,
-                                color: Colors.green,
-                              ),
-                              SizedBox(
-                                width: 7.w,
-                              ),
-                              Text(
-                                translate.whatsapp,
-                                style: GoogleFonts.poppins(
-                                    // fontWeight: FontWeight.bold,
-                                    color: black,
-                                    fontSize: 15.sp),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                        )),
-                  ),
-                  SizedBox(
-                    height: height * 0.0023.h,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      launcher("tel: 8940383000");
-                    },
-                    child: Container(
-                        decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(15),
-                            color: white,
-                            border: Border.all(color: Color(0xff2748A0))),
-                        height: MediaQuery.of(context).size.height * 0.01.h,
-                        width: MediaQuery.of(context).size.width * 0.2.w,
-                        // padding: const EdgeInsets.symmetric(
-                        //   vertical: 15.0,
-                        //   horizontal: 15.0,
-                        // ),
-                        child: Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.phone,
-                                size: 09.w,
-                              ),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Text(
-                                translate.mobile,
-                                style: GoogleFonts.poppins(
-                                    // fontWeight: FontWeight.bold,
-                                    color: black,
-                                    fontSize: 15.sp),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                        )),
+                  SizedBox(height: 20),
+                  // InkWell(
+                  //   onTap: () async => await launch(
+                  //       "https://wa.me/$whatsapp?text= Hi, I have an emergency"),
+                  //   child: Container(
+                  //       decoration: BoxDecoration(
+                  //           // borderRadius: BorderRadius.circular(15),
+                  //           color: white,
+                  //           border: Border.all(color: Color(0xff2748A0))),
+                  //       height: 60,
+                  //       width: 300,
+                  //       // padding: const EdgeInsets.symmetric(
+                  //       //   vertical: 15.0,
+                  //       //   horizontal: 15.0,
+                  //       // ),
+                  //       child: Center(
+                  //         child: Row(
+                  //           mainAxisAlignment: MainAxisAlignment.center,
+                  //           children: [
+                  //             FaIcon(
+                  //               FontAwesomeIcons.whatsapp,
+                  //               color: Colors.green,
+                  //             ),
+                  //             SizedBox(
+                  //               width: 20,
+                  //             ),
+                  //             Text(
+                  //               translate.whatsapp,
+                  //               style: GoogleFonts.poppins(
+                  //                   // fontWeight: FontWeight.bold,
+                  //                   color: black,
+                  //                   fontSize: 15),
+                  //               textAlign: TextAlign.center,
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       )),
+                  // ),
+
+                  Boxshape(
+                    link:
+                        "https://wa.me/$whatsapp?text= Hi, I have an emergency",
+                    text: translate.whatsapp,
+                    icon: FaIcon(
+                      FontAwesomeIcons.whatsapp,
+                      color: Colors.green,
+                    ),
                   ),
                   SizedBox(
-                    height: height * 0.002.h,
+                    height: 20,
                   ),
-                  InkWell(
-                    onTap: () {
-                      launcher("mailto: indolawassociates@gmail.com");
-                    },
-                    child: Container(
-                        decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(15),
-                            color: white,
-                            border: Border.all(color: Color(0xff2748A0))),
-                        height: MediaQuery.of(context).size.height * 0.01.h,
-                        width: MediaQuery.of(context).size.width * 0.2.w,
-                        // padding: const EdgeInsets.symmetric(
-                        //   vertical: 15.0,
-                        //   horizontal: 15.0,
-                        // ),
-                        child: Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              FaIcon(
-                                FontAwesomeIcons.mailBulk,
-                                color: Color.fromARGB(255, 175, 116, 76),
-                              ),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              Text(
-                                translate.mail,
-                                style: GoogleFonts.poppins(
-                                    // fontWeight: FontWeight.bold,
-                                    color: black,
-                                    fontSize: 15.sp),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                        )),
+                  // InkWell(
+                  //   onTap: () {
+                  //     launcher("tel: 8940383000");
+                  //   },
+                  //   child: Container(
+                  //       decoration: BoxDecoration(
+                  //           // borderRadius: BorderRadius.circular(15),
+                  //           color: white,
+                  //           border: Border.all(color: Color(0xff2748A0))),
+                  //       height: 60,
+                  //       width: 300,
+                  //       // padding: const EdgeInsets.symmetric(
+                  //       //   vertical: 15.0,
+                  //       //   horizontal: 15.0,
+                  //       // ),
+                  //       child: Center(
+                  //         child: Row(
+                  //           mainAxisAlignment: MainAxisAlignment.center,
+                  //           children: [
+                  //             Icon(
+                  //               Icons.phone,
+                  //               size: 20,
+                  //             ),
+                  //             SizedBox(
+                  //               width: 20,
+                  //             ),
+                  //             Text(
+                  //               translate.mobile,
+                  //               style: GoogleFonts.poppins(
+                  //                   // fontWeight: FontWeight.bold,
+                  //                   color: black,
+                  //                   fontSize: 15),
+                  //               textAlign: TextAlign.center,
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       )),
+                  // ),
+
+                  Boxshape(
+                    link: "tel: 8940383000",
+                    text: translate.mobile,
+                    icon: FaIcon(
+                      FontAwesomeIcons.phoneAlt,
+                      color: Colors.black,
+                    ),
                   ),
                   SizedBox(
-                    height: height * 0.002.h,
+                    height: 20,
+                  ),
+                  Boxshape(
+                    link: "mailto: indolawassociates@gmail.com",
+                    text: translate.mail,
+                    icon: FaIcon(
+                      FontAwesomeIcons.mailBulk,
+                      color: Color.fromARGB(255, 175, 116, 76),
+                    ),
+                  ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     launcher("mailto: indolawassociates@gmail.com");
+                  //   },
+                  //   child: Container(
+                  //       decoration: BoxDecoration(
+                  //           // borderRadius: BorderRadius.circular(15),
+                  //           color: white,
+                  //           border: Border.all(color: Color(0xff2748A0))),
+                  //       height: 60,
+                  //       width: 300,
+                  //       // padding: const EdgeInsets.symmetric(
+                  //       //   vertical: 15.0,
+                  //       //   horizontal: 15.0,
+                  //       // ),
+                  //       child: Center(
+                  //         child: Row(
+                  //           mainAxisAlignment: MainAxisAlignment.center,
+                  //           children: [
+                  //             FaIcon(
+                  //               FontAwesomeIcons.mailBulk,
+                  //               color: Color.fromARGB(255, 175, 116, 76),
+                  //             ),
+                  //             SizedBox(
+                  //               width: 20,
+                  //             ),
+                  //             Text(
+                  //               translate.mail,
+                  //               style: GoogleFonts.poppins(
+                  //                   // fontWeight: FontWeight.bold,
+                  //                   color: black,
+                  //                   fontSize: 15),
+                  //               textAlign: TextAlign.center,
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       )),
+                  // ),
+
+                  SizedBox(
+                    height: 20,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -248,29 +271,29 @@ class _ContactpageState extends State<Contactpage> {
                     ),
                   ),
                   SizedBox(
-                    height: height * 0.002.h,
+                    height: 15,
                   ),
                   FittedBox(
                     child: Text(
                       translate.exp,
                       style: GoogleFonts.poppins(
-                          fontSize: 15.sp,
+                          fontSize: 17,
                           color: Colors.black,
                           fontWeight: FontWeight.w500),
                     ),
                   ),
                   SizedBox(
-                    height: height * 0.002.h,
+                    height: 8,
                   ),
                   Text(
                     translate.helptitle,
                     style: GoogleFonts.poppins(
-                        fontSize: 10.sp,
+                        fontSize: 13,
                         color: Colors.black,
                         fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
-                    height: height * 0.001.h,
+                    height: 10,
                   ),
                   InkWell(
                     onTap: () {
@@ -279,11 +302,11 @@ class _ContactpageState extends State<Contactpage> {
                     },
                     child: Image.asset(
                       "assets/icons/star.png",
-                      height: height * 0.05,
+                      height: 50,
                     ),
                   ),
                   SizedBox(
-                    height: height * 0.0035.h,
+                    height: 30,
                   ),
                   Socialmedia()
                 ],
@@ -296,5 +319,50 @@ class _ContactpageState extends State<Contactpage> {
   }
 }
 
+class Boxshape extends StatelessWidget {
+  String text, link;
+  FaIcon icon;
+  Boxshape(
+      {Key? key, required this.link, required this.text, required this.icon})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      // ignore: unnecessary_statements
+      onTap: () async => await launch(link),
+      child: Container(
+          decoration: BoxDecoration(
+              // borderRadius: BorderRadius.circular(15),
+              color: white,
+              border: Border.all(color: Color(0xff2748A0))),
+          height: 60,
+          width: 300,
+          // padding: const EdgeInsets.symmetric(
+          //   vertical: 15.0,
+          //   horizontal: 15.0,
+          // ),
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                icon,
+                SizedBox(
+                  width: 20,
+                ),
+                Text(
+                  text,
+                  style: GoogleFonts.poppins(
+                      // fontWeight: FontWeight.bold,
+                      color: black,
+                      fontSize: 15),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          )),
+    );
+  }
+}
 
 // https://play.google.com/store/apps/details?id=com.indolawassociates.Indolaw

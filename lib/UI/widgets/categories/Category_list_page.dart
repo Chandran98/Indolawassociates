@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
-import 'package:indolawassociates/Client/Pages/Categories.dart/cate.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
-import 'package:indolawassociates/Client/model/categories_data_model.dart';
+// import 'package:sizer/sizer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
+import 'package:indolawassociates/UI/models/categories_data_model.dart';
 import 'package:indolawassociates/UI/widgets/categories/Category_info_page.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
 
@@ -151,36 +149,22 @@ class _CatesliderState extends State<Cateslider> {
                     )));
       },
       child: Container(
-        width: 20.w, padding: EdgeInsets.symmetric(horizontal: 8),
+        width: 80, padding: EdgeInsets.symmetric(horizontal: 7),
 
         // height: height * 0.18.h,
         child: Column(
           children: [
-            ClipOval(
-              child: Container(
-                // padding: EdgeInsets.all(20),
-                width: width * 0.192.w,
-                height: height * 0.015.h,
-                decoration: BoxDecoration(
-                    // color:selectedindex==true?  white:green.withOpacity(.01),
-                    shape: BoxShape.circle,
-                    color: white,
-                    // borderRadius: BorderRadius.only(
-                    //   topLeft: Radius.circular(12),
-                    //   bottomLeft: Radius.circular(12),
-                    // ),
-                    image: DecorationImage(
-                        image: AssetImage(
-                          categorylist[index].categorypic,
-                        ),
-                        fit: BoxFit.contain)),
+            CircleAvatar(radius: 35,
+              backgroundImage: AssetImage(
+                categorylist[index].categorypic,
               ),
+              backgroundColor: white,
             ),
             Container(
                 child: FittedBox(
               child: Text(categorylist[index].categorytitle,
                   style: TextStyle(
-                      fontSize: 13.sp,
+                      fontSize: 13,
                       fontWeight: FontWeight.w600,
                       color: Colors.white)),
             ))
@@ -198,7 +182,7 @@ class _CatesliderState extends State<Cateslider> {
             itemBuilder: _buildcateslide,
             itemCount: 9,
             shrinkWrap: true,
-            itemSize: 20.w,
+            itemSize: 80,
             allowAnotherDirection: true,
             initialIndex: 4,
             dynamicItemSize: true,

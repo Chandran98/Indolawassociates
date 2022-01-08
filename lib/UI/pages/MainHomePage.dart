@@ -1,11 +1,10 @@
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/pages/Home_page.dart';
 import 'package:indolawassociates/UI/pages/legalforms/legalforms_page.dart';
-import 'package:indolawassociates/UI/pages/Settingspage/profilepage.dart';
+import 'package:indolawassociates/UI/pages/Settingspage/settings_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/services.dart';
 import 'package:indolawassociates/UI/routes/route.dart';

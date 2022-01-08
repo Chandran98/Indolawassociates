@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+// import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -9,18 +9,18 @@ class Socialmedia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
     return Container(
       child: Column(children: [ Text(
                 "Follow us on",
                 style: GoogleFonts.poppins(
-                    fontSize: 14.sp,
+                    fontSize: 17,
                     color: Colors.black,
                     fontWeight: FontWeight.w400),
               ),
               SizedBox(
-                height: height * 0.001.h,
+                height: 5,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -29,27 +29,27 @@ class Socialmedia extends StatelessWidget {
                     onTap: () {launch("https://www.linkedin.com/company/indo-law-associates");},
                     child: Image.asset(
                       "assets/icons/likin.png",
-                      height: height * 0.065,
+                      height: 50,
                     ),
                   ),
                   SizedBox(
-                    width: width * 0.002.w,
+                    width: 5,
                   ),
                   InkWell(
                     onTap: () {launch("https://www.facebook.com/Indo-Law-Associates-112576861204879/?ref=pages_you_manage");},
                     child: Image.asset(
                       "assets/icons/fb.png",
-                      height: height * 0.055,
+                      height:40,
                     ),
                   ),
                   SizedBox(
-                    width: width * 0.005.w,
+                    width: 10,
                   ),
                   InkWell(
                     onTap: () {launch("https://www.instagram.com/indolaw_associates/");},
                     child: Image.asset(
                       "assets/icons/insta.png",
-                      height: height * 0.04,
+                      height: 30,
                     ),
                   ),
                 ],

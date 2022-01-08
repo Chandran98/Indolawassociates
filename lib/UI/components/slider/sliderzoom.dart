@@ -2,9 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
-import 'package:sizer/sizer.dart';
+// import 'package:sizer/sizer.dart';
 import 'package:photo_view/photo_view.dart';
 import '../../../UI/constant/constant.dart';
 import '../../../UI/pages/MainHomePage.dart';
@@ -17,9 +16,9 @@ class Sliderimage extends StatefulWidget {
 }
 
 class _SliderimageState extends State<Sliderimage> {
-  void onback() {
-    Navigator.pushReplacementNamed(context, homeroute);
-  }
+  // void onback() {
+  //   Navigator.of(context).pop();
+  // }
 
   @override
   void dispose() {
@@ -30,8 +29,8 @@ class _SliderimageState extends State<Sliderimage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.07.h,
-      width: MediaQuery.of(context).size.width * 0.32.w,
+      height: 450,
+      // width: 300,
       // color: Colors.green,
       // height: MediaQuery.of(context).size.height * 0.04.h,
       // width: MediaQuery.of(context).size.width * 0.3.w,
@@ -57,24 +56,27 @@ class _SliderimageState extends State<Sliderimage> {
                   snapshot.data![index];
               Map<String, dynamic>? fetchimage = slider.data();
               final image = fetchimage!["images"];
-              return Container(
-                  color: Colors.white,
-                  height: MediaQuery.of(context).size.height * 0.035.h,
-                  width: MediaQuery.of(context).size.width * 0.3.w,
-                  // child: Hero(
-                  //     tag: "slider${widget.image}",
-                  // child: PhotoView(backgroundDecoration: BoxDecoration(color: white),
-                  //     imageProvider: NetworkImage(
-                  //   image,
-                  // )),
-                  child: InkWell(
-                      onTap: () => Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ZOomimage(
-                                    image: image,
-                                  ))),
-                      child: CachedNetworkImage(imageUrl: image)));
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                child: Container(
+                    color: Colors.white,
+                    height: 230,
+                    // width: 3,
+                    // child: Hero(
+                    //     tag: "slider${widget.image}",
+                    // child: PhotoView(backgroundDecoration: BoxDecoration(color: white),
+                    //     imageProvider: NetworkImage(
+                    //   image,
+                    // )),
+                    child: InkWell(
+                        onTap: () => Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ZOomimage(
+                                      image: image,
+                                    ))),
+                        child: CachedNetworkImage(imageUrl: image))),
+              );
             },
           );
 
@@ -109,20 +111,20 @@ class ZOomimage extends StatefulWidget {
 }
 
 class _ZOomimageState extends State<ZOomimage> {
-  void onback() {
-    Navigator.pushReplacementNamed(context,offerroute);
-  }
-
   @override
   Widget build(BuildContext context) {
+    void onback() {
+      Navigator.of(context).pop();
+    }
+
     return WillPopScope(
       onWillPop: () {
         onback();
         return Future.value(false);
       },
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.035.h,
-        width: MediaQuery.of(context).size.width * 0.3.w,
+        height: 250,
+        // width: 300,
         child: PhotoView(imageProvider: NetworkImage(widget.image)),
       ),
     );

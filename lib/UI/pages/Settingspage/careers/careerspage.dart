@@ -1,19 +1,12 @@
 import 'dart:io';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:indolawassociates/UI/pages/Settingspage/careers/careersform.dart';
-import 'package:sizer/sizer.dart';
-import 'package:form_field_validator/form_field_validator.dart';
+// import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
-import 'package:intl/intl.dart';
-import 'package:path/path.dart';
 
 class Careerspage extends StatefulWidget {
   Careerspage({Key? key}) : super(key: key);
@@ -71,8 +64,8 @@ class _CareerspageState extends State<Careerspage> {
   var pickfile;
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
     final translate = AppLocalizations.of(context);
     void onback() {
       Navigator.pushNamed(context, settingsroute);
@@ -101,61 +94,47 @@ class _CareerspageState extends State<Careerspage> {
                               icon: Image.asset(
                                 "assets/icons/rback.png",
                                 color: iconcolor,
-                                height: 20.h,
+                                height: 40,
                               ),
                               onPressed: () =>
                                   Navigator.pushNamed(context, settingsroute)),
                         ),
-                      ),  SizedBox(
-                    width: width * 0.03.w,
-                  ),
-                      Expanded(
+                      ),  
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 40),
                         child: Text(
                           translate!.drawerkey7,
-                          style: GoogleFonts.poppins(
-                              fontSize: 18.sp,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500),
+                                         style: titletextblack,textAlign: TextAlign.center,
+
                         ),
                       )
                     ],
                   ),
-                  SizedBox(
-                    height: height * 0.0,
-                  ),
+                  spaced10,
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.03.h,
-                    width: MediaQuery.of(context).size.width * 0.5.w,
+                    height:200,
+                    // width: 150,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         image: DecorationImage(
                             image: AssetImage("assets/images/COD.jpg"),
                             fit: BoxFit.cover)),
                   ),
-                  SizedBox(
-                    height: height * 0.0035.h,
-                  ),
+                 spaced30,
                   Text(
                     translate.career4,
-                    style: GoogleFonts.poppins(
-                        fontSize: 15.sp,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400),
+                    style: demofont
                   ),
-                  SizedBox(
-                    height: height * 0.0015.h,
-                  ),
+                  spaced10,
                   Text(
                     translate.career5, textAlign: TextAlign.justify,
                     style: GoogleFonts.poppins(
-                        fontSize: 10.sp,
+                        fontSize: 13,
                         color: Colors.black,
                         fontWeight: FontWeight.w400),
                     // textScaleFactor: 1,
                   ),
-                  SizedBox(
-                    height: height * 0.004.h,
-                  ),
+                 spaced10,
                   TextButton(
                     onPressed: () => showModalBottomSheet(
                         shape: RoundedRectangleBorder(
@@ -180,8 +159,8 @@ class _CareerspageState extends State<Careerspage> {
                             borderRadius: BorderRadius.circular(20),
                             color: white,
                             border: Border.all(color: navy)),
-                        height: MediaQuery.of(context).size.height * 0.008.h,
-                        width: MediaQuery.of(context).size.width * 0.13.w,
+                        height:55,
+                        width: 150,
                         // padding: const EdgeInsets.symmetric(
                         //   vertical: 15.0,
                         //   horizontal: 15.0,
@@ -190,10 +169,7 @@ class _CareerspageState extends State<Careerspage> {
                           child: FittedBox(
                             child: Text(
                               translate.career1,
-                              style: GoogleFonts.poppins(
-                                  // fontWeight: FontWeight.bold,
-                                  color: black,
-                                  fontSize: 14.sp),
+                              style: demofont,
                               textAlign: TextAlign.center,
                             ),
                           ),

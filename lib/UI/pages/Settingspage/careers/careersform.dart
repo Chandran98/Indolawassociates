@@ -7,12 +7,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/api/firebaseapi.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:intl/intl.dart';
-import 'package:sizer/sizer.dart';
+// import 'package:sizer/sizer.dart';
 import 'package:path/path.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -75,8 +74,8 @@ class _CareersformState extends State<Careersform> {
   var enrollmentfiles;
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
     final translate = AppLocalizations.of(context);
     void onback() {
       Navigator.pushNamed(context, settingsroute);
@@ -102,11 +101,9 @@ class _CareersformState extends State<Careersform> {
                       style: GoogleFonts.poppins(
                           color: black,
                           fontWeight: FontWeight.w500,
-                          fontSize: 18.sp),
+                          fontSize: 20),
                     ),
-                  ),
-                  SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.002.h),
+                  ),spaced20,
                   TextFormField(
                       validator: MultiValidator([
                         RequiredValidator(errorText: usernamenull),
@@ -159,7 +156,7 @@ class _CareersformState extends State<Careersform> {
                   //         labelText: "Date Of Birth",
                   //         labelStyle: TextStyle(
                   //             color: navy, fontWeight: FontWeight.bold))),
-
+    
                   TextFormField(
                     controller: _dobcontroller,
                     decoration: InputDecoration(
@@ -212,18 +209,18 @@ class _CareersformState extends State<Careersform> {
                       // var dob = DateFormat("dd-MM-yyyy");
                       // // DateTime date = DateTime(1900);
                       // FocusScope.of(context).requestFocus(new FocusNode());
-
+    
                       // final _picked = await showDatePicker(
                       //     context: context,
                       //     initialDate: DateTime.now(),
                       //     firstDate: DateTime(1900),
                       //     lastDate: DateTime(2100));
-
+    
                       // _dobcontroller.text = DateFormat("dd-MM-yyyy").format(_picked);
                       // print(_picked);
                     },
                   ),
-
+    
                   SizedBox(height: 20),
                   TextFormField(
                       validator: MultiValidator([
@@ -358,7 +355,7 @@ class _CareersformState extends State<Careersform> {
                     ),
                   ),
                   SizedBox(height: 20),
-
+    
                   // TextButton(onPressed: selectfile, child: Text("Pick file",style: demofont,)),
                   TextButton(
                     onPressed: () async {
@@ -379,21 +376,17 @@ class _CareersformState extends State<Careersform> {
                             color: white,
                             border:
                                 Border.all(color: color ? navy : Colors.red)),
-                        height: 7.h,
-                        width: 80.w,
+                         height:55,
+                        width: 300,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            SizedBox(
-                              width: 20.w,
-                            ),
+                          
                             Icon(
                               Icons.file_upload_outlined,
                               color: blackish,
                             ),
-                            SizedBox(
-                              width: 5.w,
-                            ),
+                           
                             Text(
                               ("Require Adhar card"),
                               style: demofont,
@@ -422,25 +415,21 @@ class _CareersformState extends State<Careersform> {
                             color: white,
                             border:
                                 Border.all(color: color ? navy : Colors.red)),
-                        height: 7.h,
-                        width: 80.w,
+                        height:55,
+                        width: 300,
                         // padding: const EdgeInsets.symmetric(
                         //   vertical: 15.0,
                         //   horizontal: 15.0,
                         // ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            SizedBox(
-                              width: 20.w,
-                            ),
+                            
                             Icon(
                               Icons.file_upload_outlined,
                               color: blackish,
                             ),
-                            SizedBox(
-                              width: 5.w,
-                            ),
+                            
                             Text(
                               (" Require Enrollment ID"),
                               style: demofont,
@@ -450,13 +439,13 @@ class _CareersformState extends State<Careersform> {
                         )),
                   ),
                   SizedBox(height: 20),
-
+    
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Container(
-                        height: MediaQuery.of(context).size.height * .008.h,
-                        width: MediaQuery.of(context).size.width * .08.w,
+                        height:50,
+                        width: 150,
                         child: Material(
                           borderRadius: BorderRadius.circular(20.0),
                           color: Colors.green,
@@ -487,7 +476,7 @@ class _CareersformState extends State<Careersform> {
                                   //  Scaffold.of(scaffoldContext).showSnackBar(snackBar);
                                   // ScaffoldMessenger.of(context).showSnackBar(
                                   //     SnackBar(content: Text("Pick a file")));
-
+    
                                   setState(() {
                                     color = true;
                                   });
@@ -515,7 +504,7 @@ class _CareersformState extends State<Careersform> {
                                     //  Scaffold.of(scaffoldContext).showSnackBar(snackBar);
                                     // ScaffoldMessenger.of(context).showSnackBar(
                                     //     SnackBar(content: Text("Pick a file")));
-
+    
                                     setState(() {
                                       color = true;
                                     });
@@ -524,7 +513,7 @@ class _CareersformState extends State<Careersform> {
                                     uploadadhar();
                                     uploadenrollmentid();
                                     Navigator.of(context).pop();
-
+    
                                     ScaffoldMessenger.of(context)
                                         .showSnackBar(SnackBar(
                                       content: Text("Submitted"),
@@ -534,7 +523,7 @@ class _CareersformState extends State<Careersform> {
                                   // uploadadhar();
                                   // uploadenrollmentid();
                                   // Navigator.of(context).pop();
-
+    
                                   // ScaffoldMessenger.of(context)
                                   //     .showSnackBar(SnackBar(
                                   //   content: Text("Submitted"),
@@ -547,8 +536,8 @@ class _CareersformState extends State<Careersform> {
                         ),
                       ),
                       Container(
-                        height: MediaQuery.of(context).size.height * .008.h,
-                        width: MediaQuery.of(context).size.width * .08.w,
+                        height:50,
+                        width:150,
                         child: Material(
                           borderRadius: BorderRadius.circular(20.0),
                           color: Colors.red,

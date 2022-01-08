@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:indolawassociates/UI/components/slider/sliderzoom.dart';
-import 'package:sizer/sizer.dart';
+// import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/components/button.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
-import 'package:indolawassociates/UI/pages/Settingspage/profilepage.dart';
+import 'package:indolawassociates/UI/pages/Settingspage/settings_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 
 class Offersub extends StatelessWidget {
   const Offersub({Key? key}) : super(key: key);
@@ -20,8 +18,8 @@ class Offersub extends StatelessWidget {
       Navigator.pushNamed(context, settingsroute);
     }
 
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
     final translate = AppLocalizations.of(context);
     return WillPopScope(
       onWillPop: () {
@@ -32,14 +30,13 @@ class Offersub extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             elevation: 3,
-            toolbarHeight: height * 0.011.h,
+            toolbarHeight: 70,
             centerTitle: true,
             backgroundColor: dialog,
             title: FittedBox(
               child: Text(
                 translate!.drawerkey2,
-                style: GoogleFonts.poppins(
-                    color: white, fontWeight: FontWeight.w500, fontSize: 15.sp),
+                style: titletextwhite,textAlign: TextAlign.center,
               ),
             ),
             leading: IconButton(
@@ -47,12 +44,12 @@ class Offersub extends StatelessWidget {
                 icon: Image.asset(
                   "assets/icons/rback.png",
                   color: white,
-                  height: 10.h,
+                  height: 35,
                 )),
           ),
           body: Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 20,
+              horizontal: 20,vertical: 20
             ),
             child: SingleChildScrollView(
               child: Column(
@@ -91,36 +88,25 @@ class Offersub extends StatelessWidget {
                   //   child: Slisder(),
                   //   height: height * 0.02.h,
                   // ),
-                  SizedBox(
-                    height: height * 0.003.h,
-                  ),
-                  Text(
-                    translate.refer,
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
-                        color: black,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w400),
-                  ),
-                  SizedBox(
-                    height: height * 0.002.h,
-                  ),
+                  spaced10,
+                  Text(translate.refer,
+                      textAlign: TextAlign.center, style: titletextblack),
+                  spaced10,
                   Text(
                     translate.refersubtitle,
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                         color: Colors.grey,
-                        fontSize: 12.sp,
+                        fontSize: 13,
                         fontWeight: FontWeight.w500),
                   ),
-            
-                  Sliderimage(),      SizedBox(
-                    height: height * 0.003.h,
-                  ),
+
+                  Sliderimage(), spaced10,
                   TextButton(
-                    onPressed: () {launch(
+                    onPressed: () {
+                      launch(
                           "https://play.google.com/store/apps/details?id=com.indolawassociates.Indolaw");
-                
+
                       // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       //     content: Text(
                       //   "Locked",
@@ -132,8 +118,8 @@ class Offersub extends StatelessWidget {
                             // borderRadius: BorderRadius.circular(35),
                             color: dialog,
                             border: Border.all(color: navy)),
-                        height: height * 0.009.h,
-                        width: width * 0.2.w,
+                        height: 60,
+                        width: 300,
                         // padding: const EdgeInsets.symmetric(
                         //   vertical: 15.0,
                         //   horizontal: 15.0,
@@ -141,10 +127,7 @@ class Offersub extends StatelessWidget {
                         child: Center(
                           child: Text(
                             translate.invite,
-                            style: GoogleFonts.poppins(
-                                color: white,
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w500),
+                            style: dfont,
                             textAlign: TextAlign.center,
                           ),
                         )),

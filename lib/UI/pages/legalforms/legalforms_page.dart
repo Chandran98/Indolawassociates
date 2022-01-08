@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:indolawassociates/Client/utils/Internet%20connectivity/Network_status.dart';
+import 'package:indolawassociates/UI/components/Internet%20connectivity/Network_status.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:indolawassociates/UI/widgets/Legalfomrsinfopage/Business.dart';
@@ -18,7 +16,7 @@ import 'package:indolawassociates/UI/widgets/Legalfomrsinfopage/Partition.dart';
 import 'package:indolawassociates/UI/widgets/Legalfomrsinfopage/Partnership.dart';
 import 'package:indolawassociates/UI/widgets/Legalfomrsinfopage/Sales.dart';
 import 'package:indolawassociates/UI/widgets/Legalfomrsinfopage/Trust_Agreement.dart';
-import 'package:sizer/sizer.dart';
+// import 'package:sizer/sizer.dart';
 
 class Legalinfo extends StatefulWidget {
   const Legalinfo({Key? key}) : super(key: key);
@@ -36,8 +34,8 @@ class _LegalinfoState extends State<Legalinfo> {
   Widget build(BuildContext context) {
     final translate = AppLocalizations.of(context);
 
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
     return WillPopScope(
       onWillPop: () {
         onback();
@@ -48,13 +46,12 @@ class _LegalinfoState extends State<Legalinfo> {
           child: Scaffold(
             appBar: AppBar(
               elevation: 3,
-              toolbarHeight: height*0.011.h,
+              toolbarHeight: 70,
               centerTitle: true,
               backgroundColor: dialog,
               title: Text(
                 translate!.legalforms,
-                style: GoogleFonts.poppins(
-                    color: white, fontWeight: FontWeight.w500, fontSize: 15.sp),
+                style: titletextwhite,textAlign: TextAlign.center,
               ),
               leading: IconButton(
                   onPressed: () => Navigator.pushNamed(context, homeroute),

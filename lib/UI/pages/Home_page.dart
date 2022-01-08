@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -6,15 +5,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:indolawassociates/UI/components/Internet%20connectivity/Network_status.dart';
 import 'package:indolawassociates/UI/components/slider/slider.dart';
+import 'package:indolawassociates/UI/dummy/Mapping.dart';
+import 'package:indolawassociates/UI/dummy/amppu.dart';
 import 'package:provider/src/provider.dart';
-import 'package:sizer/sizer.dart';
+// import 'package:sizer/sizer.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:indolawassociates/UI/provider/languageprovider.dart';
-import 'package:indolawassociates/Client/utils/Internet%20connectivity/Network_status.dart';
 import 'package:indolawassociates/UI/components/clippath.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
@@ -52,14 +52,13 @@ class _Homepage extends State<Homepage> {
       context: context,
       dialogType: DialogType.WARNING,
       borderSide: BorderSide(color: white, width: 2),
-      width: MediaQuery.of(context).size.width * 0.24.w,
+      width: 350,
       buttonsBorderRadius: BorderRadius.all(Radius.circular(2)),
       headerAnimationLoop: false,
-      animType: AnimType.SCALE,
+      animType: AnimType.LEFTSLIDE,
       title: 'Exit',
       desc: 'Are sure you want to exit...',
-      buttonsTextStyle:
-          GoogleFonts.poppins(fontSize: 10.sp, fontWeight: FontWeight.w500),
+      buttonsTextStyle: dfont,
       showCloseIcon: true,
       btnCancelOnPress: () {
         Navigator.pushNamed(context, homeroute);
@@ -88,8 +87,8 @@ class _Homepage extends State<Homepage> {
   Widget build(BuildContext context) {
     final translate = AppLocalizations.of(context);
     List language = [translate!.language1, translate.primarylanguage];
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
     return NetworkSensitive(
       child: SafeArea(
         child: WillPopScope(
@@ -113,7 +112,7 @@ class _Homepage extends State<Homepage> {
                   launcher("tel: 8940383000");
                 }),
             // bottomNavigationBar: Bottombar(),
-            backgroundColor: gradsoj,
+            backgroundColor: background,
             // backgroundColor: white,
             // bottomNavigationBar: Navbar(),
             body: SingleChildScrollView(
@@ -127,8 +126,8 @@ class _Homepage extends State<Homepage> {
                       //   // clipBehavior: Clip.antiAliasWithSaveLayer,
                       clipper: CustomdClipper(),
                       child: Container(
-                        height: height * 0.05.h,
-                        width: width * 1.w,
+                        height: 300,
+                        // width: width * 1.w,
                         decoration: new BoxDecoration(
                           // boxShadow: [
                           //   BoxShadow(
@@ -163,9 +162,7 @@ class _Homepage extends State<Homepage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(
-                                height: height * 0.001.h,
-                              ),
+                              spaced20,
                               Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 15),
@@ -179,7 +176,7 @@ class _Homepage extends State<Homepage> {
                                         "Hi $_username",
                                         style: GoogleFonts.poppins(
                                             color: white,
-                                            fontSize: 14.sp,
+                                            fontSize: 18,
                                             fontWeight: FontWeight.w500),
                                       ),
                                     ),
@@ -198,13 +195,13 @@ class _Homepage extends State<Homepage> {
                                               color: white,
                                             )),
                                         SizedBox(
-                                          width: width * 0.002.w,
+                                          width: 20,
                                         ),
                                         IconButton(
                                             onPressed: () {
                                               Navigator.pushNamed(
-                                                  context, maps);
-                                              // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Testing()));
+                                                  context, notificationroute);
+                                              // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Mappu()));
                                             },
 
                                             // => Navigator.pushNamed(
@@ -218,53 +215,22 @@ class _Homepage extends State<Homepage> {
                                   ],
                                 ),
                               ),
-                              SizedBox(
-                                height: height * 0.001.h,
-                              ),
+                              spaced10,
 
                               Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 15.0),
-                                child: Container(
-                                    height: height * 0.008.h,
-                                    // width: width * 0.15.w,
-                                    child: AutoSizeText(
-                                      translate.hometitle,
-                                      style: GoogleFonts.poppins(
-                                          fontSize: 13.sp, color: white),
-                                    )
-
-                                    // DefaultTextStyle(
-                                    //   style: GoogleFonts.poppins(
-                                    //       fontSize: 18.sp, color: white),
-                                    //   child: AnimatedTextKit(
-                                    //       pause: Duration(seconds: 1),
-                                    //       repeatForever: true,
-                                    //       animatedTexts: [
-                                    //         FadeAnimatedText(
-                                    //           "Hi ${_username}",
-                                    //         ),
-                                    //         FadeAnimatedText(translate.welcome),
-                                    //         FadeAnimatedText(translate.hometitle),
-                                    //       ]),
-                                    // ),
-                                    ),
+                                child: AutoSizeText(translate.hometitle,
+                                    style: dfont),
                               ),
                               // SizedBox(
                               //   height: height * 0.00.h,
                               // ),
+                              spaced10,
                               Center(
-                                  child: Text(
-                                translate.hometitle2,
-                                style: GoogleFonts.poppins(
-                                  fontSize: 13.sp,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              )),
-                              // SizedBox(
-                              //   height: height * 0.001,
-                              // ),
+                                  child:
+                                      Text(translate.hometitle2, style: dfont)),
+                              spaced10,
                               Cateslider()
                             ],
                           ),
@@ -275,20 +241,13 @@ class _Homepage extends State<Homepage> {
                   // ,
                   Container(
                     child: Slisder(),
-                    height: height * 0.025.h,
-                    width: width * 1.w,
+                    height: 180,
+                    // width: width * 1.w,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 28.0, vertical: 10),
-                    child: Text(
-                      translate.hometitle3,
-                      style: GoogleFonts.poppins(
-                        fontSize: 12.sp,
-                        color: white,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
+                    child: Text(translate.hometitle3, style: dfont),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),

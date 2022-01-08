@@ -1,14 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+// import 'package:sizer/sizer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
-import 'package:indolawassociates/Client/model/form_model.dart';
 import 'package:indolawassociates/UI/components/button.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
+import 'package:indolawassociates/UI/models/form_model.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -92,8 +92,8 @@ class _ParalegalPageState extends State<ParalegalPage> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
     final translate = AppLocalizations.of(context);
     return WillPopScope(
         onWillPop: () {
@@ -161,30 +161,25 @@ class _ParalegalPageState extends State<ParalegalPage> {
                             icon: Image.asset(
                               "assets/icons/rback.png",
                               color: iconcolor,
-                              height: 20.h,
+                              height: 35,
                             ),
                             onPressed: () =>
                                 Navigator.pushNamed(context, servicespage)),
                       ),
-                      SizedBox(
-                        width: width * 0.02.w,
-                      ),
+                     
                       Expanded(
-                        child: AutoSizeText(widget.Paralegaltitle,
-                            style: GoogleFonts.poppins(
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.w500,
-                                color: black)),
+                        child: AutoSizeText(widget.Paralegaltitle,textAlign: TextAlign.center,
+                            style: titletextblack),
                       )
                     ],
                   ),
                   SizedBox(
-                    height: height * 0.003.h,
+                    height: 20,
                   ),
                   Card(
                     elevation: 4,
                     child: Container(
-                      height: MediaQuery.of(context).size.height * 0.03.h,
+                      height: 180,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               image:
@@ -193,7 +188,7 @@ class _ParalegalPageState extends State<ParalegalPage> {
                     ),
                   ),
                   SizedBox(
-                    height: height * 0.005.h,
+                    height: 30,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -201,13 +196,13 @@ class _ParalegalPageState extends State<ParalegalPage> {
                       widget.paralegalcontent,
                       style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w400,
-                          fontSize: 10.sp,
+                          fontSize: 14,
                           color: black),
                       textAlign: TextAlign.justify,
                     ),
                   ),
                   SizedBox(
-                    height: height * 0.002.h,
+                    height: 20,
                   ),
 
                   TextButton(
@@ -232,8 +227,8 @@ class _ParalegalPageState extends State<ParalegalPage> {
                             borderRadius: BorderRadius.circular(35),
                             color: white,
                             border: Border.all(color: navy)),
-                        height: height * 0.06,
-                        width: width * 0.4,
+                        height: 50,
+                        width: 160,
                         // padding: const EdgeInsets.symmetric(
                         //   vertical: 15.0,
                         //   horizontal: 15.0,
@@ -244,12 +239,14 @@ class _ParalegalPageState extends State<ParalegalPage> {
                             style: GoogleFonts.poppins(
                                 // fontWeight: FontWeight.bold,
                                 color: black,
-                                fontSize: 11.sp),
+                                fontSize: 15),
                             textAlign: TextAlign.center,
                           ),
                         )),
                   ),
-
+SizedBox(
+                    height: 20,
+                  ),
                   // CustomButton(
                   //   style: GoogleFonts.poppins(
                   //       // fontWeight: FontWeight.bold,
@@ -281,19 +278,19 @@ class _ParalegalPageState extends State<ParalegalPage> {
                       color: divcolor,
                     ),
                   ),
-                  SizedBox(
-                    height: height * 0.003.h,
-                  ),
+                  // SizedBox(
+                  //   height: 10,
+                  // ),
                   Text(
                     translate.drawerkey5,
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                         // fontWeight: FontWeight.bold,
                         color: black,
-                        fontSize: 13.sp),
+                        fontSize: 16),
                   ),
                   SizedBox(
-                    height: height * 0.0031.h,
+                    height: 10,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -307,8 +304,8 @@ class _ParalegalPageState extends State<ParalegalPage> {
                                 borderRadius: BorderRadius.circular(35),
                                 color: white,
                                 border: Border.all(color: navy)),
-                            height: height * 0.06,
-                            width: width * 0.35,
+                             height: 50,
+                        width: 160,
                             // padding: const EdgeInsets.symmetric(
                             //   vertical: 15.0,
                             //   horizontal: 15.0,
@@ -321,14 +318,14 @@ class _ParalegalPageState extends State<ParalegalPage> {
                                   Image.asset(
                                     "assets/icons/call.png",
                                     color: black,
-                                    height: 3.5.h,
+                                    height: 25,
                                   ),
                                   Text(
                                     translate.mobile,
                                     style: GoogleFonts.poppins(
                                         // fontWeight: FontWeight.bold,
                                         color: black,
-                                        fontSize: 12.sp),
+                                        fontSize: 16),
                                     textAlign: TextAlign.center,
                                   ),
                                 ],
@@ -344,8 +341,8 @@ class _ParalegalPageState extends State<ParalegalPage> {
                                 borderRadius: BorderRadius.circular(35),
                                 color: white,
                                 border: Border.all(color: navy)),
-                            height: height * 0.06,
-                            width: width * 0.35,
+                             height: 50,
+                        width: 160,
                             // padding: const EdgeInsets.symmetric(
                             //   vertical: 15.0,
                             //   horizontal: 15.0,
@@ -364,7 +361,7 @@ class _ParalegalPageState extends State<ParalegalPage> {
                                     style: GoogleFonts.poppins(
                                         // fontWeight: FontWeight.bold,
                                         color: black,
-                                        fontSize: 12.sp),
+                                        fontSize: 15),
                                     textAlign: TextAlign.center,
                                   ),
                                 ],
@@ -574,14 +571,14 @@ class _ParalegalPageState extends State<ParalegalPage> {
                       padding: const EdgeInsets.only(top: 10.0),
                       child: Text(
                         "Fill The Form",
-                        style: GoogleFonts.mulish(
-                            color: navy,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22.sp),
+                        style: GoogleFonts.poppins(
+                            color: black,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 22),
                       ),
                     ),
                     SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.003.h),
+                        height: 30),
                     TextFormField(
                         validator: MultiValidator([
                           RequiredValidator(errorText: usernamenull),
@@ -593,11 +590,10 @@ class _ParalegalPageState extends State<ParalegalPage> {
                                     BorderRadius.all(Radius.circular(20))),
                             prefixIcon: Icon(
                               Icons.person,
-                              color: navy,
+                              color: black,
                             ),
                             labelText: "Name",
-                            labelStyle: TextStyle(
-                                color: navy, fontWeight: FontWeight.bold))),
+                            labelStyle: demofont)),
                     SizedBox(height: 20),
                     TextFormField(
                         controller: _emailcontroller,
@@ -614,11 +610,10 @@ class _ParalegalPageState extends State<ParalegalPage> {
                                     BorderRadius.all(Radius.circular(20))),
                             prefixIcon: Icon(
                               Icons.mail,
-                              color: navy,
+                              color: black,
                             ),
                             labelText: "Email",
-                            labelStyle: TextStyle(
-                                color: navy, fontWeight: FontWeight.bold))),
+                            labelStyle: demofont)),
                     SizedBox(height: 20),
                     Container(
                       decoration: BoxDecoration(
@@ -628,15 +623,12 @@ class _ParalegalPageState extends State<ParalegalPage> {
                       child: DropdownButton(
                         underline: SizedBox(),
                         iconSize: 35,
-                        iconEnabledColor: navy,
+                        iconEnabledColor: black,
                         isExpanded: true,
                         dropdownColor: Colors.white,
                         hint: Text(
                           "Gender",
-                          style: TextStyle(
-                              fontSize: 15.sp,
-                              color: navy,
-                              fontWeight: FontWeight.bold),
+                          style: demofont,
                         ),
                         items: genderlist.map((valueitem) {
                           return DropdownMenuItem(
@@ -666,11 +658,10 @@ class _ParalegalPageState extends State<ParalegalPage> {
                                     BorderRadius.all(Radius.circular(20))),
                             prefixIcon: Icon(
                               Icons.mobile_screen_share,
-                              color: navy,
+                              color: black,
                             ),
                             labelText: "Mobile",
-                            labelStyle: TextStyle(
-                                color: navy, fontWeight: FontWeight.bold))),
+                            labelStyle: demofont)),
                     SizedBox(height: 20),
                     TextFormField(
                         validator: MultiValidator([
@@ -678,13 +669,12 @@ class _ParalegalPageState extends State<ParalegalPage> {
                         ]),
                         keyboardType: TextInputType.streetAddress,
                         controller: _addresscontroller,
-                        decoration: InputDecoration(
+                        decoration: InputDecoration(prefixIcon: Icon(CupertinoIcons.location_solid,color: black,),
                             border: OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20))),
                             labelText: "Address",
-                            labelStyle: TextStyle(
-                                color: navy, fontWeight: FontWeight.bold))),
+                            labelStyle: demofont)),
                     SizedBox(height: 20),
                     Container(
                       decoration: BoxDecoration(
@@ -700,7 +690,7 @@ class _ParalegalPageState extends State<ParalegalPage> {
                         hint: Text(
                           "Services",
                           style: TextStyle(
-                              fontSize: 15.sp,
+                              fontSize: 15,
                               color: navy,
                               fontWeight: FontWeight.bold),
                         ),
@@ -750,8 +740,8 @@ class _ParalegalPageState extends State<ParalegalPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
-                          height: MediaQuery.of(context).size.height * .008.h,
-                          width: MediaQuery.of(context).size.width * .08.w,
+                          height: 50,
+                          width: 150,
                           child: Material(
                             borderRadius: BorderRadius.circular(20.0),
                             color: Colors.green,
@@ -800,8 +790,8 @@ class _ParalegalPageState extends State<ParalegalPage> {
                           ),
                         ),
                         Container(
-                          height: MediaQuery.of(context).size.height * .008.h,
-                          width: MediaQuery.of(context).size.width * .08.w,
+                          height: 50,
+                          width: 150,
                           child: Material(
                             borderRadius: BorderRadius.circular(20.0),
                             color: Colors.red,

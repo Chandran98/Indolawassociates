@@ -3,9 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/components/clippath.dart';
 import 'package:indolawassociates/UI/components/socialmedia.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
@@ -73,8 +71,8 @@ class _LoginscreenState extends State<Loginscreen> {
       SystemNavigator.pop();
     }
 
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
     return WillPopScope(
       onWillPop: () {
         onback();
@@ -92,8 +90,8 @@ class _LoginscreenState extends State<Loginscreen> {
                   ClipPath(
                     clipper: CustomdClipper(),
                     child: Container(
-                      height: height * 0.04.h,
-                      width: width * 1.w,
+                      height: 250, width: double.infinity,
+                      // width: 200
                       decoration: new BoxDecoration(
                         boxShadow: [
                           BoxShadow(
@@ -117,32 +115,28 @@ class _LoginscreenState extends State<Loginscreen> {
                             padding: const EdgeInsets.only(top: 35),
                             child: Image.asset(
                               "assets/icons/ilatri.png",
-                              height: height * 0.01.h,
+                              height: 80,
                             ),
                           ),
                           Image.asset(
                             "assets/icons/titleb.png",
-                            height: height * 0.01.h,
-                            width: width * 0.2.w,
+                            height: 100,
+                            width: 300,
                             color: black,
                           )
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: height * 0.002.h,
-                  ),
+                  spaced10,
                   Text(
                     "Welcome Back!",
                     style: GoogleFonts.poppins(
-                        fontSize: 18.sp,
+                        fontSize: 20,
                         color: Colors.black,
                         fontWeight: FontWeight.w400),
                   ),
-                  SizedBox(
-                    height: height * 0.002.h,
-                  ),
+                  spaced10,
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 10.0, horizontal: 30.0),
@@ -159,7 +153,7 @@ class _LoginscreenState extends State<Loginscreen> {
                         labelText: "Mobile no.",
                         hintText: "Mobile ",
                         labelStyle: GoogleFonts.poppins(
-                            fontSize: 10.sp,
+                            fontSize: 12,
                             color: Colors.black,
                             fontWeight: FontWeight.w400),
                       ),
@@ -173,7 +167,7 @@ class _LoginscreenState extends State<Loginscreen> {
                       },
                     ),
                   ),
-                  SizedBox(height: height * 0.002.h),
+                  spaced10,
                   Container(
                       // margin: EdgeInsets.only(top: 40, bottom: 5),
                       child: Padding(
@@ -200,8 +194,8 @@ class _LoginscreenState extends State<Loginscreen> {
                                               BorderRadius.circular(10),
                                           color: white,
                                           border: Border.all(color: navy)),
-                                      height: height * 0.008.h,
-                                      width: width * 0.15.w,
+                                      height: 50,
+                                      width: 200,
                                       // padding: const EdgeInsets.symmetric(
                                       //   vertical: 15.0,
                                       //   horizontal: 15.0,
@@ -212,7 +206,7 @@ class _LoginscreenState extends State<Loginscreen> {
                                           style: GoogleFonts.poppins(
                                               // fontWeight: FontWeight.bold,
                                               color: black,
-                                              fontSize: 15.sp),
+                                              fontSize: 16),
                                           textAlign: TextAlign.center,
                                         ),
                                       )),
@@ -221,22 +215,22 @@ class _LoginscreenState extends State<Loginscreen> {
                                   // backgroundColor: Colors.white,
                                   color: green,
                                 ))),
-                  SizedBox(height: height * 0.008.h),
+                  spaced30,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Container(
                         child: Text("New User ?",
                             style: GoogleFonts.poppins(
-                                fontSize: 12.sp, color: black)),
+                                fontSize: 15, color: black)),
                       ),
-                      SizedBox(width: width * 0.002.w),
+                      spaced20,
                       InkWell(
                         onTap: () => Navigator.pushNamed(context, signuproute),
                         child: Text(
                           "Sign Up",
                           style: GoogleFonts.mulish(
-                              fontSize: 15.sp,
+                              fontSize: 16,
                               color: Color(0xff5770B5),
                               fontWeight: FontWeight.bold,
                               decorationThickness: 2,
@@ -246,9 +240,7 @@ class _LoginscreenState extends State<Loginscreen> {
                     ],
                   ),
                   // SizedBox(height: height * 0.02.h),
-                  SizedBox(
-                    height: height * 0.008.h,
-                  ),
+                  spaced10,
                   Socialmedia()
                 ],
               ),
@@ -260,8 +252,8 @@ class _LoginscreenState extends State<Loginscreen> {
   }
 
   _otpscreen(context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
     void onback() {
       Navigator.pushNamed(context, loginpageroute);
     }
@@ -284,8 +276,8 @@ class _LoginscreenState extends State<Loginscreen> {
                     clipper: CustomdClipper(),
                     child: Container(
                       color: white,
-                      height: height * 0.04.h,
-                      width: width * 1.w,
+                      height: 250, width: double.infinity,
+
                       // decoration: new BoxDecoration(
                       //   boxShadow: [
                       //     BoxShadow(
@@ -306,13 +298,13 @@ class _LoginscreenState extends State<Loginscreen> {
                             padding: const EdgeInsets.only(top: 25),
                             child: Image.asset(
                               "assets/icons/ilatri.png",
-                              height: height * 0.01.h,
+                              height: 80,
                             ),
                           ),
                           Image.asset(
                             "assets/icons/titleb.png",
-                            height: height * 0.01.h,
-                            width: width * 0.2.w,
+                            height: 100,
+                            width: 300,
                             color: black,
                           ),
                           // TextButton(
@@ -325,9 +317,7 @@ class _LoginscreenState extends State<Loginscreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: height * 0.002.h,
-                  ),
+                  spaced10,
                   SingleChildScrollView(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -336,16 +326,14 @@ class _LoginscreenState extends State<Loginscreen> {
                         children: [
                           Text(
                             isLoading
-                                ? "Verifying your OTP"
+                                ? "Verify your OTP"
                                 : "The code has been sent to\n your mobile via SMS",
                             style: GoogleFonts.poppins(
-                                fontSize: 13.sp,
+                                fontSize: 15,
                                 color: Colors.black,
                                 fontWeight: FontWeight.w400),
                           ),
-                          SizedBox(
-                            height: height * 0.004.h,
-                          ),
+                          spaced10,
                           // Container(color: gold,
                           //     child: Padding(
                           //         padding: const EdgeInsets.symmetric(
@@ -453,8 +441,8 @@ class _LoginscreenState extends State<Loginscreen> {
                                                   BorderRadius.circular(15),
                                               color: white,
                                               border: Border.all(color: navy)),
-                                          height: height * 0.008.h,
-                                          width: width * 0.15.w,
+                                          height: 50,
+                                          width: 200,
                                           child: Material(
                                             borderRadius:
                                                 BorderRadius.circular(15),
@@ -466,7 +454,7 @@ class _LoginscreenState extends State<Loginscreen> {
                                                         // fontWeight:
                                                         //     FontWeight.bold,
                                                         color: black,
-                                                        fontSize: 15.sp))),
+                                                        fontSize: 16))),
                                           ),
                                         ),
                                       )))
@@ -505,8 +493,8 @@ class _LoginscreenState extends State<Loginscreen> {
                                               BorderRadius.circular(15),
                                           color: white,
                                           border: Border.all(color: navy)),
-                                      height: height * 0.008.h,
-                                      width: width * 0.15.w,
+                                      height: 50,
+                                      width: 200,
                                       child: Material(
                                         borderRadius: BorderRadius.circular(15),
                                         elevation: 4,
@@ -517,7 +505,7 @@ class _LoginscreenState extends State<Loginscreen> {
                                                     // fontWeight:
                                                     //     FontWeight.bold,
                                                     color: black,
-                                                    fontSize: 14.sp))),
+                                                    fontSize: 15))),
                                       ),
                                     ),
                                   ),
@@ -556,9 +544,7 @@ class _LoginscreenState extends State<Loginscreen> {
                               //         )))
 
                               : Column(),
-                          SizedBox(
-                            height: height * 0.005.h,
-                          ),
+                          spaced20,
                           Socialmedia()
                         ],
                       ),

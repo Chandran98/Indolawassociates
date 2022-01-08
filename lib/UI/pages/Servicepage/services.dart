@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+// import 'package:sizer/sizer.dart';?
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
-import 'package:indolawassociates/Client/utils/Internet%20connectivity/Network_status.dart';
+import 'package:indolawassociates/UI/components/Internet%20connectivity/Network_status.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/NRI.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/Paralegal/paralegal.dart';
@@ -50,22 +49,19 @@ class _ServiceallsState extends State<Servicesall>
                 backgroundColor: white,
                 appBar: AppBar(
                   elevation: 3,
-                  toolbarHeight: 6.h,
+                  toolbarHeight: 60,
                   centerTitle: true,
                   backgroundColor: dialog,
                   title: Text(
                     translate!.navkey2,
-                    style: GoogleFonts.poppins(
-                        color: white,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16.sp),
+                    style: titletextwhite
                   ),
                   leading: IconButton(
                       onPressed: () => Navigator.pushNamed(context, homeroute),
                       icon: Image.asset(
                         "assets/icons/rback.png",
                         color: white,
-                        height: 5.h,
+                        height: 35,
                       )),
                   bottom: TabBar(
                     controller: _controller,

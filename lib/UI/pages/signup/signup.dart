@@ -2,18 +2,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/Client/constants/constant.dart';
 import 'package:indolawassociates/UI/components/clippath.dart';
 import 'package:indolawassociates/UI/components/socialmedia.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/pages/Login/loginpage.dart';
+import 'package:indolawassociates/UI/provider/location_provider.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:indolawassociates/UI/pages/MainHomePage.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:provider/provider.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
 import '../../../main.dart';
@@ -80,8 +80,9 @@ class _SignuppageState extends State<Signuppage> {
       Navigator.pushNamed(context, loginpageroute);
     }
 
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    // final area = Provider.of<Locationprovider>(context);
+    // double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
     final node = FocusScope.of(context);
     return WillPopScope(
       onWillPop: () {
@@ -96,6 +97,8 @@ class _SignuppageState extends State<Signuppage> {
                 ClipPath(
                   clipper: CustomdClipper(),
                   child: Container(
+                    height: 220, width: double.infinity,
+
                     decoration: new BoxDecoration(
                       boxShadow: [
                         BoxShadow(
@@ -113,8 +116,8 @@ class _SignuppageState extends State<Signuppage> {
                       //     //     MediaQuery.of(context).size.height * 0.08.h)
                       //     ),
                     ),
-                    height: height * 0.04.h,
-                    width: width * 1.w,
+                    // height: 120,
+                    // width: width * 1.w,
                     // decoration: new BoxDecoration(
                     //   boxShadow: [
                     //     BoxShadow(
@@ -135,13 +138,13 @@ class _SignuppageState extends State<Signuppage> {
                           padding: const EdgeInsets.only(top: 20),
                           child: Image.asset(
                             "assets/icons/ilatri.png",
-                            height: height * 0.01.h,
+                            height: 65,
                           ),
                         ),
                         Image.asset(
                           "assets/icons/titleb.png",
-                          height: height * 0.008.h,
-                          width: width * 0.2.w,
+                          height: 90,
+                          width: 300,
                           color: black,
                         ),
                         // TextButton(
@@ -165,13 +168,11 @@ class _SignuppageState extends State<Signuppage> {
                         Text(
                           "Become a part of ILA",
                           style: GoogleFonts.poppins(
-                              fontSize: 15.sp,
+                              fontSize: 16,
                               color: Colors.black,
                               fontWeight: FontWeight.w400),
                         ),
-                        SizedBox(
-                          height: height * 0.003.h,
-                        ),
+                        spaced10,
                         Form(
                           key: _formKey,
                           child: Column(
@@ -288,10 +289,7 @@ class _SignuppageState extends State<Signuppage> {
                                   ]),
                                 ),
                               )),
-                              SizedBox(
-                                height: MediaQuery.of(context).size.height *
-                                    0.002.h,
-                              ),
+                              spaced10,
                               Row(
                                 children: [
                                   Text("Already a user?"),
@@ -329,8 +327,8 @@ class _SignuppageState extends State<Signuppage> {
                                         borderRadius: BorderRadius.circular(10),
                                         color: white,
                                         border: Border.all(color: navy)),
-                                      height: height * 0.008.h,
-                                      width: width * 0.15.w,
+                                    height: 50,
+                                    width: 200,
                                     // padding: const EdgeInsets.symmetric(
                                     //   vertical: 15.0,
                                     //   horizontal: 15.0,
@@ -343,21 +341,14 @@ class _SignuppageState extends State<Signuppage> {
                                       ),
                                     )),
                               ),
-
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.003.h,
-                              ),
+                              spaced10,
                               Text(
                                 'By continuing your confirm that you agree \nwith our Term and Condition',
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.poppins(
-                                    color: black, fontSize: 10.sp),
+                                    color: black, fontSize: 12),
                               ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.0031.h,
-                              ),
+                              spaced10,
                               Socialmedia()
                             ],
                           ),
@@ -441,8 +432,8 @@ class _SignuppageState extends State<Signuppage> {
                           clipper: CustomdClipper(),
                           child: Container(
                             color: white,
-                      height: height * 0.04.h,
-                      width: width * 1.w,
+                            height: 250, width: double.infinity,
+
                             // decoration: new BoxDecoration(
                             //   boxShadow: [
                             //     BoxShadow(
@@ -463,13 +454,13 @@ class _SignuppageState extends State<Signuppage> {
                                   padding: const EdgeInsets.only(top: 25),
                                   child: Image.asset(
                                     "assets/icons/ilatri.png",
-                              height: height * 0.01.h,
+                                    height: 80,
                                   ),
                                 ),
                                 Image.asset(
                                   "assets/icons/titleb.png",
-                            height: height * 0.01.h,
-                            width: width * 0.2.w,
+                                  height: 100,
+                                  width: 300,
                                   color: black,
                                 ),
                                 // TextButton(
@@ -482,22 +473,17 @@ class _SignuppageState extends State<Signuppage> {
                             ),
                           ),
                         ),
-                        SizedBox(
-                    height: height * 0.002.h,
-                        ),
+                        spaced20,
                         Text(
                           isLoading
                               ? "Verify your OTP"
                               : "The code has been sent to\n your mobile via SMS",
-
                           style: GoogleFonts.poppins(
-                              fontSize: 14.sp,
+                              fontSize: 15,
                               color: Colors.black,
-                              fontWeight: FontWeight.w400),
+                              fontWeight: FontWeight.w500),
                         ),
-                        SizedBox(
-                          height: height * 0.006.h,
-                        ),
+                        spaced30,
                         // Container(
                         //     child: Padding(
                         //         padding: const EdgeInsets.symmetric(
@@ -670,8 +656,8 @@ class _SignuppageState extends State<Signuppage> {
                                                 BorderRadius.circular(15),
                                             color: white,
                                             border: Border.all(color: black)),
-                                          height: height * 0.008.h,
-                                          width: width * 0.15.w,
+                                        height: 50,
+                                        width: 200,
                                         child: Material(
                                           borderRadius:
                                               BorderRadius.circular(15),
@@ -683,7 +669,7 @@ class _SignuppageState extends State<Signuppage> {
                                                       // fontWeight:
                                                       //     FontWeight.bold,
                                                       color: black,
-                                                      fontSize: 15.sp))),
+                                                      fontSize: 15))),
                                         ),
                                       ),
                                     )))
@@ -724,8 +710,8 @@ class _SignuppageState extends State<Signuppage> {
                                                 BorderRadius.circular(15),
                                             color: white,
                                             border: Border.all(color: navy)),
-                                      height: height * 0.008.h,
-                                      width: width * 0.15.w,
+                                        height: 50,
+                                        width: 200,
                                         child: Center(
                                             child: Text('Resend Code',
                                                 style: GoogleFonts.poppins(
@@ -736,9 +722,7 @@ class _SignuppageState extends State<Signuppage> {
                                       ),
                                     )))
                             : Column(),
-                        SizedBox(
-                          height: height * 0.005.h,
-                        ),
+                        spaced20,
                         Socialmedia()
                       ],
                     ),
