@@ -4,8 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
-import 'package:shimmer/shimmer.dart';
-// import 'package:sizer/sizer.dart';
 
 class Slisder extends StatefulWidget {
   Slisder({Key? key}) : super(key: key);
@@ -25,16 +23,11 @@ class _SlisderState extends State<Slisder> {
   var image;
   @override
   Widget build(BuildContext context) {
-    // double height = MediaQuery.of(context).size.height;
-    // double width = MediaQuery.of(context).size.width;
     return InkWell(
       onTap: () {
         Navigator.pushNamed(context, offerroute);
       },
       child: Container(
-        // color: Color(0xffF5F5F5),
-        // color: white,
-
         child: FutureBuilder(
           future: getslider(),
           // initialData: InitialData,

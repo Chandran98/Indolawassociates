@@ -7,9 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:indolawassociates/UI/components/Internet%20connectivity/Network_status.dart';
 import 'package:indolawassociates/UI/components/slider/slider.dart';
-import 'package:indolawassociates/UI/dummy/Mapping.dart';
-import 'package:indolawassociates/UI/dummy/amppu.dart';
-import 'package:provider/src/provider.dart';
 // import 'package:sizer/sizer.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,6 +17,7 @@ import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:indolawassociates/UI/services/fireabase_service.dart';
 import 'package:indolawassociates/UI/widgets/Lawyers/Lawyer_list.dart';
+import 'package:provider/src/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../widgets/categories/Category_list_page.dart';
 
@@ -201,7 +199,11 @@ class _Homepage extends State<Homepage> {
                                             onPressed: () {
                                               Navigator.pushNamed(
                                                   context, notificationroute);
-                                              // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Mappu()));
+                                              // Navigator.pushReplacement(
+                                              //     context,
+                                              //     MaterialPageRoute(
+                                              //         builder: (context) =>
+                                              //             MaterialHOmepage()));
                                             },
 
                                             // => Navigator.pushNamed(

@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -378,17 +377,14 @@ class _SignuppageState extends State<Signuppage> {
         return Future.value(false);
       },
       child: SafeArea(
-        child: Scaffold(
-          key: _scaffoldKey,
-          body: DoubleBackToCloseApp(
-            snackBar: const SnackBar(
-              backgroundColor: dialog,
-              content: Text(
-                'Tap back again to exit app.',
-                style: TextStyle(fontSize: 18),
-              ),
-            ),
-            child: SingleChildScrollView(
+        child: WillPopScope(
+          onWillPop: () {
+            onback();
+            return Future.value(false);
+          },
+          child: Scaffold(
+            key: _scaffoldKey,
+            body: SingleChildScrollView(
               child: Column(children: [
                 // Padding(
                 //   padding: const EdgeInsets.symmetric(vertical: 20),

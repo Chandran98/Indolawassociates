@@ -1,7 +1,6 @@
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -47,35 +46,35 @@ class MyApp extends StatelessWidget {
           //     designSize: Size(360, 710),
           //     builder: () {
           return
-          //  Sizer(
-          //     builder: (context, orientation, deviceType) =>
-               MaterialApp(
-                    locale: Provider.of<Languagenotifier>(context, listen: true)
-                        .currentlocale,
-                    localizationsDelegates: const [
-                      GlobalCupertinoLocalizations.delegate,
-                      GlobalMaterialLocalizations.delegate,
-                      GlobalWidgetsLocalizations.delegate,
-                      AppLocalizations.delegate,
-                    ],
-                    supportedLocales: L10n.all,
-                    debugShowCheckedModeBanner: false,
-                    home: SplashScreen(),
-                    routes: routes,
-                    // theme: notifier.darktheme ? dip :lite,
+              //  Sizer(
+              //     builder: (context, orientation, deviceType) =>
+              MaterialApp(
+            locale: Provider.of<Languagenotifier>(context, listen: true)
+                .currentlocale,
+            localizationsDelegates: const [
+              GlobalCupertinoLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              AppLocalizations.delegate,
+            ],
+            supportedLocales: L10n.all,
+            debugShowCheckedModeBanner: false,
+            home: SplashScreen(),
+            routes: routes,
+            // theme: notifier.darktheme ? dip :lite,
 
-                    // routes: {
-                    //   Settingspage.id: (context) => Settingspage(),
-                    //   Testingpage.id: (context) => Testingpage()
-                    // },
-                  );
-              //  Consumer<Themenotifier>(
-              //     builder: (_, Themenotifier notifier, child) {
-              //   return
-              // }
-              // );
-              // });
-              // );
+            // routes: {
+            //   Settingspage.id: (context) => Settingspage(),
+            //   Testingpage.id: (context) => Testingpage()
+            // },
+          );
+          //  Consumer<Themenotifier>(
+          //     builder: (_, Themenotifier notifier, child) {
+          //   return
+          // }
+          // );
+          // });
+          // );
         });
       }),
     );
@@ -104,89 +103,3 @@ class _SplashScreenState extends State<SplashScreen> {
         nextScreen: Loginscreen());
   }
 }
-
-///Bottombar//
-
-// class Mainhome extends StatefulWidget {
-//   const Mainhome({Key? key}) : super(key: key);
-
-//   @override
-//   _MainhomeState createState() => _MainhomeState();
-// }
-
-// class _MainhomeState extends State<Mainhome> {
-//   int index = 0;
-//   @override
-//   // ignore: must_call_super
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final translate = AppLocalizations.of(context);
-
-//     return Scaffold(
-//         drawer: Maindrawer(),
-//         bottomNavigationBar: BottomNavyBar(
-//             backgroundColor: white,
-//             items: <BottomNavyBarItem>[
-//               BottomNavyBarItem(
-//                   inactiveColor: CupertinoColors.systemGrey,
-//                   activeColor: Colors.black,
-//                   icon: Icon(
-//                     CupertinoIcons.home,
-//                   ),
-//                   title: Text("")),
-//               BottomNavyBarItem(
-//                 // inactiveColor: Color(0xffB4B4E4),
-//                 // activeColor: Colors.lightBlue,
-//                 icon: Icon(Icons.book_online_outlined, color: navy),
-//                 title: Text("."),
-//               ),
-//               BottomNavyBarItem(
-//                 icon: Icon(Icons.library_books, color: navy),
-//                 title: Text(
-//                   translate!.navkey3,
-//                   style: hStyle,
-//                 ),
-//                 inactiveColor: Color(0xffB4B4E4),
-//                 activeColor: Colors.lightBlue,
-//               ),
-//               BottomNavyBarItem(
-//                 icon: Icon(Icons.groups_rounded, color: navy),
-//                 title: Text(
-//                   translate.navkey4,
-//                   style: hStyle,
-//                 ),
-//                 // inactiveColor: Color(0xffB4B4E4),
-//                 // activeColor: Colors.lightBlue,
-//               ),
-//               // BottomNavyBarItem(
-//               //     inactiveColor: Color(0xFF9393EE),
-//               //     activeColor: Colors.lightBlue,
-//               //     icon: Icon(Icons.payment, color: navy),
-//               //     title: Text(
-//               //       "Payment",
-//               //       style: hStyle,
-//               //     ))
-//             ],
-//             selectedIndex: index,
-//             onItemSelected: (index) => setState(() => this.index = index)),
-//         body: buildPages());
-//   }
-
-//   Widget buildPages() {
-//     switch (index) {
-//       case 1:
-//         return Paralegal();
-//       // case 3:
-//       //   return Paymentbar();
-//       case 2:
-//         return Legal();
-//       case 3:
-//         return NRI();
-
-//       case 0:
-//       default:
-//         return HomeScreen();
-//     }
-//   }
-// }
