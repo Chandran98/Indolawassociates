@@ -18,7 +18,6 @@ class _OtherservicesformState extends State<Otherservicesform> {
   // ignore: unused_field
   late FormModel _formModel;
   final _namecontroller = TextEditingController();
-  // final _gendercontroller = TextEditingController();
   final _emailcontroller = TextEditingController();
   final _mobilecontroller = TextEditingController();
   final _addresscontroller = TextEditingController();
@@ -29,7 +28,6 @@ class _OtherservicesformState extends State<Otherservicesform> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      //       child: Container(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -86,17 +84,6 @@ class _OtherservicesformState extends State<Otherservicesform> {
                           labelText: "Email",
                           labelStyle: demofont)),
                   SizedBox(height: 20),
-
-                  //   TextFormField(
-                  //     controller: _gendercontroller,
-                  //     decoration: InputDecoration(
-                  //         border: OutlineInputBorder(
-                  //             borderRadius:
-                  //                 BorderRadius.all(Radius.circular(20))),
-                  //         labelText: "Gender",
-                  //         labelStyle: TextStyle(
-                  //             color: black, fontWeight: FontWeight.bold))),
-                  // SizedBox(height: 20),
                   Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey, width: 1),
@@ -124,7 +111,6 @@ class _OtherservicesformState extends State<Otherservicesform> {
                     ),
                   ),
                   SizedBox(height: 20),
-
                   TextFormField(
                       controller: _mobilecontroller,
                       keyboardType: TextInputType.numberWithOptions(),
@@ -156,7 +142,6 @@ class _OtherservicesformState extends State<Otherservicesform> {
                           labelText: "Address",
                           labelStyle: demofont)),
                   SizedBox(height: 20),
-
                   TextFormField(
                       controller: _servicecontroller,
                       decoration: InputDecoration(
@@ -166,34 +151,6 @@ class _OtherservicesformState extends State<Otherservicesform> {
                           labelText: "Services",
                           labelStyle: demofont)),
                   SizedBox(height: 20),
-                  // ignore: deprecated_member_use
-                  // Container(color: gold,height: MediaQuery.of(context).size.height *0.05,width: MediaQuery.of(context).size.height *0.2,
-                  //   child: InkWell(
-
-                  //     // onPressed: () async{if(_formkey.currentState!.validate()){
-                  //     //   String name = _namecontroller.text;
-                  //     //   String email = _emailcontroller.text;
-                  //     //   String address = _addresscontroller.text;
-                  //     //   String gender = _gendercontroller.text;
-                  //     //   String mobile = _mobilecontroller.text;
-                  //     //   String service = _servicecontroller.text;
-
-                  //       // FormModel? forms = await submitdata(
-                  //       //     name, gender, email, address, mobile, service);
-                  //       // setState(() {
-                  //       //   _formModel = forms!;
-                  //       // });
-
-                  //     // }},
-
-                  //     child: Text(
-                  //       "Submit",
-                  //       style: GoogleFonts.mulish(color: Colors.white),
-                  //     ),
-                  //      onTap: () {  },
-                  //   ),
-
-                  // ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -206,22 +163,10 @@ class _OtherservicesformState extends State<Otherservicesform> {
                           elevation: 7.0,
                           child: TextButton(
                             onPressed: ()
-                                //                               {
 
                                 async {
                               if (_formkey.currentState!.validate()) {
                                 servicesform();
-                                // String name = _namecontroller.text;
-                                // String email = _emailcontroller.text;
-                                // String address = _addresscontroller.text;
-                                // String gender = gendertry;
-                                // String mobile = _mobilecontroller.text;
-                                // String service = _servicecontroller.text;
-
-                                // FormModel forms = await submitdata(name,
-                                //     gender, email, address, mobile, service);
-                                // setState(() {
-                                //   _formModel = forms;
                                 _emailcontroller.clear();
                                 _namecontroller.clear();
                                 _mobilecontroller.clear();

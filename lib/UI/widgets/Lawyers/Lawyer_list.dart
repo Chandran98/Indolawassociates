@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 // import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
+import 'package:indolawassociates/UI/dummy/dummypage.dart';
+import 'package:indolawassociates/UI/pages/Settingspage/contactpage.dart';
 import 'package:indolawassociates/UI/widgets/Lawyers/lawyer_services.dart';
 import 'Lawyer_info_page.dart';
 
@@ -53,7 +55,7 @@ class _RelawyerlistState extends State<Relawyerlist> {
                     onTap: () => Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => Lawyerinfocard(
+                            builder: (context) => LawyerinfoPage(
                                   area1: area1,
                                   area2: area2,
                                   area3: area3,
@@ -93,18 +95,30 @@ class _RelawyerlistState extends State<Relawyerlist> {
                               children: [
                                 Expanded(
                                     flex: 1,
-                                    child: Container(
-                                      // width: 50,
-                                      height:80,
+                                    child: Container(height: 80,
                                       decoration: BoxDecoration(
-                                        // border: Border.all(color: Colors.white, width: 5),
-
+                                        // color: dialog,s
+                                        border:
+                                            Border.all(color: white, width: 4),
                                         shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                          image: NetworkImage(images),
-                                          fit: BoxFit.contain,
-                                        ),
-                                        color: Colors.grey.shade100,
+                                        // borderRadius: BorderRadius.all(Radius.circular(14)),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: dialog.withOpacity(0.1),
+                                              blurRadius: 10,
+                                              offset: Offset(0, 5)),
+                                        ],
+                                      ),
+                                      child: Container(
+                                        // height: 80,
+                                        // width: 50,
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            image: DecorationImage(
+                                              image: NetworkImage(images),
+                                              fit: BoxFit.contain,
+                                            ),
+                                            color: white),
                                       ),
                                     )),
                                 Expanded(

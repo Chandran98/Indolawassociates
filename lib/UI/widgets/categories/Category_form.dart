@@ -33,9 +33,9 @@ class _BuildformsheetState extends State<Buildformsheet> {
     "Family",
     "Criminal",
     "Corporate",
-    " Cyber Crime",
+    "Cyber Crime",
     "Civil",
-    " Taxation",
+    "Taxation",
     "Labour",
     "Consumer"
   ];
@@ -54,7 +54,7 @@ class _BuildformsheetState extends State<Buildformsheet> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top: 10.0),
-                      child: Text("Fill The Form", style: demofont),
+                      child: Text("Fill The Form", style: titletextblack),
                     ),
                     spaced10,
                     TextFormField(
@@ -68,7 +68,7 @@ class _BuildformsheetState extends State<Buildformsheet> {
                                     BorderRadius.all(Radius.circular(20))),
                             prefixIcon: Icon(
                               Icons.person,
-                              color: navy,
+                              color: black,
                             ),
                             labelText: "Name",
                             labelStyle: demofont)),
@@ -88,7 +88,7 @@ class _BuildformsheetState extends State<Buildformsheet> {
                                     BorderRadius.all(Radius.circular(20))),
                             prefixIcon: Icon(
                               Icons.mail,
-                              color: navy,
+                              color: black,
                             ),
                             labelText: "Email",
                             labelStyle: demofont)),
@@ -101,7 +101,7 @@ class _BuildformsheetState extends State<Buildformsheet> {
                       child: DropdownButton(
                         underline: SizedBox(),
                         iconSize: 35,
-                        iconEnabledColor: navy,
+                        iconEnabledColor: black,
                         isExpanded: true,
                         dropdownColor: Colors.white,
                         hint: Text(
@@ -136,7 +136,7 @@ class _BuildformsheetState extends State<Buildformsheet> {
                                     BorderRadius.all(Radius.circular(20))),
                             prefixIcon: Icon(
                               Icons.mobile_screen_share,
-                              color: navy,
+                              color: black,
                             ),
                             labelText: "Mobile",
                             labelStyle: demofont)),
@@ -170,7 +170,7 @@ class _BuildformsheetState extends State<Buildformsheet> {
                         },
                         value: category,
                         iconSize: 35,
-                        iconEnabledColor: navy,
+                        iconEnabledColor: black,
                         isExpanded: true,
                         dropdownColor: Colors.white,
                         hint: Text(

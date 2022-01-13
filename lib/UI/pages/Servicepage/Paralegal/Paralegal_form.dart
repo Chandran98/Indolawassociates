@@ -170,7 +170,7 @@ class _ParalegalformState extends State<Paralegalform> {
                       child: DropdownButton(
                         underline: SizedBox(),
                         iconSize: 35,
-                        iconEnabledColor: navy,
+                        iconEnabledColor: black,
                         isExpanded: true,
                         dropdownColor: Colors.white,
                         hint: Text(

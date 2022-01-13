@@ -11,6 +11,7 @@ import 'package:indolawassociates/UI/components/slider/slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:indolawassociates/UI/dummy/dummypage.dart';
 import 'package:indolawassociates/UI/provider/languageprovider.dart';
 import 'package:indolawassociates/UI/components/clippath.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
@@ -203,7 +204,7 @@ class _Homepage extends State<Homepage> {
                                               //     context,
                                               //     MaterialPageRoute(
                                               //         builder: (context) =>
-                                              //             MaterialHOmepage()));
+                                              //             Custompage()));
                                             },
 
                                             // => Navigator.pushNamed(
