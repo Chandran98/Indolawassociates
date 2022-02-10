@@ -11,7 +11,9 @@ import 'package:indolawassociates/UI/components/slider/slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:indolawassociates/UI/dummy/dummypage.dart';
+import 'package:indolawassociates/UI/dummy/Razorpayil.dart';
+import 'package:indolawassociates/UI/dummy/payg.dart';
+import 'package:indolawassociates/UI/widgets/Lawyers/Lawyers_details_page.dart';
 import 'package:indolawassociates/UI/provider/languageprovider.dart';
 import 'package:indolawassociates/UI/components/clippath.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
@@ -23,7 +25,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../widgets/categories/Category_list_page.dart';
 
 class Homepage extends StatefulWidget {
-  Homepage({Key? key}) : super(key: key);
+ const Homepage({Key? key}) : super(key: key);
 
   @override
   _Homepage createState() => _Homepage();
@@ -198,13 +200,13 @@ class _Homepage extends State<Homepage> {
                                         ),
                                         IconButton(
                                             onPressed: () {
-                                              Navigator.pushNamed(
-                                                  context, notificationroute);
-                                              // Navigator.pushReplacement(
-                                              //     context,
-                                              //     MaterialPageRoute(
-                                              //         builder: (context) =>
-                                              //             Custompage()));
+                                              // Navigator.pushNamed(
+                                              //     context, notificationroute);
+                                              Navigator.pushReplacement(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          Paymentscreen()));
                                             },
 
                                             // => Navigator.pushNamed(
@@ -234,7 +236,7 @@ class _Homepage extends State<Homepage> {
                                   child:
                                       Text(translate.hometitle2, style: dfont)),
                               spaced10,
-                              Cateslider()
+                              Cateslider(),
                             ],
                           ),
                         ),

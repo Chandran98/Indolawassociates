@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../pages/Home_page.dart';
+import '../pages/Servicepage/services.dart';
+import '../pages/Settingspage/settings_page.dart';
+import '../pages/legalforms/legalforms_page.dart';
 
 const iconcolor = Color(0xff333333);
 const divcolor = Color(0xffADADAD);
@@ -28,16 +32,11 @@ const spaced10 = SizedBox(height: 10);
 const spaced20 = SizedBox(height: 20);
 const spaced30 = SizedBox(height: 30);
 
-
 const gold = Color(0xFFd09140);
 const navy = Color(0xFF063554);
 
-
 ///Api key ////
-const mapapikey="AIzaSyDGV9815Fr9adW2RjXxSv9TJRZ4ytusj6o";
-
-
-
+const mapapikey = "AIzaSyDGV9815Fr9adW2RjXxSv9TJRZ4ytusj6o";
 
 final RegExp emailValidatorRegExp =
     RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
@@ -61,3 +60,9 @@ const String experiencenull = "Check your field";
 const String DOB = "Require Date of Birth";
 const String otpnull = "Enter OTP";
 const String otpnlength = "Enter six digit OTP";
+const List<Widget> pages = [
+  Homepage(),
+  Servicesall(),
+  Legalinfo(),
+  Settingspage()
+];

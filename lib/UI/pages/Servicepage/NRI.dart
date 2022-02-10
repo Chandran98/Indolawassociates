@@ -23,6 +23,7 @@ class _NRIsectionState extends State<NRIsection> {
   }
 
   launcher(command) async {
+    
     if (await canLaunch(command)) {
       await launch(command);
     } else {

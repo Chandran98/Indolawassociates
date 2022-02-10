@@ -61,19 +61,19 @@ class _WilllegalformsState extends State<Willlegalforms> {
   wills(context) {
     final translate = AppLocalizations.of(context);
     List<Legalformsdatamodel> will_legalforms = [
-      Legalformsdatamodel(title: translate!.willsform1, Url: ""),
-      Legalformsdatamodel(title: translate.willsform2, Url: ""),
-      Legalformsdatamodel(title: translate.willsform3, Url: ""),
-      Legalformsdatamodel(title: translate.willsform4, Url: ""),
-      Legalformsdatamodel(title: translate.willsform5, Url: ""),
-      Legalformsdatamodel(title: translate.willsform6, Url: ""),
-      Legalformsdatamodel(title: translate.willsform7, Url: ""),
-      Legalformsdatamodel(title: translate.willsform8, Url: ""),
-      Legalformsdatamodel(title: translate.willsform9, Url: ""),
-      Legalformsdatamodel(title: translate.willsform10, Url: ""),
-      Legalformsdatamodel(title: translate.willsform11, Url: ""),
-      Legalformsdatamodel(title: translate.willsform12, Url: ""),
-      Legalformsdatamodel(title: translate.willsform13, Url: ""),
+      Legalformsdatamodel(title: translate!.willsform1,url: ""),
+      Legalformsdatamodel(title: translate.willsform2, url: ""),
+      Legalformsdatamodel(title: translate.willsform3, url: ""),
+      Legalformsdatamodel(title: translate.willsform4, url: ""),
+      Legalformsdatamodel(title: translate.willsform5, url: ""),
+      Legalformsdatamodel(title: translate.willsform6, url: ""),
+      Legalformsdatamodel(title: translate.willsform7, url: ""),
+      Legalformsdatamodel(title: translate.willsform8, url: ""),
+      Legalformsdatamodel(title: translate.willsform9, url: ""),
+      Legalformsdatamodel(title: translate.willsform10,url: ""),
+      Legalformsdatamodel(title: translate.willsform11,url: ""),
+      Legalformsdatamodel(title: translate.willsform12,url: ""),
+      Legalformsdatamodel(title: translate.willsform13,url: ""),
     ];
     Padding(
       padding: const EdgeInsets.only(top: 12.0, bottom: 12),

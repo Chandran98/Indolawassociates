@@ -56,13 +56,13 @@ class _SlisderState extends State<Slisder> {
                   Map<String, dynamic>? fetchimage = slider.data();
                   image = fetchimage!["images"];
                   return Card(
-                    // color: Color(0xffF5F5F5),
+                    color: Colors.transparent,
                     elevation: 4,
                     // child: Hero(
                     //   tag: "slider$image",
                     // child: Image.network(image),
                     child: CachedNetworkImage(
-                      fit: BoxFit.cover,
+                                          fit: BoxFit.cover,
                       imageUrl: image,
                       // ),
                     ),
@@ -73,7 +73,7 @@ class _SlisderState extends State<Slisder> {
                     autoPlay: true,
                     autoPlayAnimationDuration: Duration(seconds: 1),
                     autoPlayCurve: Curves.fastOutSlowIn,
-                    height: 160,
+                    height: 180,
                     enlargeCenterPage: true,
                     viewportFraction: 0.8,
                     onPageChanged: (i, carouselPageChangedReason) {

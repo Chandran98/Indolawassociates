@@ -7,21 +7,18 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/UI/components/Internet%20connectivity/Network_status.dart';
 import 'package:indolawassociates/UI/provider/languageprovider.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
-import 'package:indolawassociates/UI/pages/Servicepage/NRI.dart';
 import 'package:indolawassociates/UI/pages/Settingspage/careers/careerspage.dart';
-import 'package:indolawassociates/UI/provider/theme.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class Settingspage extends StatefulWidget {
   // static const String id = "settings-page";
-  Settingspage({Key? key}) : super(key: key);
+ const Settingspage({Key? key}) : super(key: key);
 
   @override
   _SettingspageState createState() => _SettingspageState();
@@ -59,10 +56,7 @@ class _SettingspageState extends State<Settingspage> {
           child: Scaffold(
             backgroundColor: black,
             floatingActionButton: FloatingActionButton.extended(
-                label: Text(
-                  translate!.drawerkey6,
-                  style: demofont
-                ),
+                label: Text(translate!.drawerkey6, style: demofont),
                 icon: Icon(
                   Icons.logout,
                   size: 20,
@@ -156,17 +150,14 @@ class _SettingspageState extends State<Settingspage> {
                       // SizedBox(
                       //   height: height * 0.002.h,
                       // ),
-                      Text(
-                        _mobilenumber,
-                        style: dfont
-                      ),
+                      Text(_mobilenumber, style: dfont),
                       // SizedBox(
                       //   height: height * 0.005.h,
                       // ),
-                      Text(
-                        _email,
-                        style: dfont,
-                      ),
+                      // Text(
+                      //   _email,
+                      //   style: dfont,
+                      // ),
                       // SizedBox(
                       //   height: height * 0.005.h,
                       // ),

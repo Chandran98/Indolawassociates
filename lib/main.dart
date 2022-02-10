@@ -1,20 +1,13 @@
 // ignore: import_of_legacy_library_into_null_safe
-import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:indolawassociates/UI/pages/splashscren.dart';
 import 'package:indolawassociates/UI/provider/languageprovider.dart';
-import 'package:indolawassociates/UI/pages/Login/loginpage.dart';
-import 'package:indolawassociates/UI/provider/location_provider.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import 'UI/components/Internet connectivity/connectivity.dart';
-import 'UI/constant/constant.dart';
 import 'UI/l10n/l10n.dart';
 
 void main() async {
@@ -47,7 +40,7 @@ class MyApp extends StatelessWidget {
           //     builder: () {
           return
               //  Sizer(
-              //     builder: (context, orientation, deviceType) =>
+              //     builder: (context, o0rientation, deviceType) =>
               MaterialApp(
             locale: Provider.of<Languagenotifier>(context, listen: true)
                 .currentlocale,
@@ -82,24 +75,3 @@ class MyApp extends StatelessWidget {
 }
 
 ///////Splash screen////////
-
-class SplashScreen extends StatefulWidget {
-  @override
-  _SplashScreenState createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedSplashScreen(
-        duration: 1000,
-        splashTransition: SplashTransition.fadeTransition,
-        splashIconSize: 250,
-        splash: Image.asset(
-          "assets/images/ILAlogopvt.png",
-          fit: BoxFit.contain,
-        ),
-        nextScreen: Loginscreen());
-  }
-}

@@ -141,7 +141,7 @@ class _LegalinfoState extends State<Legalinfo> {
                     Divider(),
                     ListTile(
                       leading: Icon(Icons.logout, color: black),
-                      title: Text(
+                      title: Text(  
                         translate.forms7,
                         style: demofont,
                       ),

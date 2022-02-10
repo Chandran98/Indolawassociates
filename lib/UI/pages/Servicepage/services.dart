@@ -11,7 +11,7 @@ import 'package:indolawassociates/UI/routes/route.dart';
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
 
 class Servicesall extends StatefulWidget {
-  Servicesall({Key? key}) : super(key: key);
+ const Servicesall({Key? key}) : super(key: key);
 
   @override
   _ServiceallsState createState() => _ServiceallsState();

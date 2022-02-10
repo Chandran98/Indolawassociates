@@ -13,6 +13,7 @@ class Notificationpage extends StatefulWidget {
 }
 
 class _NotificationpageState extends State<Notificationpage> {
+  
   onback() {
     Navigator.of(context).pop();
     // Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>n()));
@@ -20,6 +21,7 @@ class _NotificationpageState extends State<Notificationpage> {
 
   @override
   Widget build(BuildContext context) {
+    
     final translate = AppLocalizations.of(context);
 
     return WillPopScope(

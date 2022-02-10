@@ -6,7 +6,6 @@ import 'package:indolawassociates/UI/pages/legalforms/legalforms_page.dart';
 import 'package:indolawassociates/UI/pages/Settingspage/settings_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/services.dart';
-import 'package:indolawassociates/UI/routes/route.dart';
 
 class MainHomepage extends StatefulWidget {
   MainHomepage({Key? key}) : super(key: key);
@@ -26,7 +25,6 @@ class _MainHomepageState extends State<MainHomepage>
     tabController = TabController(length: 4, vsync: this);
   }
 
-  List<Widget> pages = [Homepage(), Servicesall(), Legalinfo(), Settingspage()];
 
   void onback() {
     Navigator.pushReplacement(
@@ -36,7 +34,6 @@ class _MainHomepageState extends State<MainHomepage>
   @override
   Widget build(BuildContext context) {
     final translate = AppLocalizations.of(context);
-
     return SafeArea(
       child: Scaffold(
           body: TabBarView(

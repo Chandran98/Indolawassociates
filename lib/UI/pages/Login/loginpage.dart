@@ -42,24 +42,24 @@ class _LoginscreenState extends State<Loginscreen> {
     await SmsAutoFill().listenForCode();
   }
 
-  @override
-  void initState() {
-    SmsAutoFill().listenForCode();
+  // @override
+  // void initState() {
 
-    Timer.run(() {
-      if (_auth.currentUser != null) {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-            builder: (BuildContext context) => MainHomepage(),
-          ),
-          (route) => false,
-        );
-      }
-    });
-    _listenotp();
-    super.initState();
-  }
+    
+
+  //   // Timer.run(() {
+  //   //   if (_auth.currentUser != null) {
+  //   //     Navigator.pushAndRemoveUntil(
+  //   //       context,
+  //   //       MaterialPageRoute(
+  //   //         builder: (BuildContext context) => MainHomepage(),
+  //   //       ),
+  //   //       (route) => false,
+  //   //     );
+  //   //   }
+  //   // });
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -107,6 +107,7 @@ class _LoginscreenState extends State<Loginscreen> {
                         //     // bottom: Radius.elliptical(
                         //     //     MediaQuery.of(context).size.width * 1.w,
                         //     //     MediaQuery.of(context).size.height * 0.08.h)
+
                         //     ),
                       ),
                       child: Column(
@@ -416,6 +417,7 @@ class _LoginscreenState extends State<Loginscreen> {
                                                             )
                                                           }
                                                       })
+                                                  // ignore: invalid_return_type_for_catch_error
                                                   .catchError((error) => {
                                                         if (mounted)
                                                           setState(() {
@@ -622,9 +624,9 @@ class _LoginscreenState extends State<Loginscreen> {
           if (mounted)
             setState(() {
               isLoading = false;
-              verificationCode = verificationId;
-
-              isOTPScreen = true;
+             verificationCode = verificationId;
+             
+                            isOTPScreen = true;
             });
         },
         codeAutoRetrievalTimeout: (String verificationId) {

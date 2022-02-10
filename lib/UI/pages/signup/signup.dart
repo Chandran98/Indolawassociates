@@ -7,15 +7,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/UI/components/clippath.dart';
 import 'package:indolawassociates/UI/components/socialmedia.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
-import 'package:indolawassociates/UI/pages/Login/loginpage.dart';
-import 'package:indolawassociates/UI/provider/location_provider.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:indolawassociates/UI/pages/MainHomePage.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:provider/provider.dart';
 import 'package:sms_autofill/sms_autofill.dart';
-
-import '../../../main.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -36,7 +31,7 @@ class _SignuppageState extends State<Signuppage> {
       new TextEditingController();
   // final TextEditingController otpController = new TextEditingController();
   final TextEditingController locationController = new TextEditingController();
-  final TextEditingController emailController = new TextEditingController();
+  // final TextEditingController emailController = new TextEditingController();
 
   var isLoading = false;
   var isResend = false;
@@ -57,7 +52,6 @@ class _SignuppageState extends State<Signuppage> {
     cellnumberController.dispose();
     // otpController.dispose();
     locationController.dispose();
-    emailController.dispose();
     super.dispose();
   }
 
@@ -262,32 +256,32 @@ class _SignuppageState extends State<Signuppage> {
                                   ]),
                                 ),
                               )),
-                              Container(
-                                  child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10.0),
-                                child: TextFormField(
-                                  enabled: !isLoading,
-                                  keyboardType: TextInputType.emailAddress,
-                                  controller: emailController,
-                                  textInputAction: TextInputAction.done,
-                                  onFieldSubmitted: (_) => node.unfocus(),
-                                  decoration: InputDecoration(
-                                      // floatingLabelBehavior:
-                                      //     FloatingLabelBehavior.never,
-                                      prefixIcon: Icon(Icons.mail, color: navy),
-                                      labelText: "Email",
-                                      // alignLabelWithHint: true,
-                                      hintText: "Email",
-                                      labelStyle: demofont),
-                                  validator: MultiValidator([
-                                    RequiredValidator(errorText: emailnull),
-                                    PatternValidator(
-                                        (r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+"),
-                                        errorText: invalidemail)
-                                  ]),
-                                ),
-                              )),
+                              // Container(
+                              //     child: Padding(
+                              //   padding: const EdgeInsets.symmetric(
+                              //       horizontal: 10.0),
+                              //   child: TextFormField(
+                              //     enabled: !isLoading,
+                              //     keyboardType: TextInputType.emailAddress,
+                              //     controller: emailController,
+                              //     textInputAction: TextInputAction.done,
+                              //     onFieldSubmitted: (_) => node.unfocus(),
+                              //     decoration: InputDecoration(
+                              //         // floatingLabelBehavior:
+                              //         //     FloatingLabelBehavior.never,
+                              //         prefixIcon: Icon(Icons.mail, color: navy),
+                              //         labelText: "Email",
+                              //         // alignLabelWithHint: true,
+                              //         hintText: "Email",
+                              //         labelStyle: demofont),
+                              //     validator: MultiValidator([
+                              //       RequiredValidator(errorText: emailnull),
+                              //       PatternValidator(
+                              //           (r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+"),
+                              //           errorText: invalidemail)
+                              //     ]),
+                              //   ),
+                              // )),
                               spaced10,
                               Row(
                                 children: [
@@ -299,7 +293,8 @@ class _SignuppageState extends State<Signuppage> {
                                       },
                                       child: Text(
                                         "Log in",
-                                        style: demofont,
+                                        style: GoogleFonts.poppins(
+    color:  Color(0xff5770B5), fontSize: 15, fontWeight: FontWeight.w500),
                                       ))
                                 ],
                               ),
@@ -341,12 +336,8 @@ class _SignuppageState extends State<Signuppage> {
                                     )),
                               ),
                               spaced10,
-                              Text(
-                                'By continuing your confirm that you agree \nwith our Term and Condition',
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(
-                                    color: black, fontSize: 12),
-                              ),
+                              
+                              
                               spaced10,
                               Socialmedia()
                             ],
@@ -584,10 +575,10 @@ class _SignuppageState extends State<Signuppage> {
                                                                     locationController
                                                                         .text
                                                                         .trim(),
-                                                                'email':
-                                                                    emailController
-                                                                        .text
-                                                                        .trim(),
+                                                                // 'email':
+                                                                //     emailController
+                                                                //         .text
+                                                                //         .trim(),
                                                               },
                                                                   SetOptions(
                                                                       merge:
@@ -753,7 +744,7 @@ class _SignuppageState extends State<Signuppage> {
                           "name": nameController.text.trim(),
                           "cellnumber": phone.trim(),
                           "location": locationController.text.trim(),
-                          "email": emailController.text.trim(),
+                          // "email": emailController.text.trim(),
                         }, SetOptions(merge: true))
                         .then((value) => {
                               if (mounted)

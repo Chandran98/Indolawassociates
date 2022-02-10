@@ -1,6 +1,5 @@
 // ignore_for_file: equal_keys_in_map
 
-
 import 'package:indolawassociates/UI/dummy/Mapping.dart';
 import 'package:indolawassociates/UI/pages/Login/loginpage.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/NRI.dart';
@@ -15,7 +14,6 @@ import 'package:indolawassociates/UI/pages/Settingspage/settings_page.dart';
 import 'package:indolawassociates/UI/pages/signup/signup.dart';
 import 'package:indolawassociates/UI/pages/MainHomePage.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/services.dart';
-
 
 const String settingsroute = "/settings";
 const String careersroute = "/careers";
@@ -32,12 +30,11 @@ const String legalformroute = "/legalpage";
 const String servicespage = "/servicesall";
 const String maps = "/maps";
 
-
 final routes = {
   settingsroute: (context) => Settingspage(),
   careersroute: (context) => Careerspage(),
   contactroute: (context) => Contactpage(),
-    // maps: (context) => Mappingposition(),
+  // maps: (context) => Mappingposition(),
 
   // nriroute: (context) => NRIsection(),
   offerroute: (context) => Offersub(),

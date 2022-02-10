@@ -1,9 +1,9 @@
 
 class Legalformsdatamodel {
-  String title, Url;
+  String title, url;
 
   Legalformsdatamodel({
     required this.title,
-    required this.Url
+    required this.url
     });
 }

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 // import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
-import 'package:indolawassociates/UI/dummy/dummypage.dart';
+import 'package:indolawassociates/UI/widgets/Lawyers/Lawyers_details_page.dart';
 import 'package:indolawassociates/UI/pages/Settingspage/contactpage.dart';
 import 'package:indolawassociates/UI/widgets/Lawyers/lawyer_services.dart';
 import 'Lawyer_info_page.dart';
@@ -92,64 +92,64 @@ class _RelawyerlistState extends State<Relawyerlist> {
                             height: 120,
                             // width: width * 0.3.w,
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Expanded(
-                                    flex: 1,
-                                    child: Container(height: 80,
-                                      decoration: BoxDecoration(
-                                        // color: dialog,s
-                                        border:
-                                            Border.all(color: white, width: 4),
-                                        shape: BoxShape.circle,
-                                        // borderRadius: BorderRadius.all(Radius.circular(14)),
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color: dialog.withOpacity(0.1),
-                                              blurRadius: 10,
-                                              offset: Offset(0, 5)),
-                                        ],
-                                      ),
-                                      child: Container(
-                                        // height: 80,
-                                        // width: 50,
-                                        decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            image: DecorationImage(
-                                              image: NetworkImage(images),
-                                              fit: BoxFit.contain,
-                                            ),
-                                            color: white),
-                                      ),
-                                    )),
-                                Expanded(
-                                    flex: 2,
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      // color: dialog,s
+                                      border: Border.all(color: white, width: 2),
+                                      shape: BoxShape.circle,
+                                      // borderRadius: BorderRadius.all(Radius.circular(14)),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: dialog.withOpacity(0.1),
+                                            blurRadius: 10,
+                                            offset: Offset(0, 5)),
+                                      ],
+                                    ),
                                     child: Container(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          AutoSizeText(
-                                            name.toString(),
-                                            style: GoogleFonts.poppins(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w400,
-                                                color: white),
+                                    height: 120,
+                                    width: 80,
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          image: DecorationImage(
+                                            image: NetworkImage(images),
+                                            fit: BoxFit.contain,
                                           ),
-                                          SizedBox(
-                                            height: 20,
-                                          ),
-                                          AutoSizeText(
-                                            "${specialized.toString()} Lawyer",
-                                            style: GoogleFonts.poppins(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w400,
-                                                color: white),
-                                          )
-                                        ],
-                                      ),
-                                    )),
+                                          color: white),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        AutoSizeText(
+                                          name.toString(),
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w400,
+                                              color: white),
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        AutoSizeText(
+                                          "${specialized.toString()} Lawyer",
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w400,
+                                              color: white),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
                               ],
                             ))),
 

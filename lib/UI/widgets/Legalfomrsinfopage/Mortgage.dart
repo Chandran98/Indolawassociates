@@ -14,18 +14,21 @@ class Mortgagelegalforms extends StatefulWidget {
 }
 
 class _MortgagelegalformsState extends State<Mortgagelegalforms> {
- 
-  void onback() { Navigator.pushNamed(context, legalformroute);
+  void onback() {
+    Navigator.pushNamed(context, legalformroute);
   }
- launcher(command) async {
+
+  launcher(command) async {
     if (await canLaunch(command)) {
       await launch(command);
     } else {
       print("");
     }
   }
+
   @override
-  Widget build(BuildContext context) {        final translate = AppLocalizations.of(context);
+  Widget build(BuildContext context) {
+    final translate = AppLocalizations.of(context);
 
     return WillPopScope(
       onWillPop: () {
@@ -33,108 +36,100 @@ class _MortgagelegalformsState extends State<Mortgagelegalforms> {
         return Future.value(false);
       },
       child: Scaffold(
-         appBar: AppBar(
-              elevation: 3,
-              toolbarHeight: 70,
-              centerTitle: true,
-              backgroundColor: dialog,
-              title: FittedBox(
-                child: Text(
-                  translate!.forms10,
-                style: titletextwhite,textAlign: TextAlign.center,
-                ),
+          appBar: AppBar(
+            elevation: 3,
+            toolbarHeight: 70,
+            centerTitle: true,
+            backgroundColor: dialog,
+            title: FittedBox(
+              child: Text(
+                translate!.forms10,
+                style: titletextwhite,
+                textAlign: TextAlign.center,
               ),
-              leading: IconButton(
-                  onPressed: () => Navigator.pushNamed(context, legalformroute),
-                  icon: Image.asset(
-                    "assets/icons/rback.png",
-                    color: white,
-                    height: 35,
-                  )),
             ),
-        body: mortgage(context)),
+            leading: IconButton(
+                onPressed: () => Navigator.pushNamed(context, legalformroute),
+                icon: Image.asset(
+                  "assets/icons/rback.png",
+                  color: white,
+                  height: 35,
+                )),
+          ),
+          body: mortgage(context)),
     );
   }
-  mortgage(context){    final translate = AppLocalizations.of(context);
 
-     List<Legalformsdatamodel> mortgage_legalforms = [
-    Legalformsdatamodel(
-        title: translate!.mortgageform1,
-        Url: ""),
-    Legalformsdatamodel(
-        title:
-             translate.mortgageform2,
-        Url: ""),
-    Legalformsdatamodel(
-        title: translate.mortgageform3, Url: ""),
-    Legalformsdatamodel(title: translate.mortgageform4, Url: ""),
-    Legalformsdatamodel(title: translate.mortgageform5, Url: ""),
-    Legalformsdatamodel(
-        title: translate.mortgageform6, Url: ""),
-    Legalformsdatamodel(title: translate.mortgageform7, Url: ""),
-    Legalformsdatamodel(
-        title:translate.mortgageform8,
-        Url: ""),
-    Legalformsdatamodel(title: translate.mortgageform9, Url: ""),
-    Legalformsdatamodel(
-        title: translate.mortgageform10, Url: ""),
-  ];
-return Padding(
-          padding: const EdgeInsets.only(top: 12.0, bottom: 12),
-          child: ListView.separated(
-            physics: BouncingScrollPhysics(),
-            separatorBuilder: (context, index) {
-              return Divider();
-            },
-            itemCount: mortgage_legalforms.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                  leading: Icon(Icons.remove_red_eye, color: black),
-                  title: Text(
-                    mortgage_legalforms[index].title,
-                    style: demofont,
-                  ),
-                  // onTap: ()=>{launch(legalforms[index].Url)});
-                  onTap: () {
-                   
-                showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(backgroundColor: dialog,
-                          elevation: 10,
-                          content: Text(
-                            translate.helptitle,
-                            style: dfont,
-                          ),
-                          contentPadding: EdgeInsets.only(
-                              top: 20, left: 20, right: 20, bottom: 10),
-                          actions: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.phone,
-                                    color: white,
-                                  ),
-                                  FlatButton(
-                                    onPressed: () {
-                                      launcher("tel: 8940383000");
-                                    },
-                                    child: Text(
-                                      "8940383000",
-                                      style: dfont,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ));
-                  });
-            },
-          ),
-        );
-      
+  mortgage(context) {
+    final translate = AppLocalizations.of(context);
+
+    List<Legalformsdatamodel> mortgageLegalforms = [
+      Legalformsdatamodel(title: translate!.mortgageform1,url: "https://drive.google.com/file/d/15-wCD00FxFMWUdtgS-p6Eu0gS5OVzvkK/view?usp=sharing"),
+      Legalformsdatamodel(title: translate.mortgageform2, url: "https://drive.google.com/file/d/1TQeCP5WgfvRML8NmC-tkOj7KL2349OtO/view?usp=sharing"),
+      Legalformsdatamodel(title: translate.mortgageform3, url: "https://drive.google.com/file/d/15iwnbzriw7nzBjzUdHj3L41oaCx6_Lh9/view?usp=sharing"),
+      Legalformsdatamodel(title: translate.mortgageform4, url: "https://drive.google.com/file/d/1lCSDTwu_nzpodMGs3MMeMhJSNSS_0x2u/view?usp=sharing"),
+      Legalformsdatamodel(title: translate.mortgageform5, url: "https://drive.google.com/file/d/1f-XXlSGp32jjfg81LTHIukqeCF0uyHZ3/view?usp=sharing"),
+      Legalformsdatamodel(title: translate.mortgageform6, url: "https://drive.google.com/file/d/1r7ZxATjxlY-Sb5mL7e8YcEeR2r1CsFul/view?usp=sharing"),
+      Legalformsdatamodel(title: translate.mortgageform7, url: "https://drive.google.com/file/d/1nGeqdOJvzh7E_D0kw_tAdteyOAYM9fji/view?usp=sharing"),
+      Legalformsdatamodel(title: translate.mortgageform8, url: "https://drive.google.com/file/d/1ja5vW-wja-86GnESql1bUGxf2rhEvpbu/view?usp=sharing"),
+      Legalformsdatamodel(title: translate.mortgageform9, url: "https://drive.google.com/file/d/1sZOyH_U5ay6Ggq5GqloZBg5VsVzcKrvt/view?usp=sharing"),
+      Legalformsdatamodel(title: translate.mortgageform10,url: "https://drive.google.com/file/d/1JToKSIgN1FE6_OlxKUrvyTJkd4gv9LO4/view?usp=sharing"),
+    ];
+    return Padding(
+      padding: const EdgeInsets.only(top: 12.0, bottom: 12),
+      child: ListView.separated(
+        physics: BouncingScrollPhysics(),
+        separatorBuilder: (context, index) {
+          return Divider();
+        },
+        itemCount: mortgageLegalforms.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+              leading: Icon(Icons.remove_red_eye, color: black),
+              title: Text(
+                mortgageLegalforms[index].title,
+                style: demofont,
+              ),
+              onTap: ()=>{launch(mortgageLegalforms[index].url)});
+              // onTap: () {
+              //   showDialog(
+              //       context: context,
+              //       builder: (context) => AlertDialog(
+              //             backgroundColor: dialog,
+              //             elevation: 10,
+              //             content: Text(
+              //               translate.helptitle,
+              //               style: dfont,
+              //             ),
+              //             contentPadding: EdgeInsets.only(
+              //                 top: 20, left: 20, right: 20, bottom: 10),
+              //             actions: [
+              //               Padding(
+              //                 padding:
+              //                     const EdgeInsets.symmetric(horizontal: 10),
+              //                 child: Row(
+              //                   children: [
+              //                     Icon(
+              //                       Icons.phone,
+              //                       color: white,
+              //                     ),
+              //                     FlatButton(
+              //                       onPressed: () {
+              //                         launcher("tel: 8940383000");
+              //                       },
+              //                       child: Text(
+              //                         "8940383000",
+              //                         style: dfont,
+              //                       ),
+              //                     ),
+              //                   ],
+              //                 ),
+              //               )
+              //             ],
+              //           ));
+              // });
+        },
+      ),
+    );
   }
 }
