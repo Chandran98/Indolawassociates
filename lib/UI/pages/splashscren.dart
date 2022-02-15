@@ -51,7 +51,7 @@ final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   Widget build(BuildContext context) {
     return AnimatedSplashScreen( 
         duration: 1000,
-        splashTransition: SplashTransition.fadeTransition,
+        // splashTransition: SplashTransition.fadeTransition,
         splashIconSize: 250,
         splash: Image.asset(
           "assets/images/ILAlogopvt.png",

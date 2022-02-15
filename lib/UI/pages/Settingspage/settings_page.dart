@@ -161,15 +161,15 @@ class _SettingspageState extends State<Settingspage> {
                       // SizedBox(
                       //   height: height * 0.005.h,
                       // ),
-                      Text(
-                        _location,
-                        style: GoogleFonts.mulish(
-                            fontSize: 17,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500),
-                      ),
+                      // Text(
+                      //   _location,
+                      //   style: GoogleFonts.mulish(
+                      //       fontSize: 17,
+                      //       color: Colors.white,
+                      //       fontWeight: FontWeight.w500),
+                      // ),
                       SizedBox(
-                        height: 20,
+                        height: 40,
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),

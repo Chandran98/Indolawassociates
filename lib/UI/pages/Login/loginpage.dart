@@ -47,17 +47,17 @@ class _LoginscreenState extends State<Loginscreen> {
 
     
 
-  //   // Timer.run(() {
-  //   //   if (_auth.currentUser != null) {
-  //   //     Navigator.pushAndRemoveUntil(
-  //   //       context,
-  //   //       MaterialPageRoute(
-  //   //         builder: (BuildContext context) => MainHomepage(),
-  //   //       ),
-  //   //       (route) => false,
-  //   //     );
-  //   //   }
-  //   // });
+  //   Timer.run(() {
+  //     if (_auth.currentUser != null) {
+  //       Navigator.pushAndRemoveUntil(
+  //         context,
+  //         MaterialPageRoute(
+  //           builder: (BuildContext context) => MainHomepage(),
+  //         ),
+  //         (route) => false,
+  //       );
+  //     }
+  //   });
   //   super.initState();
   // }
 

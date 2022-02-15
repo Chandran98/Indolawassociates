@@ -200,13 +200,13 @@ class _Homepage extends State<Homepage> {
                                         ),
                                         IconButton(
                                             onPressed: () {
-                                              // Navigator.pushNamed(
-                                              //     context, notificationroute);
-                                              Navigator.pushReplacement(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          Paymentscreen()));
+                                              Navigator.pushNamed(
+                                                  context, notificationroute);
+                                              // Navigator.pushReplacement(
+                                              //     context,
+                                              //     MaterialPageRoute(
+                                              //         builder: (context) =>
+                                              //             Paymentscreen()));
                                             },
 
                                             // => Navigator.pushNamed(
