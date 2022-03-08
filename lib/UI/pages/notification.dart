@@ -13,7 +13,6 @@ class Notificationpage extends StatefulWidget {
 }
 
 class _NotificationpageState extends State<Notificationpage> {
-  
   onback() {
     Navigator.of(context).pop();
     // Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>n()));
@@ -21,7 +20,6 @@ class _NotificationpageState extends State<Notificationpage> {
 
   @override
   Widget build(BuildContext context) {
-    
     final translate = AppLocalizations.of(context);
 
     return WillPopScope(
@@ -32,22 +30,22 @@ class _NotificationpageState extends State<Notificationpage> {
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            elevation: 3,
+            // elevation: 3,
             toolbarHeight: 70,
             centerTitle: true,
-            backgroundColor: dialog,
+            // backgroundColor: dialog,
             title: Text(
               "Notification",
-                style: titletextwhite,textAlign: TextAlign.center,
+              textAlign: TextAlign.center,
             ),
             leading: IconButton(
                 onPressed: () => Navigator.pushNamed(context, homeroute),
-                icon: Image.asset(
-                  "assets/icons/rback.png",
-                  color: white,
-                  height: 35,
+                icon: const Icon(
+                  Icons.arrow_back,
+                  // color: Colors.white,
                 )),
           ),
+          body: Container(),
         ),
       ),
     );

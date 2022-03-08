@@ -14,7 +14,8 @@ class Giftslegalforms extends StatefulWidget {
 }
 
 class _GiftslegalformsState extends State<Giftslegalforms> {
-  void onback() { Navigator.pushNamed(context, legalformroute);
+  void onback() {
+    Navigator.pushNamed(context, legalformroute);
   }
 
   launcher(command) async {
@@ -35,26 +36,25 @@ class _GiftslegalformsState extends State<Giftslegalforms> {
         return Future.value(false);
       },
       child: Scaffold(
-           appBar: AppBar(
-              elevation: 3,
-              toolbarHeight: 70,
-              centerTitle: true,
-              backgroundColor: dialog,
-              title: FittedBox(
-                child: Text(
-                  translate!.forms9,
-                style: titletextwhite,textAlign: TextAlign.center,
-                ),
+          appBar: AppBar(
+            // elevation: 3,/
+            toolbarHeight: 70,
+            centerTitle: true,
+            // backgroundColor: dialog,
+            title: FittedBox(
+              child: Text(
+                translate!.forms9,
+                // style: titletextwhite,
+                textAlign: TextAlign.center,
               ),
-              leading: IconButton(
-                  onPressed: () => Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => Legalinfo())),
-                  icon: Image.asset(
-                    "assets/icons/rback.png",
-                    color: white,
-                    height: 35,
-                  )),
             ),
+              leading: IconButton(
+                  onPressed: () => Navigator.pushNamed(context, legalformroute),
+                  icon: Icon(
+                    Icons.arrow_back, 
+                    // height: 35,
+                  )),
+          ),
           body: gifts(context)),
     );
   }
@@ -63,21 +63,66 @@ class _GiftslegalformsState extends State<Giftslegalforms> {
     final translate = AppLocalizations.of(context);
 
     List<Legalformsdatamodel> giftsLegalforms = [
-      Legalformsdatamodel(title: translate!.giftsform1, url: "https://drive.google.com/file/d/1l9UVXb_Mftqtr_akUT3rb7cwcst0anAA/view?usp=sharing"),
-      Legalformsdatamodel(title: translate.giftsform2, url: "https://drive.google.com/file/d/15xqmEsmKsLa-YW02a5QUyji5dqBKzmvy/view?usp=sharing"),
-      Legalformsdatamodel(title: translate.giftsform3, url: "https://drive.google.com/file/d/1lrWAEFnQs3fG3MFMu17W6QQnaNRlY1wr/view?usp=sharing"),
-      Legalformsdatamodel(title: translate.giftsform4, url: "https://drive.google.com/file/d/1T9sSkOoOrjs2in2dEaGnYXYqBbU9qBHO/view?usp=sharing"),
-      Legalformsdatamodel(title: translate.giftsform5, url: "https://drive.google.com/file/d/1DdZgDcjeKD_GnsW2Pwqhlian8ZsVAagH/view?usp=sharing"),
-      Legalformsdatamodel(title: translate.giftsform6, url: "https://drive.google.com/file/d/1FOc_qPjTKxIaNeVHue9AwLPhqbqOODgQ/view?usp=sharing"),
-      Legalformsdatamodel(title: translate.giftsform7, url: "https://drive.google.com/file/d/1bAucEDG8_RLPnbLg1JYtpDsplre66iFv/view?usp=sharing"),
-      Legalformsdatamodel(title: translate.giftsform8, url: "https://drive.google.com/file/d/1EdRS_wvjimoBDSV9JtZELG3OME0EX7V5/view?usp=sharing"),
-      Legalformsdatamodel(title: translate.giftsform9, url: "https://drive.google.com/file/d/1DuEKmDroGV7v1ZbA4QUqTgumq2xO0ZRi/view?usp=sharing"),
-      Legalformsdatamodel(title: translate.giftsform10,url: "https://drive.google.com/file/d/1m8Mq8uSKxWDlpvWhCRQUj0KzZLNUvjT6/view?usp=sharing"),
-      Legalformsdatamodel(title: translate.giftsform11,url: "https://drive.google.com/file/d/1xtJhfiMInWpvQOZL1qTMJX3HwokGS32N/view?usp=sharing"),
-      Legalformsdatamodel(title: translate.giftsform12,url: "https://drive.google.com/file/d/1eufVG6O7U72zBSW4owfH45v2KEqoN1eL/view?usp=sharing"),
-      Legalformsdatamodel(title: translate.giftsform13,url: "https://drive.google.com/file/d/1yaXNJWs_uZptoC3M61zAQ3_8PzrIf2wV/view?usp=sharing"),
-      Legalformsdatamodel(title: translate.giftsform14,url: "https://drive.google.com/file/d/1GSVzAX7nKN5B5KH7hKRg5yIVjz7HrcxT/view?usp=sharing"),
-      Legalformsdatamodel(title: translate.giftsform16, url: "https://drive.google.com/file/d/1odG-9xdLnfaEtk0BwqhOUQKeo8Z4IH6a/view?usp=sharing"),
+      Legalformsdatamodel(
+          title: translate!.giftsform1,
+          url:
+              "https://drive.google.com/file/d/1l9UVXb_Mftqtr_akUT3rb7cwcst0anAA/view?usp=sharing"),
+      Legalformsdatamodel(
+          title: translate.giftsform2,
+          url:
+              "https://drive.google.com/file/d/15xqmEsmKsLa-YW02a5QUyji5dqBKzmvy/view?usp=sharing"),
+      Legalformsdatamodel(
+          title: translate.giftsform3,
+          url:
+              "https://drive.google.com/file/d/1lrWAEFnQs3fG3MFMu17W6QQnaNRlY1wr/view?usp=sharing"),
+      Legalformsdatamodel(
+          title: translate.giftsform4,
+          url:
+              "https://drive.google.com/file/d/1T9sSkOoOrjs2in2dEaGnYXYqBbU9qBHO/view?usp=sharing"),
+      Legalformsdatamodel(
+          title: translate.giftsform5,
+          url:
+              "https://drive.google.com/file/d/1DdZgDcjeKD_GnsW2Pwqhlian8ZsVAagH/view?usp=sharing"),
+      Legalformsdatamodel(
+          title: translate.giftsform6,
+          url:
+              "https://drive.google.com/file/d/1FOc_qPjTKxIaNeVHue9AwLPhqbqOODgQ/view?usp=sharing"),
+      Legalformsdatamodel(
+          title: translate.giftsform7,
+          url:
+              "https://drive.google.com/file/d/1bAucEDG8_RLPnbLg1JYtpDsplre66iFv/view?usp=sharing"),
+      Legalformsdatamodel(
+          title: translate.giftsform8,
+          url:
+              "https://drive.google.com/file/d/1EdRS_wvjimoBDSV9JtZELG3OME0EX7V5/view?usp=sharing"),
+      Legalformsdatamodel(
+          title: translate.giftsform9,
+          url:
+              "https://drive.google.com/file/d/1DuEKmDroGV7v1ZbA4QUqTgumq2xO0ZRi/view?usp=sharing"),
+      Legalformsdatamodel(
+          title: translate.giftsform10,
+          url:
+              "https://drive.google.com/file/d/1m8Mq8uSKxWDlpvWhCRQUj0KzZLNUvjT6/view?usp=sharing"),
+      Legalformsdatamodel(
+          title: translate.giftsform11,
+          url:
+              "https://drive.google.com/file/d/1xtJhfiMInWpvQOZL1qTMJX3HwokGS32N/view?usp=sharing"),
+      Legalformsdatamodel(
+          title: translate.giftsform12,
+          url:
+              "https://drive.google.com/file/d/1eufVG6O7U72zBSW4owfH45v2KEqoN1eL/view?usp=sharing"),
+      Legalformsdatamodel(
+          title: translate.giftsform13,
+          url:
+              "https://drive.google.com/file/d/1yaXNJWs_uZptoC3M61zAQ3_8PzrIf2wV/view?usp=sharing"),
+      Legalformsdatamodel(
+          title: translate.giftsform14,
+          url:
+              "https://drive.google.com/file/d/1GSVzAX7nKN5B5KH7hKRg5yIVjz7HrcxT/view?usp=sharing"),
+      Legalformsdatamodel(
+          title: translate.giftsform16,
+          url:
+              "https://drive.google.com/file/d/1odG-9xdLnfaEtk0BwqhOUQKeo8Z4IH6a/view?usp=sharing"),
     ];
     return Padding(
       padding: const EdgeInsets.only(top: 12.0, bottom: 12),
@@ -89,49 +134,49 @@ class _GiftslegalformsState extends State<Giftslegalforms> {
         itemCount: giftsLegalforms.length,
         itemBuilder: (context, index) {
           return ListTile(
-              leading: Icon(Icons.remove_red_eye, color: black),
+              leading: Icon(Icons.remove_red_eye,),
               title: Text(
                 giftsLegalforms[index].title,
-                style: demofont,
+                // style: demofont,
               ),
-              onTap: ()=>{launch(giftsLegalforms[index].url)});
-              // onTap: () {
-               
-              //   showDialog(
-              //       context: context,
-              //       builder: (context) => AlertDialog(backgroundColor: dialog,
-              //             elevation: 10,
-              //             content: Text(
-              //               translate.helptitle,
-              //               style: dfont,
-              //             ),
-              //             contentPadding: EdgeInsets.only(
-              //                 top: 20, left: 20, right: 20, bottom: 10),
-              //             actions: [
-              //               Padding(
-              //                 padding:
-              //                     const EdgeInsets.symmetric(horizontal: 10),
-              //                 child: Row(
-              //                   children: [
-              //                     Icon(
-              //                       Icons.phone,
-              //                       color: white,
-              //                     ),
-              //                     FlatButton(
-              //                       onPressed: () {
-              //                         launcher("tel: 8940383000");
-              //                       },
-              //                       child: Text(
-              //                         "8940383000",
-              //                         style: dfont,
-              //                       ),
-              //                     ),
-              //                   ],
-              //                 ),
-              //               )
-              //             ],
-              //           ));
-              // });
+              onTap: () => {launch(giftsLegalforms[index].url)});
+          // onTap: () {
+
+          //   showDialog(
+          //       context: context,
+          //       builder: (context) => AlertDialog(backgroundColor: dialog,
+          //             elevation: 10,
+          //             content: Text(
+          //               translate.helptitle,
+          //               style: dfont,
+          //             ),
+          //             contentPadding: EdgeInsets.only(
+          //                 top: 20, left: 20, right: 20, bottom: 10),
+          //             actions: [
+          //               Padding(
+          //                 padding:
+          //                     const EdgeInsets.symmetric(horizontal: 10),
+          //                 child: Row(
+          //                   children: [
+          //                     Icon(
+          //                       Icons.phone,
+          //                       color: white,
+          //                     ),
+          //                     FlatButton(
+          //                       onPressed: () {
+          //                         launcher("tel: 8940383000");
+          //                       },
+          //                       child: Text(
+          //                         "8940383000",
+          //                         style: dfont,
+          //                       ),
+          //                     ),
+          //                   ],
+          //                 ),
+          //               )
+          //             ],
+          //           ));
+          // });
         },
       ),
     );

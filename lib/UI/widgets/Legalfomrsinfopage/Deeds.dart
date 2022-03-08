@@ -36,22 +36,22 @@ class _DeedslegalformsState extends State<Deedslegalforms> {
       },
       child: Scaffold(
            appBar: AppBar(
-              elevation: 3,
+              // elevation: 3,
               toolbarHeight: 70,
               centerTitle: true,
-              backgroundColor: dialog,
+              // backgroundColor: dialog,
               title: FittedBox(
                 child: Text(
                   translate!.forms7,
-                style: titletextwhite,textAlign: TextAlign.center,
+                // style: titletextwhite
+                textAlign: TextAlign.center,
                 ),
               ),
               leading: IconButton(
                   onPressed: () => Navigator.pushNamed(context, legalformroute),
-                  icon: Image.asset(
-                    "assets/icons/rback.png",
-                    color: white,
-                    height: 35,
+                  icon: Icon(
+                    Icons.arrow_back, 
+                    // height: 35,
                   )),
             ),
           body: deeds(context)),
@@ -93,10 +93,10 @@ class _DeedslegalformsState extends State<Deedslegalforms> {
         itemCount: deedLegalforms.length,
         itemBuilder: (context, index) {
           return ListTile(
-              leading: Icon(Icons.remove_red_eye, color: black),
+              leading: Icon(Icons.remove_red_eye,),
               title: Text(
                 deedLegalforms[index].title,
-                style: demofont,
+                // style: demofont,
               ),
               onTap: ()=>{launch(deedLegalforms[index].url)}
               // onTap: () {

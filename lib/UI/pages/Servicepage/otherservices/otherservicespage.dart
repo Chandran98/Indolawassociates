@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/otherservices/otherservicesinfo.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 
@@ -188,15 +187,15 @@ class _OtherServicesformreState extends State<OtherServicesformre> {
       itemCount: otherservicemodel.length,
       itemBuilder: (context, index) {
         return ListTile(
-            leading: Icon(Icons.logout, color: black),
+            leading: Icon(Icons.logout, ),
             title: Text(
               otherservicemodel[index].servicetitle,
-              style: demofont,
+              // style: demofont,
             ),
             onTap: () => Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => OTherservicesinfo(
+                    builder: (context) => OTherservicesscreen(
                           servicetitle: otherservicemodel[index].servicetitle,
                           servicecontent:
                               otherservicemodel[index].servicecontent,

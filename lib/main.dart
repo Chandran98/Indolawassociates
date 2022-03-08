@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:indolawassociates/UI/pages/splashscren.dart';
 import 'package:indolawassociates/UI/provider/languageprovider.dart';
+import 'package:indolawassociates/UI/provider/theme.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
+import 'package:indolawassociates/UI/themes/themes.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'UI/components/Internet connectivity/connectivity.dart';
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => Languagenotifier()),
         // ChangeNotifierProvider(create: (context) => Locationprovider()),
 
-        // ChangeNotifierProvider(create: (context) => THemeprovider()),
+        ChangeNotifierProvider(create: (context) => Themeprovider()),
         StreamProvider<ConnectivityStatus>(
             create: (_) => ConnectivityService().streamController.stream,
             initialData: ConnectivityStatus.Offline)
@@ -54,7 +56,9 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             home: SplashScreen(),
             routes: routes,
-            // theme: notifier.darktheme ? dip :lite,
+            theme: Provider.of<Themeprovider>(context).darktheme
+                ? darkmode
+                : lightmode,
 
             // routes: {
             //   Settingspage.id: (context) => Settingspage(),

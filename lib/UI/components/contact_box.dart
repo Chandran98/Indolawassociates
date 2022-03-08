@@ -1,11 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 
 class Contactbox extends StatelessWidget {
   const Contactbox({Key? key}) : super(key: key);
@@ -31,22 +31,22 @@ class Contactbox extends StatelessWidget {
           textAlign: TextAlign.center,
           style: GoogleFonts.poppins(
               // fontWeight: FontWeight.bold,
-              color: black,
+              // color: black,
               fontSize: 16),
         ),
-       spaced10,
+        spaced10,
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            TextButton(
-              onPressed: () {
+            InkWell(
+              onTap: () {
                 launch("tel: 8940383000");
               },
               child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(35),
-                      color: white,
-                      border: Border.all(color: navy)),
+                      // color: white,
+                      border: Border.all(color: appcolor)),
                   height: 50,
                   width: 160,
                   // padding: const EdgeInsets.symmetric(
@@ -57,16 +57,15 @@ class Contactbox extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Image.asset(
-                          "assets/icons/call.png",
-                          color: black,
-                          height: 25,
+                        Icon(
+                          CupertinoIcons.phone_circle,
+                          size: 30,
                         ),
                         Text(
                           translate.mobile,
                           style: GoogleFonts.poppins(
                               // fontWeight: FontWeight.bold,
-                              color: black,
+                              // color: black,
                               fontSize: 16),
                           textAlign: TextAlign.center,
                         ),
@@ -75,14 +74,14 @@ class Contactbox extends StatelessWidget {
                   )),
             ),
 
-            TextButton(
-              onPressed: () async => await launch(
+            InkWell(
+              onTap: () async => await launch(
                   "https://wa.me/$whatsapp?text= Hi, I have an emergency"),
               child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(35),
-                      color: white,
-                      border: Border.all(color: black)),
+                      // color: white,
+                      border: Border.all(color: appcolor)),
                   height: 50,
                   width: 160,
                   // padding: const EdgeInsets.symmetric(
@@ -101,7 +100,7 @@ class Contactbox extends StatelessWidget {
                           translate.whatsapp,
                           style: GoogleFonts.poppins(
                               // fontWeight: FontWeight.bold,
-                              color: black,
+                              // color: black,
                               fontSize: 15),
                           textAlign: TextAlign.center,
                         ),

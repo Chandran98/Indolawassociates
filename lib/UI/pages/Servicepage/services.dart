@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:sizer/sizer.dart';?
-import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/UI/components/Internet%20connectivity/Network_status.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/NRI.dart';
@@ -11,7 +9,7 @@ import 'package:indolawassociates/UI/routes/route.dart';
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
 
 class Servicesall extends StatefulWidget {
- const Servicesall({Key? key}) : super(key: key);
+  const Servicesall({Key? key}) : super(key: key);
 
   @override
   _ServiceallsState createState() => _ServiceallsState();
@@ -46,28 +44,27 @@ class _ServiceallsState extends State<Servicesall>
             length: 3,
             child: SafeArea(
               child: Scaffold(
-                backgroundColor: white,
+                // backgroundColor: white,
                 appBar: AppBar(
                   elevation: 3,
                   toolbarHeight: 60,
                   centerTitle: true,
-                  backgroundColor: dialog,
+                  // backgroundColor: appcolor,
                   title: Text(
                     translate!.navkey2,
-                    style: titletextwhite
+                    // style: titletextwhite
                   ),
                   leading: IconButton(
                       onPressed: () => Navigator.pushNamed(context, homeroute),
-                      icon: Image.asset(
-                        "assets/icons/rback.png",
-                        color: white,
-                        height: 35,
+                      icon: Icon(
+                        Icons.arrow_back,
+                        // height: 35,
                       )),
                   bottom: TabBar(
                     controller: _controller,
-                    indicatorColor: white,
+                    indicatorColor: appcolor,
                     indicatorWeight: 5,
-                    unselectedLabelColor: white,
+                    // unselectedLabelColor: white,
                     automaticIndicatorColorAdjustment: true,
                     tabs: [
                       Tab(

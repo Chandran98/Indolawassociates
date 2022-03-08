@@ -37,24 +37,23 @@ class _TrustlegalformsState extends State<Trustlegalforms> {
       },
       child: Scaffold(
           appBar: AppBar(
-            elevation: 3,
+            // elevation: 3,
             toolbarHeight: 70,
             centerTitle: true,
-            backgroundColor: dialog,
+            // backgroundColor: dialog,
             title: FittedBox(
               child: Text(
                 translate!.forms1,
-                style: titletextwhite,
+                // style: titletextwhite,
                 textAlign: TextAlign.center,
               ),
             ),
-            leading: IconButton(
-                onPressed: () => Navigator.pushNamed(context, legalformroute),
-                icon: Image.asset(
-                  "assets/icons/rback.png",
-                  color: white,
-                  height: 35,
-                )),
+              leading: IconButton(
+                  onPressed: () => Navigator.pushNamed(context, legalformroute),
+                  icon: Icon(
+                    Icons.arrow_back, 
+                    // height: 35,
+                  )),
           ),
           body: trust(context)),
     );
@@ -84,7 +83,7 @@ class _TrustlegalformsState extends State<Trustlegalforms> {
               leading: Icon(Icons.remove_red_eye, color: black),
               title: Text(
                 trustLegalforms[index].title,
-                style: demofont,
+                // style: demofont,
               ),
               onTap: ()=>{launch(trustLegalforms[index].url)});
               // onTap: () {

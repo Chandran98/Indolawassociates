@@ -35,24 +35,30 @@ class _BusinesslegalformsdState extends State<Businesslegalformsd> {
       },
       child: Scaffold(
           appBar: AppBar(
-            elevation: 3,
+            // elevation: 3,
             toolbarHeight: 70,
             centerTitle: true,
-            backgroundColor: dialog,
+            // backgroundColor: dialog,
             title: FittedBox(
               child: Text(
                 translate!.forms3,
-                style: titletextwhite,
+                // style: titletextwhite,
                 textAlign: TextAlign.center,
               ),
             ),
             leading: IconButton(
                 onPressed: () => Navigator.pushNamed(context, legalformroute),
-                icon: Image.asset(
-                  "assets/icons/rback.png",
-                  color: white,
-                  height: 35,
+                icon: Icon(
+                  Icons.arrow_back,
+                  // height: 35,
                 )),
+            // leading: IconButton(
+            //     onPressed: () => Navigator.pushNamed(context, legalformroute),
+            //     icon: Image.asset(
+            //       "assets/icons/rback.png",
+            //       color: white,
+            //       height: 35,
+            //     )),
           ),
           body: opbuild(context)
           //  Padding(
@@ -184,10 +190,12 @@ class _BusinesslegalformsdState extends State<Businesslegalformsd> {
         itemCount: businesslegalforms.length,
         itemBuilder: (context, index) {
           return ListTile(
-              leading: Icon(Icons.remove_red_eye, color: black),
+              leading: Icon(
+                Icons.remove_red_eye,
+              ),
               title: Text(
                 businesslegalforms[index].title,
-                style: demofont,
+                // style: demofont,
               ),
               // onTap: ()=>{launch(legalforms[index].url)});
               onTap: () {

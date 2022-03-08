@@ -1,11 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
-import 'package:indolawassociates/UI/pages/Home_page.dart';
-import 'package:indolawassociates/UI/pages/legalforms/legalforms_page.dart';
-import 'package:indolawassociates/UI/pages/Settingspage/settings_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:indolawassociates/UI/pages/Servicepage/services.dart';
 
 class MainHomepage extends StatefulWidget {
   MainHomepage({Key? key}) : super(key: key);
@@ -24,7 +20,6 @@ class _MainHomepageState extends State<MainHomepage>
     super.initState();
     tabController = TabController(length: 4, vsync: this);
   }
-
 
   void onback() {
     Navigator.pushReplacement(
@@ -54,7 +49,7 @@ class _MainHomepageState extends State<MainHomepage>
           bottomNavigationBar: SizedBox(
             height: kBottomNavigationBarHeight,
             child: BottomAppBar(
-              color: black,
+              // color: black,
               child: TabBar(
                   onTap: (index) {
                     setState(() {
@@ -64,10 +59,10 @@ class _MainHomepageState extends State<MainHomepage>
                   indicator: const UnderlineTabIndicator(
                       insets:
                           EdgeInsets.only(bottom: kBottomNavigationBarHeight),
-                      borderSide: BorderSide(color: green, width: 4)),
-                  labelColor: green,
-                  indicatorColor: green,
-                  unselectedLabelColor: white,
+                      borderSide: BorderSide(width: 4, color: appcolor)),
+                  // labelColor: green,
+                  // indicatorColor: green,
+                  // unselectedLabelColor: white,
                   controller: tabController,
                   tabs: [
                     Tab(

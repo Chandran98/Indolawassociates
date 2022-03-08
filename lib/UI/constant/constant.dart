@@ -61,8 +61,20 @@ const String DOB = "Require Date of Birth";
 const String otpnull = "Enter OTP";
 const String otpnlength = "Enter six digit OTP";
 const List<Widget> pages = [
-  Homepage(),
+  Homepagescreen(),
   Servicesall(),
   Legalinfo(),
-  Settingspage()
+  Settingscreen()
 ];
+
+const Color appcolor = Color(0xff6E5ADF);
+//4DD57E
+//9b6
+// const Color white = Colors.white;
+const Color pink = Color(0xffEA4C89);
+const Color appcolor2 = Color(0xffEBAE34);
+// const Color black = Colors.black;
+
+const spacedwidth10 = SizedBox(width: 10);
+const spacedwidth20 = SizedBox(width: 20);
+const spacedwidth30 = SizedBox(width: 30);

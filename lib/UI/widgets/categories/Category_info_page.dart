@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/UI/components/contact_box.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
-import 'package:indolawassociates/UI/pages/MainHomePage.dart';
+import 'package:indolawassociates/UI/provider/theme.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
+import 'package:indolawassociates/UI/widgets/Lawyers/Lawyer_info_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:indolawassociates/UI/widgets/categories/Category_form.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:auto_size_text/auto_size_text.dart';
+import 'package:provider/provider.dart';
 
-class Catesider extends StatefulWidget {
-  const Catesider({
+class Categorypagescrend extends StatefulWidget {
+  const Categorypagescrend({
     Key? key,
     required this.categorytitle,
     required this.categorysubtitle,
@@ -32,28 +32,29 @@ class Catesider extends StatefulWidget {
       r3,
       r4,
       r5,
+      
       r6;
 
   @override
-  _CatesiderState createState() => _CatesiderState();
+  State<Categorypagescrend> createState() => _CategorypagescrendState();
 }
 
-class _CatesiderState extends State<Catesider> {
+class _CategorypagescrendState extends State<Categorypagescrend> {
+  double rightvalue = 200;
+  @override
+  void initState() {
+    Future.delayed(Duration(milliseconds: 100)).then((value) {
+      setState(() {
+        rightvalue = 10;
+      });
+    });
+    super.initState();
+  }
 
-    void onback() {
+  onback() {
     Navigator.pushNamed(context, homeroute);
+    // Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>n()));
   }
-
-  launcher(command) async {
-    if (await canLaunch(command)) {
-      await launch(command);
-    } else {
-      print("");
-    }
-  }
-
-  var whatsapp = "+91 8940383000";
-
 
   @override
   Widget build(BuildContext context) {
@@ -66,67 +67,105 @@ class _CatesiderState extends State<Catesider> {
       },
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: white,
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Row(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: Container(
-                          child: IconButton(
-                              iconSize: 40,
-                              color: white,
-                              icon: Image.asset(
-                                "assets/icons/rback.png",
-                                color: iconcolor,
-                                height: 40,
-                              ),
-                              onPressed: () => Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MainHomepage()))),
-                        ),
+            body: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              leading: InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                  )),
+              // title: Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     InkWell(
+              //         onTap: () {
+              //           Navigator.pop(context);
+              //         },
+              //         child: const Icon(
+              //           Icons.arrow_back_ios,
+              //           color: Colors.transparent,
+              //         )),
+              //     Icon(Icons.shopping_cart_checkout)
+              //   ],
+              // ),
+              pinned: true,
+              elevation: 0,
+              expandedHeight: 250,
+              bottom: PreferredSize(
+                  child: Container(
+                    height: 80,
+                    color: Colors.transparent.withOpacity(0.4),
+                    width: double.maxFinite,
+                    child: Center(
+                      child: Text(
+                        widget.categorytitle,
+                        style: GoogleFonts.poppins(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 70.0),
-                        child: Text(
-                          widget.categorytitle,
-                          style: titletextblack,
-                          textAlign: TextAlign.center,
-                        ),
-                      )
-                    ],
-                  ),
-
-                  Card(
-                    elevation: 4,
-                    child: Container(
-                      height: 150,
-                      width: 350,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage(widget.categorypageimages),
-                              fit: BoxFit.cover)),
                     ),
                   ),
+                  preferredSize: Size.fromHeight(25)),
+              flexibleSpace: FlexibleSpaceBar(
+                  background: Image.asset(
+                widget.categorypageimages,
+                fit: BoxFit.cover,
+              )),
+            ),
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
                   spaced20,
                   Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 25, horizontal: 10),
+                    child: Row(
+                      children: [
+                        Container(
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color:
+                                    context.watch<Themeprovider>().darktheme ==
+                                            false
+                                        ? appcolor
+                                        : appcolor2),
+                            child: AnimatedPadding(
+                              duration: Duration(milliseconds: 1000),
+                              padding: EdgeInsets.only(
+                                  left: 10,
+                                  right: rightvalue,
+                                  top: 5,
+                                  bottom: 5),
+                              child: Text(
+                                "Description",
+                                style: TextStyle(
+                                    color: white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            )),
+                        Spacer(),
+                        Container()
+                      ],
+                    ),
+                  ),
+                  Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: AutoSizeText(
+                    child: Text(
                       widget.categorysubtitle,
                       style: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w400, fontSize: 14
                           // fontSize: 10.sp,
-                          color: black),
+                          ),
                       textAlign: TextAlign.justify,
-                      minFontSize: 5.0,
-                      maxFontSize: 13.0,
+                      // minFontSize: 5.0,
+                      // fonts: 16.0,
                     ),
                   ),
                   spaced10,
@@ -170,82 +209,54 @@ class _CatesiderState extends State<Catesider> {
                       )
                     ],
                   ),
-
-                  TextButton(
-                    onPressed: () => showModalBottomSheet(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(25))),
-                        enableDrag: false,
-                        isScrollControlled: true,
-                        context: context,
-                        builder: (context) => SingleChildScrollView(
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                    bottom: MediaQuery.of(context)
-                                        .viewInsets
-                                        .bottom),
-                                child: Buildformsheet(),
-                              ),
-                            )),
-                    child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(35),
-                            color: white,
-                            border: Border.all(color: navy)),
-                        height: 50,
-                        width: 150,
-                        // padding: const EdgeInsets.symmetric(
-                        //   vertical: 15.0,
-                        //   horizontal: 15.0,
-                        // ),
-                        child: Center(
-                          child: Text(
-                            translate!.apply,
-                            style: GoogleFonts.poppins(
-                                // fontWeight: FontWeight.bold,
-                                color: black,
-                                fontSize: 15),
-                            textAlign: TextAlign.center,
-                          ),
-                        )),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 25.0),
+                    child: InkWell(
+                      onTap: () => showModalBottomSheet(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(25))),
+                          enableDrag: false,
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (context) => SingleChildScrollView(
+                                child: Container(
+                                  padding: EdgeInsets.only(
+                                      bottom: MediaQuery.of(context)
+                                          .viewInsets
+                                          .bottom),
+                                  child: Buildformsheet(),
+                                ),
+                              )),
+                      child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(35),
+                              // color: white,
+                              border: Border.all(color: appcolor)),
+                          height: 50,
+                          width: 150,
+                          // padding: const EdgeInsets.symmetric(
+                          //   vertical: 15.0,
+                          //   horizontal: 15.0,
+                          // ),
+                          child: Center(
+                            child: Text(
+                              translate!.apply,
+                              style: GoogleFonts.poppins(
+                                  // fontWeight: FontWeight.bold,
+                                  // color: black,
+                                  fontSize: 15),
+                              textAlign: TextAlign.center,
+                            ),
+                          )),
+                    ),
                   ),
-
-                  Contactbox()
+                  Contactbox(),
                 ],
               ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  // buildformsheet() => 
-}
-
-class Titlecard extends StatelessWidget {
-  Titlecard({required this.title});
-  String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(5.0),
-      child: Row(
-        children: [
-          Icon(Icons.check, color: gold),
-          SizedBox(
-            width: 10,
-          ),
-          Expanded(
-            child: Text(
-              title,
-              style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w400, fontSize: 13, color: black),
-            ),
-          ),
-        ],
+            )
+          ],
+        )),
       ),
     );
   }

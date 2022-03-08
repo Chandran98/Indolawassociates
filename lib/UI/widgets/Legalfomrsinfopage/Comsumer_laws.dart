@@ -38,24 +38,23 @@ class _ConsumerlegalformsState extends State<Consumerlegalforms> {
       },
       child: Scaffold(
           appBar: AppBar(
-            elevation: 3,
+            // elevation: 3,
             toolbarHeight: 70,
             centerTitle: true,
-            backgroundColor: dialog,
+            // backgroundColor: dialog,
             title: FittedBox(
               child: Text(
                 translate!.forms5,
-                style: titletextwhite,
+                // style: titletextwhite,
                 textAlign: TextAlign.center,
               ),
             ),
-            leading: IconButton(
-                onPressed: () => Navigator.pushNamed(context, legalformroute),
-                icon: Image.asset(
-                  "assets/icons/rback.png",
-                  color: white,
-                  height: 35,
-                )),
+              leading: IconButton(
+                  onPressed: () => Navigator.pushNamed(context, legalformroute),
+                  icon: Icon(
+                    Icons.arrow_back, 
+                    // height: 35,
+                  )),
           ),
           body: consumer(context)),
     );
@@ -83,10 +82,10 @@ class _ConsumerlegalformsState extends State<Consumerlegalforms> {
         itemCount: consumerLegalforms.length,
         itemBuilder: (context, index) {
           return ListTile(
-              leading: Icon(Icons.remove_red_eye, color: black),
+              leading: Icon(Icons.remove_red_eye,),
               title: Text(
                 consumerLegalforms[index].title,
-                style: demofont,
+                // style: demofont,
               ),
               // onTap: ()=>{launch(legalforms[index].Url)});
               onTap: () {

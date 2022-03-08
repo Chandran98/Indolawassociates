@@ -31,7 +31,7 @@ const String servicespage = "/servicesall";
 const String maps = "/maps";
 
 final routes = {
-  settingsroute: (context) => Settingspage(),
+  settingsroute: (context) => Settingscreen(),
   careersroute: (context) => Careerspage(),
   contactroute: (context) => Contactpage(),
   // maps: (context) => Mappingposition(),

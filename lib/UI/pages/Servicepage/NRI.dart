@@ -76,14 +76,17 @@ class _NRIsectionState extends State<NRIsection> {
                     // width: width * 1.w,
                   ),
                   spaced20,
-                  Text(translate!.welcomenri,textAlign: TextAlign.center,
-                    style: titletextblack,
+                  Text(translate!.welcomenri,textAlign: TextAlign.center,style: GoogleFonts.poppins(
+                        // color: black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600),
+                    // style: titletextblack,
                   ),
                   spaced20,
                   Text(
                    translate.nripara1, textAlign: TextAlign.justify,
                     style: GoogleFonts.poppins(
-                        color: black,
+                        // color: black,
                         fontSize: 14,
                         fontWeight: FontWeight.w500),textScaleFactor: 0.9,
                   ),
@@ -91,7 +94,7 @@ class _NRIsectionState extends State<NRIsection> {
                   Text(
                    translate.nripara3, textAlign: TextAlign.justify,
                     style: GoogleFonts.poppins(
-                        color: black,
+                        // color: black,
                         fontSize: 14,
                         fontWeight: FontWeight.w500),textScaleFactor: 0.9,
                   ),
@@ -99,7 +102,7 @@ class _NRIsectionState extends State<NRIsection> {
                   Text(
                   translate.nripara2,  textAlign: TextAlign.justify,
                     style: GoogleFonts.poppins(
-                        color: black,
+                        // color: black,
                         fontSize: 14,
                         fontWeight: FontWeight.w500),textScaleFactor: 0.9,
                   ),

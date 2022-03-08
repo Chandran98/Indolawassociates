@@ -45,20 +45,20 @@ class _LegalinfoState extends State<Legalinfo> {
         child: SafeArea(
           child: Scaffold(
             appBar: AppBar(
-              elevation: 3,
-              toolbarHeight: 70,
+              // elevation: 3,
+              toolbarHeight: 60,
               centerTitle: true,
-              backgroundColor: dialog,
+              // backgroundColor: appcolor,
               title: Text(
                 translate!.legalforms,
-                style: titletextwhite,textAlign: TextAlign.center,
+                // style: titletextwhite,
+                // textAlign: TextAlign.center,
               ),
               leading: IconButton(
                   onPressed: () => Navigator.pushNamed(context, homeroute),
-                  icon: Image.asset(
-                    "assets/icons/rback.png",
-                    color: white,
-                    height: 35,
+                  icon: Icon(
+                    Icons.arrow_back, 
+                    // height: 35,
                   )),
             ),
             body: SingleChildScrollView(
@@ -68,10 +68,12 @@ class _LegalinfoState extends State<Legalinfo> {
                   children: [
                     Padding(padding: EdgeInsets.only(top: 10)),
                     ListTile(
-                      leading: Icon(Icons.logout, color: black),
+                      leading: Icon(
+                        Icons.logout,
+                      ),
                       title: Text(
                         translate.forms1,
-                        style: demofont,
+                        //
                       ),
                       onTap: () => Navigator.pushReplacement(
                           context,
@@ -80,10 +82,10 @@ class _LegalinfoState extends State<Legalinfo> {
                     ),
                     Divider(),
                     // ListTile(
-                    //   leading: Icon(Icons.logout, color: black),
+                    //   leading: Icon(Icons.logout, ),
                     //   title: Text(
                     //     translate.forms2,
-                    //     style: demofont,
+                    //
                     //   ),
                     //   onTap: () => Navigator.pushReplacement(
                     //       context,
@@ -92,10 +94,12 @@ class _LegalinfoState extends State<Legalinfo> {
                     // ),
                     // Divider(),
                     ListTile(
-                      leading: Icon(Icons.logout, color: black),
+                      leading: Icon(
+                        Icons.logout,
+                      ),
                       title: Text(
                         translate.forms3,
-                        style: demofont,
+                        //
                       ),
                       onTap: () => Navigator.pushReplacement(
                           context,
@@ -104,10 +108,12 @@ class _LegalinfoState extends State<Legalinfo> {
                     ),
                     Divider(),
                     ListTile(
-                      leading: Icon(Icons.logout, color: black),
+                      leading: Icon(
+                        Icons.logout,
+                      ),
                       title: Text(
                         translate.forms4,
-                        style: demofont,
+                        //
                       ),
                       onTap: () => Navigator.pushReplacement(
                           context,
@@ -116,10 +122,12 @@ class _LegalinfoState extends State<Legalinfo> {
                     ),
                     Divider(),
                     ListTile(
-                      leading: Icon(Icons.logout, color: black),
+                      leading: Icon(
+                        Icons.logout,
+                      ),
                       title: Text(
                         translate.forms5,
-                        style: demofont,
+                        //
                       ),
                       onTap: () => Navigator.pushReplacement(
                           context,
@@ -128,10 +136,12 @@ class _LegalinfoState extends State<Legalinfo> {
                     ),
                     Divider(),
                     ListTile(
-                      leading: Icon(Icons.logout, color: black),
+                      leading: Icon(
+                        Icons.logout,
+                      ),
                       title: Text(
                         translate.forms6,
-                        style: demofont,
+                        //
                       ),
                       onTap: () => Navigator.pushReplacement(
                           context,
@@ -140,10 +150,12 @@ class _LegalinfoState extends State<Legalinfo> {
                     ),
                     Divider(),
                     ListTile(
-                      leading: Icon(Icons.logout, color: black),
-                      title: Text(  
+                      leading: Icon(
+                        Icons.logout,
+                      ),
+                      title: Text(
                         translate.forms7,
-                        style: demofont,
+                        //
                       ),
                       onTap: () => Navigator.pushReplacement(
                           context,
@@ -152,10 +164,12 @@ class _LegalinfoState extends State<Legalinfo> {
                     ),
                     Divider(),
                     ListTile(
-                      leading: Icon(Icons.logout, color: black),
+                      leading: Icon(
+                        Icons.logout,
+                      ),
                       title: Text(
                         translate.forms8,
-                        style: demofont,
+                        //
                       ),
                       onTap: () => Navigator.pushReplacement(
                           context,
@@ -164,10 +178,12 @@ class _LegalinfoState extends State<Legalinfo> {
                     ),
                     Divider(),
                     ListTile(
-                      leading: Icon(Icons.logout, color: black),
+                      leading: Icon(
+                        Icons.logout,
+                      ),
                       title: Text(
                         translate.forms9,
-                        style: demofont,
+                        //
                       ),
                       onTap: () => Navigator.pushReplacement(
                           context,
@@ -176,10 +192,11 @@ class _LegalinfoState extends State<Legalinfo> {
                     ),
                     Divider(),
                     ListTile(
-                      leading: Icon(Icons.logout, color: black),
+                      leading: Icon(
+                        Icons.logout,
+                      ),
                       title: Text(
                         translate.forms10,
-                        style: demofont,
                       ),
                       onTap: () => Navigator.pushReplacement(
                           context,
@@ -190,11 +207,9 @@ class _LegalinfoState extends State<Legalinfo> {
                     ListTile(
                       leading: Icon(
                         Icons.logout,
-                        color: black,
                       ),
                       title: Text(
                         translate.forms11,
-                        style: demofont,
                       ),
                       onTap: () => Navigator.pushReplacement(
                           context,
@@ -203,10 +218,11 @@ class _LegalinfoState extends State<Legalinfo> {
                     ),
                     Divider(),
                     ListTile(
-                      leading: Icon(Icons.logout, color: black),
+                      leading: Icon(
+                        Icons.logout,
+                      ),
                       title: Text(
                         translate.forms12,
-                        style: demofont,
                       ),
                       onTap: () => Navigator.pushReplacement(
                           context,
@@ -215,10 +231,11 @@ class _LegalinfoState extends State<Legalinfo> {
                     ),
                     Divider(),
                     ListTile(
-                      leading: Icon(Icons.logout, color: black),
+                      leading: Icon(
+                        Icons.logout,
+                      ),
                       title: Text(
                         translate.forms13,
-                        style: demofont,
                       ),
                       onTap: () => Navigator.pushReplacement(
                           context,

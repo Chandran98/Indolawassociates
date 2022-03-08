@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 // import 'package:sizer/sizer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:indolawassociates/UI/constant/constant.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/UI/models/categories_data_model.dart';
 import 'package:indolawassociates/UI/widgets/categories/Category_info_page.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
 
-class Cateslider extends StatefulWidget {
-  Cateslider({Key? key}) : super(key: key);
+class Categoryshow extends StatefulWidget {
+  Categoryshow({Key? key}) : super(key: key);
 
   @override
-  _CatesliderState createState() => _CatesliderState();
+  _CategoryshowState createState() => _CategoryshowState();
 }
 
-class _CatesliderState extends State<Cateslider> {
+class _CategoryshowState extends State<Categoryshow> {
   int currentpage = 0;
 
   // @override
@@ -23,12 +23,13 @@ class _CatesliderState extends State<Cateslider> {
   // }
 // bool? selectedindex =false;
 
-  Widget _buildcateslide(BuildContext context, int index) {
+  @override
+  Widget build(BuildContext context) {
     final translate = AppLocalizations.of(context);
     final List<Categorylist> categorylist = [
       Categorylist(
           categorytitle: translate!.categorytitle2,
-          categorypic: "assets/icons/family.png",
+          categorypic: "assets/icons/1family.png",
           categorysubtitle: translate.categorysubtitle2,
           categorypageimages: 'assets/images/div_cate.jpg',
           r1: translate.familykey1,
@@ -39,7 +40,7 @@ class _CatesliderState extends State<Cateslider> {
           r6: ''),
       Categorylist(
           categorytitle: translate.categorytitle3,
-          categorypic: "assets/icons/criminal.png",
+          categorypic: "assets/icons/1Criminal.png",
           categorysubtitle: translate.categorysubtitle3,
           categorypageimages: 'assets/images/cir_cate.jpg',
           r1: translate.criminalkey1,
@@ -50,7 +51,7 @@ class _CatesliderState extends State<Cateslider> {
           r6: translate.criminalkey6),
       Categorylist(
           categorytitle: translate.categorytitle4,
-          categorypic: "assets/icons/coporate.png",
+          categorypic: "assets/icons/1Corporate1.png",
           categorysubtitle: translate.categorysubtitle4,
           categorypageimages: 'assets/images/cor_cate.jpg',
           r1: translate.corporatekey1,
@@ -61,7 +62,7 @@ class _CatesliderState extends State<Cateslider> {
           r6: translate.corporatekey6),
       Categorylist(
           categorytitle: translate.categorytitle5,
-          categorypic: "assets/icons/cyber.png",
+          categorypic: "assets/icons/1cyber.png",
           categorysubtitle: translate.categorysubtitle5,
           categorypageimages: 'assets/images/cyber_cate.jpg',
           r1: translate.cyberkey1,
@@ -72,7 +73,7 @@ class _CatesliderState extends State<Cateslider> {
           r6: translate.cyberkey6),
       Categorylist(
           categorytitle: translate.categorytitle1,
-          categorypic: "assets/icons/property.png",
+          categorypic: "assets/icons/1property.png",
           categorysubtitle: translate.categorysubtitle1,
           categorypageimages: 'assets/images/property_cate.jpg',
           r1: translate.propertykey1,
@@ -83,7 +84,7 @@ class _CatesliderState extends State<Cateslider> {
           r6: ''),
       Categorylist(
           categorytitle: translate.categorytitle6,
-          categorypic: "assets/icons/civilrights.png",
+          categorypic: "assets/icons/1Civilrights.png",
           categorysubtitle: translate.categorysubtitle6,
           categorypageimages: 'assets/images/civil_cate.jpg',
           r1: translate.civilkey1,
@@ -94,7 +95,7 @@ class _CatesliderState extends State<Cateslider> {
           r6: ''),
       Categorylist(
           categorytitle: translate.categorytitle7,
-          categorypic: "assets/icons/tax.png",
+          categorypic: "assets/icons/1Tax1.png",
           categorysubtitle: translate.categorysubtitle7,
           categorypageimages: 'assets/images/Tax_cate.jpg',
           r1: translate.taxkey1,
@@ -105,7 +106,7 @@ class _CatesliderState extends State<Cateslider> {
           r6: ''),
       Categorylist(
           categorytitle: translate.categorytitle8,
-          categorypic: "assets/icons/labour.png",
+          categorypic: "assets/icons/1Labour.png",
           categorysubtitle: translate.categorysubtitle8,
           categorypageimages: 'assets/images/cor_cate.jpg',
           r1: translate.labourkey1,
@@ -130,67 +131,72 @@ class _CatesliderState extends State<Cateslider> {
 
     double height = MediaQuery.of(context).size.height;
 
-    return InkWell(
-      onTap: () {
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-                builder: (context) => Catesider(
-                      r1: categorylist[index].r1,
-                      r2: categorylist[index].r2,
-                      r3: categorylist[index].r3,
-                      r4: categorylist[index].r4,
-                      r5: categorylist[index].r5,
-                      r6: categorylist[index].r6,
-                      categorysubtitle: categorylist[index].categorysubtitle,
-                      categorypageimages:
-                          categorylist[index].categorypageimages,
-                      categorytitle: categorylist[index].categorytitle,
-                    )));
-      },
-      child: Container(
-        width: 80, padding: EdgeInsets.symmetric(horizontal: 7),
+    return ListView.builder(
+        itemCount: categorylist.length,
+        physics: BouncingScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        itemBuilder: (context, index) {
+          return InkWell(
+            onTap: () {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Categorypagescrend(
+                            r1: categorylist[index].r1,
+                            r2: categorylist[index].r2,
+                            r3: categorylist[index].r3,
+                            r4: categorylist[index].r4,
+                            r5: categorylist[index].r5,
+                            r6: categorylist[index].r6,
+                            categorysubtitle:
+                                categorylist[index].categorysubtitle,
+                            categorypageimages:
+                                categorylist[index].categorypageimages,
+                            categorytitle: categorylist[index].categorytitle,
+                          )));
+            },
+            child: Container(
+              width: 80, padding: EdgeInsets.symmetric(horizontal: 10),
 
-        // height: height * 0.18.h,
-        child: Column(
-          children: [
-            CircleAvatar(radius: 35,
-              backgroundImage: AssetImage(
-                categorylist[index].categorypic,
+              // height: height * 0.18.h,
+              child: Column(
+                children: [
+                  Container(
+                    height: 50,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        // color: Colors.grey.shade300,
+                        image: DecorationImage(
+                            fit: BoxFit.contain,
+                            image: AssetImage(
+                              categorylist[index].categorypic,
+                            ))),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  // CircleAvatar(
+                  //   radius: 35,
+                  //   backgroundImage: AssetImage(
+                  //     categorylist[index].categorypic,
+                  //   ),
+                  //   backgroundColor: Colors.grey.shade300,
+                  // ),
+                  Container(
+                      child: FittedBox(
+                    child: Text(categorylist[index].categorytitle,
+                        style: GoogleFonts.poppins(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                          // color: Colors.white
+                        )),
+                  ))
+                ],
               ),
-              backgroundColor: white,
             ),
-            Container(
-                child: FittedBox(
-              child: Text(categorylist[index].categorytitle,
-                  style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white)),
-            ))
-          ],
-        ),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-        child: ScrollSnapList(
-            selectedItemAnchor: SelectedItemAnchor.MIDDLE,
-            itemBuilder: _buildcateslide,
-            itemCount: 9,
-            shrinkWrap: true,
-            itemSize: 80,
-            allowAnotherDirection: true,
-            initialIndex: 4,
-            dynamicItemSize: true,
-            onItemFocus: (select) {
-              setState(() {
-                currentpage = select;
-                // selectedindex=true;
-              });
-            }));
+          );
+        });
   }
 }

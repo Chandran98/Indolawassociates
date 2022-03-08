@@ -36,10 +36,10 @@ class _WilllegalformsState extends State<Willlegalforms> {
       },
       child: Scaffold(
             appBar: AppBar(
-              elevation: 3,
+              // elevation: 3,
               toolbarHeight: 70,
               centerTitle: true,
-              backgroundColor: dialog,
+              // backgroundColor: dialog,
               title: FittedBox(
                 child: Text(
                   translate!.forms2,
@@ -48,10 +48,9 @@ class _WilllegalformsState extends State<Willlegalforms> {
               ),
               leading: IconButton(
                   onPressed: () => Navigator.pushNamed(context, legalformroute),
-                  icon: Image.asset(
-                    "assets/icons/rback.png",
-                    color: white,
-                    height: 35,
+                  icon: Icon(
+                    Icons.arrow_back, 
+                    // height: 35,
                   )),
             ),
           body: wills(context)),

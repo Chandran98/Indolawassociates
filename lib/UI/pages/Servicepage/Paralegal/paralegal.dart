@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/UI/components/Internet%20connectivity/Network_status.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/Paralegal/paralegalinfopage.dart';
@@ -9,7 +10,11 @@ import "package:flutter_gen/gen_l10n/app_localizations.dart";
 
 class Paramodel {
   String Paralegaltitle, paralegalcontent;
-  Paramodel({required this.Paralegaltitle, required this.paralegalcontent});
+  Color color;
+  Paramodel(
+      {required this.Paralegaltitle,
+      required this.color,
+      required this.paralegalcontent});
 }
 
 ///////////////////////////////////////////    Legal forms   //////////////////////////////////////////
@@ -23,7 +28,7 @@ class TParalegal extends StatefulWidget {
 
 class _TParalegalState extends State<TParalegal> {
   void onback() {
-    Navigator.pushNamed(context,homeroute);
+    Navigator.pushNamed(context, homeroute);
   }
 
   @override
@@ -36,7 +41,7 @@ class _TParalegalState extends State<TParalegal> {
       },
       child: SafeArea(
         child: Scaffold(
-            backgroundColor: white,
+            // backgroundColor: white,
             // appBar: AppBar(
             //   elevation: 3,
             //   toolbarHeight: 60.h,
@@ -68,52 +73,69 @@ class _TParalegalState extends State<TParalegal> {
     final List<Paramodel> paralegallist = [
       Paramodel(
           Paralegaltitle: translate!.paralegal1,
-          paralegalcontent: translate.paralegalsub1),
+          paralegalcontent: translate.paralegalsub1,
+          color: Color.fromARGB(255, 247, 11, 121)),
       Paramodel(
           Paralegaltitle: translate.paralegal2,
-          paralegalcontent: translate.paralegalsub2),
+          paralegalcontent: translate.paralegalsub2,
+          color: Colors.tealAccent),
       Paramodel(
           Paralegaltitle: translate.paralegal3,
-          paralegalcontent: translate.paralegalsub3),
+          paralegalcontent: translate.paralegalsub3,
+          color: Color(0xff8576FC)),
       Paramodel(
           Paralegaltitle: translate.paralegal4,
-          paralegalcontent: translate.paralegalsub4),
+          paralegalcontent: translate.paralegalsub4,
+          color: Color(0xff3D89D5)),
       // Paramodel(Paralegaltitle: " Legal Notice", paralegalcontent: ''),
       Paramodel(
           Paralegaltitle: translate.paralegal5,
-          paralegalcontent: translate.paralegalsub5),
+          paralegalcontent: translate.paralegalsub5,
+          color: appcolor2),
       Paramodel(
           Paralegaltitle: translate.paralegal6,
-          paralegalcontent: translate.paralegalsub6),
+          paralegalcontent: translate.paralegalsub6,
+          color: Color(0xffEB432F)),
       Paramodel(
           Paralegaltitle: translate.paralegal7,
-          paralegalcontent: translate.paralegalsub7),
+          paralegalcontent: translate.paralegalsub7,
+          color: Color(0xff71C9D3)),
     ];
-    return ListView.separated(
-      physics: BouncingScrollPhysics(),
-      separatorBuilder: (context, index) {
-        return Divider();
-      },
-      itemCount: paralegallist.length,
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0),
-          child: ListTile(
-              leading: Icon(Icons.logout, color: black),
-              title: Text(
-                paralegallist[index].Paralegaltitle,
-                style: demofont,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 8),
+      child: GridView.builder(
+        physics: BouncingScrollPhysics(),
+        // separatorBuilder: (context, index) {
+        //   return Divider();
+        // },
+        itemCount: paralegallist.length,
+        gridDelegate:
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        itemBuilder: (context, index) {
+          return InkWell(
+            onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (_) => Paralegalscreen(
+                        Paralegaltitle: paralegallist[index].Paralegaltitle,
+                        paralegalcontent:
+                            paralegallist[index].paralegalcontent))),
+            child: Card(
+              child: Container(
+                color: paralegallist[index].color,
+                child: Center(
+                  child: Text(
+                    paralegallist[index].Paralegaltitle,
+                    style: GoogleFonts.poppins(color: white,fontSize: 16,fontWeight: FontWeight.w500),textAlign: TextAlign.center,
+                  ),
+                ),
+                height: 100,
+                width: 150,
               ),
-              onTap: () => Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ParalegalPage(
-                          paralegalcontent:
-                              paralegallist[index].paralegalcontent,
-                          Paralegaltitle:
-                              paralegallist[index].Paralegaltitle)))),
-        );
-      },
+            ),
+          );
+        },
+      ),
     );
   }
 }

@@ -36,23 +36,23 @@ class _CriminallegalformsState extends State<Criminallegalforms> {
       },
       child: Scaffold(
           appBar: AppBar(
-            elevation: 3,
+            // elevation: 3,
             toolbarHeight: 70,
             centerTitle: true,
-            backgroundColor: dialog,
+            // backgroundColor: dialog,
             title: FittedBox(
               child: Text(
                 translate!.forms6,
-                style: titletextwhite,textAlign: TextAlign.center,
+                // style: titletextwhite,
+                textAlign: TextAlign.center,
               ),
             ),
-            leading: IconButton(
-                onPressed: () => Navigator.pushNamed(context, legalformroute),
-                icon: Image.asset(
-                  "assets/icons/rback.png",
-                  color: white,
-                  height: 35,
-                )),
+              leading: IconButton(
+                  onPressed: () => Navigator.pushNamed(context, legalformroute),
+                  icon: Icon(
+                    Icons.arrow_back, 
+                    // height: 35,
+                  )),
           ),
           body: criminal(context)),
     );
@@ -80,10 +80,10 @@ class _CriminallegalformsState extends State<Criminallegalforms> {
         itemCount: criminalLegalforms.length,
         itemBuilder: (context, index) {
           return ListTile(
-              leading: Icon(Icons.remove_red_eye, color: black),
+              leading: Icon(Icons.remove_red_eye,),
               title: Text(
                 criminalLegalforms[index].title,
-                style: demofont,
+                // style: demofont,
               ),
               onTap: ()=>{launch(criminalLegalforms[index].url)}
               // onTap: () {
