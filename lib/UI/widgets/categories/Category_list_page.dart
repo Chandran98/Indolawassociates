@@ -4,7 +4,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/UI/models/categories_data_model.dart';
 import 'package:indolawassociates/UI/widgets/categories/Category_info_page.dart';
-import 'package:scroll_snap_list/scroll_snap_list.dart';
 
 class Categoryshow extends StatefulWidget {
   Categoryshow({Key? key}) : super(key: key);

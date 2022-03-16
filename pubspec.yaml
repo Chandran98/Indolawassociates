@@ -31,36 +31,40 @@ dependencies:
 
   carousel_slider: ^4.0.0-nullsafety.0
   google_maps_flutter: 
-  google_fonts: ^2.1.0
-  bottom_navy_bar: ^6.0.0
-  url_launcher: ^6.0.9
-  form_field_validator: ^1.1.0
-  flutter_svg: ^1.0.0
-  cupertino_icons: ^1.0.2
-  animated_splash_screen: ^1.1.0
-  shared_preferences: ^2.0.5
-  fluttertoast: ^8.0.8
-  intl_phone_field: ^2.1.0
-  firebase_auth: ^3.1.4
-  firebase_core: ^1.8.0
-  firebase_analytics: ^8.3.4
-  provider: ^6.0.1
-  sms_autofill: ^2.2.0
-  geolocator: ^8.0.1
-  firebase_storage: ^10.1.0
-  cloud_firestore: ^3.1.0
-  connectivity_plus: ^2.2.0
-  scroll_snap_list: ^0.8.4
-  font_awesome_flutter: ^9.2.0
-  cached_network_image: ^3.2.0
-  file_picker: ^4.3.0
-  photo_view: ^0.13.0
-  auto_size_text: ^3.0.0
-  awesome_dialog: ^2.1.2
-  geocoding: ^2.0.1
-  razorpay_flutter: ^1.2.9
-  lottie: ^1.2.1
+  google_fonts: 
+  bottom_navy_bar: 
+  url_launcher: 
+  form_field_validator: 
+  flutter_svg: 
+  cupertino_icons: 
+  animated_splash_screen: 
+  shared_preferences: 
+  fluttertoast: 
+  intl_phone_field: 
+  firebase_auth: 
+  firebase_core: 
+  firebase_analytics: 
+  provider: 
+  sms_autofill: 
+  geolocator: 
+  firebase_storage: 
+  cloud_firestore: 
+  connectivity_plus: 
+  scroll_snap_list: 
+  font_awesome_flutter: 
+  cached_network_image: 
+  file_picker: 
+  photo_view: 
+  auto_size_text: 
+  awesome_dialog: 
+  geocoding: 
+  razorpay_flutter: 
+  lottie: 
   flutter_feather_icons:
+  firebase_messaging:
+  flutter_local_notifications:
+
+
 
 
 

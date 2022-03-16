@@ -1,9 +1,8 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-// import 'package:sizer/sizer.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/UI/constant/constant.dart';
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
 import 'package:indolawassociates/UI/routes/route.dart';
+import 'package:indolawassociates/UI/services/notification_services.dart';
 
 class Notificationpage extends StatefulWidget {
   Notificationpage({Key? key}) : super(key: key);
@@ -13,9 +12,44 @@ class Notificationpage extends StatefulWidget {
 }
 
 class _NotificationpageState extends State<Notificationpage> {
+  @override
+  void initState() {
+    super.initState();
+
+    FirebaseMessaging.instance.getInitialMessage().then(
+      (message) {
+        print("FirebaseMessaging.instance.getInitialMessage");
+        if (message != null) {
+          print("New Notification");
+        }
+      },
+    );
+
+    FirebaseMessaging.onMessage.listen(
+      (message) {
+        print("FirebaseMessaging.onMessage.listen");
+        if (message.notification != null) {
+          print(message.notification!.title);
+          print(message.notification!.body);
+          print("message.data11 ${message.data}");
+          LocalNotificationService.createanddisplaynotification(message);
+        }
+      },
+    );
+    FirebaseMessaging.onMessageOpenedApp.listen(
+      (message) {
+        print("FirebaseMessaging.onMessageOpenedApp.listen");
+        if (message.notification != null) {
+          print(message.notification!.title);
+          print(message.notification!.body);
+          print("message.data22 ${message.data['_id']}");
+        }
+      },
+    );
+  }
+
   onback() {
     Navigator.of(context).pop();
-    // Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>n()));
   }
 
   @override

@@ -47,4 +47,5 @@ final routes = {
   paralegalroute: (context) => TParalegal(),
   legalformroute: (context) => Legalinfo(),
   servicespage: (context) => Servicesall(),
+  
 };

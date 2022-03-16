@@ -48,9 +48,13 @@ final lightmode = ThemeData(
     selectedItemColor: appcolor,
     unselectedItemColor: Colors.grey[500],
   ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: appcolor2.withOpacity(0.7)),
 );
 
 final darkmode = ThemeData(
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: appcolor2.withOpacity(0.7)),
     primaryColor: appcolor,
     fontFamily: "Poppins",
     iconTheme: IconThemeData(color: Colors.white),

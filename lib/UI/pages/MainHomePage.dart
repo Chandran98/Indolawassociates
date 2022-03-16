@@ -1,7 +1,9 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:indolawassociates/UI/services/notification_services.dart';
 
 class MainHomepage extends StatefulWidget {
   MainHomepage({Key? key}) : super(key: key);
@@ -18,8 +20,40 @@ class _MainHomepageState extends State<MainHomepage>
   @override
   void initState() {
     super.initState();
+    
+    FirebaseMessaging.instance.getInitialMessage().then(
+      (message) {
+        print("FirebaseMessaging.instance.getInitialMessage");
+        if (message != null) {
+          print("Notification");
+        }
+      },
+    );
+
+    FirebaseMessaging.onMessage.listen(
+      (message) {
+        print("FirebaseMessaging.onMessage.listen");
+        if (message.notification != null) {
+          print(message.notification!.title);
+          print(message.notification!.body);
+          print("message.data11 ${message.data}");
+          LocalNotificationService.createanddisplaynotification(message);
+        }
+      },
+    );
+    FirebaseMessaging.onMessageOpenedApp.listen(
+      (message) {
+        print("FirebaseMessaging.onMessageOpenedApp.listen");
+        if (message.notification != null) {
+          print(message.notification!.title);
+          print(message.notification!.body);
+          print("message.data22 ${message.data['_id']}");
+        }
+      }, 
+    );
     tabController = TabController(length: 4, vsync: this);
   }
+ 
 
   void onback() {
     Navigator.pushReplacement(

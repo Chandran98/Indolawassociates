@@ -32,7 +32,6 @@ class Categorypagescrend extends StatefulWidget {
       r3,
       r4,
       r5,
-      
       r6;
 
   @override

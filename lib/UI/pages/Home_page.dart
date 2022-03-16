@@ -16,6 +16,7 @@ import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:indolawassociates/UI/widgets/Lawyers/Lawyer_list.dart';
 import 'package:indolawassociates/UI/widgets/categories/Category_list_page.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Homepagescreen extends StatefulWidget {
   const Homepagescreen({Key? key}) : super(key: key);
@@ -74,6 +75,19 @@ class _HomepagescreenState extends State<Homepagescreen> {
           },
           child: SafeArea(
               child: Scaffold(
+            // floatingActionButton: FloatingActionButton.extended(
+            //     label: Text(
+            //       "Quick call",
+            //       style: TextStyle(color: white),
+            //     ),
+            //     icon: Icon(
+            //       Icons.call,
+            //       size: 20,
+            //       color: white,
+            //     ),
+            //     onPressed: () {
+            //       launch("tel: 04443511235");
+            //     }),
             body: SingleChildScrollView(
               physics: BouncingScrollPhysics(),
               child: Padding(

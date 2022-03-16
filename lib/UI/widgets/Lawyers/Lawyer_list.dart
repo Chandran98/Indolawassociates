@@ -74,9 +74,11 @@ class _ToplawyersState extends State<Toplawyers> {
                                     begin: Alignment.bottomLeft,
                                     stops: [
                                       0.2,
-                                      0.6
+                                      0.5
                                     ],
                                     colors: [
+                                      // Color(0xff6147cb),
+                                      // Color(0xffB94D9C)
                                       //  appcolor.withOpacity(0.9),
                                       green.withOpacity(.8),
 
