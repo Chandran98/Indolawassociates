@@ -20,7 +20,7 @@ class _MainHomepageState extends State<MainHomepage>
   @override
   void initState() {
     super.initState();
-    
+
     FirebaseMessaging.instance.getInitialMessage().then(
       (message) {
         print("FirebaseMessaging.instance.getInitialMessage");
@@ -49,11 +49,10 @@ class _MainHomepageState extends State<MainHomepage>
           print(message.notification!.body);
           print("message.data22 ${message.data['_id']}");
         }
-      }, 
+      },
     );
     tabController = TabController(length: 4, vsync: this);
   }
- 
 
   void onback() {
     Navigator.pushReplacement(

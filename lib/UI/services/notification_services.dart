@@ -18,7 +18,6 @@ class LocalNotificationService {
         print("onSelectNotification");
         if (id!.isNotEmpty) {
           print("indolaw route $id");
-
         }
       },
     );
