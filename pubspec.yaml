@@ -63,7 +63,7 @@ dependencies:
   flutter_feather_icons:
   firebase_messaging:
   flutter_local_notifications:
-
+  image_picker: ^0.8.4+11
 
 
 

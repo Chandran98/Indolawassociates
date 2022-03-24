@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
@@ -88,7 +89,7 @@ class _CompanylegalformsState extends State<Companylegalforms> {
         itemCount: companyLegalforms.length,
         itemBuilder: (context, index) {
           return ListTile(
-              leading: Icon(Icons.remove_red_eye),
+              leading: Icon(FontAwesomeIcons.filePdf),
               title: Text(
                 companyLegalforms[index].title,
                 // style: demofont,

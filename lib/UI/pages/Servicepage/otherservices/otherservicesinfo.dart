@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/UI/components/contact_box.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/Paralegal/Paralegal_form.dart';
+import 'package:indolawassociates/UI/pages/Servicepage/otherservices/Otherservices_form.dart';
 import 'package:indolawassociates/UI/provider/theme.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:provider/provider.dart';
@@ -60,20 +61,6 @@ onback() {
                     Icons.arrow_back,
                     color: Colors.white,
                   )),
-              // title: Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     InkWell(
-              //         onTap: () {
-              //           Navigator.pop(context);
-              //         },
-              //         child: const Icon(
-              //           Icons.arrow_back_ios,
-              //           color: Colors.transparent,
-              //         )),
-              //     Icon(Icons.shopping_cart_checkout)
-              //   ],
-              // ),
               pinned: true,
               elevation: 0,
               expandedHeight: 250,
@@ -124,7 +111,7 @@ onback() {
                                     top: 5,
                                     bottom: 5),
                                 child: Text(
-                                  "Description",
+                                translate!.description,
                                   style: TextStyle(color: white,
                                       fontSize: 20, fontWeight: FontWeight.w500),
                                 ),
@@ -150,47 +137,6 @@ onback() {
                   ),
                   spaced10,
     
-                  // Row(
-                  //   children: [
-                  //     Expanded(
-                  //       child: Container(
-                  //         // color: white,
-                  //         // height:50,
-                  //         // width: 180,
-                  //         child: Column(
-                  //           crossAxisAlignment: CrossAxisAlignment.start,
-                  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //           children: [
-                  //             Titlecard(title: widget.r1),
-                  //             Titlecard(title: widget.r3),
-                  //             Titlecard(title: widget.r5),
-                  //           ],
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     //  SizedBox(
-                  //     //             width: MediaQuery.of(context).size.width *
-                  //     //                 0.005.w,
-                  //     //           ),
-                  //     Expanded(
-                  //       child: Container(
-                  //         // color: green,
-                  //         // height:50,
-                  //         // width: 180,
-                  //         child: Column(
-                  //           // crossAxisAlignment: CrossAxisAlignment.start,
-                  //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //           children: [
-                  //             Titlecard(title: widget.r2),
-                  //             Titlecard(title: widget.r4),
-                  //             Titlecard(title: widget.r6),
-                  //           ],
-                  //         ),
-                  //       ),
-                  //     )
-                  //   ],
-                  // ),
-    
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 25.0),
                     child: InkWell(
@@ -206,7 +152,7 @@ onback() {
                                   padding: EdgeInsets.only(
                                       bottom:
                                           MediaQuery.of(context).viewInsets.bottom),
-                                  child: Paralegalform(),
+                                  child: Otherservicesform(),
                                 ),
                               )),
                       child: Container(
@@ -216,16 +162,10 @@ onback() {
                               border: Border.all(color: appcolor)),
                           height: 50,
                           width: 150,
-                          // padding: const EdgeInsets.symmetric(
-                          //   vertical: 15.0,
-                          //   horizontal: 15.0,
-                          // ),
                           child: Center(
                             child: Text(
-                              translate!.apply,
+                              translate.apply,
                               style: GoogleFonts.poppins(
-                                  // fontWeight: FontWeight.bold,
-                                  // color: black,
                                   fontSize: 15),
                               textAlign: TextAlign.center,
                             ),

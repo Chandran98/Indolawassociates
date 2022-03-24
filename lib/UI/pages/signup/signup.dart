@@ -7,9 +7,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/UI/components/clippath.dart';
 import 'package:indolawassociates/UI/components/socialmedia.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
+import 'package:indolawassociates/UI/provider/theme.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:indolawassociates/UI/pages/MainHomePage.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:provider/provider.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -40,11 +42,6 @@ class _SignuppageState extends State<Signuppage> {
   var verificationCode = '';
   late String phone;
   late String otpcoder;
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   void dispose() {
@@ -90,69 +87,30 @@ class _SignuppageState extends State<Signuppage> {
                 ClipPath(
                   clipper: CustomdClipper(),
                   child: Container(
-                    height: 220, width: double.infinity,
-
+                    height: 220,
+                    width: double.infinity,
                     decoration: new BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          offset: Offset(0.0, 1.0), //(x,y)
-                          blurRadius: 6.0,
-                        )
-                      ],
-                      color: white,
-                      // borderRadius: BorderRadius.only(
-                      //     bottomLeft: Radius.circular(20),
-                      //     bottomRight: Radius.circular(20)
-                      //     // bottom: Radius.elliptical(
-                      //     //     MediaQuery.of(context).size.width * 1.w,
-                      //     //     MediaQuery.of(context).size.height * 0.08.h)
-                      //     ),
-                    ),
-                    // height: 120,
-                    // width: width * 1.w,
-                    // decoration: new BoxDecoration(
-                    //   boxShadow: [
-                    //     BoxShadow(
-                    //       color: Colors.grey,
-                    //       offset: Offset(0.0, 1.0), //(x,y)
-                    //       blurRadius: 6.0,
-                    //     )
-                    //   ],
-                    //   color: white,
-                    //   borderRadius: BorderRadius.vertical(
-                    //       bottom: Radius.elliptical(
-                    //           width * 1.w,
-                    //           height * 0.08.h)),
-                    // ),
+                        color: context.watch<Themeprovider>().darktheme == false
+                            ? white
+                            : black),
                     child: Column(
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top: 20),
                           child: Image.asset(
                             "assets/icons/ilatri.png",
-                            height: 65,
+                            height: 100,
                           ),
                         ),
-                        Image.asset(
-                          "assets/icons/titleb.png",
-                          height: 90,
-                          width: 300,
-                          color: black,
-                        ),
-                        // TextButton(
-                        //     onPressed: () => Navigator.pushReplacement(
-                        //         context,
-                        //         MaterialPageRoute(
-                        //             builder: (context) => Mainhome())),
-                        //     child: Text("data"))
+                        // Image.asset(
+                        //   "assets/icons/titleb.png",
+                        //   height: 90,
+                        //   width: 300,
+                        // ),
                       ],
                     ),
                   ),
                 ),
-                // SizedBox(
-                //   height: height * 0.01.h,
-                // ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: SingleChildScrollView(
@@ -162,7 +120,7 @@ class _SignuppageState extends State<Signuppage> {
                           "Become a part of ILA",
                           style: GoogleFonts.poppins(
                               fontSize: 16,
-                              color: Colors.black,
+                              // color: Colors.black,
                               fontWeight: FontWeight.w400),
                         ),
                         spaced10,
@@ -180,15 +138,12 @@ class _SignuppageState extends State<Signuppage> {
                                   textInputAction: TextInputAction.next,
                                   onEditingComplete: () => node.nextFocus(),
                                   decoration: InputDecoration(
-                                      // floatingLabelBehavior:
-                                      //     FloatingLabelBehavior.never,
-                                      prefixIcon: Icon(
-                                        Icons.person,
-                                        color: navy,
-                                      ),
-                                      labelText: "User name",
-                                      hintText: "User name",
-                                      labelStyle: demofont),
+                                    prefixIcon: Icon(
+                                      Icons.person,
+                                    ),
+                                    labelText: "User name",
+                                    hintText: "User name",
+                                  ),
                                   validator: (value) {
                                     if (value!.isEmpty) {
                                       return 'Please enter your name';
@@ -210,19 +165,10 @@ class _SignuppageState extends State<Signuppage> {
                                   keyboardType: TextInputType.phone,
                                   textInputAction: TextInputAction.done,
                                   decoration: InputDecoration(
-                                    // labelText: 'Phone Number',
-                                    //  prefixIcon: Icon(
-                                    //   Icons.phone,
-                                    //   color: navy,
-                                    // ),
                                     labelText: "Mobile no.",
                                     hintText: "Mobile ",
-                                    labelStyle: demofont,
-                                    // border: OutlineInputBorder(
-                                    //     borderSide: BorderSide())
                                   ),
                                   initialCountryCode: 'IN',
-                                  // controller: cellnumberController,
                                   onChanged: (phoneNumber) {
                                     setState(() {
                                       phone = phoneNumber.completeNumber;
@@ -242,102 +188,70 @@ class _SignuppageState extends State<Signuppage> {
                                   textInputAction: TextInputAction.done,
                                   onFieldSubmitted: (_) => node.unfocus(),
                                   decoration: InputDecoration(
-                                      // floatingLabelBehavior:
-                                      //     FloatingLabelBehavior.never,
-                                      prefixIcon: Icon(
-                                        Icons.location_pin,
-                                        color: navy,
-                                      ),
-                                      labelText: "Location",
-                                      hintText: "Location",
-                                      labelStyle: demofont),
+                                    prefixIcon: Icon(
+                                      Icons.location_pin,
+                                    ),
+                                    labelText: "Location",
+                                    hintText: "Location",
+                                  ),
                                   validator: MultiValidator([
                                     RequiredValidator(errorText: addressnull),
                                   ]),
                                 ),
                               )),
-                              // Container(
-                              //     child: Padding(
-                              //   padding: const EdgeInsets.symmetric(
-                              //       horizontal: 10.0),
-                              //   child: TextFormField(
-                              //     enabled: !isLoading,
-                              //     keyboardType: TextInputType.emailAddress,
-                              //     controller: emailController,
-                              //     textInputAction: TextInputAction.done,
-                              //     onFieldSubmitted: (_) => node.unfocus(),
-                              //     decoration: InputDecoration(
-                              //         // floatingLabelBehavior:
-                              //         //     FloatingLabelBehavior.never,
-                              //         prefixIcon: Icon(Icons.mail, color: navy),
-                              //         labelText: "Email",
-                              //         // alignLabelWithHint: true,
-                              //         hintText: "Email",
-                              //         labelStyle: demofont),
-                              //     validator: MultiValidator([
-                              //       RequiredValidator(errorText: emailnull),
-                              //       PatternValidator(
-                              //           (r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+"),
-                              //           errorText: invalidemail)
-                              //     ]),
-                              //   ),
-                              // )),
                               spaced10,
                               Row(
                                 children: [
                                   Text("Already a user?"),
-                                  TextButton(
-                                      onPressed: () {
+                                  InkWell(
+                                      onTap: () {
                                         Navigator.pushNamed(
                                             context, loginpageroute);
                                       },
                                       child: Text(
                                         "Log in",
                                         style: GoogleFonts.poppins(
-    color:  Color(0xff5770B5), fontSize: 15, fontWeight: FontWeight.w500),
+                                            // color: Color(0xff5770B5),
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w500),
                                       ))
                                 ],
                               ),
-                              // SizedBox(
-                              //   height:
-                              //       MediaQuery.of(context).size.height * 0.02.h,
-                              // ),
-                              TextButton(
-                                onPressed: () {
-                                  if (!isLoading) {
-                                    if (_formKey.currentState!.validate()) {
-                                      if (mounted) {
-                                        setState(() {
-                                          signUp();
-                                          isRegister = false;
-                                          isOTPScreen = true;
-                                        });
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 20),
+                                child: InkWell(
+                                  onTap: () {
+                                    if (!isLoading) {
+                                      if (_formKey.currentState!.validate()) {
+                                        if (mounted) {
+                                          setState(() {
+                                            signUp();
+                                            isRegister = false;
+                                            isOTPScreen = true;
+                                          });
+                                        }
                                       }
                                     }
-                                  }
-                                },
-                                child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: white,
-                                        border: Border.all(color: navy)),
-                                    height: 50,
-                                    width: 200,
-                                    // padding: const EdgeInsets.symmetric(
-                                    //   vertical: 15.0,
-                                    //   horizontal: 15.0,
-                                    // ),
-                                    child: Center(
-                                      child: Text(
-                                        "Sign up",
-                                        style: demofont,
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    )),
+                                  },
+                                  child: Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: white,
+                                          border: Border.all(color: navy)),
+                                      height: 50,
+                                      width: 200,
+                                      child: Center(
+                                        child: Text(
+                                          "Sign up",
+                                          style: demofont,
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      )),
+                                ),
                               ),
                               spaced10,
-                              
-                              
                               spaced10,
                               Socialmedia()
                             ],
@@ -377,38 +291,6 @@ class _SignuppageState extends State<Signuppage> {
             key: _scaffoldKey,
             body: SingleChildScrollView(
               child: Column(children: [
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(vertical: 20),
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //     children: <Widget>[
-                //       Container(
-                //         child: IconButton(
-                //             iconSize: 40,
-                //             color: white,
-                //             icon: SvgPicture.asset(
-                //               "assets/icons/back.svg",
-                //               color: navy,
-                //             ),
-                //             onPressed: () => Navigator.pushReplacement(
-                //                 context,
-                //                 MaterialPageRoute(
-                //                     builder: (context) => signupscreen()))),
-                //       ),
-                //       // Container(
-                //       //   child: IconButton(
-                //       //     iconSize: 20,
-                //       //     color: white,
-                //       //     icon: SvgPicture.asset(
-                //       //       "assets/icons/3dots.svg",
-                //       //       color: navy,
-                //       //     ),
-                //       //     onPressed: () {},
-                //       //   ),
-                //       // ),
-                //     ],
-                //   ),
-                // ),
                 Center(
                   child: Form(
                     key: _formKeyOTP,
@@ -418,7 +300,7 @@ class _SignuppageState extends State<Signuppage> {
                         ClipPath(
                           clipper: CustomdClipper(),
                           child: Container(
-                            color: white,
+                            // color: white,
                             height: 250, width: double.infinity,
 
                             // decoration: new BoxDecoration(
@@ -444,12 +326,12 @@ class _SignuppageState extends State<Signuppage> {
                                     height: 80,
                                   ),
                                 ),
-                                Image.asset(
-                                  "assets/icons/titleb.png",
-                                  height: 100,
-                                  width: 300,
-                                  color: black,
-                                ),
+                                // Image.asset(
+                                //   "assets/icons/titleb.png",
+                                //   height: 100,
+                                //   width: 300,
+                                //   color: black,
+                                // ),
                                 // TextButton(
                                 //     onPressed: () => Navigator.pushReplacement(
                                 //         context,
@@ -467,7 +349,7 @@ class _SignuppageState extends State<Signuppage> {
                               : "The code has been sent to\n your mobile via SMS",
                           style: GoogleFonts.poppins(
                               fontSize: 15,
-                              color: Colors.black,
+                              // color: Colors.black,
                               fontWeight: FontWeight.w500),
                         ),
                         spaced30,
@@ -493,7 +375,12 @@ class _SignuppageState extends State<Signuppage> {
                                 margin: EdgeInsets.symmetric(horizontal: 50),
                                 child: PinFieldAutoFill(
                                   decoration: UnderlineDecoration(
-                                      colorBuilder: FixedColorBuilder(black)),
+                                      colorBuilder: FixedColorBuilder(context
+                                                  .watch<Themeprovider>()
+                                                  .darktheme ==
+                                              false
+                                          ? black
+                                          : white)),
                                   codeLength: 6,
                                   onCodeChanged: (val) {
                                     otpcoder = val!;
@@ -705,7 +592,7 @@ class _SignuppageState extends State<Signuppage> {
                                                     // fontWeight:
                                                     //     FontWeight.bold,
                                                     color: black,
-                                                    fontSize: 20))),
+                                                    fontSize: 15))),
                                       ),
                                     )))
                             : Column(),

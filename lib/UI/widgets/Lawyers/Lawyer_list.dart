@@ -67,23 +67,25 @@ class _ToplawyersState extends State<Toplawyers> {
                                 ))),
                     child: Card(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
+                            borderRadius:BorderRadius.only(
+                                    topLeft: Radius.circular(30),
+                                    bottomRight: Radius.circular(30))),
                         child: Container(
                             decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                    begin: Alignment.bottomLeft,
-                                    stops: [
-                                      0.2,
-                                      0.5
-                                    ],
-                                    colors: [
-                                      // Color(0xff6147cb),
-                                      // Color(0xffB94D9C)
-                                      //  appcolor.withOpacity(0.9),
-                                      green.withOpacity(.8),
+                                // gradient: LinearGradient(
+                                //     begin: Alignment.bottomLeft,
+                                //     stops: [
+                                //       0.2,
+                                //       0.5
+                                //     ],
+                                //     colors: [
+                                //       // Color(0xff6147cb),
+                                //       // Color(0xffB94D9C)
+                                //       //  appcolor.withOpacity(0.9),
+                                //       green.withOpacity(.8),
 
-                                      green.withOpacity(.8),
-                                    ]),
+                                //       green.withOpacity(.8),
+                                //     ]),
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(30),
                                     bottomRight: Radius.circular(30))
@@ -120,7 +122,8 @@ class _ToplawyersState extends State<Toplawyers> {
                                             image: NetworkImage(images),
                                             fit: BoxFit.contain,
                                           ),
-                                          color: white),
+                                          // color: white
+                                          ),
                                     ),
                                   ),
                                 ),
@@ -137,7 +140,8 @@ class _ToplawyersState extends State<Toplawyers> {
                                           style: GoogleFonts.poppins(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w400,
-                                              color: white),
+                                              // color: white
+                                              ),
                                         ),
                                         SizedBox(
                                           height: 20,
@@ -147,7 +151,8 @@ class _ToplawyersState extends State<Toplawyers> {
                                           style: GoogleFonts.poppins(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w400,
-                                              color: white),
+                                              // color: white
+                                              ),
                                         )
                                       ],
                                     ),

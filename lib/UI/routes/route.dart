@@ -5,6 +5,7 @@ import 'package:indolawassociates/UI/pages/Login/loginpage.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/NRI.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/Paralegal/paralegal.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/otherservices/otherservicespage.dart';
+import 'package:indolawassociates/UI/pages/Settingspage/Edit_page.dart';
 import 'package:indolawassociates/UI/pages/Settingspage/careers/careerspage.dart';
 import 'package:indolawassociates/UI/pages/Settingspage/contactpage.dart';
 import 'package:indolawassociates/UI/pages/legalforms/legalforms_page.dart';
@@ -29,6 +30,7 @@ const String paralegalroute = "/paralegal";
 const String legalformroute = "/legalpage";
 const String servicespage = "/servicesall";
 const String maps = "/maps";
+const String editprofile = "/editprofile";
 
 final routes = {
   settingsroute: (context) => Settingscreen(),
@@ -47,5 +49,6 @@ final routes = {
   paralegalroute: (context) => TParalegal(),
   legalformroute: (context) => Legalinfo(),
   servicespage: (context) => Servicesall(),
+  editprofile: (context) => Editprofile(),
   
 };

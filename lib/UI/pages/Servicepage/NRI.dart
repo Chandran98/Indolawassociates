@@ -71,7 +71,7 @@ class _NRIsectionState extends State<NRIsection> {
                 children: [
                  spaced20,
                   Container(
-                    child: Slisder(),
+                    child: Bannerslider(),
                     height: 140,
                     // width: width * 1.w,
                   ),

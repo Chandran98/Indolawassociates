@@ -142,7 +142,7 @@ class _CategorypagescrendState extends State<Categorypagescrend> {
                                   top: 5,
                                   bottom: 5),
                               child: Text(
-                                "Description",
+                                translate!.description,
                                 style: TextStyle(
                                     color: white,
                                     fontSize: 20,
@@ -240,7 +240,7 @@ class _CategorypagescrendState extends State<Categorypagescrend> {
                           // ),
                           child: Center(
                             child: Text(
-                              translate!.apply,
+                              translate.apply,
                               style: GoogleFonts.poppins(
                                   // fontWeight: FontWeight.bold,
                                   // color: black,

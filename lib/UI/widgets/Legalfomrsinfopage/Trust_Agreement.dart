@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/models/Legalforms_data_models.dart';
 import 'package:indolawassociates/UI/pages/legalforms/legalforms_page.dart';
@@ -80,7 +81,7 @@ class _TrustlegalformsState extends State<Trustlegalforms> {
         itemCount: trustLegalforms.length,
         itemBuilder: (context, index) {
           return ListTile(
-              leading: Icon(Icons.remove_red_eye, color: black),
+              leading: Icon(FontAwesomeIcons.filePdf),
               title: Text(
                 trustLegalforms[index].title,
                 // style: demofont,

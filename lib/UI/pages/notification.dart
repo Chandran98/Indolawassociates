@@ -17,6 +17,7 @@ class _NotificationpageState extends State<Notificationpage> {
     super.initState();
 
     FirebaseMessaging.instance.getInitialMessage().then(
+      
       (message) {
         print("FirebaseMessaging.instance.getInitialMessage");
         if (message != null) {
@@ -24,10 +25,9 @@ class _NotificationpageState extends State<Notificationpage> {
         }
       },
     );
-
     FirebaseMessaging.onMessage.listen(
       (message) {
-        print("FirebaseMessaging.onMessage.listen");
+        // print("FirebaseMessaging.onMessage.listen");
         if (message.notification != null) {
           print(message.notification!.title);
           print(message.notification!.body);

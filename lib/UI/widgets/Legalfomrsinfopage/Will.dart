@@ -14,7 +14,8 @@ class Willlegalforms extends StatefulWidget {
 }
 
 class _WilllegalformsState extends State<Willlegalforms> {
-  void onback() {Navigator.pushNamed(context, legalformroute);
+  void onback() {
+    Navigator.pushNamed(context, legalformroute);
   }
 
   launcher(command) async {
@@ -35,24 +36,25 @@ class _WilllegalformsState extends State<Willlegalforms> {
         return Future.value(false);
       },
       child: Scaffold(
-            appBar: AppBar(
-              // elevation: 3,
-              toolbarHeight: 70,
-              centerTitle: true,
-              // backgroundColor: dialog,
-              title: FittedBox(
-                child: Text(
-                  translate!.forms2,
-                style: titletextwhite,textAlign: TextAlign.center,
-                ),
+          appBar: AppBar(
+            // elevation: 3,
+            toolbarHeight: 70,
+            centerTitle: true,
+            // backgroundColor: dialog,
+            title: FittedBox(
+              child: Text(
+                translate!.forms2,
+                style: titletextwhite,
+                textAlign: TextAlign.center,
               ),
-              leading: IconButton(
-                  onPressed: () => Navigator.pushNamed(context, legalformroute),
-                  icon: Icon(
-                    Icons.arrow_back, 
-                    // height: 35,
-                  )),
             ),
+            leading: IconButton(
+                onPressed: () => Navigator.pushNamed(context, legalformroute),
+                icon: Icon(
+                  Icons.arrow_back,
+                  // height: 35,
+                )),
+          ),
           body: wills(context)),
     );
   }
@@ -60,7 +62,7 @@ class _WilllegalformsState extends State<Willlegalforms> {
   wills(context) {
     final translate = AppLocalizations.of(context);
     List<Legalformsdatamodel> will_legalforms = [
-      Legalformsdatamodel(title: translate!.willsform1,url: ""),
+      Legalformsdatamodel(title: translate!.willsform1, url: ""),
       Legalformsdatamodel(title: translate.willsform2, url: ""),
       Legalformsdatamodel(title: translate.willsform3, url: ""),
       Legalformsdatamodel(title: translate.willsform4, url: ""),
@@ -69,10 +71,10 @@ class _WilllegalformsState extends State<Willlegalforms> {
       Legalformsdatamodel(title: translate.willsform7, url: ""),
       Legalformsdatamodel(title: translate.willsform8, url: ""),
       Legalformsdatamodel(title: translate.willsform9, url: ""),
-      Legalformsdatamodel(title: translate.willsform10,url: ""),
-      Legalformsdatamodel(title: translate.willsform11,url: ""),
-      Legalformsdatamodel(title: translate.willsform12,url: ""),
-      Legalformsdatamodel(title: translate.willsform13,url: ""),
+      Legalformsdatamodel(title: translate.willsform10, url: ""),
+      Legalformsdatamodel(title: translate.willsform11, url: ""),
+      Legalformsdatamodel(title: translate.willsform12, url: ""),
+      Legalformsdatamodel(title: translate.willsform13, url: ""),
     ];
     Padding(
       padding: const EdgeInsets.only(top: 12.0, bottom: 12),
@@ -91,10 +93,10 @@ class _WilllegalformsState extends State<Willlegalforms> {
               ),
               // onTap: ()=>{launch(legalforms[index].Url)});
               onTap: () {
-                
                 showDialog(
                     context: context,
-                    builder: (context) => AlertDialog(backgroundColor: dialog,
+                    builder: (context) => AlertDialog(
+                          backgroundColor: dialog,
                           elevation: 10,
                           content: Text(
                             translate.helptitle,

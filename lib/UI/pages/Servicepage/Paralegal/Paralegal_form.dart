@@ -55,7 +55,7 @@ class _ParalegalformState extends State<Paralegalform> {
                       child: Text(
                         "Fill The Form",
                         style: GoogleFonts.poppins(
-                            color: black,
+                            
                             fontWeight: FontWeight.w500,
                             fontSize: 22),
                       ),
@@ -72,10 +72,10 @@ class _ParalegalformState extends State<Paralegalform> {
                                     BorderRadius.all(Radius.circular(20))),
                             prefixIcon: Icon(
                               Icons.person,
-                              color: black,
+                              
                             ),
                             labelText: "Name",
-                            labelStyle: demofont)),
+                            )),
                     SizedBox(height: 20),
                     TextFormField(
                         controller: _emailcontroller,
@@ -92,10 +92,10 @@ class _ParalegalformState extends State<Paralegalform> {
                                     BorderRadius.all(Radius.circular(20))),
                             prefixIcon: Icon(
                               Icons.mail,
-                              color: black,
+                              
                             ),
                             labelText: "Email",
-                            labelStyle: demofont)),
+                            )),
                     SizedBox(height: 20),
                     Container(
                       decoration: BoxDecoration(
@@ -105,12 +105,11 @@ class _ParalegalformState extends State<Paralegalform> {
                       child: DropdownButton(
                         underline: SizedBox(),
                         iconSize: 35,
-                        iconEnabledColor: black,
                         isExpanded: true,
-                        dropdownColor: Colors.white,
+                        
                         hint: Text(
                           "Gender",
-                          style: demofont,
+                          
                         ),
                         items: genderlist.map((valueitem) {
                           return DropdownMenuItem(
@@ -140,10 +139,10 @@ class _ParalegalformState extends State<Paralegalform> {
                                     BorderRadius.all(Radius.circular(20))),
                             prefixIcon: Icon(
                               Icons.mobile_screen_share,
-                              color: black,
+                              
                             ),
                             labelText: "Mobile",
-                            labelStyle: demofont)),
+                            )),
                     SizedBox(height: 20),
                     TextFormField(
                         validator: MultiValidator([
@@ -154,13 +153,13 @@ class _ParalegalformState extends State<Paralegalform> {
                         decoration: InputDecoration(
                             prefixIcon: Icon(
                               CupertinoIcons.location_solid,
-                              color: black,
+                              
                             ),
                             border: OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20))),
                             labelText: "Address",
-                            labelStyle: demofont)),
+                            )),
                     SizedBox(height: 20),
                     Container(
                       decoration: BoxDecoration(
@@ -170,12 +169,11 @@ class _ParalegalformState extends State<Paralegalform> {
                       child: DropdownButton(
                         underline: SizedBox(),
                         iconSize: 35,
-                        iconEnabledColor: black,
                         isExpanded: true,
-                        dropdownColor: Colors.white,
+                        
                         hint: Text(
                           "Services",
-                          style: demofont,
+                          
                         ),
                         items: paralegallist.map((valueitem) {
                           return DropdownMenuItem(

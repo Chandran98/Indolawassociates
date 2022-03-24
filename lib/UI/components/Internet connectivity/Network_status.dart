@@ -23,8 +23,6 @@ class NetworkSensitive extends StatelessWidget {
       return child;
     }
     
-    // double height = MediaQuery.of(context).size.height;
-    // double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child:Container(color: white,width: double.infinity,
           child: Column(

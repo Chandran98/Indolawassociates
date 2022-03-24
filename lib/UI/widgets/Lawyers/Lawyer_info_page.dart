@@ -83,7 +83,7 @@ class _LawyerinfoPageState extends State<LawyerinfoPage> {
                       width: double.maxFinite,
                       child: Center(
                         child: Text(
-                          "widget",
+                          widget.name,
                           style: GoogleFonts.poppins(
                               color: Colors.white,
                               fontSize: 20,
@@ -106,64 +106,6 @@ class _LawyerinfoPageState extends State<LawyerinfoPage> {
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                   child: Column(
                     children: [
-                      // Row(
-                      //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      //   children: [
-                      //     Container(
-                      //       decoration: BoxDecoration(
-                      //         // color: dialog,
-                      //         border: Border.all(color: white, width: 4),
-                      //         borderRadius:
-                      //             BorderRadius.all(Radius.circular(14)),
-                      //         boxShadow: [
-                      //           BoxShadow(
-                      //               color: dialog.withOpacity(0.1),
-                      //               blurRadius: 10,
-                      //               offset: Offset(0, 5)),
-                      //         ],
-                      //       ),
-                      //       child: ClipRRect(
-                      //         borderRadius:
-                      //             BorderRadius.all(Radius.circular(10)),
-                      //         child: Container(
-                      //           height: 100,
-                      //           width: 100,
-                      //           decoration: BoxDecoration(
-                      //               // shape: BoxShape.circle,
-                      //               image: DecorationImage(
-                      //                 image: NetworkImage(widget.images),
-                      //                 fit: BoxFit.cover,
-                      //               ),
-                      //               color: white),
-                      //         ),
-                      //       ),
-                      //     ),
-                      //     Container(
-                      //       // color: dialog.withOpacity(0.1),
-                      //       // height: 150,
-                      //       // width: double.maxFinite,
-                      //       // margin: EdgeInsets.only(bottom: 50),
-                      //       child: Column(
-                      //         children: [
-                      //           spaced10,
-                      //           Text(
-                      //             widget.name,
-                      //             style: titletextblack,
-                      //             textAlign: TextAlign.center,
-                      //           ),
-                      //           // SizedBox(
-                      //           //   height: height * 0.001.h,
-                      //           // ),
-                      //           Text(
-                      //             "${widget.specialized} Lawyer",
-                      //             style: demofont,
-                      //           ),
-                      //           spaced20,
-                      //         ],
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
                       Text(
                         widget.name,
                         // style: titletextblack,

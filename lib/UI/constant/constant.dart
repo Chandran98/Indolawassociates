@@ -78,3 +78,6 @@ const Color appcolor2 = Color(0xffEBAE34);
 const spacedwidth10 = SizedBox(width: 10);
 const spacedwidth20 = SizedBox(width: 20);
 const spacedwidth30 = SizedBox(width: 30);
+
+const Color lawcolor =Color(0xff213442);
+const appimage="assets/images/civil_cate.jpg";

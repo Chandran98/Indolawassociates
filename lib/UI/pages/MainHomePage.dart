@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:indolawassociates/UI/pages/notification.dart';
 import 'package:indolawassociates/UI/services/notification_services.dart';
 
 class MainHomepage extends StatefulWidget {
@@ -26,6 +27,15 @@ class _MainHomepageState extends State<MainHomepage>
         print("FirebaseMessaging.instance.getInitialMessage");
         if (message != null) {
           print("Notification");
+          if (message.data['_id'] != null) {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => Notificationpage(
+                  // id: message.data['_id'],
+                ),
+              ),
+            );
+          }
         }
       },
     );
@@ -33,7 +43,7 @@ class _MainHomepageState extends State<MainHomepage>
     FirebaseMessaging.onMessage.listen(
       (message) {
         print("FirebaseMessaging.onMessage.listen");
-        if (message.notification != null) {
+        if (message.notification != null) { 
           print(message.notification!.title);
           print(message.notification!.body);
           print("message.data11 ${message.data}");

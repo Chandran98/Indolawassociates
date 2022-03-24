@@ -7,9 +7,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/UI/components/clippath.dart';
 import 'package:indolawassociates/UI/components/socialmedia.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
+import 'package:indolawassociates/UI/provider/theme.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:indolawassociates/UI/pages/MainHomePage.dart';
+import 'package:indolawassociates/UI/themes/themes.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:provider/provider.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -42,37 +45,16 @@ class _LoginscreenState extends State<Loginscreen> {
     await SmsAutoFill().listenForCode();
   }
 
-  // @override
-  // void initState() {
-
-    
-
-  //   Timer.run(() {
-  //     if (_auth.currentUser != null) {
-  //       Navigator.pushAndRemoveUntil(
-  //         context,
-  //         MaterialPageRoute(
-  //           builder: (BuildContext context) => MainHomepage(),
-  //         ),
-  //         (route) => false,
-  //       );
-  //     }
-  //   });
-  //   super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
-    return isOTPScreen ? _otpscreen(context) : _loginscreen(context);
+    return isOTPScreen ? _otpscreen() : _loginscreen();
   }
 
-  _loginscreen(context) {
+  _loginscreen() {
     void onback() {
       SystemNavigator.pop();
     }
 
-    // double height = MediaQuery.of(context).size.height;
-    // double width = MediaQuery.of(context).size.width;
     return WillPopScope(
       onWillPop: () {
         onback();
@@ -80,7 +62,6 @@ class _LoginscreenState extends State<Loginscreen> {
       },
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: Color(0xffF5F5F5),
           key: _scaffoldKey,
           body: SingleChildScrollView(
             child: Form(
@@ -90,25 +71,18 @@ class _LoginscreenState extends State<Loginscreen> {
                   ClipPath(
                     clipper: CustomdClipper(),
                     child: Container(
-                      height: 250, width: double.infinity,
-                      // width: 200
+                      height: 250,
+                      width: double.infinity,
                       decoration: new BoxDecoration(
+                        color: context.watch<Themeprovider>().darktheme == false
+                            ? white
+                            : black,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey,
                             offset: Offset(0.0, 1.0), //(x,y)
                             blurRadius: 6.0,
                           )
                         ],
-                        color: white,
-                        // borderRadius: BorderRadius.only(
-                        //     bottomLeft: Radius.circular(20),
-                        //     bottomRight: Radius.circular(20)
-                        //     // bottom: Radius.elliptical(
-                        //     //     MediaQuery.of(context).size.width * 1.w,
-                        //     //     MediaQuery.of(context).size.height * 0.08.h)
-
-                        //     ),
                       ),
                       child: Column(
                         children: [
@@ -116,15 +90,14 @@ class _LoginscreenState extends State<Loginscreen> {
                             padding: const EdgeInsets.only(top: 35),
                             child: Image.asset(
                               "assets/icons/ilatri.png",
-                              height: 80,
+                              height: 100,
                             ),
                           ),
-                          Image.asset(
-                            "assets/icons/titleb.png",
-                            height: 100,
-                            width: 300,
-                            color: black,
-                          )
+                          // Image.asset(
+                          //   "assets/icons/titleb.png",
+                          //   height: 100,
+                          //   width: 300,
+                          // )
                         ],
                       ),
                     ),
@@ -133,9 +106,7 @@ class _LoginscreenState extends State<Loginscreen> {
                   Text(
                     "Welcome Back!",
                     style: GoogleFonts.poppins(
-                        fontSize: 20,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400),
+                        fontSize: 20, fontWeight: FontWeight.w400),
                   ),
                   spaced10,
                   Padding(
@@ -154,68 +125,53 @@ class _LoginscreenState extends State<Loginscreen> {
                         labelText: "Mobile no.",
                         hintText: "Mobile ",
                         labelStyle: GoogleFonts.poppins(
-                            fontSize: 12,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w400),
+                            fontSize: 12, fontWeight: FontWeight.w400),
                       ),
                       initialCountryCode: 'IN',
                       controller: numberController,
                       onChanged: (phoneNumber) {
                         setState(() {
                           phone = phoneNumber.completeNumber;
-                          // print(phone);
                         });
                       },
                     ),
                   ),
                   spaced10,
-                  Container(
-                      // margin: EdgeInsets.only(top: 40, bottom: 5),
-                      child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          child: !isLoading
-                              ? new TextButton(
-                                  onPressed: () async {
-                                    final otpcode =
-                                        SmsAutoFill().getAppSignature;
-                                    print(otpcode);
-                                    if (!isLoading) {
-                                      if (_formkey.currentState!.validate()) {
-                                        displaySnackBar('Please wait...');
-                                        await login();
-                                      }
-                                    }
-                                    final signature =
-                                        SmsAutoFill().getAppSignature;
-                                    print(signature);
-                                  },
-                                  child: Container(
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: white,
-                                          border: Border.all(color: navy)),
-                                      height: 50,
-                                      width: 200,
-                                      // padding: const EdgeInsets.symmetric(
-                                      //   vertical: 15.0,
-                                      //   horizontal: 15.0,
-                                      // ),
-                                      child: Center(
-                                        child: Text(
-                                          "Log-in",
-                                          style: GoogleFonts.poppins(
-                                              // fontWeight: FontWeight.bold,
-                                              color: black,
-                                              fontSize: 16),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      )),
-                                )
-                              : CircularProgressIndicator(
-                                  // backgroundColor: Colors.white,
-                                  color: green,
-                                ))),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: !isLoading
+                          ? new InkWell(
+                              onTap: () async {
+                                final otpcode = SmsAutoFill().getAppSignature;
+                                print(otpcode);
+                                if (!isLoading) {
+                                  if (_formkey.currentState!.validate()) {
+                                    displaySnackBar('Please wait...');
+                                    await login();
+                                  }
+                                }
+                                final signature = SmsAutoFill().getAppSignature;
+                                print(signature);
+                              },
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                      color: white,
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(color: navy)),
+                                  height: 50,
+                                  width: 200,
+                                  child: Center(
+                                    child: Text(
+                                      "Log-in",
+                                      style: GoogleFonts.poppins(
+                                          fontSize: 16, color: black),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  )),
+                            )
+                          : CircularProgressIndicator(
+                              color: green,
+                            )),
                   spaced30,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -223,7 +179,8 @@ class _LoginscreenState extends State<Loginscreen> {
                       Container(
                         child: Text("New User ?",
                             style: GoogleFonts.poppins(
-                                fontSize: 15, color: black)),
+                              fontSize: 15,
+                            )),
                       ),
                       spaced20,
                       InkWell(
@@ -241,7 +198,7 @@ class _LoginscreenState extends State<Loginscreen> {
                     ],
                   ),
                   // SizedBox(height: height * 0.02.h),
-                  spaced10,
+                  spaced30, spaced30,
                   Socialmedia()
                 ],
               ),
@@ -252,9 +209,7 @@ class _LoginscreenState extends State<Loginscreen> {
     );
   }
 
-  _otpscreen(context) {
-    // double height = MediaQuery.of(context).size.height;
-    // double width = MediaQuery.of(context).size.width;
+  _otpscreen() {
     void onback() {
       Navigator.pushNamed(context, loginpageroute);
     }
@@ -266,7 +221,6 @@ class _LoginscreenState extends State<Loginscreen> {
       },
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: Color(0xffF5F5F5),
           key: _scaffoldKey,
           body: SingleChildScrollView(
             child: Form(
@@ -276,44 +230,22 @@ class _LoginscreenState extends State<Loginscreen> {
                   ClipPath(
                     clipper: CustomdClipper(),
                     child: Container(
-                      color: white,
-                      height: 250, width: double.infinity,
-
-                      // decoration: new BoxDecoration(
-                      //   boxShadow: [
-                      //     BoxShadow(
-                      //       color: Colors.grey,
-                      //       offset: Offset(0.0, 1.0), //(x,y)
-                      //       blurRadius: 6.0,
-                      //     )
-                      //   ],
-                      //   color: white,
-                      //   borderRadius: BorderRadius.vertical(
-                      //       bottom: Radius.elliptical(
-                      //           width * 1.w,
-                      //           height * 0.08.h)),
-                      // ),
+                      decoration: new BoxDecoration(
+                          color:
+                              context.watch<Themeprovider>().darktheme == false
+                                  ? white
+                                  : black),
+                      height: 250,
+                      width: double.infinity,
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(top: 25),
+                            padding: const EdgeInsets.only(top: 50),
                             child: Image.asset(
                               "assets/icons/ilatri.png",
-                              height: 80,
+                              height: 100,
                             ),
                           ),
-                          Image.asset(
-                            "assets/icons/titleb.png",
-                            height: 100,
-                            width: 300,
-                            color: black,
-                          ),
-                          // TextButton(
-                          //     onPressed: () => Navigator.pushReplacement(
-                          //         context,
-                          //         MaterialPageRoute(
-                          //             builder: (context) => Mainhome())),
-                          //     child: Text("data"))
                         ],
                       ),
                     ),
@@ -323,37 +255,26 @@ class _LoginscreenState extends State<Loginscreen> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 50),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
                             isLoading
                                 ? "Verify your OTP"
                                 : "The code has been sent to\n your mobile via SMS",
                             style: GoogleFonts.poppins(
-                                fontSize: 15,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w400),
+                                fontSize: 15, fontWeight: FontWeight.w400),
                           ),
                           spaced10,
-                          // Container(color: gold,
-                          //     child: Padding(
-                          //         padding: const EdgeInsets.symmetric(
-                          //             vertical: 60.0, horizontal: 20.0),
-                          //         child: Text(
-                          //           !isLoading
-                          //               ? "Verify Your OTP "
-                          //               : "Verifying OTP code via SMS",
-                          //           textAlign: TextAlign.center,
-                          //           style: GoogleFonts.mulish(
-                          //               fontSize: 20.sp,
-                          //               color: navy,
-                          //               fontWeight: FontWeight.bold),
-                          //         ))),
                           !isLoading
                               ? Container(
                                   child: PinFieldAutoFill(
                                     decoration: UnderlineDecoration(
-                                        colorBuilder: FixedColorBuilder(black)),
+                                        colorBuilder: FixedColorBuilder(context
+                                                    .watch<Themeprovider>()
+                                                    .darktheme ==
+                                                false
+                                            ? black
+                                            : white)),
                                     codeLength: 6,
                                     onCodeChanged: (val) {
                                       if (val != null) {
@@ -361,23 +282,16 @@ class _LoginscreenState extends State<Loginscreen> {
                                       } else {
                                         return Text("Please enter OTP");
                                       }
-
-                                      // FocusScope.of(context)
-                                      //     .requestFocus(FocusNode());
                                     },
                                     keyboardType: TextInputType.number,
-                                    // autoFocus: true,
                                   ),
                                 )
-                              : Container(
-                                  // color: navy,
-                                  ),
+                              : Container(),
                           !isLoading
                               ? Container(
-                                  // margin: EdgeInsets.only(top: 40, bottom: 5),
                                   child: Padding(
                                       padding: const EdgeInsets.symmetric(
-                                          horizontal: 50.0, vertical: 20),
+                                          vertical: 20),
                                       child: new TextButton(
                                         onPressed: () async {
                                           if (_formKeyOTP.currentState!
@@ -447,7 +361,7 @@ class _LoginscreenState extends State<Loginscreen> {
                                           width: 200,
                                           child: Material(
                                             borderRadius:
-                                                BorderRadius.circular(15),
+                                                BorderRadius.circular(12),
                                             elevation: 4,
                                             color: white,
                                             child: Center(
@@ -492,7 +406,7 @@ class _LoginscreenState extends State<Loginscreen> {
                                     child: Container(
                                       decoration: BoxDecoration(
                                           borderRadius:
-                                              BorderRadius.circular(15),
+                                              BorderRadius.circular(12),
                                           color: white,
                                           border: Border.all(color: navy)),
                                       height: 50,
@@ -504,49 +418,15 @@ class _LoginscreenState extends State<Loginscreen> {
                                         child: Center(
                                             child: Text('Resend code',
                                                 style: GoogleFonts.poppins(
-                                                    // fontWeight:
-                                                    //     FontWeight.bold,
                                                     color: black,
                                                     fontSize: 15))),
                                       ),
                                     ),
                                   ),
                                 )
-                              // Container(
-                              //     margin: EdgeInsets.only(top: 20),
-                              //     child: Padding(
-                              //         padding: const EdgeInsets.symmetric(
-                              //             horizontal: 10.0),
-                              //         child: new TextButton(
-                              //           onPressed: () async {
-                              //             if (mounted)
-                              //               setState(() {
-                              //                 isResend = false;
-                              //                 isLoading = true;
-                              //               });
-                              //             await login();
-                              //           },
-                              //           child: new Container(
-                              //             width: width * .6.w,
-                              //             height: height * .07.h,
-                              //             child: Material(
-                              //               borderRadius:
-                              //                   BorderRadius.circular(20),
-                              //               elevation: 4,
-                              //               color: white,
-                              //               child: Center(
-                              //                   child: Text('Resend Code',
-                              //                       style: GoogleFonts.mulish(
-                              //                           fontWeight:
-                              //                               FontWeight.bold,
-                              //                           color: navy,
-                              //                           fontSize: 20))),
-                              //             ),
-                              //           ),
-                              //         )))
-
                               : Column(),
-                          spaced20,
+                          spaced30,
+                          spaced30,
                           Socialmedia()
                         ],
                       ),
@@ -624,9 +504,9 @@ class _LoginscreenState extends State<Loginscreen> {
           if (mounted)
             setState(() {
               isLoading = false;
-             verificationCode = verificationId;
-             
-                            isOTPScreen = true;
+              verificationCode = verificationId;
+
+              isOTPScreen = true;
             });
         },
         codeAutoRetrievalTimeout: (String verificationId) {

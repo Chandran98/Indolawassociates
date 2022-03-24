@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:indolawassociates/UI/pages/splashscren.dart';
 import 'package:indolawassociates/UI/provider/languageprovider.dart';
 import 'package:indolawassociates/UI/provider/theme.dart';
+import 'package:indolawassociates/UI/provider/user_details_provider.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:indolawassociates/UI/services/notification_services.dart';
 import 'package:indolawassociates/UI/themes/themes.dart';
@@ -13,7 +14,6 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'UI/components/Internet connectivity/connectivity.dart';
 import 'UI/l10n/l10n.dart';
-import 'UI/pages/notification.dart';
 
 Future<void> backgroundHandler(RemoteMessage message) async {
   print(message.data.toString());
@@ -37,6 +37,8 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => Languagenotifier()),
         ChangeNotifierProvider(create: (context) => Themeprovider()),
+        
+        ChangeNotifierProvider(create: (context) => Userprovider()),
         StreamProvider<ConnectivityStatus>(
             create: (_) => ConnectivityService().streamController.stream,
             initialData: ConnectivityStatus.Offline)
@@ -65,7 +67,6 @@ class MyApp extends StatelessWidget {
             theme: Provider.of<Themeprovider>(context).darktheme
                 ? darkmode
                 : lightmode,
-
           );
         });
       }),
@@ -73,4 +74,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-///////Splash screen////////

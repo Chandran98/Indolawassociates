@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/models/Legalforms_data_models.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
@@ -191,49 +192,14 @@ class _BusinesslegalformsdState extends State<Businesslegalformsd> {
         itemBuilder: (context, index) {
           return ListTile(
               leading: Icon(
-                Icons.remove_red_eye,
+                FontAwesomeIcons.filePdf,
               ),
               title: Text(
                 businesslegalforms[index].title,
-                // style: demofont,
-              ),
-              // onTap: ()=>{launch(legalforms[index].url)});
+                ),
               onTap: () {
                 launch(businesslegalforms[index].url);
-                // showDialog(
-                //     context: context,
-                //     builder: (context) => AlertDialog(backgroundColor: dialog,
-                //           elevation: 10,
-                //           content: Text(
-                //             translate.helptitle,
-                //             style: dfont,
-                //           ),
-                //           contentPadding: EdgeInsets.only(
-                //               top: 20, left: 20, right: 20, bottom: 10),
-                //           actions: [
-                //             Padding(
-                //               padding:
-                //                   const EdgeInsets.symmetric(horizontal: 10),
-                //               child: Row(
-                //                 children: [
-                //                   Icon(
-                //                     Icons.phone,
-                //                     color: white,
-                //                   ),
-                //                   FlatButton(
-                //                     onPressed: () {
-                //                       launcher("tel: 8940383000");
-                //                     },
-                //                     child: Text(
-                //                       "8940383000",
-                //                       style: dfont,
-                //                     ),
-                //                   ),
-                //                 ],
-                //               ),
-                //             )
-                //           ],
-                //         ));
+         
               });
         },
       ),

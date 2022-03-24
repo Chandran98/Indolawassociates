@@ -176,20 +176,12 @@ class _CategoryshowState extends State<Categoryshow> {
                   SizedBox(
                     height: 5,
                   ),
-                  // CircleAvatar(
-                  //   radius: 35,
-                  //   backgroundImage: AssetImage(
-                  //     categorylist[index].categorypic,
-                  //   ),
-                  //   backgroundColor: Colors.grey.shade300,
-                  // ),
                   Container(
                       child: FittedBox(
                     child: Text(categorylist[index].categorytitle,
                         style: GoogleFonts.poppins(
                           fontSize: 13,
                           fontWeight: FontWeight.w500,
-                          // color: Colors.white
                         )),
                   ))
                 ],

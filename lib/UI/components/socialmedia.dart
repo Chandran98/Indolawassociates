@@ -9,14 +9,11 @@ class Socialmedia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    // double height = MediaQuery.of(context).size.height;
-    // double width = MediaQuery.of(context).size.width;
     return Container(
       child: Column(children: [ Text(
                 "Follow us on",
                 style: GoogleFonts.poppins(
                     fontSize: 17,
-                    color: Colors.black,
                     fontWeight: FontWeight.w400),
               ),
               SizedBox(

@@ -125,7 +125,7 @@ class _ParalegalscreenState extends State<Paralegalscreen> {
                                   top: 5,
                                   bottom: 5),
                               child: Text(
-                                "Description",
+                                translate!.description,
                                 style: TextStyle(
                                     color: white,
                                     fontSize: 20,
@@ -152,46 +152,6 @@ class _ParalegalscreenState extends State<Paralegalscreen> {
                   ),
                   spaced10,
 
-                  // Row(
-                  //   children: [
-                  //     Expanded(
-                  //       child: Container(
-                  //         // color: white,
-                  //         // height:50,
-                  //         // width: 180,
-                  //         child: Column(
-                  //           crossAxisAlignment: CrossAxisAlignment.start,
-                  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //           children: [
-                  //             Titlecard(title: widget.r1),
-                  //             Titlecard(title: widget.r3),
-                  //             Titlecard(title: widget.r5),
-                  //           ],
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     //  SizedBox(
-                  //     //             width: MediaQuery.of(context).size.width *
-                  //     //                 0.005.w,
-                  //     //           ),
-                  //     Expanded(
-                  //       child: Container(
-                  //         // color: green,
-                  //         // height:50,
-                  //         // width: 180,
-                  //         child: Column(
-                  //           // crossAxisAlignment: CrossAxisAlignment.start,
-                  //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //           children: [
-                  //             Titlecard(title: widget.r2),
-                  //             Titlecard(title: widget.r4),
-                  //             Titlecard(title: widget.r6),
-                  //           ],
-                  //         ),
-                  //       ),
-                  //     )
-                  //   ],
-                  // ),
 
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 30),
@@ -225,7 +185,7 @@ class _ParalegalscreenState extends State<Paralegalscreen> {
                           // ),
                           child: Center(
                             child: Text(
-                              translate!.apply,
+                              translate.apply,
                               style: GoogleFonts.poppins(
                                   // fontWeight: FontWeight.bold,
                                   // color: black,

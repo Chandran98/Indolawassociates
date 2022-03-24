@@ -58,7 +58,7 @@ class _SliderimageState extends State<Sliderimage> {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Container(
-                    color: Colors.white,
+                    // color: Colors.white,
                     height: 230,
                     // width: 3,
                     // child: Hero(

@@ -16,6 +16,7 @@ class Offersub extends StatelessWidget {
     void onback() {
       Navigator.pushNamed(context, settingsroute);
     }
+
     final translate = AppLocalizations.of(context);
     return WillPopScope(
       onWillPop: () {
@@ -28,59 +29,61 @@ class Offersub extends StatelessWidget {
             elevation: 3,
             toolbarHeight: 70,
             centerTitle: true,
-            backgroundColor: dialog,
             title: FittedBox(
               child: Text(
                 translate!.drawerkey2,
-                style: titletextwhite,textAlign: TextAlign.center,
+                style: titletextwhite,
+                textAlign: TextAlign.center,
               ),
             ),
-            leading: IconButton(
-                onPressed: () => Navigator.pushNamed(context, settingsroute),
-                icon: Image.asset(
-                  "assets/icons/rback.png",
-                  color: white,
-                  height: 35,
-                )),
+            // leading: IconButton(
+            //     onPressed: () => Navigator.pushNamed(context, settingsroute),
+            //     icon: Image.asset(
+            //       "assets/icons/rback.png",
+            //       color: white,
+            //       height: 35,
+            //     )),
           ),
           body: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,vertical: 20
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   spaced10,
-                  Text(translate.refer,
-                      textAlign: TextAlign.center, style: titletextblack),
+                  Text(
+                    translate.refer,
+                    textAlign: TextAlign.center,
+                  ),
                   spaced10,
                   Text(
                     translate.refersubtitle,
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                        color: Colors.grey,
+                        // color: Colors.grey,
                         fontSize: 13,
                         fontWeight: FontWeight.w500),
                   ),
-
-                  Sliderimage(), spaced10,
-                  TextButton(
-                    onPressed: () {
+                  Sliderimage(),
+                  spaced30,
+                  InkWell(
+                    onTap: () {
                       launch(
                           "https://play.google.com/store/apps/details?id=com.indolawassociates.Indolaw");
-
                     },
                     child: Container(
                         decoration: BoxDecoration(
-                            color: dialog,
-                            border: Border.all(color: navy)),
+                            color: appcolor,
+                            borderRadius: BorderRadius.circular(30)),
                         height: 60,
                         width: 300,
                         child: Center(
                           child: Text(
                             translate.invite,
-                            style: dfont,
+                            style: GoogleFonts.poppins(
+                                // color: Colors.grey,
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500),
                             textAlign: TextAlign.center,
                           ),
                         )),

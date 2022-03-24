@@ -66,10 +66,9 @@ class _BuildformsheetState extends State<Buildformsheet> {
                                   BorderRadius.all(Radius.circular(20))),
                           prefixIcon: Icon(
                             Icons.person,
-                            color: black,
+                            
                           ),
-                          labelText: "Name",
-                          labelStyle: demofont)),
+                          labelText: "Name",)),
                   SizedBox(height: 20),
                   TextFormField(
                       controller: _emailcontroller,
@@ -86,10 +85,10 @@ class _BuildformsheetState extends State<Buildformsheet> {
                                   BorderRadius.all(Radius.circular(20))),
                           prefixIcon: Icon(
                             Icons.mail,
-                            color: black,
+                            
                           ),
                           labelText: "Email",
-                          labelStyle: demofont)),
+                          )),
                   SizedBox(height: 20),
                   Container(
                     decoration: BoxDecoration(
@@ -99,12 +98,10 @@ class _BuildformsheetState extends State<Buildformsheet> {
                     child: DropdownButton(
                       underline: SizedBox(),
                       iconSize: 35,
-                      iconEnabledColor: black,
                       isExpanded: true,
-                      dropdownColor: Colors.white,
                       hint: Text(
                         "Gender",
-                        style: demofont,
+                        
                       ),
                       items: genderlist.map((valueitem) {
                         return DropdownMenuItem(
@@ -134,10 +131,10 @@ class _BuildformsheetState extends State<Buildformsheet> {
                                   BorderRadius.all(Radius.circular(20))),
                           prefixIcon: Icon(
                             Icons.mobile_screen_share,
-                            color: black,
+                            
                           ),
                           labelText: "Mobile",
-                          labelStyle: demofont)),
+                          )),
                   SizedBox(height: 20),
                   TextFormField(
                       validator: MultiValidator([
@@ -150,7 +147,7 @@ class _BuildformsheetState extends State<Buildformsheet> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20))),
                           labelText: "Address",
-                          labelStyle: demofont)),
+                          )),
                   SizedBox(height: 20),
                   Container(
                     decoration: BoxDecoration(
@@ -166,12 +163,10 @@ class _BuildformsheetState extends State<Buildformsheet> {
                       },
                       value: category,
                       iconSize: 35,
-                      iconEnabledColor: black,
                       isExpanded: true,
-                      dropdownColor: Colors.white,
                       hint: Text(
                         "Services",
-                        style: demofont,
+                        
                       ),
                       items: categorylist.map((valueitem) {
                         return DropdownMenuItem(

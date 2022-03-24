@@ -42,7 +42,7 @@ class _OtherservicesformState extends State<Otherservicesform> {
                     child: Text(
                       "Fill The Form",
                       style: GoogleFonts.poppins(
-                          color: black,
+                          
                           fontWeight: FontWeight.w500,
                           fontSize: 20),
                     ),
@@ -59,10 +59,10 @@ class _OtherservicesformState extends State<Otherservicesform> {
                                   BorderRadius.all(Radius.circular(20))),
                           prefixIcon: Icon(
                             Icons.person,
-                            color: black,
+                            
                           ),
                           labelText: "Name",
-                          labelStyle: demofont)),
+                          )),
                   SizedBox(height: 20),
                   TextFormField(
                       controller: _emailcontroller,
@@ -79,10 +79,10 @@ class _OtherservicesformState extends State<Otherservicesform> {
                                   BorderRadius.all(Radius.circular(20))),
                           prefixIcon: Icon(
                             Icons.mail,
-                            color: black,
+                            
                           ),
                           labelText: "Email",
-                          labelStyle: demofont)),
+                          )),
                   SizedBox(height: 20),
                   Container(
                     decoration: BoxDecoration(
@@ -92,10 +92,9 @@ class _OtherservicesformState extends State<Otherservicesform> {
                     child: DropdownButton(
                       underline: SizedBox(),
                       iconSize: 35,
-                      iconEnabledColor: black,
                       isExpanded: true,
-                      dropdownColor: Colors.white,
-                      hint: Text("Gender", style: demofont),
+                      
+                      hint: Text("Gender", ),
                       items: genderlist.map((valueitem) {
                         return DropdownMenuItem(
                           value: valueitem,
@@ -124,10 +123,10 @@ class _OtherservicesformState extends State<Otherservicesform> {
                                   BorderRadius.all(Radius.circular(20))),
                           prefixIcon: Icon(
                             Icons.mobile_screen_share,
-                            color: black,
+                            
                           ),
                           labelText: "Mobile",
-                          labelStyle: demofont)),
+                          )),
                   SizedBox(height: 20),
                   TextFormField(
                       validator: MultiValidator([
@@ -140,7 +139,7 @@ class _OtherservicesformState extends State<Otherservicesform> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20))),
                           labelText: "Address",
-                          labelStyle: demofont)),
+                          )),
                   SizedBox(height: 20),
                   TextFormField(
                       controller: _servicecontroller,
@@ -149,7 +148,7 @@ class _OtherservicesformState extends State<Otherservicesform> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20))),
                           labelText: "Services",
-                          labelStyle: demofont)),
+                          )),
                   SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,

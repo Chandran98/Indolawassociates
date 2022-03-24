@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/models/Legalforms_data_models.dart';
 import 'package:indolawassociates/UI/pages/legalforms/legalforms_page.dart';
@@ -77,7 +78,7 @@ class _FamilylegalformsState extends State<Familylegalforms> {
         itemCount: familyLegalforms.length,
         itemBuilder: (context, index) {
           return ListTile(
-              leading: Icon(Icons.remove_red_eye,),
+              leading: Icon(FontAwesomeIcons.filePdf),
               title: Text(
                 familyLegalforms[index].title,
                 // style: demofont,

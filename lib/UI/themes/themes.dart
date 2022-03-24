@@ -48,21 +48,19 @@ final lightmode = ThemeData(
     selectedItemColor: appcolor,
     unselectedItemColor: Colors.grey[500],
   ),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: appcolor2.withOpacity(0.7)),
+  floatingActionButtonTheme:
+      FloatingActionButtonThemeData(backgroundColor: appcolor.withOpacity(0.7)),
 );
 
 final darkmode = ThemeData(
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: appcolor2.withOpacity(0.7)),
+        backgroundColor: appcolor.withOpacity(0.7)),
     primaryColor: appcolor,
     fontFamily: "Poppins",
     iconTheme: IconThemeData(color: Colors.white),
     scaffoldBackgroundColor: Color(0xff1F1D2A),
-    // primaryColorDark: Colors.grey[300],
     primaryColorDark: Color(0xff282633),
     toggleButtonsTheme: ToggleButtonsThemeData(color: Colors.white),
-    // primaryColorLight: Colors.grey[800],
     primaryColorLight: Color(0xff282633),
     secondaryHeaderColor: Color(0xff282633),
     brightness: Brightness.dark,
@@ -96,10 +94,6 @@ final darkmode = ThemeData(
     // ),
     bottomAppBarColor: Color(0xff1F1D2A),
     tabBarTheme: TabBarTheme(
-      // overlayColor: MaterialStateProperty.all(Colors.red),
-      labelColor: appcolor,
+      labelColor: Colors.white,
       unselectedLabelColor: Colors.white,
     ));
-
-///
-///container bg =Color(0xff282633)

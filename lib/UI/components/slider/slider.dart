@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 
-class Slisder extends StatefulWidget {
-  Slisder({Key? key}) : super(key: key);
+class Bannerslider extends StatefulWidget {
+  Bannerslider({Key? key}) : super(key: key);
 
   @override
-  _SlisderState createState() => _SlisderState();
+  _BannersliderState createState() => _BannersliderState();
 }
 
-class _SlisderState extends State<Slisder> {
+class _BannersliderState extends State<Bannerslider> {
   @override
   void initState() {
     super.initState();
@@ -30,19 +30,11 @@ class _SlisderState extends State<Slisder> {
       child: Container(
         child: FutureBuilder(
           future: getslider(),
-          // initialData: InitialData,
           builder: (BuildContext context,
               AsyncSnapshot<List<QueryDocumentSnapshot<Map<String, dynamic>>>>
                   snapshot) {
             if (!snapshot.hasData) {
               return
-                  // return  Shimmer.fromColors(baseColor: Colors.green,highlightColor: Colors.black,
-                  //   child: Container(
-                  //         // child: Slisder(),
-                  //         height: height * 0.025.h,
-                  //         width: width * 1.w,
-                  //       ),
-                  // );
                   Center(
                       child: CircularProgressIndicator(
                 color: green,
@@ -73,7 +65,7 @@ class _SlisderState extends State<Slisder> {
                     autoPlay: true,
                     autoPlayAnimationDuration: Duration(seconds: 1),
                     autoPlayCurve: Curves.fastOutSlowIn,
-                    height: 180,
+                    height: 150,
                     enlargeCenterPage: true,
                     viewportFraction: 0.8,
                     onPageChanged: (i, carouselPageChangedReason) {

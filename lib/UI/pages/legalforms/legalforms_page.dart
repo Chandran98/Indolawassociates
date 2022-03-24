@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:indolawassociates/UI/components/Internet%20connectivity/Network_status.dart';
@@ -69,7 +71,7 @@ class _LegalinfoState extends State<Legalinfo> {
                     Padding(padding: EdgeInsets.only(top: 10)),
                     ListTile(
                       leading: Icon(
-                        Icons.logout,
+                        CupertinoIcons.folder_badge_minus,
                       ),
                       title: Text(
                         translate.forms1,
@@ -95,7 +97,7 @@ class _LegalinfoState extends State<Legalinfo> {
                     // Divider(),
                     ListTile(
                       leading: Icon(
-                        Icons.logout,
+                        CupertinoIcons.folder_badge_minus,
                       ),
                       title: Text(
                         translate.forms3,
@@ -109,7 +111,7 @@ class _LegalinfoState extends State<Legalinfo> {
                     Divider(),
                     ListTile(
                       leading: Icon(
-                        Icons.logout,
+                        CupertinoIcons.folder_badge_minus,
                       ),
                       title: Text(
                         translate.forms4,
@@ -123,7 +125,7 @@ class _LegalinfoState extends State<Legalinfo> {
                     Divider(),
                     ListTile(
                       leading: Icon(
-                        Icons.logout,
+                        CupertinoIcons.folder_badge_minus,
                       ),
                       title: Text(
                         translate.forms5,
@@ -137,7 +139,7 @@ class _LegalinfoState extends State<Legalinfo> {
                     Divider(),
                     ListTile(
                       leading: Icon(
-                        Icons.logout,
+                        CupertinoIcons.folder_badge_minus,
                       ),
                       title: Text(
                         translate.forms6,
@@ -151,7 +153,7 @@ class _LegalinfoState extends State<Legalinfo> {
                     Divider(),
                     ListTile(
                       leading: Icon(
-                        Icons.logout,
+                        CupertinoIcons.folder_badge_minus,
                       ),
                       title: Text(
                         translate.forms7,
@@ -165,7 +167,7 @@ class _LegalinfoState extends State<Legalinfo> {
                     Divider(),
                     ListTile(
                       leading: Icon(
-                        Icons.logout,
+                        CupertinoIcons.folder_badge_minus,
                       ),
                       title: Text(
                         translate.forms8,
@@ -179,7 +181,7 @@ class _LegalinfoState extends State<Legalinfo> {
                     Divider(),
                     ListTile(
                       leading: Icon(
-                        Icons.logout,
+                        CupertinoIcons.folder_badge_minus,
                       ),
                       title: Text(
                         translate.forms9,
@@ -193,7 +195,7 @@ class _LegalinfoState extends State<Legalinfo> {
                     Divider(),
                     ListTile(
                       leading: Icon(
-                        Icons.logout,
+                        CupertinoIcons.folder_badge_minus,
                       ),
                       title: Text(
                         translate.forms10,
@@ -206,7 +208,7 @@ class _LegalinfoState extends State<Legalinfo> {
                     Divider(),
                     ListTile(
                       leading: Icon(
-                        Icons.logout,
+                        CupertinoIcons.folder_badge_minus,
                       ),
                       title: Text(
                         translate.forms11,
@@ -219,7 +221,7 @@ class _LegalinfoState extends State<Legalinfo> {
                     Divider(),
                     ListTile(
                       leading: Icon(
-                        Icons.logout,
+                        CupertinoIcons.folder_badge_minus,
                       ),
                       title: Text(
                         translate.forms12,
@@ -232,7 +234,7 @@ class _LegalinfoState extends State<Legalinfo> {
                     Divider(),
                     ListTile(
                       leading: Icon(
-                        Icons.logout,
+                        CupertinoIcons.folder_badge_minus,
                       ),
                       title: Text(
                         translate.forms13,
