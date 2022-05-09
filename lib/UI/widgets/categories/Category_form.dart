@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
-import 'package:indolawassociates/UI/models/form_model.dart';
 
 class Buildformsheet extends StatefulWidget {
   Buildformsheet({Key? key}) : super(key: key);
@@ -12,7 +11,6 @@ class Buildformsheet extends StatefulWidget {
 }
 
 class _BuildformsheetState extends State<Buildformsheet> {
-  late FormModel _formModel;
   GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   final _namecontroller = TextEditingController();

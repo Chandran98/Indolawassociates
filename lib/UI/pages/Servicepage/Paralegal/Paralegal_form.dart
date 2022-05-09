@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
-import 'package:indolawassociates/UI/models/form_model.dart';
-
 class Paralegalform extends StatefulWidget {
   Paralegalform({Key? key}) : super(key: key);
 
@@ -16,8 +14,6 @@ class Paralegalform extends StatefulWidget {
 class _ParalegalformState extends State<Paralegalform> {
   GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
-  // ignore: unused_field
-  late FormModel _formModel;
   final _namecontroller = TextEditingController();
   final _emailcontroller = TextEditingController();
   final _mobilecontroller = TextEditingController();

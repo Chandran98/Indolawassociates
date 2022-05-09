@@ -3,8 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:indolawassociates/UI/provider/notification_provider.dart';
 import 'package:indolawassociates/UI/pages/notification.dart';
 import 'package:indolawassociates/UI/services/notification_services.dart';
+import 'package:provider/provider.dart';
 
 class MainHomepage extends StatefulWidget {
   MainHomepage({Key? key}) : super(key: key);
@@ -21,46 +23,13 @@ class _MainHomepageState extends State<MainHomepage>
   @override
   void initState() {
     super.initState();
+    Future.delayed(Duration(seconds: 0)).then((value) async {
+      await context
+          .read<Notifierprovider>()
+          .initfirebasepushnotification(context)
+          .then((value) => context.read<Notifierprovider>());
+    });
 
-    FirebaseMessaging.instance.getInitialMessage().then(
-      (message) {
-        print("FirebaseMessaging.instance.getInitialMessage");
-        if (message != null) {
-          print("Notification");
-          if (message.data['_id'] != null) {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => Notificationpage(
-                  // id: message.data['_id'],
-                ),
-              ),
-            );
-          }
-        }
-      },
-    );
-
-    FirebaseMessaging.onMessage.listen(
-      (message) {
-        print("FirebaseMessaging.onMessage.listen");
-        if (message.notification != null) { 
-          print(message.notification!.title);
-          print(message.notification!.body);
-          print("message.data11 ${message.data}");
-          LocalNotificationService.createanddisplaynotification(message);
-        }
-      },
-    );
-    FirebaseMessaging.onMessageOpenedApp.listen(
-      (message) {
-        print("FirebaseMessaging.onMessageOpenedApp.listen");
-        if (message.notification != null) {
-          print(message.notification!.title);
-          print(message.notification!.body);
-          print("message.data22 ${message.data['_id']}");
-        }
-      },
-    );
     tabController = TabController(length: 4, vsync: this);
   }
 

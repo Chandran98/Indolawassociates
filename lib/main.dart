@@ -3,8 +3,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:indolawassociates/UI/provider/lawyer_provider.dart';
+import 'package:indolawassociates/UI/provider/notification_provider.dart';
 import 'package:indolawassociates/UI/pages/splashscren.dart';
 import 'package:indolawassociates/UI/provider/languageprovider.dart';
+import 'package:indolawassociates/UI/provider/search_provider.dart';
 import 'package:indolawassociates/UI/provider/theme.dart';
 import 'package:indolawassociates/UI/provider/user_details_provider.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
@@ -37,7 +40,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => Languagenotifier()),
         ChangeNotifierProvider(create: (context) => Themeprovider()),
-        
+        ChangeNotifierProvider(create: (context) => Notifierprovider()),
+        ChangeNotifierProvider(create: (context) => Searchprovider()),
+        ChangeNotifierProvider(create: (context) => Lawyerprovider()),
         ChangeNotifierProvider(create: (context) => Userprovider()),
         StreamProvider<ConnectivityStatus>(
             create: (_) => ConnectivityService().streamController.stream,
@@ -73,4 +78,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

@@ -10,7 +10,6 @@ import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/provider/theme.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import 'package:indolawassociates/UI/pages/MainHomePage.dart';
-import 'package:indolawassociates/UI/themes/themes.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:provider/provider.dart';
 import 'package:sms_autofill/sms_autofill.dart';
@@ -68,6 +67,7 @@ class _LoginscreenState extends State<Loginscreen> {
               key: _formkey,
               child: Column(
                 children: [
+                
                   ClipPath(
                     clipper: CustomdClipper(),
                     child: Container(
@@ -310,6 +310,7 @@ class _LoginscreenState extends State<Loginscreen> {
                                                           smsCode: otpcoder
                                                               .toString()))
                                                   .then((user) async => {
+                                                        // ignore: unnecessary_null_comparison
                                                         if (user != null)
                                                           {
                                                             if (mounted)

@@ -250,7 +250,7 @@ class _CategorypagescrendState extends State<Categorypagescrend> {
                           )),
                     ),
                   ),
-                  Contactbox(),
+                  Contactbox(),spaced30
                 ],
               ),
             )

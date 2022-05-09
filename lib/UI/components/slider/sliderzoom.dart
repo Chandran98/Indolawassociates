@@ -3,8 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import '../../../UI/constant/constant.dart';
-import '../../../UI/pages/MainHomePage.dart';
-import 'package:indolawassociates/UI/routes/route.dart';
 // import 'package:sizer/sizer.dart';
 
 class Sliderimage extends StatefulWidget {

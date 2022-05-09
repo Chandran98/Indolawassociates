@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:indolawassociates/UI/components/List_title_widgets.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
+import 'package:indolawassociates/UI/provider/notification_provider.dart';
 import 'package:indolawassociates/UI/pages/Settingspage/Edit_page.dart';
 import 'package:indolawassociates/UI/provider/languageprovider.dart';
 import 'package:indolawassociates/UI/provider/theme.dart';
@@ -84,6 +85,24 @@ class _SettingscreenState extends State<Settingscreen> {
                       })),
               const Divider(
                 height: 3,
+              ),
+              ListTile(
+                title: Text('get notifications'),
+                leading: Container(
+                  height: 30,
+                  width: 30,
+                  decoration: BoxDecoration(
+                      color: Colors.deepPurpleAccent,
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Icon(Icons.notifications_active,
+                      size: 22, color: Colors.white),
+                ),
+                trailing: Switch(
+                    activeColor: Theme.of(context).primaryColor,
+                    value: context.watch<Notifierprovider>().subscribe,
+                    onChanged: (bool) {
+                      context.read<Notifierprovider>().fcmSubscribe(bool);
+                    }),
               ),
               Listtilewidget(
                 color: Colors.blueAccent,
@@ -171,49 +190,54 @@ class _SettingscreenState extends State<Settingscreen> {
 }
 
 class Userprofile extends StatefulWidget {
-  const Userprofile({
-    Key? key,
-  }) : super(key: key);
-
   @override
   State<Userprofile> createState() => _UserprofileState();
 }
 
 class _UserprofileState extends State<Userprofile> {
+ 
+
   @override
   Widget build(BuildContext context) {
+    final userdata = Provider.of<Userprovider>(context).currentcuserdata;
     return Column(
       children: [
         SizedBox(
           child: Column(
             children: [
-              CircleAvatar(
-                radius: 50,
-                backgroundColor: Colors.grey.shade500,
-              ),
+              // CircleAvatar(
+              //   radius: 50,
+              //   backgroundColor: Colors.grey.shade500,
+              //   backgroundImage: NetworkImage(userdata!.imageurl),
+              // ),
               spaced20,
-              Text(
-                "Richie",
-                // authprovider.name.toString(),
-                // name== null?  authprovider.name.toString():"Name",
-                style:
-                    const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-              ),
+              // Text(
+              //   // ignore: unnecessary_null_comparison
+              //   userdata!.name == null ? "" : userdata.name,
+              //   style:
+              //       const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              // ),
+              // spaced10,
+              // Text(
+              //   userdata.phone == null ? "" : userdata.phone,
+              //   style:
+              //       const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              // ),
+              spaced20,
+              // Text(
+              //   currentdata!.email,
+              //   // authprovider.name.toString(),
+              //   // name== null?  authprovider.name.toString():"Name",
+              //   style:
+              //       const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              // ),
             ],
           ),
         ),
-        // Listtilewidget(
-        //   title: "email.toString()",
-        //   color: Colors.deepPurpleAccent,
-        //   icon: FeatherIcons.mail,
-        //   ontap: () {},
-        // ),
         Listtilewidget(
             title: "Edit profile",
             color: Colors.blueAccent,
-            ontap: ()
-                // =>Navigator.pushNamed(context, editprofile),
-                {
+            ontap: () {
               Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context) => Editprofile()));
             },
@@ -230,9 +254,9 @@ class _UserprofileState extends State<Userprofile> {
     );
   }
 
-  void logout(_) {
+  void logout(context) {
     showDialog(
-        context: (_),
+        context: (context),
         builder: (_) {
           return AlertDialog(
             title: const Text("Do you want to Leave"),

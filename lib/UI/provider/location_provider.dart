@@ -20,14 +20,12 @@ class Locationprovider with ChangeNotifier {
       List<Placemark> placemarks =
           await placemarkFromCoordinates(position.latitude, position.longitude);
       Placemark newPlacemark = placemarks.first;
-      selectedAddress =
-          newPlacemark.subLocality! +
+      selectedAddress = newPlacemark.subLocality! +
           '\t' +
           newPlacemark.thoroughfare! +
           '\t' +
           newPlacemark.name! +
           '\n' +
-          
           newPlacemark.locality! +
           '\t' +
           newPlacemark.postalCode!;
@@ -44,23 +42,22 @@ class Locationprovider with ChangeNotifier {
   }
 
   Future<void> getaddress() async {
+    
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
     List<Placemark> placemarks =
         await placemarkFromCoordinates(position.latitude, position.longitude);
     Placemark newPlacemark = placemarks.first;
-    selectedAddress =
-        newPlacemark.street! +
+    selectedAddress = newPlacemark.street! +
         '\t' +
         newPlacemark.subLocality! +
         '\t' +
         newPlacemark.thoroughfare! +
         '\n' +
-        
         newPlacemark.locality! +
-        '\t'+
+        '\t' +
         newPlacemark.postalCode! +
-            '\t';
+        '\t';
     notifyListeners();
 
     print("${selectedAddress}");

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:indolawassociates/UI/components/slider/sliderzoom.dart';
 // import 'package:sizer/sizer.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:indolawassociates/UI/components/button.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
@@ -32,7 +31,7 @@ class Offersub extends StatelessWidget {
             title: FittedBox(
               child: Text(
                 translate!.drawerkey2,
-                style: titletextwhite,
+                // style: titletextwhite,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -53,6 +52,9 @@ class Offersub extends StatelessWidget {
                   spaced10,
                   Text(
                     translate.refer,
+                            style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500),
                     textAlign: TextAlign.center,
                   ),
                   spaced10,
@@ -81,7 +83,7 @@ class Offersub extends StatelessWidget {
                           child: Text(
                             translate.invite,
                             style: GoogleFonts.poppins(
-                                // color: Colors.grey,
+                                color: Colors.white,
                                 fontSize: 13,
                                 fontWeight: FontWeight.w500),
                             textAlign: TextAlign.center,

@@ -2,9 +2,10 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:indolawassociates/UI/components/snack_bar.dart';
@@ -77,10 +78,11 @@ class _EditprofileState extends State<Editprofile> {
           formKey.currentState!.save();
           setState(() => loading = true);
           imageFile == null
-              ? await updateprofile(nameCtrl, imageUrl, emailCtrl, locationCtrl)
+              ? await updateprofile(
+                  nameCtrl, imageUrl, emailCtrl, currentAddress)
               : await uploadpicture()
-                  .then((value) => updateprofile(nameCtrl.text, imageUrl,
-                      emailCtrl.text, locationCtrl.text))
+                  .then((value) => updateprofile(
+                      nameCtrl.text, imageUrl, emailCtrl.text, currentAddress))
                   .then((_) {
                   openSnacbar(scaffoldKey, "Updated successfully");
                   setState(() {
@@ -94,6 +96,52 @@ class _EditprofileState extends State<Editprofile> {
 
   void onback() {
     Navigator.pushNamed(context, settingsroute);
+  }
+
+  String currentAddress = 'Address';
+  Position? currentposition;
+
+  // ignore: unused_element
+  _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      Fluttertoast.showToast(msg: 'Please enable Your Location Service');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        Fluttertoast.showToast(msg: 'Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      Fluttertoast.showToast(
+          msg:
+              'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+
+    try {
+      List<Placemark> placemarks =
+          await placemarkFromCoordinates(position.latitude, position.longitude);
+
+      Placemark place = placemarks[0];
+
+      setState(() {
+        currentposition = position;
+        currentAddress =
+            "${place.name},${place.thoroughfare},${place.subThoroughfare}\n${place.locality} - ${place.postalCode}, ${place.country}";
+      });
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
@@ -156,6 +204,9 @@ class _EditprofileState extends State<Editprofile> {
                           TextFormField(
                             decoration: InputDecoration(
                               hintText: 'Enter new name',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
                             ),
                             controller: nameCtrl,
                             validator: (value) {
@@ -168,6 +219,9 @@ class _EditprofileState extends State<Editprofile> {
                           TextFormField(
                             decoration: InputDecoration(
                               hintText: 'Enter your Email',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
                             ),
                             controller: emailCtrl,
                             validator: (value) {
@@ -176,18 +230,37 @@ class _EditprofileState extends State<Editprofile> {
                               return null;
                             },
                           ),
+                          // spaced20,
+                          // TextFormField(
+                          //   decoration: InputDecoration(
+                          //     hintText: 'Address',
+                          //   ),
+                          //   controller: locationCtrl,
+                          //   validator: (value) {
+                          //     if (value!.length == 0)
+                          //       return "Address can't be empty";
+                          //     return null;
+                          //   },
+                          // ),
                           spaced20,
-                          TextFormField(
-                            decoration: InputDecoration(
-                              hintText: 'Address',
-                            ),
-                            controller: locationCtrl,
-                            validator: (value) {
-                              if (value!.length == 0)
-                                return "Address can't be empty";
-                              return null;
-                            },
-                          ),
+                          InkWell(
+                              onTap: () {
+                                _determinePosition();
+                              },
+                              child: Container(
+                                  height: 70,
+                                  width: MediaQuery.of(context).size.width,
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(12)),
+                                      //  Border.symmetric(horizontal: BorderSide(width: 0.5,color: blackish))
+                                      border: Border.all(
+                                          width: 0.5, color: Colors.black54)),
+                                  child: Text(
+                                    currentAddress,
+                                    style: TextStyle(fontSize: 16),
+                                  )))
                         ],
                       )),
                   SizedBox(

@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 
+// ignore: must_be_immutable
 class Rowtitle extends StatelessWidget {
   String title;
   Rowtitle({required this.title});
@@ -28,12 +28,12 @@ class Rowtitle extends StatelessWidget {
           ],
         ),
         Spacer(),
-        Text(
-          "view all",
-          style: GoogleFonts.poppins(
-              color: appcolor2,
-               fontSize: 15, fontWeight: FontWeight.w500),
-        )
+        // Text(
+        //   "view all",
+        //   style: GoogleFonts.poppins(
+        //       color: appcolor2,
+        //        fontSize: 15, fontWeight: FontWeight.w500),
+        // )
       ],
     );
   }

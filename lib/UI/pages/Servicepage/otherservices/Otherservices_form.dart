@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
-import 'package:indolawassociates/UI/models/form_model.dart';
+// import 'package:indolawassociates/UI/models/form_model.dart';
 
 class Otherservicesform extends StatefulWidget {
   Otherservicesform({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class _OtherservicesformState extends State<Otherservicesform> {
   GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   // ignore: unused_field
-  late FormModel _formModel;
+  // late FormModel _formModel;
   final _namecontroller = TextEditingController();
   final _emailcontroller = TextEditingController();
   final _mobilecontroller = TextEditingController();
@@ -42,9 +42,7 @@ class _OtherservicesformState extends State<Otherservicesform> {
                     child: Text(
                       "Fill The Form",
                       style: GoogleFonts.poppins(
-                          
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20),
+                          fontWeight: FontWeight.w500, fontSize: 20),
                     ),
                   ),
                   spaced30,
@@ -54,15 +52,14 @@ class _OtherservicesformState extends State<Otherservicesform> {
                       ]),
                       controller: _namecontroller,
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          prefixIcon: Icon(
-                            Icons.person,
-                            
-                          ),
-                          labelText: "Name",
-                          )),
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                        prefixIcon: Icon(
+                          Icons.person,
+                        ),
+                        labelText: "Name",
+                      )),
                   SizedBox(height: 20),
                   TextFormField(
                       controller: _emailcontroller,
@@ -74,15 +71,14 @@ class _OtherservicesformState extends State<Otherservicesform> {
                       ]),
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          prefixIcon: Icon(
-                            Icons.mail,
-                            
-                          ),
-                          labelText: "Email",
-                          )),
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                        prefixIcon: Icon(
+                          Icons.mail,
+                        ),
+                        labelText: "Email",
+                      )),
                   SizedBox(height: 20),
                   Container(
                     decoration: BoxDecoration(
@@ -93,8 +89,9 @@ class _OtherservicesformState extends State<Otherservicesform> {
                       underline: SizedBox(),
                       iconSize: 35,
                       isExpanded: true,
-                      
-                      hint: Text("Gender", ),
+                      hint: Text(
+                        "Gender",
+                      ),
                       items: genderlist.map((valueitem) {
                         return DropdownMenuItem(
                           value: valueitem,
@@ -118,15 +115,14 @@ class _OtherservicesformState extends State<Otherservicesform> {
                         MinLengthValidator(10, errorText: phonenummin)
                       ]),
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          prefixIcon: Icon(
-                            Icons.mobile_screen_share,
-                            
-                          ),
-                          labelText: "Mobile",
-                          )),
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                        prefixIcon: Icon(
+                          Icons.mobile_screen_share,
+                        ),
+                        labelText: "Mobile",
+                      )),
                   SizedBox(height: 20),
                   TextFormField(
                       validator: MultiValidator([
@@ -135,20 +131,20 @@ class _OtherservicesformState extends State<Otherservicesform> {
                       keyboardType: TextInputType.streetAddress,
                       controller: _addresscontroller,
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          labelText: "Address",
-                          )),
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                        labelText: "Address",
+                      )),
                   SizedBox(height: 20),
                   TextFormField(
                       controller: _servicecontroller,
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          labelText: "Services",
-                          )),
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                        labelText: "Services",
+                      )),
                   SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -161,9 +157,7 @@ class _OtherservicesformState extends State<Otherservicesform> {
                           color: Colors.green,
                           elevation: 7.0,
                           child: TextButton(
-                            onPressed: ()
-
-                                async {
+                            onPressed: () async {
                               if (_formkey.currentState!.validate()) {
                                 servicesform();
                                 _emailcontroller.clear();

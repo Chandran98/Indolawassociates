@@ -4,7 +4,6 @@ import 'package:firebase_core/firebase_core.dart';
 
 class GetdataFB {
   // FirebaseFirestore lawyerdb = FirebaseFirestore.instance;
-
   getusername() {
     return FirebaseFirestore.instance
         .collection("ILA")

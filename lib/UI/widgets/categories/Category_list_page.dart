@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 // import 'package:sizer/sizer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:indolawassociates/UI/components/Title_card.dart';
+import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/models/categories_data_model.dart';
 import 'package:indolawassociates/UI/widgets/categories/Category_info_page.dart';
 
@@ -14,14 +16,6 @@ class Categoryshow extends StatefulWidget {
 
 class _CategoryshowState extends State<Categoryshow> {
   int currentpage = 0;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   currentpage = 1;
-  // }
-// bool? selectedindex =false;
-
   @override
   Widget build(BuildContext context) {
     final translate = AppLocalizations.of(context);
@@ -130,64 +124,76 @@ class _CategoryshowState extends State<Categoryshow> {
 
     double height = MediaQuery.of(context).size.height;
 
-    return ListView.builder(
-        itemCount: categorylist.length,
-        physics: BouncingScrollPhysics(),
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-        itemBuilder: (context, index) {
-          return InkWell(
-            onTap: () {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Categorypagescrend(
-                            r1: categorylist[index].r1,
-                            r2: categorylist[index].r2,
-                            r3: categorylist[index].r3,
-                            r4: categorylist[index].r4,
-                            r5: categorylist[index].r5,
-                            r6: categorylist[index].r6,
-                            categorysubtitle:
-                                categorylist[index].categorysubtitle,
-                            categorypageimages:
-                                categorylist[index].categorypageimages,
-                            categorytitle: categorylist[index].categorytitle,
-                          )));
-            },
-            child: Container(
-              width: 80, padding: EdgeInsets.symmetric(horizontal: 10),
+    return Column(
+      children: [
+        Rowtitle(
+          title: translate.categories,
+        ),
+        spaced10,
+        Container(
+          height: 100,
+          child: ListView.builder(
+              itemCount: categorylist.length,
+              physics: BouncingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return InkWell(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Categorypagescrend(
+                                  r1: categorylist[index].r1,
+                                  r2: categorylist[index].r2,
+                                  r3: categorylist[index].r3,
+                                  r4: categorylist[index].r4,
+                                  r5: categorylist[index].r5,
+                                  r6: categorylist[index].r6,
+                                  categorysubtitle:
+                                      categorylist[index].categorysubtitle,
+                                  categorypageimages:
+                                      categorylist[index].categorypageimages,
+                                  categorytitle:
+                                      categorylist[index].categorytitle,
+                                )));
+                  },
+                  child: Container(
+                    width: 80, padding: EdgeInsets.symmetric(horizontal: 10),
 
-              // height: height * 0.18.h,
-              child: Column(
-                children: [
-                  Container(
-                    height: 50,
-                    width: 80,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        // color: Colors.grey.shade300,
-                        image: DecorationImage(
-                            fit: BoxFit.contain,
-                            image: AssetImage(
-                              categorylist[index].categorypic,
-                            ))),
+                    // height: height * 0.18.h,
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 50,
+                          width: 80,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              // color: Colors.grey.shade300,
+                              image: DecorationImage(
+                                  fit: BoxFit.contain,
+                                  image: AssetImage(
+                                    categorylist[index].categorypic,
+                                  ))),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Container(
+                            child: FittedBox(
+                          child: Text(categorylist[index].categorytitle,
+                              style: GoogleFonts.poppins(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500,
+                              )),
+                        ))
+                      ],
+                    ),
                   ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Container(
-                      child: FittedBox(
-                    child: Text(categorylist[index].categorytitle,
-                        style: GoogleFonts.poppins(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500,
-                        )),
-                  ))
-                ],
-              ),
-            ),
-          );
-        });
+                );
+              }),
+        ),
+      ],
+    );
   }
 }

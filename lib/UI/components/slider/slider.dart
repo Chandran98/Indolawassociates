@@ -20,59 +20,64 @@ class _BannersliderState extends State<Bannerslider> {
   }
 
   int index = 0;
-  var image;
+  var image; 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.pushNamed(context, offerroute);
-      },
-      child: Container(
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height * 0.23,
+      child: InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, offerroute);
+        },
         child: FutureBuilder(
           future: getslider(),
           builder: (BuildContext context,
               AsyncSnapshot<List<QueryDocumentSnapshot<Map<String, dynamic>>>>
                   snapshot) {
             if (!snapshot.hasData) {
-              return
-                  Center(
-                      child: CircularProgressIndicator(
+              return Center(
+                  child: CircularProgressIndicator(
                 color: green,
               ));
             } else {
-              return CarouselSlider.builder(
-                itemCount: snapshot.data!.length,
-                itemBuilder: (_, index, int) {
-                  DocumentSnapshot<Map<String, dynamic>> slider =
-                      snapshot.data![index];
-                  Map<String, dynamic>? fetchimage = slider.data();
-                  image = fetchimage!["images"];
-                  return Card(
-                    color: Colors.transparent,
-                    elevation: 4,
-                    // child: Hero(
-                    //   tag: "slider$image",
-                    // child: Image.network(image),
-                    child: CachedNetworkImage(
-                                          fit: BoxFit.cover,
-                      imageUrl: image,
-                      // ),
-                    ),
-                  );
-                },
-                options: CarouselOptions(
-                    initialPage: 0,
-                    autoPlay: true,
-                    autoPlayAnimationDuration: Duration(seconds: 1),
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    height: 150,
-                    enlargeCenterPage: true,
-                    viewportFraction: 0.8,
-                    onPageChanged: (i, carouselPageChangedReason) {
-                      setState(() {
-                        index = i;
-                      });
-                    }),
+              return Padding(
+                padding: const EdgeInsets.only(top: 4, bottom: 15),
+                child: CarouselSlider.builder(
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (_, index, int) {
+                    DocumentSnapshot<Map<String, dynamic>> slider =
+                        snapshot.data![index];
+                    Map<String, dynamic>? fetchimage = slider.data();
+                    image = fetchimage!["images"];
+                    return Card(
+                      color: Colors.transparent,
+                      elevation: 4,
+                      // child: Hero(
+                      //   tag: "slider$image",
+                      // child: Image.network(image),
+                      child: CachedNetworkImage(
+                        fit: BoxFit.fitWidth,
+                        imageUrl: image,
+                        // ),
+                      ),
+                    );
+                  },
+                  options: CarouselOptions(
+                      initialPage: 0,
+                      autoPlay: true,
+                      enableInfiniteScroll: true,
+                      autoPlayAnimationDuration: Duration(seconds: 1),
+                      autoPlayInterval: Duration(seconds: 3),
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      enlargeCenterPage: true,
+                      viewportFraction: 0.99,
+                      onPageChanged: (i, carouselPageChangedReason) {
+                        setState(() {
+                          index = i;
+                        });
+                      }),
+                ),
               );
             }
           },

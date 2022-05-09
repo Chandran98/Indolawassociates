@@ -1,6 +1,5 @@
 // ignore_for_file: equal_keys_in_map
 
-import 'package:indolawassociates/UI/dummy/Mapping.dart';
 import 'package:indolawassociates/UI/pages/Login/loginpage.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/NRI.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/Paralegal/paralegal.dart';
