@@ -9,7 +9,7 @@ import 'package:indolawassociates/UI/components/socialmedia.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/provider/theme.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
-import 'package:indolawassociates/UI/pages/MainHomePage.dart';
+import 'package:indolawassociates/UI/pages/Dashboard_screen.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:provider/provider.dart';
 import 'package:sms_autofill/sms_autofill.dart';
@@ -153,7 +153,8 @@ class _LoginscreenState extends State<Loginscreen> {
                                 final signature = SmsAutoFill().getAppSignature;
                                 print(signature);
                               },
-                              child: Container(
+                              child: 
+                              Container(
                                   decoration: BoxDecoration(
                                       color: white,
                                       borderRadius: BorderRadius.circular(10),
@@ -187,7 +188,7 @@ class _LoginscreenState extends State<Loginscreen> {
                         onTap: () => Navigator.pushNamed(context, signuproute),
                         child: Text(
                           "Sign Up",
-                          style: GoogleFonts.mulish(
+                          style: GoogleFonts.muli(
                               fontSize: 16,
                               color: Color(0xff5770B5),
                               fontWeight: FontWeight.bold,
@@ -355,7 +356,7 @@ class _LoginscreenState extends State<Loginscreen> {
                                         child: Container(
                                           decoration: BoxDecoration(
                                               borderRadius:
-                                                  BorderRadius.circular(15),
+                                                  BorderRadius.circular(10),
                                               color: white,
                                               border: Border.all(color: navy)),
                                           height: 50,

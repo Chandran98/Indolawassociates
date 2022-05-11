@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:indolawassociates/UI/dummy/20/89/lawyerprofile.dart';
+import 'package:indolawassociates/UI/cards/lawyerprofile.dart';
+import 'package:indolawassociates/UI/components/customcache_image.dart';
 import 'package:indolawassociates/UI/models/lawyers_model.dart';
 
-import '../customcache_image.dart';
 
 class Card4 extends StatelessWidget {
   final Lawyermodel d;
@@ -47,7 +47,6 @@ class Card4 extends StatelessWidget {
                           child:
                               CustomCacheImage(imageUrl: d.images, radius: 5.0))),
 
-                  // VideoIcon(contentType: d.contentType, iconSize: 40,)
                 ],
               ),
               Expanded(

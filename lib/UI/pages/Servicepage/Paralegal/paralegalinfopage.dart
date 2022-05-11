@@ -177,8 +177,8 @@ class _ParalegalscreenState extends State<Paralegalscreen> {
                               borderRadius: BorderRadius.circular(35),
                               // color: white,
                               border: Border.all(color: appcolor)),
-                          height: 50,
-                          width: 150,
+                          height: 52,
+                          width: 170,
                           // padding: const EdgeInsets.symmetric(
                           //   vertical: 15.0,
                           //   horizontal: 15.0,

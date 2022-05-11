@@ -4,9 +4,10 @@ import 'package:indolawassociates/UI/components/Internet%20connectivity/Network_
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/NRI.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/Paralegal/paralegal.dart';
-import 'package:indolawassociates/UI/pages/Servicepage/otherservices/otherservicespage.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
 import "package:flutter_gen/gen_l10n/app_localizations.dart";
+import 'package:indolawassociates/UI/widgets/otherservices/Otherservices_form.dart';
+import 'package:indolawassociates/UI/widgets/otherservices/otherservices_screen.dart';
 
 class Servicesall extends StatefulWidget {
   const Servicesall({Key? key}) : super(key: key);
@@ -87,7 +88,8 @@ class _ServiceallsState extends State<Servicesall>
                     controller: _controller,
                     children: [
                       TParalegal(),
-                      OtherServicesformre(),
+                      OtherServicesscreen(),
+                      
                       NRIsection()
                     ]),
               ),

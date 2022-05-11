@@ -5,7 +5,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:indolawassociates/UI/components/List_title_widgets.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/provider/notification_provider.dart';
-import 'package:indolawassociates/UI/pages/Settingspage/Edit_page.dart';
+import 'package:indolawassociates/UI/pages/Settingspage/Edit_profile_screen.dart';
 import 'package:indolawassociates/UI/provider/languageprovider.dart';
 import 'package:indolawassociates/UI/provider/theme.dart';
 import 'package:indolawassociates/UI/provider/user_details_provider.dart';

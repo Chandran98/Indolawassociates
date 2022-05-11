@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:indolawassociates/UI/cards/lawyercard.dart';
 import 'package:indolawassociates/UI/components/snack_bar.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
-import 'package:indolawassociates/UI/utils/cards/lawyercard.dart';
 import 'package:indolawassociates/UI/provider/search_provider.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
-import 'package:indolawassociates/UI/utils/empty_screen.dart';
+import 'package:indolawassociates/UI/components/empty_screen.dart';
 import 'package:provider/provider.dart';
 
 class Searchpage extends StatefulWidget {

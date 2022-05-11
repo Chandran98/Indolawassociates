@@ -1,29 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:indolawassociates/UI/pages/Servicepage/otherservices/otherservicesinfo.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
+import 'package:indolawassociates/UI/widgets/otherservices/otherservicesinfo.dart';
 
-class OtherservicesModel {
-  String servicetitle;
-  String servicecontent;
-  String serviceimage;
+import '../../models/other_services_model.dart';
 
-  OtherservicesModel(
-      {required this.servicetitle,
-      required this.servicecontent,
-      required this.serviceimage});
-}
+
 
 ///////////////////////////////////////////    Legal forms   //////////////////////////////////////////
 
-class OtherServicesformre extends StatefulWidget {
-  const OtherServicesformre({Key? key}) : super(key: key);
+class OtherServicesscreen extends StatefulWidget {
+  const OtherServicesscreen({Key? key}) : super(key: key);
 
   @override
-  _OtherServicesformreState createState() => _OtherServicesformreState();
+  _OtherServicesscreenState createState() => _OtherServicesscreenState();
 }
 
-class _OtherServicesformreState extends State<OtherServicesformre> {
+class _OtherServicesscreenState extends State<OtherServicesscreen> {
   void onback() {
     Navigator.pushNamed(context, servicespage);
   }
@@ -39,21 +32,6 @@ class _OtherServicesformreState extends State<OtherServicesformre> {
       },
       child: SafeArea(
         child: Scaffold(
-            // appBar: AppBar(
-            //   backgroundColor: dialog,
-            //   title: Text(
-            //     translate!.drawerkey3,
-            //     style: GoogleFonts.mulish(
-            //         color: white, fontWeight: FontWeight.w500, fontSize: 20.sp),
-            //   ),
-            //   leading: IconButton(
-            //       onPressed: () => Navigator.pushNamed(context, settingsroute),
-            //       icon: Image.asset(
-            //         "assets/icons/rback.png",
-            //         color: white,
-            //         height: 35,
-            //       )),
-            // ),
             body: otherserviceslist(context)),
       ),
     );
@@ -190,12 +168,11 @@ class _OtherServicesformreState extends State<OtherServicesformre> {
             leading: Icon(Icons.logout, ),
             title: Text(
               otherservicemodel[index].servicetitle,
-              // style: demofont,
             ),
             onTap: () => Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => OTherservicesscreen(
+                    builder: (context) => OtherServiceinfopage(
                           servicetitle: otherservicemodel[index].servicetitle,
                           servicecontent:
                               otherservicemodel[index].servicecontent,

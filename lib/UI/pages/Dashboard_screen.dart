@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:indolawassociates/UI/provider/notification_provider.dart';
-import 'package:indolawassociates/UI/pages/notification.dart';
+import 'package:indolawassociates/UI/pages/Notification_screen.dart';
 import 'package:indolawassociates/UI/services/notification_services.dart';
 import 'package:provider/provider.dart';
 

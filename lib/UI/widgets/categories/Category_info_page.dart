@@ -77,20 +77,7 @@ class _CategorypagescrendState extends State<Categorypagescrend> {
                     Icons.arrow_back,
                     color: Colors.white,
                   )),
-              // title: Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     InkWell(
-              //         onTap: () {
-              //           Navigator.pop(context);
-              //         },
-              //         child: const Icon(
-              //           Icons.arrow_back_ios,
-              //           color: Colors.transparent,
-              //         )),
-              //     Icon(Icons.shopping_cart_checkout)
-              //   ],
-              // ),
+            
               pinned: true,
               elevation: 0,
               expandedHeight: 250,

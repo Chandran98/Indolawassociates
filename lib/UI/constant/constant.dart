@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../pages/Home_page.dart';
+import '../pages/Home_screen.dart';
 import '../pages/Servicepage/services.dart';
-import '../pages/Settingspage/settings_page.dart';
-import '../pages/legalforms/legalforms_page.dart';
+import '../pages/Settingspage/Settings_screen.dart';
+import '../pages/Legalforms_screen.dart';
 
 const iconcolor = Color(0xff333333);
 const divcolor = Color(0xffADADAD);

@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 // import 'package:sizer/sizer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/UI/components/Title_card.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
 import 'package:indolawassociates/UI/models/categories_data_model.dart';
 import 'package:indolawassociates/UI/widgets/categories/Category_info_page.dart';
 
-class Categoryshow extends StatefulWidget {
-  Categoryshow({Key? key}) : super(key: key);
+
+
+
+class Categorypage extends StatefulWidget {
+  const Categorypage({Key? key}) : super(key: key);
 
   @override
-  _CategoryshowState createState() => _CategoryshowState();
+  State<Categorypage> createState() => _CategorypageState();
 }
 
-class _CategoryshowState extends State<Categoryshow> {
-  int currentpage = 0;
+class _CategorypageState extends State<Categorypage> {
   @override
   Widget build(BuildContext context) {
     final translate = AppLocalizations.of(context);
@@ -120,78 +123,108 @@ class _CategoryshowState extends State<Categoryshow> {
           r5: translate.consumerkey5,
           r6: translate.consumerkey6),
     ];
-    double width = MediaQuery.of(context).size.width;
 
-    double height = MediaQuery.of(context).size.height;
-
-    return Column(
+    return
+     Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Rowtitle(
-          title: translate.categories,
-        ),
-        spaced10,
+        // Padding(
+          // padding: const EdgeInsets.all(8.0),
+          // child: Text(
+            // "Categories",
+            // style: GoogleFonts.poppins(
+                // color: black, fontSize: 18, fontWeight: FontWeight.w500),
+          // ),
+        // ),
+        Rowtitle(title: "Categories"),
+        spaced20,
         Container(
-          height: 100,
-          child: ListView.builder(
-              itemCount: categorylist.length,
-              physics: BouncingScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Categorypagescrend(
-                                  r1: categorylist[index].r1,
-                                  r2: categorylist[index].r2,
-                                  r3: categorylist[index].r3,
-                                  r4: categorylist[index].r4,
-                                  r5: categorylist[index].r5,
-                                  r6: categorylist[index].r6,
-                                  categorysubtitle:
-                                      categorylist[index].categorysubtitle,
-                                  categorypageimages:
-                                      categorylist[index].categorypageimages,
-                                  categorytitle:
-                                      categorylist[index].categorytitle,
-                                )));
-                  },
+          height: 500,
+          child: StaggeredGridView.countBuilder(
+            physics: BouncingScrollPhysics(),
+            mainAxisSpacing: 16,
+            crossAxisSpacing: 10,
+            crossAxisCount: 2,
+            padding: EdgeInsets.only(left: 5, right: 5),
+            itemCount: categorylist.length,
+            itemBuilder: (context, index) {
+              return InkWell(
+                onTap: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Categorypagescrend(
+                              r1: categorylist[index].r1,
+                              r2: categorylist[index].r2,
+                              r3: categorylist[index].r3,
+                              r4: categorylist[index].r4,
+                              r5: categorylist[index].r5,
+                              r6: categorylist[index].r6,
+                              categorysubtitle:
+                                  categorylist[index].categorysubtitle,
+                              categorypageimages:
+                                  categorylist[index].categorypageimages,
+                              categorytitle: categorylist[index].categorytitle,
+                            ))),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)),
                   child: Container(
-                    width: 80, padding: EdgeInsets.symmetric(horizontal: 10),
-
-                    // height: height * 0.18.h,
-                    child: Column(
+                    // width: 100,
+                    height: 150,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        image: DecorationImage(
+                            image: AssetImage(
+                              categorylist[index].categorypageimages,
+                            ),
+                            fit: BoxFit.cover)),
+                    // color: Colors.yellow,
+                    child: Stack(
                       children: [
-                        Container(
-                          height: 50,
-                          width: 80,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              // color: Colors.grey.shade300,
-                              image: DecorationImage(
-                                  fit: BoxFit.contain,
-                                  image: AssetImage(
-                                    categorylist[index].categorypic,
-                                  ))),
+                        // Positioned.fill(
+                        //   child: ClipRRect(
+                        //     borderRadius: BorderRadius.circular(20),
+                        //     child: Image.asset(
+                        //       categorylist[index].categorypageimages,
+                        //     ),
+                        //   ),
+                        // ),
+                        Positioned(
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          child: Container(
+                              height: 180,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(20),
+                                      bottomRight: Radius.circular(20)),
+                                  gradient: LinearGradient(
+                                      begin: Alignment.bottomCenter,
+                                      end: Alignment.topCenter,
+                                      colors: [
+                                        Colors.black.withOpacity(0.7),
+                                        Colors.transparent
+                                      ]))),
                         ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Container(
-                            child: FittedBox(
-                          child: Text(categorylist[index].categorytitle,
-                              style: GoogleFonts.poppins(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w500,
-                              )),
-                        ))
+                        Positioned(
+                          bottom: 50,
+                          child: Padding(
+                              padding: const EdgeInsets.only(left: 30),
+                              child: Text(categorylist[index].categorytitle,
+                                  style: GoogleFonts.poppins(
+                                      color: Colors.white, fontSize: 19))),
+                        )
                       ],
                     ),
                   ),
-                );
-              }),
+                ),
+              );
+            },
+            staggeredTileBuilder: (index) {
+              return StaggeredTile.count(1, index.isOdd ? 1.2 : 1.8);
+            },
+          ),
         ),
       ],
     );

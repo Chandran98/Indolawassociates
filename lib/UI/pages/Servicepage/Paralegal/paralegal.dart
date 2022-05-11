@@ -40,27 +40,7 @@ class _TParalegalState extends State<TParalegal> {
         return Future.value(false);
       },
       child: SafeArea(
-        child: Scaffold(
-            // backgroundColor: white,
-            // appBar: AppBar(
-            //   elevation: 3,
-            //   toolbarHeight: 60.h,
-            //   centerTitle: true,
-            //   backgroundColor: dialog,
-            //   title: Text(
-            //     translate!.paralegalservices,
-            //     style: GoogleFonts.poppins(
-            //         color: white, fontWeight: FontWeight.w500, fontSize: 20.sp),
-            //   ),
-            //   leading: IconButton(
-            //       onPressed: () => Navigator.pushNamed(context,homeroute),
-            //       icon: Image.asset(
-            //         "assets/icons/rback.png",
-            //         color: white,
-            //         height: 35,
-            //       )),
-            // ),
-            body: NetworkSensitive(child: paralegallist(context))),
+        child: Scaffold(body: NetworkSensitive(child: paralegallist(context))),
       ),
     );
 
@@ -126,7 +106,11 @@ class _TParalegalState extends State<TParalegal> {
                 child: Center(
                   child: Text(
                     paralegallist[index].Paralegaltitle,
-                    style: GoogleFonts.poppins(color: white,fontSize: 16,fontWeight: FontWeight.w500),textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                        color: white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500),
+                    textAlign: TextAlign.center,
                   ),
                 ),
                 height: 100,
@@ -139,29 +123,3 @@ class _TParalegalState extends State<TParalegal> {
     );
   }
 }
-
-////////////////////////////////    Legal forms Page      ////////////////////////////////
-
-// Future<FormModel> submitdata(
-//     String name, gender, email, address, mobile, service) async {
-//   final response = await http
-//       .post(Uri.parse("http://api.indolawassociates.com/api/form"), body: {
-//     "name": name,
-//     "gender": gender,
-//     "email": email,
-//     "address": address,
-//     "mobile": mobile,
-//     "service": service,
-//   });
-//   var data = response.body;
-//   return formModelFromJson(data);
-
-//   // if (response.statusCode == 201) {
-//   //   final  data = response.body;
-//   //   return formModelFromJson(data);
-//   // } else {
-//   //   return null;
-//   // }
-// }
-
-

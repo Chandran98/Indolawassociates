@@ -1,19 +1,19 @@
 // ignore_for_file: equal_keys_in_map
 
-import 'package:indolawassociates/UI/pages/Login/loginpage.dart';
+import 'package:indolawassociates/UI/pages/Login_screen.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/NRI.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/Paralegal/paralegal.dart';
-import 'package:indolawassociates/UI/pages/Servicepage/otherservices/otherservicespage.dart';
-import 'package:indolawassociates/UI/pages/Settingspage/Edit_page.dart';
-import 'package:indolawassociates/UI/pages/Settingspage/careers/careerspage.dart';
-import 'package:indolawassociates/UI/pages/Settingspage/contactpage.dart';
-import 'package:indolawassociates/UI/pages/legalforms/legalforms_page.dart';
-import 'package:indolawassociates/UI/pages/notification.dart';
-import 'package:indolawassociates/UI/pages/Settingspage/offer.dart';
-import 'package:indolawassociates/UI/pages/Settingspage/settings_page.dart';
-import 'package:indolawassociates/UI/pages/signup/signup.dart';
-import 'package:indolawassociates/UI/pages/MainHomePage.dart';
+import 'package:indolawassociates/UI/pages/Settingspage/Edit_profile_screen.dart';
+import 'package:indolawassociates/UI/pages/Careers_screen.dart';
+import 'package:indolawassociates/UI/pages/Settingspage/contact_us_screen.dart';
+import 'package:indolawassociates/UI/pages/Legalforms_screen.dart';
+import 'package:indolawassociates/UI/pages/Notification_screen.dart';
+import 'package:indolawassociates/UI/pages/Settingspage/offers_subscription_screen.dart';
+import 'package:indolawassociates/UI/pages/Settingspage/Settings_screen.dart';
+import 'package:indolawassociates/UI/pages/Signup_screen.dart';
+import 'package:indolawassociates/UI/pages/Dashboard_screen.dart';
 import 'package:indolawassociates/UI/pages/Servicepage/services.dart';
+import 'package:indolawassociates/UI/widgets/otherservices/otherservices_screen.dart';
 
 const String settingsroute = "/settings";
 const String careersroute = "/careers";
@@ -41,7 +41,7 @@ final routes = {
   offerroute: (context) => Offersub(),
   loginpageroute: (context) => Loginscreen(),
   homeroute: (context) => MainHomepage(),
-  otherserviceroute: (context) => OtherServicesformre(),
+  otherserviceroute: (context) => OtherServicesscreen(),
   nriroute: (context) => NRIsection(),
   notificationroute: (context) => Notificationpage(),
   signuproute: (context) => Signuppage(),

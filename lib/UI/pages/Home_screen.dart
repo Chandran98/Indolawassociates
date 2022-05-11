@@ -3,21 +3,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/UI/components/Internet%20connectivity/Network_status.dart';
-import 'package:indolawassociates/UI/components/slider/slider.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
-import 'package:indolawassociates/UI/dummy/20/89/file_dummy.dart';
-import 'package:indolawassociates/UI/dummy/20/89/nomac.dart';
-import 'package:indolawassociates/UI/dummy/20/homwe.dart';
 import 'package:indolawassociates/UI/provider/user_details_provider.dart';
 import 'package:indolawassociates/UI/components/search_bar.dart';
 import 'package:indolawassociates/UI/provider/languageprovider.dart';
 import 'package:indolawassociates/UI/provider/theme.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
-import 'package:indolawassociates/UI/widgets/Lawyers/Lawyer_list.dart';
+import 'package:indolawassociates/UI/widgets/categories/Category_list_page.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../widgets/Lawyers/Lawyer_list.dart';
 
 class Homepagescreen extends StatefulWidget {
   const Homepagescreen({Key? key}) : super(key: key);
@@ -81,11 +81,12 @@ class _HomepagescreenState extends State<Homepagescreen> {
                   children: [
                     Homepageappbar(),
                     Searchbar(),
-                    Ledacy(),
+                    // Toplawyers(),
+                    Categorypage()
+                    // Ledacy(),
                     // GRidtitlelist(),
-                    spaced20,
-                    Bannerslider(),
-                    Toplawyers(),
+                    // spaced20,
+                    // Bannerslider(),
                   ],
                 ),
               ),
@@ -129,32 +130,39 @@ class Homepageappbar extends StatelessWidget {
               ),
               Row(
                 children: [
-                  IconButton(
-                      onPressed: () {
-                        languagebutton(context);
-                      },
-                      icon: Icon(
-                        Icons.language_outlined,
-                        size: 32,
-                      )),
+                  InkWell(
+                    onTap: () {
+                      languagebutton(context);
+                    },
+                    child: Container(
+                      height: 50,
+                      width: 50,
+                      child: Lottie.asset("assets/images/language.json"),
+                    ),
+                  ),
                   spacedwidth10,
                   IconButton(
                       onPressed: () {
                         theme.toggletheme();
                       },
-                      icon: Icon(CupertinoIcons.moon_stars)),
-                  spacedwidth10,
-                  IconButton(
-                      onPressed: () {
-                        // Navigator.pushNamed(context, notificationroute);
-                        // Navigator.pushNamed(context, loginpageroute);
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => NOmac()));
-                      },
                       icon: Icon(
-                        CupertinoIcons.bell,
+                        CupertinoIcons.moon_stars,
+                        color: appcolor,
                         size: 32,
                       )),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, notificationroute);
+                      // Navigator.pushNamed(context, loginpageroute);
+                      // Navigator.push(
+                      //     context, MaterialPageRoute(builder: (_) => HomePageno()));
+                    },
+                    child: Container(
+                      height: 50,
+                      width: 50,
+                      child: Lottie.asset("assets/images/notify.json"),
+                    ),
+                  ),
                 ],
               ),
             ],

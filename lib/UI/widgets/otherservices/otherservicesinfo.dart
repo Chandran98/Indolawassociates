@@ -3,24 +3,23 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indolawassociates/UI/components/contact_box.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
-import 'package:indolawassociates/UI/pages/Servicepage/Paralegal/Paralegal_form.dart';
-import 'package:indolawassociates/UI/pages/Servicepage/otherservices/Otherservices_form.dart';
 import 'package:indolawassociates/UI/provider/theme.dart';
 import 'package:indolawassociates/UI/routes/route.dart';
+import 'package:indolawassociates/UI/widgets/otherservices/Otherservices_form.dart';
 import 'package:provider/provider.dart';
 
-class OTherservicesscreen extends StatefulWidget {
-  OTherservicesscreen(
+class OtherServiceinfopage extends StatefulWidget {
+  OtherServiceinfopage(
       {required this.servicetitle,
       required this.servicecontent,
       required this.serviceimage});
   final String servicetitle, servicecontent, serviceimage;
 
   @override
-  State<OTherservicesscreen> createState() => _OTherservicesscreenState();
+  State<OtherServiceinfopage> createState() => _OtherServiceinfopageState();
 }
 
-class _OTherservicesscreenState extends State<OTherservicesscreen> {
+class _OtherServiceinfopageState extends State<OtherServiceinfopage> {
   
   
   double rightvalue = 200;

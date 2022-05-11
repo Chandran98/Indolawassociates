@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:indolawassociates/UI/constant/constant.dart';
-import 'package:indolawassociates/UI/pages/search_page.dart';
+import 'package:indolawassociates/UI/pages/Search_screen.dart';
 
 class Searchbar extends StatelessWidget {
   const Searchbar({Key? key}) : super(key: key);

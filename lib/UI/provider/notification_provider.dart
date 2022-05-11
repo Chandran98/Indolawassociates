@@ -33,14 +33,14 @@ class Notifierprovider extends ChangeNotifier {
     String? _token = await firebaseMessaging.getToken();
     RemoteMessage? initalmsg = await firebaseMessaging.getInitialMessage();
     if (initalmsg != null) {
-      Navigator.pushNamed(context, notificationroute);
+      Navigator.pushNamed(context, homeroute);
     }
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
       LocalNotificationService.createanddisplaynotification(message);
     });
     FirebaseMessaging.onMessageOpenedApp.listen((message) async {
-      Navigator.pushNamed(context, notificationroute);
+      Navigator.pushNamed(context, homeroute);
     });
     notifyListeners();
   }

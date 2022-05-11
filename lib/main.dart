@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:indolawassociates/UI/provider/lawyer_provider.dart';
 import 'package:indolawassociates/UI/provider/notification_provider.dart';
-import 'package:indolawassociates/UI/pages/splashscren.dart';
+import 'package:indolawassociates/UI/pages/Splash_screen.dart';
 import 'package:indolawassociates/UI/provider/languageprovider.dart';
 import 'package:indolawassociates/UI/provider/search_provider.dart';
 import 'package:indolawassociates/UI/provider/theme.dart';
